@@ -1,0 +1,69 @@
+[
+ {
+  "slug": "o-que-e-neuroarquitetura",
+  "title": "O que é neuroarquitetura e o que ela muda na sua casa",
+  "category": "Neuroarquitetura",
+  "excerpt": "Neuroarquitetura usa o que a ciência sabe sobre o cérebro para projetar espaços que melhoram o humor, o sono e a concentração de quem vive neles.",
+  "answer": "Neuroarquitetura é a prática de projetar ambientes usando estudos sobre como o cérebro reage a luz, cor, forma e som. Na casa, isso significa decidir iluminação, cores e disposição dos móveis para favorecer descanso, convivência e foco, sem depender de modismo.",
+  "keywords": "neuroarquitetura, arquitetura de interiores, bem-estar, Vitória ES",
+  "cover_url": "p_bebe.jpg",
+  "cover_alt": "Quarto de bebê com nuvem iluminada sobre o berço",
+  "body_html": "<p>Quando você entra num lugar e se sente em paz, ou ansioso sem saber por quê, o ambiente está falando com o seu corpo. A neuroarquitetura estuda essa conversa.</p><h2>Como o espaço age no cérebro</h2><p>Luz, cor, ruído, cheiro e percurso mudam o <b>nível de estresse</b> e a atenção. A luz da manhã ajuda a regular o sono; um corredor estreito e escuro tende a cansar.</p><div>Por isso o projeto começa ouvindo a rotina da pessoa.</div><h2>O que muda na prática</h2><ul><li>Iluminação em camadas, com luz quente à noite</li><li>Cores escolhidas pela função de cada cômodo</li><li>Móveis que deixam o caminho livre</li></ul><h2>Por onde começar</h2><p>Observe em que horas do dia cada cômodo incomoda. Anote. Essa lista é o melhor briefing.</p><script>alert(1)</script><p onclick='x()'>Texto com <a href='javascript:alert(2)'>link ruim</a> e <a href='https://exemplo.com'>link bom</a>.</p>",
+  "faq": [
+   {
+    "q": "Neuroarquitetura é o mesmo que psicologia ambiental?",
+    "a": "Não. A psicologia ambiental estuda a relação entre pessoas e ambientes; a neuroarquitetura aplica esse conhecimento, junto com dados da neurociência, para decidir o projeto."
+   },
+   {
+    "q": "Precisa reformar a casa toda?",
+    "a": "Não. Muitas mudanças são pontuais, como luz, cor e arrumação dos móveis."
+   }
+  ],
+  "publish_at": "2026-10-21T12:00:00Z",
+  "updated_at": "2026-10-27T12:00:00Z"
+ },
+ {
+  "slug": "home-relooking-sem-reforma",
+  "title": "Home Relooking: renovar a casa sem fazer uma reforma completa",
+  "category": "Home Relooking",
+  "excerpt": "Home Relooking muda o visual e o uso da casa com ajustes pontuais, como móveis, luz e tecidos, sem quebra-quebra.",
+  "answer": "Home Relooking é renovar a casa com mudanças pontuais de móveis, iluminação, cores e tecidos, sem obra pesada. Serve quando o espaço funciona, mas não combina mais com quem mora nele.",
+  "keywords": "home relooking",
+  "cover_url": "p_nichos.jpg",
+  "cover_alt": "Detalhe de quarto infantil com placas de madeira",
+  "body_html": "<h2>Quando vale a pena</h2><p>Quando a planta está boa e o incômodo é estético ou de uso.</p><h2>O que entra</h2><p>Reorganização, pintura, cortinas, tapetes, iluminação e peças novas.</p><h2>Quanto tempo leva</h2><p>Em geral, dias, não meses.</p>",
+  "faq": [],
+  "publish_at": "2026-10-14T12:00:00Z"
+ },
+ {
+  "slug": "loja-que-acolhe-vende-mais",
+  "title": "Como a neuroarquitetura muda a experiência de quem entra numa loja",
+  "category": "Comercial",
+  "excerpt": "Luz, percurso, cor e aroma influenciam quanto tempo o cliente fica e como ele se sente na loja.",
+  "answer": "A neuroarquitetura melhora a experiência na loja ao controlar luz, percurso, cor e cheiro. Um espaço claro, com caminho intuitivo e produtos organizados por categoria faz o cliente ficar mais tempo e se sentir à vontade para escolher.",
+  "keywords": "projeto comercial, loja",
+  "cover_url": "p_vdb1.jpg",
+  "cover_alt": "Estante alta e iluminada da loja Vila do Bem",
+  "body_html": "<h2>Luz que guia</h2><p>A luz direciona o olhar para o que importa.</p><h2>Percurso</h2><p>O cliente precisa entender a loja em poucos segundos.</p><h2>Organização</h2><p>Categorias claras reduzem a sensação de excesso.</p><blockquote>O cliente não lembra da planta, lembra de como se sentiu.</blockquote>",
+  "faq": [
+   {
+    "q": "Funciona para lojas pequenas?",
+    "a": "Sim. Em lojas pequenas o percurso e a luz pesam ainda mais."
+   }
+  ],
+  "publish_at": "2026-10-07T12:00:00Z"
+ },
+ {
+  "slug": "preparar-a-casa-para-vender",
+  "title": "Home Staging: como preparar a casa para as visitas",
+  "category": "Home Staging",
+  "excerpt": "Home Staging deixa o imóvel neutro e acolhedor para que quem visita consiga se imaginar morando nele.",
+  "answer": "Home Staging é preparar o imóvel para venda ou aluguel deixando-o limpo, neutro, bem iluminado e com poucos objetos pessoais, para que o visitante se imagine morando ali.",
+  "keywords": "home staging",
+  "cover_url": "p_kit1.jpg",
+  "cover_alt": "Quarto arrumado com roupa de cama clara",
+  "body_html": "<h2>Comece pelo básico</h2><p>Limpeza, reparos pequenos e luz.</p><h2>Menos é mais</h2><p>Retire excessos e objetos muito pessoais.</p><h2>Fotos</h2><p>As fotos são a primeira visita. Prepare a casa para elas.</p>",
+  "faq": [],
+  "publish_at": "2026-09-30T12:00:00Z"
+ }
+]

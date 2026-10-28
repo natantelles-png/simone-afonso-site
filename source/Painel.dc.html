@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel do blog | Simone Afonso</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Outfit:wght@400;700&amp;display=swap">
+<style>
+@font-face{font-family:"SA Gothic";src:url("/_blob/2bdd09356c6cde853e048983509204f3") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"SA Gothic";src:url("/_blob/7f9c3b609f7cecb166a6905d796a525f") format("woff");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"SA Gothic";src:url("/_blob/fd07e328acb7b6f8a82a42de7a20fc31") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"SA Gothic";src:url("/_blob/87f88cf08107b03ae6bc8a6aca4f45d7") format("woff");font-weight:700;font-style:italic;font-display:swap}
+:root{--sa-sans:"Century Gothic",CenturyGothic,"SA Gothic","Outfit",sans-serif}
+body{margin:0}
+:focus-visible{outline:3px solid #8A4F55;outline-offset:2px}
+.pn-side{background:#534243 url("/_blob/171e1b576855467a0b55f227a76915d0") center/cover}
+.pn-side :focus-visible{outline-color:#F3DEDA}
+.pn-papel{background:#FAF4F0 url("/_blob/522dbe99eb7f6c25000fe726a3f1df4c") center/cover}
+.pn-ico path,.pn-ico circle,.pn-ico rect,.pn-ico line{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pn-mk path{fill:none;stroke:currentColor;stroke-width:36;stroke-linecap:round;stroke-linejoin:round}
+.pn-shell{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:1060px}
+.pn-nav{transition:background .18s ease,color .18s ease}
+.pn-nav:hover{background:rgba(243,222,218,.14)}
+.pn-btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.pn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(40,25,27,.22)}
+.pn-card{background:#FFFFFF;border:1px solid #EADCD8;border-radius:18px;box-shadow:0 1px 0 rgba(59,46,47,.04)}
+.pn-act{transition:transform .2s ease,box-shadow .2s ease}
+.pn-act:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(59,46,47,.16)}
+.pn-row{transition:background .15s ease}
+.pn-row:hover{background:#FBF6F4}
+.pn-cover{transition:transform .2s ease,box-shadow .2s ease}
+.pn-cover:hover{transform:scale(1.03)}
+.pn-in{opacity:0;transform:translateY(14px);animation:pn-in .5s cubic-bezier(.2,.7,.2,1) forwards}
+.pn-d1{animation-delay:.05s}.pn-d2{animation-delay:.12s}.pn-d3{animation-delay:.2s}.pn-d4{animation-delay:.28s}
+.pn-wave span{display:block;width:5px;border-radius:3px;background:#8A4F55;animation:pn-wave 1s ease-in-out infinite}
+.pn-pulse{animation:pn-pulse 1.6s ease-out infinite}
+.pn-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pn-input{font-family:var(--sa-sans);font-size:16px;color:#3B2E2F;background:#FFFFFF;border:1.5px solid #CDB9B5;border-radius:12px;padding:12px 14px;box-sizing:border-box;width:100%}
+.pn-input:focus{border-color:#8A4F55;outline:none;box-shadow:0 0 0 3px rgba(138,79,85,.18)}
+.pn-grid2{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px}
+.pn-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pn-cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+@keyframes pn-in{to{opacity:1;transform:none}}
+@keyframes pn-wave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@keyframes pn-pulse{0%{box-shadow:0 0 0 0 rgba(138,79,85,.45)}100%{box-shadow:0 0 0 26px rgba(138,79,85,0)}}
+@media (max-width:1100px){
+.pn-grid2{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:860px){
+.pn-shell{grid-template-columns:minmax(0,1fr)}
+.pn-side{position:static !important;height:auto !important}
+.pn-navlist{flex-direction:row !important;overflow-x:auto;scrollbar-width:none}
+.pn-navlist > *{flex:0 0 auto}
+.pn-hide-m{display:none !important}
+.pn-grid3{grid-template-columns:minmax(0,1fr)}
+.pn-cal-day{min-height:62px !important}
+.pn-cal-title{display:none !important}
+}
+@media (prefers-reduced-motion:reduce){
+.pn-in{animation:none;opacity:1;transform:none}
+.pn-wave span,.pn-pulse{animation:none}
+.pn-btn,.pn-act,.pn-cover{transition:none}
+}
+</style>
+</helmet>
+
+<div style="font-family:var(--sa-sans);color:#3B2E2F;background:#FAF4F0;min-height:1100px">
+
+<div role="note" style="background:#3B2E2F;color:#F3DEDA;font-size:14px;padding:9px 20px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;text-align:center">
+<span style="background:#F3DEDA;color:#3B2E2F;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px">Prévia</span>
+<span>Painel do blog com dados de exemplo, para a reunião de alinhamento. Os textos, números e datas são ilustrativos.</span>
+</div>
+
+<div class="pn-shell">
+
+<aside class="pn-side" style="color:#F3DEDA;display:flex;flex-direction:column;gap:26px;padding:28px 18px;position:sticky;top:0;height:1060px;box-sizing:border-box">
+<div style="padding:0 10px">
+<img src="/_blob/8549e41ff079b3b7ba922120046d8968" alt="Simone Afonso Arquitetura e Interiores" style="height:64px;width:auto;display:block">
+<p style="margin:12px 0 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E3BDB8">Painel do blog</p>
+</div>
+<nav aria-label="Seções do painel">
+<ul class="pn-navlist" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+<li>
+<button class="pn-nav" type="button" onClick="{{ n.go }}" aria-current="{{ n.cur }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;min-height:46px;border:0;border-radius:12px;cursor:pointer;font-family:var(--sa-sans);font-size:16px;font-weight:500;text-align:left;background:{{ n.bg }};color:{{ n.ink }}">
+<svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;flex:0 0 20px"><path d="{{ n.icon }}"></path></svg>
+<span>{{ n.label }}</span>
+</button>
+</li>
+</sc-for>
+</ul>
+</nav>
+<div class="pn-hide-m" style="margin-top:auto;display:flex;flex-direction:column;gap:16px">
+<div style="border:1px solid rgba(243,222,218,.3);border-radius:16px;padding:16px;font-size:14px;line-height:1.5">
+<p style="margin:0 0 4px;color:#FFFFFF;font-weight:600">Travou em algum texto?</p>
+<p style="margin:0 0 10px">Mande um áudio. A Intelles transforma em texto para você aprovar.</p>
+<button type="button" onClick="{{ goAudio }}" style="font-family:var(--sa-sans);font-size:14px;font-weight:600;color:#3B2E2F;background:#F3DEDA;border:0;border-radius:999px;padding:9px 16px;cursor:pointer">Gravar agora</button>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:0 6px">
+<img src="/_blob/cba1258b3797e2493df11794808df39b" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:2px solid #F3DEDA">
+<div style="line-height:1.3"><p style="margin:0;color:#FFFFFF;font-weight:600;font-size:15px">Simone Afonso</p><p style="margin:0;font-size:13px">Autora</p></div>
+</div>
+</div>
+</aside>
+
+<main class="pn-papel" style="min-width:0;padding:clamp(20px,3.4vw,44px) clamp(16px,3.4vw,48px) 60px">
+
+<!-- INÍCIO -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:26px">
+
+<header class="pn-in" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
+<div>
+<p style="margin:0 0 6px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658">Sexta, 23 de outubro</p>
+<h1 style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4vw,50px);line-height:1.05">Olá, Simone</h1>
+<p style="margin:8px 0 0;font-size:17px;color:#6B5658">Seu próximo texto sai na terça, 27 de outubro. Está tudo em dia.</p>
+</div>
+<button class="pn-btn" type="button" onClick="{{ goNovo }}" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--sa-sans);font-size:16px;font-weight:600;color:#FFFFFF;background:#534243;border:0;border-radius:999px;padding:14px 24px;min-height:50px;cursor:pointer">
+<svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M12 5v14M5 12h14"></path></svg>Novo texto
+</button>
+</header>
+
+<section aria-labelledby="pn-acoes" class="pn-in pn-d1">
+<h2 id="pn-acoes" class="pn-sr">Começar um texto</h2>
+<div class="pn-grid3">
+<sc-for list="{{ acts }}" as="a" hint-placeholder-count="3">
+<button class="pn-act" type="button" onClick="{{ a.go }}" style="text-align:left;font-family:var(--sa-sans);color:{{ a.ink }};background:{{ a.bg }};border:0;border-radius:20px;padding:22px;cursor:pointer;display:flex;flex-direction:column;gap:14px;min-height:150px;position:relative;overflow:hidden">
+<span style="width:46px;height:46px;border-radius:50%;background:{{ a.chip }};display:flex;align-items:center;justify-content:center"><svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;color:{{ a.chipInk }}"><path d="{{ a.icon }}"></path></svg></span>
+<span style="font-family:'Gloock',serif;font-size:24px;line-height:1.1">{{ a.t }}</span>
+<span style="font-size:15px;line-height:1.45;opacity:.92">{{ a.p }}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<div class="pn-grid2 pn-in pn-d2">
+<section class="pn-card" aria-labelledby="pn-prox" style="padding:22px;display:flex;flex-wrap:wrap;gap:20px;align-items:stretch">
+<img src="/_blob/751e2d2705d8d090bc98f64dfc5d32e8" alt="Estante iluminada da loja Vila do Bem" style="flex:0 0 180px;width:180px;height:200px;object-fit:cover;border-radius:14px">
+<div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:10px">
+<h2 id="pn-prox" style="margin:0;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658;font-weight:600">Próxima publicação</h2>
+<p style="margin:0;font-family:'Gloock',serif;font-size:27px;line-height:1.12">Vila do Bem: uma loja pensada para quem entra</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+<span style="font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:#E3BDB8;color:#3B2E2F">Agendado</span>
+<span style="font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:#534243;color:#FFFFFF">Projeto comentado</span>
+</div>
+<p style="margin:0;font-size:15px;color:#6B5658">Terça, 27 de outubro, às 9h. Carrossel no Instagram na quinta.</p>
+<div style="margin-top:auto;display:flex;gap:10px;flex-wrap:wrap">
+<button type="button" onClick="{{ goNovo }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;color:#534243;background:transparent;border:1.5px solid #534243;border-radius:999px;padding:9px 18px;cursor:pointer">Revisar texto</button>
+<button type="button" onClick="{{ goCal }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;color:#534243;background:transparent;border:0;padding:9px 6px;cursor:pointer;text-decoration:underline;text-underline-offset:4px">Ver calendário</button>
+</div>
+</div>
+</section>
+
+<section class="pn-card" aria-labelledby="pn-pil" style="padding:22px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+<h2 id="pn-pil" style="margin:0;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658;font-weight:600">Pilares nas últimas 8 semanas</h2>
+</div>
+<sc-for list="{{ balance }}" as="b" hint-placeholder-count="4">
+<div>
+<div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:6px"><span style="font-weight:500">{{ b.name }}</span><span style="color:#6B5658">{{ b.n }} textos</span></div>
+<div style="height:10px;background:#F3EAE7;border-radius:999px;overflow:hidden"><div style="height:100%;width:{{ b.w }}%;background:{{ b.bg }};border-radius:999px;box-shadow:inset 0 0 0 1px {{ b.bd }}"></div></div>
+</div>
+</sc-for>
+<p style="margin:4px 0 0;font-size:14px;line-height:1.45;color:#6B5658;border-top:1px solid #EADCD8;padding-top:12px"><strong style="color:#8A4F55">Sugestão:</strong> faltam textos de Bastidores em novembro. Que tal contar o que você viu na última obra?</p>
+</section>
+</div>
+
+<section class="pn-in pn-d3" aria-labelledby="pn-num">
+<h2 id="pn-num" class="pn-sr">Números do mês</h2>
+<div class="pn-grid3">
+<sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+<div class="pn-card" style="padding:18px 20px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:14px;color:#6B5658">{{ st.l }}</span>
+<span style="font-family:'Gloock',serif;font-size:36px;line-height:1.1">{{ st.v }}</span>
+<span style="font-size:13px;color:#6B5658">{{ st.s }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="pn-card pn-in pn-d4" aria-labelledby="pn-lista" style="padding:0;overflow:hidden">
+<div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding:20px 22px 14px">
+<h2 id="pn-lista" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:26px">Seus textos</h2>
+<div role="group" aria-label="Filtrar por status" style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+<button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="font-family:var(--sa-sans);font-size:14px;font-weight:500;padding:8px 14px;min-height:38px;border-radius:999px;cursor:pointer;border:1.5px solid #534243;background:{{ f.bg }};color:{{ f.ink }}">{{ f.name }} <span style="opacity:.75">{{ f.n }}</span></button>
+</sc-for>
+</div>
+</div>
+<ul style="list-style:none;margin:0;padding:0">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+<li class="pn-row" style="display:flex;align-items:center;gap:16px;padding:12px 22px;border-top:1px solid #F0E6E3;flex-wrap:wrap">
+<img src="{{ r.img }}" alt="" style="width:58px;height:58px;border-radius:12px;object-fit:cover;flex:0 0 58px">
+<div style="flex:1 1 260px;min-width:0">
+<p style="margin:0 0 4px;font-weight:600;font-size:16px;line-height:1.3">{{ r.title }}</p>
+<p style="margin:0;font-size:14px;color:#6B5658">{{ r.pname }} · {{ r.when }}</p>
+</div>
+<span style="font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;white-space:nowrap;background:{{ r.sbg }};color:{{ r.sink }};box-shadow:inset 0 0 0 1.5px {{ r.sbd }}">{{ r.sname }}</span>
+<button type="button" onClick="{{ goNovo }}" aria-label="{{ r.aria }}" style="font-family:var(--sa-sans);font-size:14px;font-weight:600;color:#534243;background:transparent;border:1.5px solid #CDB9B5;border-radius:999px;padding:8px 16px;min-height:38px;cursor:pointer">Abrir</button>
+</li>
+</sc-for>
+</ul>
+</section>
+
+</div>
+</sc-if>
+
+<!-- NOVO TEXTO -->
+<sc-if value="{{ isNovo }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:22px">
+<header class="pn-in" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-end">
+<div>
+<p style="margin:0 0 6px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658">Rascunho · salvo automaticamente</p>
+<h1 style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,3.6vw,44px);line-height:1.05">Novo texto</h1>
+</div>
+<p style="margin:0;font-size:15px;color:#6B5658;max-width:380px">Escreva do seu jeito. A Intelles revisa título, imagens e tudo o que ajuda o Google a encontrar você.</p>
+</header>
+
+<div class="pn-grid2">
+<div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+<section class="pn-card pn-in pn-d1" aria-label="Texto" style="padding:22px;display:flex;flex-direction:column;gap:18px">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px">
+<label for="pn-titulo" style="font-weight:600;font-size:15px">Título</label>
+<span aria-live="polite" style="font-size:13px;font-weight:600;color:{{ tColor }}">{{ tLen }} de 60 caracteres</span>
+</div>
+<input id="pn-titulo" class="pn-input" type="text" value="Como a cor da parede muda o humor da casa" onInput="{{ setTitle }}" style="font-family:'Gloock',serif;font-size:24px;padding:14px 16px">
+</div>
+<div>
+<p id="pn-pilar-l" style="margin:0 0 8px;font-weight:600;font-size:15px">Pilar do texto</p>
+<div role="group" aria-labelledby="pn-pilar-l" style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ pillarBtns }}" as="p" hint-placeholder-count="4">
+<button type="button" onClick="{{ p.pick }}" aria-pressed="{{ p.pressed }}" style="font-family:var(--sa-sans);font-size:14px;font-weight:600;padding:8px 14px;min-height:38px;border-radius:999px;cursor:pointer;border:1.5px solid {{ p.bd }};background:{{ p.bg }};color:{{ p.ink }}">{{ p.name }}</button>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px">
+<label for="pn-corpo" style="font-weight:600;font-size:15px">Texto</label>
+<span style="font-size:13px;color:#6B5658">{{ words }} palavras · leitura de {{ mins }} min</span>
+</div>
+<div style="border:1.5px solid #CDB9B5;border-radius:12px;overflow:hidden;background:#FFFFFF">
+<div aria-hidden="true" style="display:flex;gap:4px;padding:8px 10px;border-bottom:1px solid #EADCD8;background:#FBF6F4;color:#534243;font-size:14px;font-weight:600">
+<span style="padding:4px 9px;border-radius:6px">T</span><span style="padding:4px 9px;border-radius:6px;font-weight:800">N</span><span style="padding:4px 9px;border-radius:6px;font-style:italic">I</span><span style="padding:4px 9px;border-radius:6px">Lista</span><span style="padding:4px 9px;border-radius:6px">Citação</span><span style="padding:4px 9px;border-radius:6px">Foto</span><span style="padding:4px 9px;border-radius:6px">Link</span>
+</div>
+<textarea id="pn-corpo" rows="13" onInput="{{ setBody }}" style="display:block;width:100%;box-sizing:border-box;border:0;padding:16px 18px;font-family:var(--sa-sans);font-size:17px;line-height:1.7;color:#3B2E2F;resize:vertical;outline:none">Você já entrou em um ambiente e se sentiu mais calmo sem saber por quê? Muitas vezes, a resposta está na cor das paredes.
+
+Na Neuroarquitetura, a gente estuda como o espaço influencia as emoções, as sensações e o comportamento de quem vive nele. A cor é uma das ferramentas mais simples e mais poderosas desse processo.
+
+Tons quentes e suaves costumam trazer acolhimento. Tons frios ajudam na concentração. Mas não existe regra pronta: a cor certa depende da sua história, da luz que entra no ambiente e do que você quer sentir ali.
+
+[continuar o texto]</textarea>
+</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px">
+<label for="pn-resumo" style="font-weight:600;font-size:15px">Resumo para o Google <span style="font-weight:400;color:#6B5658">(opcional)</span></label>
+<span style="font-size:13px;color:#6B5658">{{ mLen }} de 155</span>
+</div>
+<textarea id="pn-resumo" class="pn-input" rows="2" onInput="{{ setMeta }}" placeholder="Uma ou duas frases que convidem a pessoa a clicar." style="resize:vertical;line-height:1.5"></textarea>
+</div>
+</section>
+
+<section class="pn-card pn-in pn-d2" aria-labelledby="pn-capa" style="padding:22px">
+<h2 id="pn-capa" style="margin:0 0 4px;font-size:15px;font-weight:600">Foto de capa</h2>
+<p style="margin:0 0 14px;font-size:14px;color:#6B5658">Escolha entre as fotos dos seus projetos ou envie uma nova.</p>
+<div role="radiogroup" aria-labelledby="pn-capa" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px">
+<sc-for list="{{ covers }}" as="c" hint-placeholder-count="8">
+<button class="pn-cover" type="button" role="radio" aria-checked="{{ c.checked }}" aria-label="{{ c.alt }}" onClick="{{ c.pick }}" style="padding:0;border:0;background:transparent;cursor:pointer;border-radius:12px;overflow:hidden;aspect-ratio:1;box-shadow:0 0 0 {{ c.ring }}px #8A4F55;position:relative">
+<img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+</button>
+</sc-for>
+</div>
+</section>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+<section class="pn-card pn-in pn-d1" aria-labelledby="pn-goo" style="padding:22px">
+<h2 id="pn-goo" style="margin:0 0 12px;font-size:15px;font-weight:600">Como aparece no Google</h2>
+<div style="border:1px solid #EADCD8;border-radius:12px;padding:14px 16px;background:#FFFFFF;font-family:Arial,sans-serif">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+<span style="width:28px;height:28px;border-radius:50%;background:#534243;display:flex;align-items:center;justify-content:center;flex:0 0 28px"><svg class="pn-mk" viewBox="0 0 444 484" aria-hidden="true" style="width:13px;height:14px;color:#F3DEDA"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg></span>
+<span style="font-size:13px;line-height:1.3;color:#202124;min-width:0"><span style="display:block">Simone Afonso Arquitetura</span><span style="display:block;color:#4D5156;overflow-wrap:anywhere">{{ gUrl }}</span></span>
+</div>
+<p style="margin:0 0 4px;font-size:19px;line-height:1.3;color:#1A0DAB">{{ gTitle }}</p>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4D5156">{{ gDesc }}</p>
+</div>
+</section>
+
+<section class="pn-card pn-in pn-d2" aria-labelledby="pn-chk" style="padding:22px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px">
+<h2 id="pn-chk" style="margin:0;font-size:15px;font-weight:600">Pronto para publicar?</h2>
+<span style="font-size:14px;font-weight:600;color:#8A4F55">{{ okN }} de {{ okT }}</span>
+</div>
+<div style="height:8px;background:#F3EAE7;border-radius:999px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:{{ okW }}%;background:#8A4F55;border-radius:999px;transition:width .3s ease"></div></div>
+<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ checks }}" as="k" hint-placeholder-count="6">
+<li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4">
+<span aria-hidden="true" style="flex:0 0 22px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ k.bg }};color:{{ k.ink }};border:1.5px solid {{ k.bd }};font-size:13px;font-weight:700">{{ k.mark }}</span>
+<span><span class="pn-sr">{{ k.sr }}</span>{{ k.t }}<span style="display:block;font-size:13px;color:#6B5658">{{ k.hint }}</span></span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section class="pn-card pn-in pn-d3" aria-labelledby="pn-pub" style="padding:22px;display:flex;flex-direction:column;gap:14px">
+<h2 id="pn-pub" style="margin:0;font-size:15px;font-weight:600">Publicação</h2>
+<div>
+<label for="pn-data" style="display:block;font-size:14px;margin-bottom:6px">Data sugerida</label>
+<select id="pn-data" class="pn-input">
+<option>Terça, 10 de novembro, 9h</option>
+<option>Terça, 17 de novembro, 9h</option>
+<option>Terça, 24 de novembro, 9h</option>
+<option>Sem data por enquanto</option>
+</select>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span id="pn-ig-l" style="font-size:15px;line-height:1.35">Virar carrossel no Instagram<span style="display:block;font-size:13px;color:#6B5658">A Intelles adapta e agenda para você</span></span>
+<button type="button" role="switch" aria-checked="{{ igStr }}" aria-labelledby="pn-ig-l" onClick="{{ toggleIg }}" style="flex:0 0 52px;width:52px;height:30px;border-radius:999px;border:0;cursor:pointer;position:relative;background:{{ igBg }}">
+<span style="position:absolute;top:3px;left:{{ igX }}px;width:24px;height:24px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s ease"></span>
+</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+<button class="pn-btn" type="button" onClick="{{ sendReview }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;color:#FFFFFF;background:#534243;border:0;border-radius:999px;padding:14px 20px;min-height:50px;cursor:pointer">Enviar para revisão da Intelles</button>
+<button type="button" onClick="{{ saveDraft }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;color:#534243;background:transparent;border:1.5px solid #534243;border-radius:999px;padding:12px 20px;min-height:48px;cursor:pointer">Salvar rascunho</button>
+</div>
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin:0;background:#F3DEDA;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.45">{{ toast }}</p>
+</sc-if>
+</section>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ÁUDIO E FOTOS -->
+<sc-if value="{{ isAudio }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:22px">
+<header class="pn-in">
+<p style="margin:0 0 6px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658">Sem tempo para escrever?</p>
+<h1 style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,3.6vw,44px);line-height:1.05">Fale, que a gente escreve</h1>
+<p style="margin:8px 0 0;font-size:17px;color:#6B5658;max-width:640px">Grave de 5 a 10 minutos como se estivesse conversando com um cliente. A Intelles transforma em texto com a sua voz e devolve para você aprovar.</p>
+</header>
+
+<div class="pn-grid2">
+<section class="pn-card pn-in pn-d1" aria-labelledby="pn-aud" style="padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center">
+<h2 id="pn-aud" class="pn-sr">Gravar áudio</h2>
+<div style="width:100%;text-align:left">
+<p style="margin:0 0 10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658;font-weight:600">Escolha uma pergunta para guiar</p>
+<div role="radiogroup" aria-label="Perguntas para guiar o áudio" style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ prompts }}" as="q" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{ q.checked }}" onClick="{{ q.pick }}" style="text-align:left;font-family:var(--sa-sans);font-size:15px;line-height:1.45;color:#3B2E2F;background:{{ q.bg }};border:1.5px solid {{ q.bd }};border-radius:14px;padding:12px 14px;cursor:pointer;display:flex;gap:12px;align-items:flex-start">
+<span style="flex:0 0 auto;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:{{ q.pbg }};color:{{ q.pink }};margin-top:1px">{{ q.pname }}</span>
+<span>{{ q.t }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ recIdle }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:10px 0 4px">
+<button type="button" onClick="{{ startRec }}" aria-label="Começar a gravar" style="width:112px;height:112px;border-radius:50%;border:0;background:#534243;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(59,46,47,.3)">
+<svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:44px;height:44px"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg>
+</button>
+<p style="margin:0;font-size:16px;font-weight:500">Toque para gravar</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ recOn }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:6px 0 4px">
+<div class="pn-wave" aria-hidden="true" style="display:flex;align-items:center;gap:5px;height:64px">
+<sc-for list="{{ bars }}" as="b" hint-placeholder-count="26">
+<span style="height:{{ b.h }}px;animation-delay:{{ b.d }}s"></span>
+</sc-for>
+</div>
+<p aria-live="off" style="margin:0;font-family:'Gloock',serif;font-size:42px;line-height:1">{{ clock }}</p>
+<button class="pn-pulse" type="button" onClick="{{ stopRec }}" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--sa-sans);font-size:16px;font-weight:600;color:#FFFFFF;background:#8A4F55;border:0;border-radius:999px;padding:14px 26px;min-height:50px;cursor:pointer">
+<span aria-hidden="true" style="width:12px;height:12px;border-radius:3px;background:#FFFFFF"></span>Parar e enviar
+</button>
+<p role="status" style="margin:0;font-size:14px;color:#6B5658">Gravando. Fale com calma, pausas estão liberadas.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ recDone }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="width:100%;background:#F3DEDA;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;align-items:center">
+<span style="width:52px;height:52px;border-radius:50%;background:#534243;color:#FFFFFF;display:flex;align-items:center;justify-content:center"><svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:26px;height:26px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<p style="margin:0;font-family:'Gloock',serif;font-size:26px;line-height:1.15">Áudio recebido</p>
+<p style="margin:0;font-size:15px;line-height:1.5;max-width:420px">{{ clock }} de conversa. A Intelles transforma em texto e manda para você aprovar em até [prazo a combinar].</p>
+<button type="button" onClick="{{ resetRec }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;color:#534243;background:transparent;border:1.5px solid #534243;border-radius:999px;padding:9px 18px;cursor:pointer;margin-top:4px">Gravar outro</button>
+</div>
+</sc-if>
+</section>
+
+<section class="pn-card pn-in pn-d2" aria-labelledby="pn-fot" style="padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:16px">
+<div>
+<h2 id="pn-fot" style="margin:0 0 4px;font-family:'Gloock',serif;font-weight:400;font-size:26px">Enviar fotos de um projeto</h2>
+<p style="margin:0;font-size:15px;color:#6B5658;line-height:1.5">Fotos de obra, antes e depois ou do projeto pronto viram estudo de caso no blog.</p>
+</div>
+<label for="pn-files" style="display:flex;flex-direction:column;align-items:center;gap:10px;border:2px dashed #CDB9B5;border-radius:16px;padding:28px 16px;text-align:center;cursor:pointer;background:#FBF6F4">
+<svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:34px;height:34px;color:#8A4F55"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="M21 16l-5-5-8 8"></path></svg>
+<span style="font-weight:600;font-size:16px">{{ filesLabel }}</span>
+<span style="font-size:14px;color:#6B5658">Pode mandar direto da galeria do celular</span>
+</label>
+<input id="pn-files" class="pn-sr" type="file" accept="image/*" multiple="" onChange="{{ pickFiles }}">
+<div>
+<label for="pn-proj" style="display:block;font-weight:600;font-size:15px;margin-bottom:6px">De qual projeto são?</label>
+<input id="pn-proj" class="pn-input" type="text" placeholder="Ex.: loja na Praia da Costa">
+</div>
+<div style="display:flex;align-items:center;gap:10px;font-size:15px">
+<input id="pn-aut" type="checkbox" style="width:20px;height:20px;accent-color:#534243">
+<label for="pn-aut">O cliente autorizou o uso das fotos</label>
+</div>
+<button class="pn-btn" type="button" onClick="{{ sendFiles }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;color:#FFFFFF;background:#534243;border:0;border-radius:999px;padding:14px 20px;min-height:50px;cursor:pointer">Enviar fotos</button>
+<sc-if value="{{ filesSent }}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin:0;background:#F3DEDA;border-radius:12px;padding:12px 14px;font-size:15px">Fotos enviadas. A Intelles separa as melhores e monta o texto com você.</p>
+</sc-if>
+</section>
+</div>
+
+<section class="pn-card pn-in pn-d3" aria-labelledby="pn-como" style="padding:22px">
+<h2 id="pn-como" style="margin:0 0 16px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658;font-weight:600">Como funciona</h2>
+<ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<li style="display:flex;gap:12px;align-items:flex-start">
+<span style="flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#534243;color:#FFFFFF;font-family:'Gloock',serif;font-size:18px;display:flex;align-items:center;justify-content:center">{{ s.n }}</span>
+<span style="font-size:15px;line-height:1.45"><strong style="display:block;font-weight:600">{{ s.t }}</strong>{{ s.p }}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+</div>
+</sc-if>
+
+<!-- CALENDÁRIO -->
+<sc-if value="{{ isCal }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:20px">
+<header class="pn-in" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-end">
+<div>
+<p style="margin:0 0 6px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#6B5658">Texto novo toda semana</p>
+<h1 style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,3.6vw,44px);line-height:1.05">Calendário</h1>
+</div>
+<div role="group" aria-label="Mês" style="display:flex;gap:8px">
+<sc-for list="{{ monthBtns }}" as="m" hint-placeholder-count="2">
+<button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.pressed }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;padding:9px 18px;min-height:42px;border-radius:999px;cursor:pointer;border:1.5px solid #534243;background:{{ m.bg }};color:{{ m.ink }}">{{ m.name }}</button>
+</sc-for>
+</div>
+</header>
+
+<div class="pn-in pn-d1" style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px">
+<sc-for list="{{ legend }}" as="l" hint-placeholder-count="4">
+<span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;background:{{ l.bg }};box-shadow:inset 0 0 0 1px {{ l.bd }}"></span>{{ l.name }}</span>
+</sc-for>
+<span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;border:1.5px dashed #8F7B7C;box-sizing:border-box"></span>Vaga sugerida</span>
+</div>
+
+<section class="pn-card pn-in pn-d2" aria-label="{{ monthName }}" style="padding:16px">
+<div class="pn-cal" aria-hidden="true" style="margin-bottom:6px">
+<sc-for list="{{ wdays }}" as="w" hint-placeholder-count="7">
+<span style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6B5658;padding:4px 8px">{{ w.n }}</span>
+</sc-for>
+</div>
+<div class="pn-cal">
+<sc-for list="{{ cells }}" as="c" hint-placeholder-count="35">
+<div class="pn-cal-day" style="min-height:112px;border-radius:12px;padding:8px;box-sizing:border-box;background:{{ c.bg }};border:1px solid {{ c.bd }};display:flex;flex-direction:column;gap:6px;min-width:0">
+<span style="font-size:14px;font-weight:{{ c.fw }};color:{{ c.dink }};display:flex;align-items:center;gap:6px">{{ c.d }}<span style="font-size:11px;font-weight:600;color:#8A4F55">{{ c.tag }}</span></span>
+<sc-if value="{{ c.has }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:8px;padding:7px 8px;background:{{ c.ebg }};color:{{ c.eink }};box-shadow:inset 0 0 0 1px {{ c.ebd }};font-size:12.5px;line-height:1.3;min-width:0">
+<span class="pn-cal-title" style="display:block;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical">{{ c.et }}</span>
+<span style="display:block;margin-top:4px;font-size:11.5px;opacity:.9">{{ c.es }}</span>
+</div>
+</sc-if>
+<sc-if value="{{ c.slot }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ goNovo }}" style="border-radius:8px;padding:7px 8px;background:transparent;border:1.5px dashed #8F7B7C;color:#534243;font-family:var(--sa-sans);font-size:12.5px;line-height:1.3;text-align:left;cursor:pointer">{{ c.st }}</button>
+</sc-if>
+<sc-if value="{{ c.ig }}" hint-placeholder-val="{{ false }}">
+<span style="font-size:11.5px;color:#6B5658;display:flex;align-items:center;gap:5px"><svg class="pn-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:13px;height:13px"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle></svg>Carrossel</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+<p class="pn-in pn-d3" style="margin:0;font-size:15px;color:#6B5658;max-width:760px;line-height:1.55">As vagas sugeridas seguem o rodízio dos quatro pilares. Toque em uma delas para começar o texto, ou mande um áudio e a Intelles preenche a semana.</p>
+</div>
+</sc-if>
+
+</main>
+</div>
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'home', filter: 'Todos', month: 0,
+      title: 'Como a cor da parede muda o humor da casa',
+      body: 'Você já entrou em um ambiente e se sentiu mais calmo sem saber por quê? Muitas vezes, a resposta está na cor das paredes. Na Neuroarquitetura, a gente estuda como o espaço influencia as emoções, as sensações e o comportamento de quem vive nele. A cor é uma das ferramentas mais simples e mais poderosas desse processo. Tons quentes e suaves costumam trazer acolhimento. Tons frios ajudam na concentração. Mas não existe regra pronta: a cor certa depende da sua história, da luz que entra no ambiente e do que você quer sentir ali. [continuar o texto]',
+      meta: '', pillar: 'neuro', cover: 1, ig: true, toast: '',
+      q: 0, rec: 'idle', secs: 0, files: 0, filesSent: false
+    };
+    this.timer = null;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const PL = '#534243', INK = '#3B2E2F';
+    const go = (v) => () => { if (this.timer && v !== 'audio') { clearInterval(this.timer); this.timer = null; } this.setState({ view: v, toast: '', rec: s.rec === 'rec' && v !== 'audio' ? 'idle' : s.rec }); };
+
+    const P = {
+      proj: { name: 'Projeto comentado', bg: '#534243', ink: '#FFFFFF', bd: '#534243' },
+      neuro: { name: 'Neuroarquitetura', bg: '#8A4F55', ink: '#FFFFFF', bd: '#8A4F55' },
+      guia: { name: 'Guia prático', bg: '#E3BDB8', ink: '#3B2E2F', bd: '#E3BDB8' },
+      bast: { name: 'Bastidores', bg: '#F3DEDA', ink: '#3B2E2F', bd: '#C9A39E' }
+    };
+    const ST = {
+      rasc: { n: 'Rascunho', bg: '#EFE6E3', ink: '#3B2E2F', bd: '#EFE6E3' },
+      rev: { n: 'Em revisão', bg: '#FFFFFF', ink: '#8A4F55', bd: '#8A4F55' },
+      ag: { n: 'Agendado', bg: '#E3BDB8', ink: '#3B2E2F', bd: '#E3BDB8' },
+      pub: { n: 'Publicado', bg: '#534243', ink: '#FFFFFF', bd: '#534243' }
+    };
+
+    const icons = {
+      home: 'M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10',
+      pen: 'M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4',
+      mic: 'M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3',
+      cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',
+      img: 'M3 5h18v14H3zM21 16l-5-5-8 8M8.5 10.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3'
+    };
+    const navData = [['home', 'Início', icons.home], ['novo', 'Novo texto', icons.pen], ['audio', 'Áudio e fotos', icons.mic], ['cal', 'Calendário', icons.cal]];
+    const nav = navData.map(([v, label, icon]) => ({ label, icon, go: go(v), cur: s.view === v ? 'page' : 'false', bg: s.view === v ? '#F3DEDA' : 'transparent', ink: s.view === v ? INK : '#F3DEDA' }));
+
+    const acts = [
+      { t: 'Escrever um texto', p: 'Com título, capa e a revisão para o Google em uma tela só.', icon: icons.pen, go: go('novo'), bg: PL, ink: '#FFFFFF', chip: '#F3DEDA', chipInk: PL },
+      { t: 'Gravar um áudio', p: 'Fale por 5 a 10 minutos. A Intelles transforma em texto com a sua voz.', icon: icons.mic, go: go('audio'), bg: '#FFFFFF', ink: INK, chip: '#534243', chipInk: '#FFFFFF' },
+      { t: 'Enviar fotos de um projeto', p: 'Obra, antes e depois ou projeto pronto viram um estudo de caso.', icon: icons.img, go: go('audio'), bg: '#F3DEDA', ink: INK, chip: '#FFFFFF', chipInk: PL }
+    ];
+
+    const posts = [
+      { title: 'Como a cor da parede muda o humor da casa', p: 'neuro', st: 'rasc', when: 'editado hoje', img: '/_blob/8baff990668af6c844055f2155ed99c7', m: 1, d: 10 },
+      { title: 'O que perguntar antes de contratar um projeto de loja', p: 'guia', st: 'rev', when: 'para terça, 3 de novembro', img: '/_blob/0fbbf64c2495910f72e5f9d29d86bfda', m: 1, d: 3 },
+      { title: 'Vila do Bem: uma loja pensada para quem entra', p: 'proj', st: 'ag', when: 'terça, 27 de outubro', img: '/_blob/751e2d2705d8d090bc98f64dfc5d32e8', m: 0, d: 27 },
+      { title: 'O que é Neuroarquitetura e o que ela muda na sua casa', p: 'neuro', st: 'pub', when: 'publicado em 20 de outubro', img: '/_blob/b0fb4a1f49cfae1c2ee5c96544df148d', m: 0, d: 20 },
+      { title: 'Home Relooking: renovar a casa sem reforma completa', p: 'guia', st: 'pub', when: 'publicado em 13 de outubro', img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', m: 0, d: 13 },
+      { title: 'Por que um bom projeto não sai de uma lista de medidas', p: 'bast', st: 'pub', when: 'publicado em 6 de outubro', img: '/_blob/2f720a05d6a9253e593016f108b1408c', m: 0, d: 6 },
+      { title: 'Quarto de bebê: luz, cor e calma desde o primeiro dia', p: 'proj', st: 'pub', when: 'publicado em 29 de setembro', img: '/_blob/cecba3083e683cb18d22803fa5d7beaa', m: -1, d: 29 },
+      { title: 'Cozinha compacta: como ganhar espaço sem perder conforto', p: 'guia', st: 'pub', when: 'publicado em 22 de setembro', img: '/_blob/502873f8613924c8d1def68201c4fce2', m: -1, d: 22 }
+    ];
+    const fNames = ['Todos', 'Rascunho', 'Em revisão', 'Agendado', 'Publicado'];
+    const filters = fNames.map((n) => {
+      const cnt = n === 'Todos' ? posts.length : posts.filter((x) => ST[x.st].n === n).length;
+      const sel = n === s.filter;
+      return { name: n, n: cnt, pressed: sel ? 'true' : 'false', bg: sel ? PL : 'transparent', ink: sel ? '#FFFFFF' : INK, pick: () => this.setState({ filter: n }) };
+    });
+    const rows = posts.filter((x) => s.filter === 'Todos' || ST[x.st].n === s.filter).map((x) => ({
+      title: x.title, img: x.img, when: x.when, pname: P[x.p].name,
+      sname: ST[x.st].n, sbg: ST[x.st].bg, sink: ST[x.st].ink, sbd: ST[x.st].bd, aria: 'Abrir o texto ' + x.title
+    }));
+
+    const counts = { proj: 0, neuro: 0, guia: 0, bast: 0 };
+    posts.forEach((x) => { counts[x.p] += 1; });
+    const maxC = Math.max(...Object.values(counts));
+    const balance = Object.keys(P).map((k) => ({ name: P[k].name, n: counts[k], w: Math.round((counts[k] / maxC) * 100), bg: P[k].bg, bd: P[k].bd }));
+
+    const stats = [
+      { l: 'Textos publicados', v: '5', s: 'desde setembro (exemplo)' },
+      { l: 'Leituras no mês', v: '1.240', s: 'número ilustrativo' },
+      { l: 'Conversas no WhatsApp vindas do blog', v: '9', s: 'número ilustrativo' }
+    ];
+
+    // Editor
+    const t = s.title || '';
+    const tLen = t.length;
+    const tOk = tLen >= 30 && tLen <= 60;
+    const words = (s.body || '').trim().split(/\s+/).filter(Boolean).length;
+    const mins = Math.max(1, Math.round(words / 200));
+    const slug = t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const gTitle = (tLen > 60 ? t.slice(0, 57) + '...' : (t || 'Seu título aparece aqui')) + ' | Simone Afonso';
+    const descSrc = s.meta || (s.body || '').replace(/\s+/g, ' ');
+    const gDesc = descSrc.length > 155 ? descSrc.slice(0, 152) + '...' : descSrc;
+    const all = (t + ' ' + s.body + ' ' + s.meta).toLowerCase();
+    const local = all.includes('vitória') || all.includes('espírito santo') || all.includes('vila velha');
+    const mLen = (s.meta || '').length;
+    const chk = [
+      { ok: tOk, t: 'Título entre 30 e 60 caracteres', hint: tOk ? 'Cabe inteiro na busca do Google.' : 'Agora com ' + tLen + '.' },
+      { ok: !!s.pillar, t: 'Pilar escolhido', hint: s.pillar ? P[s.pillar].name : 'Ajuda a manter o equilíbrio do mês.' },
+      { ok: s.cover >= 0, t: 'Foto de capa escolhida', hint: 'Fotos dos seus projetos funcionam melhor que banco de imagens.' },
+      { ok: words >= 300, t: 'Texto com pelo menos 300 palavras', hint: words >= 300 ? 'Ótimo tamanho para o Google.' : 'Faltam ' + (300 - words) + '. Um áudio completa rápido.' },
+      { ok: mLen >= 50 && mLen <= 155, t: 'Resumo para o Google', hint: mLen ? mLen + ' caracteres.' : 'Se ficar vazio, a Intelles escreve na revisão.' },
+      { ok: local, t: 'Cita Vitória ou o Espírito Santo', hint: local ? 'Ajuda quem procura arquiteta na região.' : 'Uma menção natural já ajuda a busca local.' }
+    ];
+    const okN = chk.filter((k) => k.ok).length;
+    const checks = chk.map((k) => ({ t: k.t, hint: k.hint, mark: k.ok ? '✓' : '', sr: k.ok ? 'Feito: ' : 'Pendente: ', bg: k.ok ? '#534243' : '#FFFFFF', ink: '#FFFFFF', bd: k.ok ? '#534243' : '#B49F9C' }));
+
+    const pillarBtns = Object.keys(P).map((k) => {
+      const sel = s.pillar === k;
+      return { name: P[k].name, pressed: sel ? 'true' : 'false', bg: sel ? P[k].bg : 'transparent', ink: sel ? P[k].ink : INK, bd: sel ? P[k].bd : '#CDB9B5', pick: () => this.setState({ pillar: k }) };
+    });
+
+    const coverData = [
+      ['/_blob/b0fb4a1f49cfae1c2ee5c96544df148d', 'Bancada com cuba de apoio e torneira dourada'],
+      ['/_blob/8baff990668af6c844055f2155ed99c7', 'Quarto de bebê com nuvem iluminada'],
+      ['/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', 'Sala de jantar com mesa redonda e lustre'],
+      ['/_blob/196d9a124d810babc22294161c1f7e48', 'Varanda com plantas'],
+      ['/_blob/751e2d2705d8d090bc98f64dfc5d32e8', 'Estante da loja Vila do Bem'],
+      ['/_blob/5774a269719d52b2f7220f6de29b5bf7', 'Sala de TV'],
+      ['/_blob/502873f8613924c8d1def68201c4fce2', 'Cozinha'],
+      ['/_blob/8c67ed1d9eb5f458986765b5c8df2479', 'Parede de quarto infantil com nichos']
+    ];
+    const covers = coverData.map(([img, alt], i) => ({ img, alt, checked: s.cover === i ? 'true' : 'false', ring: s.cover === i ? 4 : 0, pick: () => this.setState({ cover: i }) }));
+
+    // Áudio
+    const PQ = [
+      { p: 'proj', t: 'Conte a história de um projeto: o que o cliente pediu e o que você escutou além disso.' },
+      { p: 'guia', t: 'Qual pergunta seus clientes sempre fazem? Responda como se estivesse conversando com eles.' },
+      { p: 'neuro', t: 'Explique uma escolha de projeto pela Neuroarquitetura: cor, luz, textura ou layout.' },
+      { p: 'bast', t: 'O que você viu de novo em uma feira, viagem ou obra nesta semana?' }
+    ];
+    const prompts = PQ.map((q, i) => {
+      const sel = s.q === i;
+      return { t: q.t, pname: P[q.p].name, pbg: P[q.p].bg, pink: P[q.p].ink, checked: sel ? 'true' : 'false', bg: sel ? '#FBF1EF' : '#FFFFFF', bd: sel ? '#8A4F55' : '#EADCD8', pick: () => this.setState({ q: i }) };
+    });
+    const mm = String(Math.floor(s.secs / 60)).padStart(2, '0');
+    const ss = String(s.secs % 60).padStart(2, '0');
+    const bars = Array.from({ length: 26 }, (_, i) => ({ h: 18 + ((i * 37) % 46), d: ((i * 0.13) % 1).toFixed(2) }));
+    const startRec = () => {
+      if (this.timer) clearInterval(this.timer);
+      this.setState({ rec: 'rec', secs: 0 });
+      this.timer = setInterval(() => this.setState({ secs: this.state.secs + 1 }), 1000);
+    };
+    const stopRec = () => { if (this.timer) { clearInterval(this.timer); this.timer = null; } this.setState({ rec: 'done', secs: Math.max(this.state.secs, 1) }); };
+    const resetRec = () => this.setState({ rec: 'idle', secs: 0 });
+    const steps = [
+      { n: '1', t: 'Você escreve ou fala', p: 'Do jeito que for mais fácil na semana.' },
+      { n: '2', t: 'A Intelles transforma', p: 'Texto, título, capa e ajustes para o Google.' },
+      { n: '3', t: 'Você aprova', p: 'Pelo painel ou pelo WhatsApp, em poucos minutos.' },
+      { n: '4', t: 'Publica e circula', p: 'No blog do site e em carrossel no Instagram.' }
+    ];
+
+    // Calendário
+    const months = [
+      { name: 'Outubro', label: 'Outubro de 2026', start: 4, days: 31 },
+      { name: 'Novembro', label: 'Novembro de 2026', start: 0, days: 30 }
+    ];
+    const mo = months[s.month];
+    const monthBtns = months.map((x, i) => ({ name: x.name, pressed: s.month === i ? 'true' : 'false', bg: s.month === i ? PL : 'transparent', ink: s.month === i ? '#FFFFFF' : INK, pick: () => this.setState({ month: i }) }));
+    const ev = {};
+    posts.forEach((x) => { if (x.m >= 0) ev[x.m + '-' + x.d] = x; });
+    const slots = { '1-17': 'bast', '1-24': 'proj' };
+    const igDays = {};
+    posts.forEach((x) => { if (x.m === 0 && (x.st === 'pub' || x.st === 'ag')) igDays['0-' + (x.d + 2)] = true; });
+    const cells = [];
+    for (let i = 0; i < mo.start; i++) cells.push({ d: '', bg: 'transparent', bd: 'transparent', dink: INK, fw: 400, tag: '', has: false, slot: false, ig: false });
+    for (let d = 1; d <= mo.days; d++) {
+      const key = s.month + '-' + d;
+      const e = ev[key];
+      const today = s.month === 0 && d === 23;
+      const sl = slots[key];
+      cells.push({
+        d, tag: today ? 'hoje' : '', fw: today ? 700 : 500, dink: today ? '#8A4F55' : INK,
+        bg: today ? '#FBF1EF' : '#FFFFFF', bd: today ? '#8A4F55' : '#EFE5E2',
+        has: !!e, et: e ? e.title : '', es: e ? ST[e.st].n : '', ebg: e ? P[e.p].bg : '', eink: e ? P[e.p].ink : '', ebd: e ? P[e.p].bd : '',
+        slot: !!sl, st: sl ? 'Vaga: ' + P[sl].name : '',
+        ig: !!igDays[key]
+      });
+    }
+    while (cells.length % 7) cells.push({ d: '', bg: 'transparent', bd: 'transparent', dink: INK, fw: 400, tag: '', has: false, slot: false, ig: false });
+    const wdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].map((n) => ({ n }));
+    const legend = Object.keys(P).map((k) => ({ name: P[k].name, bg: P[k].bg, bd: P[k].bd }));
+
+    return {
+      nav, acts, filters, rows, balance, stats,
+      isHome: s.view === 'home', isNovo: s.view === 'novo', isAudio: s.view === 'audio', isCal: s.view === 'cal',
+      goNovo: go('novo'), goAudio: go('audio'), goCal: go('cal'),
+      tLen, tColor: tOk ? '#3B6B4A' : '#8A4F55', words, mins, mLen,
+      setTitle: (e) => this.setState({ title: e.target.value }),
+      setBody: (e) => this.setState({ body: e.target.value }),
+      setMeta: (e) => this.setState({ meta: e.target.value }),
+      pillarBtns, covers,
+      gUrl: 'simoneafonso.arq.br › blog › ' + (slug || 'seu-texto'), gTitle, gDesc,
+      checks, okN, okT: chk.length, okW: Math.round((okN / chk.length) * 100),
+      igStr: s.ig ? 'true' : 'false', igBg: s.ig ? PL : '#CDB9B5', igX: s.ig ? 25 : 3, toggleIg: () => this.setState({ ig: !s.ig }),
+      hasToast: !!s.toast, toast: s.toast,
+      saveDraft: () => this.setState({ toast: 'Rascunho salvo. Você pode continuar de onde parou, em qualquer aparelho.' }),
+      sendReview: () => this.setState({ toast: 'Enviado para a Intelles. Você recebe o texto revisado no WhatsApp em até [prazo a combinar].' }),
+      prompts, bars, clock: mm + ':' + ss,
+      recIdle: s.rec === 'idle', recOn: s.rec === 'rec', recDone: s.rec === 'done',
+      startRec, stopRec, resetRec, steps,
+      filesLabel: s.files ? s.files + (s.files === 1 ? ' foto selecionada' : ' fotos selecionadas') : 'Toque para escolher as fotos',
+      pickFiles: (e) => this.setState({ files: (e.target.files || []).length, filesSent: false }),
+      sendFiles: () => this.setState({ filesSent: true }), filesSent: s.filesSent,
+      monthBtns, monthName: mo.label, cells, wdays, legend
+    };
+  }
+}
+</script>
+</body>
+</html>
