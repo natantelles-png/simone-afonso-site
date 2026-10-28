@@ -58,6 +58,11 @@ drop policy if exists "autora apaga" on public.posts;
 create policy "autora apaga" on public.posts
   for delete to authenticated using (true);
 
+-- Permissões mínimas para a API (funciona com "Automatically expose new tables" ligado ou desligado).
+grant usage on schema public to anon, authenticated;
+grant select on public.posts to anon;
+grant select, insert, update, delete on public.posts to authenticated;
+
 -- Imagens do blog: leitura pública, escrita só com login.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values ('blog-images', 'blog-images', true, 5242880, array['image/jpeg','image/png','image/webp'])
