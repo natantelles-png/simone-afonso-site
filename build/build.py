@@ -22,6 +22,7 @@ M={
 '751e2d2705d8d090bc98f64dfc5d32e8':'assets/out3/p_vdb1.jpg','bbefd20c1aab93e2b82827005851e059':'assets/out3/p_vdb2.jpg',
 '6d44d7539ebad1040e472dfb2cdefb31':'assets/out5/p_bmq12.jpg','cc43166d60bf5c0e30a949c4e8dbbc1d':'assets/out5/p_bmq13.jpg','dff9d905883527232e1267d4a6fa515e':'assets/out5/p_multi_jantar.jpg','579d150e09e2dfa0b0963998da372229':'assets/out5/p_multi_estar.jpg','5578f91be29d035d93552ff1a278b645':'assets/out5/p_stand.jpg',
 '2bdd09356c6cde853e048983509204f3':'assets/fonts/adventor-regular.woff','7f9c3b609f7cecb166a6905d796a525f':'assets/fonts/adventor-italic.woff','fd07e328acb7b6f8a82a42de7a20fc31':'assets/fonts/adventor-bold.woff','87f88cf08107b03ae6bc8a6aca4f45d7':'assets/fonts/adventor-bolditalic.woff'}
+for _f in os.listdir(S+'assets/v2'): M[os.path.splitext(_f)[0]]='assets/v2/'+_f
 ids=set(re.findall(r'/_blob/([0-9a-f]{32})',src))
 missing=ids-set(M); assert not missing, missing
 M={k:v for k,v in M.items() if k in ids}
@@ -54,7 +55,7 @@ h=base64.b64encode(hashlib.sha256(inline.encode('utf-8')).digest()).decode()
 cfg=json.load(open(S+'blog/config.json',encoding='utf-8'))
 if MODE=='site':
     csp=("default-src 'none'; script-src 'sha256-"+h+"'; style-src 'unsafe-inline' https://fonts.googleapis.com; "
-         "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
+         "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
 else:
     csp=("default-src 'none'; script-src 'sha256-"+h+"'; style-src 'unsafe-inline' https://fonts.googleapis.com; "
          "font-src data: https://fonts.gstatic.com; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
