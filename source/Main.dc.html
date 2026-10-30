@@ -39,6 +39,30 @@ a:hover{color:#8A4F55}
 .sa-plan path,.sa-plan rect,.sa-plan circle{fill:none;stroke:#534243;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .sa-plan .w{stroke-width:5}
 .sa-plan .f{stroke:#8A4F55;stroke-width:1.6}
+.sa-wave{transform-box:fill-box}
+@media (prefers-reduced-motion: no-preference){.sa-wave{animation-name:saWave;animation-timing-function:linear;animation-iteration-count:infinite}}
+@keyframes saWave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sa-hero-music{color:#534243;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;border-bottom:1.5px solid #C8964A;padding:6px 0}
+.sa-hero-music:hover{color:#8A4F55}
+.sa-wave{transition:stroke 1.4s ease}
+.sa-ripple{position:absolute;width:0;height:0;pointer-events:none;z-index:0}
+.sa-ripple i{position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1.5px solid currentColor;opacity:0}
+@media (prefers-reduced-motion: no-preference){.sa-ripple i{animation:saRip 1.9s cubic-bezier(.15,.6,.3,1) forwards}.sa-ripple i:nth-child(2){animation-delay:.16s}.sa-ripple i:nth-child(3){animation-delay:.32s}}
+@keyframes saRip{0%{width:10px;height:10px;margin:-5px 0 0 -5px;opacity:.95}100%{width:920px;height:920px;margin:-460px 0 0 -460px;opacity:0}}
+.sa-note{position:relative;padding-bottom:10px;cursor:default}
+.sa-note::after{content:"";position:absolute;left:0;width:60%;bottom:0;height:2px;border-radius:2px;background:#C8964A;transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.sa-note:hover::after{transform:scaleX(1)}
+.sa-sense .sa-reveal{transition:transform .35s ease}
+.sa-cell{transition:background .18s ease,transform .1s ease,box-shadow .18s ease}
+.sa-cell:hover{transform:scale(1.08)}
+.sa-cell:active{transform:scale(.92)}
+.sa-cell:focus-visible{outline:2px solid #C8964A;outline-offset:1px}
+.sa-playhead{animation-name:saPlay;animation-timing-function:steps(16,end);animation-iteration-count:infinite}
+@keyframes saPlay{from{transform:translateX(0)}to{transform:translateX(1600%)}}
+.sa-key{transition:background .25s ease,transform .08s ease;box-shadow:inset 0 -5px 0 rgba(0,0,0,.12)}
+.sa-key:active{transform:translateY(2px);box-shadow:inset 0 -2px 0 rgba(0,0,0,.12)}
+.sa-key-b{box-shadow:inset 0 -4px 0 rgba(255,255,255,.08),0 3px 6px rgba(0,0,0,.45)}
+.sa-key:focus-visible{outline:3px solid #C8964A;outline-offset:2px}
 .sa-chamfer{clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,28px 100%,0 calc(100% - 28px))}
 .sa-btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease}
 .sa-btn:hover{transform:translateY(-2px);box-shadow:0 26px 50px rgba(40,25,27,.3)}
@@ -120,9 +144,11 @@ a:hover{color:#8A4F55}
 <section id="topo" class="sa-rose" style="position:relative;overflow:hidden">
 
 <header style="position:relative;z-index:6">
-<div style="max-width:1296px;margin:0 auto;padding:18px clamp(20px,5vw,56px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px">
-<nav aria-label="Principal" class="sa-hide-m" style="display:flex;gap:26px;font-size:16px;font-weight:500">
+<div style="max-width:none;margin:0 auto;padding:18px clamp(16px,3.5vw,48px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px">
+<nav aria-label="Principal" class="sa-hide-m" style="display:flex;gap:22px;font-size:16px;font-weight:500">
 <a class="sa-link" href="#servicos">Serviços</a>
+<a class="sa-link" href="#processo">Método</a>
+<a class="sa-link" href="#trilha">Música</a>
 <a class="sa-link" href="#projetos">Projetos</a>
 <a class="sa-link" href="#sobre">Sobre</a>
 <a class="sa-link" href="#blog">Blog</a>
@@ -139,7 +165,7 @@ a:hover{color:#8A4F55}
 </div>
 </header>
 
-<div style="position:relative;max-width:1296px;margin:0 auto;padding:clamp(10px,2vw,24px) clamp(20px,5vw,56px) 0">
+<div style="position:relative;max-width:none;margin:0 auto;padding:clamp(10px,2vw,24px) clamp(16px,3.5vw,48px) 0">
 <h1 style="margin:0;position:relative;z-index:1">
 <span style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 .22em;font-family:'Gloock',serif;font-weight:400;font-size:clamp(40px,6.6vw,98px);line-height:1;letter-spacing:-0.01em;color:#3B2E2F;text-transform:uppercase">
 <span class="sa-in sa-d1">Essência</span>
@@ -177,7 +203,7 @@ a:hover{color:#8A4F55}
 
 <div class="sa-hero-center" style="position:relative;height:clamp(520px,58vw,720px);display:flex;justify-content:center">
 <div class="sa-grow sa-pat-ameixa" style="position:absolute;left:4%;right:4%;bottom:0;height:68%;border-radius:56px 56px 0 0"></div>
-<img class="sa-rise" src="/_blob/0fd1279c8eab9538a3b3011aadde6d90" alt="Simone Afonso, arquiteta, em pé de blazer listrado, sorrindo, com um braço cruzado e a mão perto do queixo" style="position:relative;height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom;display:block;filter:drop-shadow(0 20px 30px rgba(40,25,27,.25))">
+<img class="sa-rise" src="/_blob/50f522c81d55920289521c1bfa69f256" alt="Simone Afonso, arquiteta, em pé de blazer listrado, sorrindo, com um braço cruzado e a mão perto do queixo" style="position:relative;height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom;display:block;filter:drop-shadow(0 20px 30px rgba(40,25,27,.25))">
 </div>
 
 <div class="sa-hero-side" style="display:flex;flex-direction:column;gap:22px;padding-bottom:150px;align-items:flex-start">
@@ -187,12 +213,13 @@ a:hover{color:#8A4F55}
 </div>
 <a class="sa-btn sa-btn-o sa-in sa-d5" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:12px;border:1.5px solid #3B2E2F;color:#3B2E2F;text-decoration:none;font-weight:600;font-size:16px;padding:14px 26px;border-radius:999px">Chamar no WhatsApp <svg class="sa-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
 <p class="sa-in sa-d6" style="margin:0;max-width:300px;font-size:16px;line-height:1.55">Eu não tenho um estilo de projeto. Tenho uma maneira de ouvir, compreender e transformar o que você precisa em espaço, na casa, na loja ou na empresa.</p>
+<a class="sa-hero-music sa-in sa-d6" href="#trilha"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:34px;height:14px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg>Seu projeto começa por uma música</a>
 </div>
 
 </div>
 </div>
 
-<div style="position:relative;z-index:3;max-width:1296px;margin:-120px auto 0;padding:0 clamp(12px,3vw,40px) clamp(28px,4vw,48px)">
+<div style="position:relative;z-index:3;max-width:none;margin:-120px auto 0;padding:0 clamp(12px,3vw,40px) clamp(28px,4vw,48px)">
 <div class="sa-cats" style="background:rgba(250,244,240,.97);box-shadow:0 18px 40px rgba(59,46,47,.16)">
 <ul style="list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:6px">
 <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
@@ -220,7 +247,7 @@ a:hover{color:#8A4F55}
 
 <!-- MANIFESTO -->
 <section class="sa-papel">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(72px,9vw,132px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(72px,9vw,132px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Essência, pertencimento e bem-estar</p>
 <div style="display:flex;flex-wrap:wrap;gap:32px 72px;align-items:flex-end;margin-bottom:56px">
 <p class="sa-reveal" style="flex:1 1 620px;margin:0;font-family:'Gloock',serif;font-size:clamp(32px,4.2vw,60px);line-height:1.08">Minha arquitetura não quer deixar a minha marca nos espaços. Quer encontrar <span style="color:#8A4F55">a essência de quem vai viver neles.</span></p>
@@ -243,7 +270,7 @@ a:hover{color:#8A4F55}
 
 <!-- ELOGIOS -->
 <section class="sa-pat-ameixa" style="color:#FFFFFF">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-start">
 <div style="flex:1 1 360px;min-width:0">
 <p class="sa-kicker">Elogios</p><h2 class="sa-reveal" style="margin:0 0 16px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">O que meus clientes mais elogiam</h2>
@@ -264,7 +291,7 @@ a:hover{color:#8A4F55}
 
 <!-- SERVIÇOS -->
 <section id="servicos" class="sa-papel">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;margin-bottom:28px">
 <div style="flex:1 1 560px;min-width:0"><p class="sa-kicker">Serviços</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Da loja ao quarto das crianças, o mesmo cuidado</h2></div>
 <p style="flex:1 1 320px;margin:0;color:#6B5658">Atendo projetos comerciais, residenciais e corporativos. O ponto de partida é sempre o mesmo: entender quem vai viver o espaço.</p>
@@ -276,7 +303,13 @@ a:hover{color:#8A4F55}
 </div>
 <div role="tabpanel" style="display:flex;flex-wrap:wrap;background:#F3DEDA">
 <div class="sa-chamfer sa-par" style="flex:1 1 440px;min-width:0;min-height:380px;position:relative;overflow:hidden">
+<sc-if value="{{ svc.noVideo }}" hint-placeholder-val="{{ true }}">
 <img src="{{ svc.img }}" alt="{{ svc.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+</sc-if>
+<sc-if value="{{ svc.hasVideo }}" hint-placeholder-val="{{ false }}">
+<img src="/_blob/8c578b325f9b109126fca5438cbdf060" alt="" aria-hidden="true" style="position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;display:block;filter:blur(22px) brightness(.55)">
+<video src="/_blob/d1098bdb47c003fac3f3923fb2f0acc1" poster="/_blob/8c578b325f9b109126fca5438cbdf060" controls="" playsinline="" preload="metadata" aria-label="Vídeo: tour pelo Studio Maelle" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);height:100%;max-width:100%;aspect-ratio:9 / 16;object-fit:contain;display:block;background:#000000"></video>
+</sc-if>
 </div>
 <div style="flex:1 1 420px;min-width:0;padding:clamp(26px,4vw,52px)">
 <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#8A4F55">{{ svc.kicker }}</p>
@@ -297,44 +330,7 @@ a:hover{color:#8A4F55}
 </figure>
 </sc-if>
 <a class="sa-btn" href="{{ svc.wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#534243;color:#FFFFFF;text-decoration:none;font-weight:500;padding:13px 24px;border-radius:999px">Conversar sobre {{ svc.short }}</a>
-<p style="margin:16px 0 0;font-size:15px;color:#6B5658">Na foto: {{ svc.caption }}</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ANTES E DEPOIS -->
-<section id="antes-depois" class="sa-rose">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
-<p class="sa-kicker">Antes e depois</p><h2 class="sa-reveal" style="margin:0 0 12px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Arraste e veja o antes e o depois</h2>
-<p style="margin:0 0 26px;max-width:600px;color:#6B5658">Fotos reais de espaços em que eu trabalhei. Escolha um ambiente e arraste a linha.</p>
-<div role="tablist" aria-label="Ambientes" class="sa-chips" style="margin-bottom:24px">
-<sc-for list="{{ adTabs }}" as="t" hint-placeholder-count="5">
-<button type="button" role="tab" onClick="{{ t.pick }}" aria-selected="{{ t.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:11px 20px;min-height:46px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ t.bg }};color:{{ t.ink }}">{{ t.name }}</button>
-</sc-for>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:36px;align-items:center">
-<div style="flex:3 1 520px;min-width:0;display:flex;justify-content:center">
-<div style="position:relative;width:100%;max-width:{{ ad.maxw }};aspect-ratio:{{ ad.ratio }};overflow:hidden;background:#534243;box-shadow:0 22px 46px rgba(83,66,67,.28);user-select:none">
-<img src="{{ ad.depois }}" alt="{{ ad.altD }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-<img src="{{ ad.antes }}" alt="{{ ad.altA }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;clip-path:inset(0 {{ ad.right }}% 0 0)">
-<div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:{{ ad.pos }}%;width:3px;margin-left:-1.5px;background:#FFFFFF;z-index:3;pointer-events:none"></div>
-<div aria-hidden="true" style="position:absolute;top:50%;left:{{ ad.pos }}%;width:0;height:0;z-index:3;pointer-events:none">
-<div class="{{ ad.hint }}" style="width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#534243;border:3px solid #FFFFFF;display:flex;align-items:center;justify-content:center;color:#FFFFFF;box-shadow:0 6px 16px rgba(0,0,0,.25)">
-<svg class="sa-ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg>
-</div>
-</div>
-<span style="position:absolute;top:14px;left:14px;background:rgba(59,46,47,.85);color:#FFFFFF;font-size:14px;font-weight:500;padding:5px 12px;border-radius:999px;z-index:2;pointer-events:none">Antes</span>
-<span style="position:absolute;top:14px;right:14px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:14px;font-weight:500;padding:5px 12px;border-radius:999px;z-index:2;pointer-events:none">Depois</span>
-<label for="sa-ad-range" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Comparar antes e depois</label>
-<input id="sa-ad-range" class="sa-range" type="range" min="0" max="100" step="1" value="{{ ad.pos }}" onChange="{{ slide }}" onInput="{{ slide }}">
-</div>
-</div>
-<div style="flex:2 1 300px;min-width:0">
-<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#8A4F55">{{ ad.count }}</p>
-<h3 style="margin:0 0 12px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.1">{{ ad.title }}</h3>
-<p style="margin:0 0 22px;color:#3B2E2F">{{ ad.text }}</p>
-<a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#534243;color:#FFFFFF;text-decoration:none;font-weight:500;padding:13px 24px;border-radius:999px">Quero um antes e depois assim</a>
+<p style="margin:16px 0 0;font-size:15px;color:#6B5658">{{ svc.media }}: {{ svc.caption }}</p>
 </div>
 </div>
 </div>
@@ -342,7 +338,7 @@ a:hover{color:#8A4F55}
 
 <!-- PROCESSO -->
 <section id="processo" class="sa-salvia-d" style="color:#FFFFFF">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:20px 60px;align-items:flex-end;margin-bottom:48px">
 <div style="flex:1 1 520px;min-width:0"><p class="sa-kicker">Método em 4 etapas</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Ouvir, compreender, interpretar e transformar</h2></div>
 <p style="flex:1 1 360px;margin:0;color:#F3DEDA;font-weight:300">Cada decisão do projeto tem fundamento: a sua história, os estudos de Neuroarquitetura e a experiência de obra. Desde que adotei esse método, o retrabalho no escritório praticamente zerou.</p>
@@ -367,19 +363,7 @@ a:hover{color:#8A4F55}
 <article class="sa-reveal" style="background:#FAF4F0;color:#3B2E2F;display:flex;flex-direction:column">
 <div style="height:250px;display:flex;align-items:center;justify-content:center;background:#EDE4DC;padding:20px;box-sizing:border-box">
 <div style="background:#FFFFFF;width:100%;max-width:290px;padding:12px;box-shadow:0 10px 24px rgba(59,46,47,.18);transform:rotate(-2deg)">
-<svg class="sa-plan sa-scroll" viewBox="0 0 320 210" role="img" aria-label="Ilustração de uma planta baixa com quarto, sala e cozinha" style="display:block;width:100%;height:auto">
-<rect class="w" x="6" y="6" width="308" height="198"></rect>
-<path class="w" d="M130 6 V92 M130 132 V204 M130 112 H200 M240 112 H314"></path>
-<path d="M130 92 A40 40 0 0 1 170 132"></path>
-<path d="M200 112 A40 40 0 0 0 240 152"></path>
-<rect class="f" x="22" y="26" width="86" height="60"></rect>
-<path class="f" d="M22 40 H108 M40 26 V40 M90 26 V40"></path>
-<rect class="f" x="150" y="140" width="110" height="40"></rect>
-<path class="f" d="M150 152 H260"></path>
-<circle class="f" cx="245" cy="55" r="26"></circle>
-<circle class="f" cx="245" cy="20" r="6"></circle><circle class="f" cx="245" cy="90" r="6"></circle><circle class="f" cx="210" cy="55" r="6"></circle><circle class="f" cx="280" cy="55" r="6"></circle>
-<rect class="f" x="22" y="150" width="90" height="38"></rect>
-</svg>
+<img src="/_blob/d19807299460bcd8755c6765fe015f13" alt="Planta humanizada em 3D vista de cima: quarto com cama de casal, guarda-roupa, escrivaninha com cadeira, banheiro com chuveiro, vaso e bancada, e varanda ao lado" loading="lazy" style="display:block;width:100%;height:auto">
 </div>
 </div>
 <div style="padding:22px 22px 26px">
@@ -430,11 +414,193 @@ a:hover{color:#8A4F55}
 </div>
 </section>
 
+<!-- TRILHA -->
+<section id="trilha" class="sa-sense" onClick="{{ trRipple }}" style="position:relative;z-index:2;background:#2A2022;color:#FFFFFF">
+<div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+<svg aria-hidden="true" viewBox="0 0 2400 240" preserveAspectRatio="none" style="position:absolute;left:0;top:clamp(120px,13vw,190px);width:200%;height:240px;pointer-events:none"><path class="sa-wave" vector-effect="non-scaling-stroke" d="M0 120.0 L20 125.7 L40 132.0 L60 138.6 L80 145.1 L100 150.9 L120 155.6 L140 158.9 L160 160.5 L180 160.0 L200 157.4 L220 152.9 L240 146.4 L260 138.5 L280 129.5 L300 120.0 L320 110.5 L340 101.5 L360 93.6 L380 87.1 L400 82.6 L420 80.0 L440 79.5 L460 81.1 L480 84.4 L500 89.1 L520 94.9 L540 101.4 L560 108.0 L580 114.3 L600 120.0 L620 124.8 L640 128.5 L660 131.1 L680 132.5 L700 132.9 L720 132.5 L740 131.4 L760 129.9 L780 128.1 L800 126.4 L820 124.7 L840 123.3 L860 122.1 L880 121.0 L900 120.0 L920 119.0 L940 117.9 L960 116.7 L980 115.3 L1000 113.6 L1020 111.9 L1040 110.1 L1060 108.6 L1080 107.5 L1100 107.1 L1120 107.5 L1140 108.9 L1160 111.5 L1180 115.2 L1200 120.0 L1220 125.7 L1240 132.0 L1260 138.6 L1280 145.1 L1300 150.9 L1320 155.6 L1340 158.9 L1360 160.5 L1380 160.0 L1400 157.4 L1420 152.9 L1440 146.4 L1460 138.5 L1480 129.5 L1500 120.0 L1520 110.5 L1540 101.5 L1560 93.6 L1580 87.1 L1600 82.6 L1620 80.0 L1640 79.5 L1660 81.1 L1680 84.4 L1700 89.1 L1720 94.9 L1740 101.4 L1760 108.0 L1780 114.3 L1800 120.0 L1820 124.8 L1840 128.5 L1860 131.1 L1880 132.5 L1900 132.9 L1920 132.5 L1940 131.4 L1960 129.9 L1980 128.1 L2000 126.4 L2020 124.7 L2040 123.3 L2060 122.1 L2080 121.0 L2100 120.0 L2120 119.0 L2140 117.9 L2160 116.7 L2180 115.3 L2200 113.6 L2220 111.9 L2240 110.1 L2260 108.6 L2280 107.5 L2300 107.1 L2320 107.5 L2340 108.9 L2360 111.5 L2380 115.2 L2400 120.0" style="fill:none;stroke:{{ tc.w1 }};stroke-width:2;opacity:0.55;animation-duration:22s;animation-delay:0s"></path><path class="sa-wave" vector-effect="non-scaling-stroke" d="M0 137.4 L20 140.0 L40 141.9 L60 142.7 L80 142.3 L100 140.5 L120 137.5 L140 133.2 L160 127.9 L180 121.8 L200 115.1 L220 108.4 L240 102.0 L260 96.3 L280 91.6 L300 88.3 L320 86.5 L340 86.4 L360 87.8 L380 90.8 L400 95.1 L420 100.3 L440 106.2 L460 112.4 L480 118.4 L500 124.0 L520 128.8 L540 132.7 L560 135.4 L580 137.0 L600 137.4 L620 136.9 L640 135.5 L660 133.5 L680 131.1 L700 128.6 L720 126.1 L740 123.9 L760 121.9 L780 120.4 L800 119.2 L820 118.3 L840 117.8 L860 117.4 L880 117.1 L900 116.8 L920 116.6 L940 116.3 L960 116.0 L980 115.8 L1000 115.8 L1020 116.0 L1040 116.6 L1060 117.8 L1080 119.5 L1100 121.7 L1120 124.4 L1140 127.6 L1160 130.9 L1180 134.3 L1200 137.4 L1220 140.0 L1240 141.9 L1260 142.7 L1280 142.3 L1300 140.5 L1320 137.5 L1340 133.2 L1360 127.9 L1380 121.8 L1400 115.1 L1420 108.4 L1440 102.0 L1460 96.3 L1480 91.6 L1500 88.3 L1520 86.5 L1540 86.4 L1560 87.8 L1580 90.8 L1600 95.1 L1620 100.3 L1640 106.2 L1660 112.4 L1680 118.4 L1700 124.0 L1720 128.8 L1740 132.7 L1760 135.4 L1780 137.0 L1800 137.4 L1820 136.9 L1840 135.5 L1860 133.5 L1880 131.1 L1900 128.6 L1920 126.1 L1940 123.9 L1960 121.9 L1980 120.4 L2000 119.2 L2020 118.3 L2040 117.8 L2060 117.4 L2080 117.1 L2100 116.8 L2120 116.6 L2140 116.3 L2160 116.0 L2180 115.8 L2200 115.8 L2220 116.0 L2240 116.6 L2260 117.8 L2280 119.5 L2300 121.7 L2320 124.4 L2340 127.6 L2360 130.9 L2380 134.3 L2400 137.4" style="fill:none;stroke:{{ tc.w2 }};stroke-width:1.6;opacity:0.5;animation-duration:28s;animation-delay:-6s"></path><path class="sa-wave" vector-effect="non-scaling-stroke" d="M0 141.5 L20 137.6 L40 131.8 L60 124.5 L80 115.9 L100 106.5 L120 96.7 L140 87.3 L160 78.8 L180 71.8 L200 66.8 L220 64.3 L240 64.4 L260 67.3 L280 72.9 L300 80.8 L320 90.6 L340 101.8 L360 113.6 L380 125.4 L400 136.4 L420 146.1 L440 154.0 L460 159.7 L480 163.0 L500 163.9 L520 162.5 L540 159.2 L560 154.2 L580 148.2 L600 141.5 L620 134.8 L640 128.4 L660 122.7 L680 118.0 L700 114.3 L720 111.8 L740 110.4 L760 109.9 L780 110.2 L800 110.9 L820 111.9 L840 113.1 L860 114.2 L880 115.2 L900 116.1 L920 117.0 L940 118.0 L960 119.2 L980 120.8 L1000 122.8 L1020 125.3 L1040 128.3 L1060 131.6 L1080 135.1 L1100 138.4 L1120 141.3 L1140 143.4 L1160 144.3 L1180 143.7 L1200 141.5 L1220 137.6 L1240 131.8 L1260 124.5 L1280 115.9 L1300 106.5 L1320 96.7 L1340 87.3 L1360 78.8 L1380 71.8 L1400 66.8 L1420 64.3 L1440 64.4 L1460 67.3 L1480 72.9 L1500 80.8 L1520 90.6 L1540 101.8 L1560 113.6 L1580 125.4 L1600 136.4 L1620 146.1 L1640 154.0 L1660 159.7 L1680 163.0 L1700 163.9 L1720 162.5 L1740 159.2 L1760 154.2 L1780 148.2 L1800 141.5 L1820 134.8 L1840 128.4 L1860 122.7 L1880 118.0 L1900 114.3 L1920 111.8 L1940 110.4 L1960 109.9 L1980 110.2 L2000 110.9 L2020 111.9 L2040 113.1 L2060 114.2 L2080 115.2 L2100 116.1 L2120 117.0 L2140 118.0 L2160 119.2 L2180 120.8 L2200 122.8 L2220 125.3 L2240 128.3 L2260 131.6 L2280 135.1 L2300 138.4 L2320 141.3 L2340 143.4 L2360 144.3 L2380 143.7 L2400 141.5" style="fill:none;stroke:{{ tc.w3 }};stroke-width:1.4;opacity:0.45;animation-duration:34s;animation-delay:-12s"></path><path class="sa-wave" vector-effect="non-scaling-stroke" d="M0 114.2 L20 111.1 L40 108.1 L60 105.4 L80 103.1 L100 101.4 L120 100.7 L140 100.8 L160 102.1 L180 104.3 L200 107.5 L220 111.5 L240 116.0 L260 120.9 L280 125.9 L300 130.6 L320 134.8 L340 138.3 L360 140.8 L380 142.2 L400 142.5 L420 141.7 L440 139.9 L460 137.3 L480 134.0 L500 130.3 L520 126.5 L540 122.8 L560 119.4 L580 116.5 L600 114.2 L620 112.5 L640 111.6 L660 111.3 L680 111.5 L700 112.2 L720 113.2 L740 114.4 L760 115.6 L780 116.8 L800 117.9 L820 118.8 L840 119.5 L860 120.1 L880 120.6 L900 121.1 L920 121.5 L940 122.0 L960 122.6 L980 123.2 L1000 123.8 L1020 124.4 L1040 124.9 L1060 125.1 L1080 124.9 L1100 124.3 L1120 123.3 L1140 121.7 L1160 119.6 L1180 117.0 L1200 114.2 L1220 111.1 L1240 108.1 L1260 105.4 L1280 103.1 L1300 101.4 L1320 100.7 L1340 100.8 L1360 102.1 L1380 104.3 L1400 107.5 L1420 111.5 L1440 116.0 L1460 120.9 L1480 125.9 L1500 130.6 L1520 134.8 L1540 138.3 L1560 140.8 L1580 142.2 L1600 142.5 L1620 141.7 L1640 139.9 L1660 137.3 L1680 134.0 L1700 130.3 L1720 126.5 L1740 122.8 L1760 119.4 L1780 116.5 L1800 114.2 L1820 112.5 L1840 111.6 L1860 111.3 L1880 111.5 L1900 112.2 L1920 113.2 L1940 114.4 L1960 115.6 L1980 116.8 L2000 117.9 L2020 118.8 L2040 119.5 L2060 120.1 L2080 120.6 L2100 121.1 L2120 121.5 L2140 122.0 L2160 122.6 L2180 123.2 L2200 123.8 L2220 124.4 L2240 124.9 L2260 125.1 L2280 124.9 L2300 124.3 L2320 123.3 L2340 121.7 L2360 119.6 L2380 117.0 L2400 114.2" style="fill:none;stroke:{{ tc.w1 }};stroke-width:1.2;opacity:0.35;animation-duration:26s;animation-delay:-3s"></path><path class="sa-wave" vector-effect="non-scaling-stroke" d="M0 98.1 L20 97.2 L40 97.5 L60 99.2 L80 102.4 L100 106.9 L120 112.7 L140 119.4 L160 126.8 L180 134.3 L200 141.6 L220 148.1 L240 153.5 L260 157.5 L280 159.6 L300 159.8 L320 158.2 L340 154.6 L360 149.5 L380 143.1 L400 135.9 L420 128.2 L440 120.6 L460 113.5 L480 107.3 L500 102.2 L520 98.5 L540 96.4 L560 95.7 L580 96.3 L600 98.1 L620 100.8 L640 104.0 L660 107.6 L680 111.2 L700 114.5 L720 117.4 L740 119.8 L760 121.6 L780 122.9 L800 123.7 L820 124.1 L840 124.2 L860 124.2 L880 124.1 L900 124.0 L920 123.9 L940 123.8 L960 123.7 L980 123.3 L1000 122.7 L1020 121.7 L1040 120.1 L1060 118.1 L1080 115.5 L1100 112.5 L1120 109.3 L1140 105.9 L1160 102.7 L1180 100.0 L1200 98.1 L1220 97.2 L1240 97.5 L1260 99.2 L1280 102.4 L1300 106.9 L1320 112.7 L1340 119.4 L1360 126.8 L1380 134.3 L1400 141.6 L1420 148.1 L1440 153.5 L1460 157.5 L1480 159.6 L1500 159.8 L1520 158.2 L1540 154.6 L1560 149.5 L1580 143.1 L1600 135.9 L1620 128.2 L1640 120.6 L1660 113.5 L1680 107.3 L1700 102.2 L1720 98.5 L1740 96.4 L1760 95.7 L1780 96.3 L1800 98.1 L1820 100.8 L1840 104.0 L1860 107.6 L1880 111.2 L1900 114.5 L1920 117.4 L1940 119.8 L1960 121.6 L1980 122.9 L2000 123.7 L2020 124.1 L2040 124.2 L2060 124.2 L2080 124.1 L2100 124.0 L2120 123.9 L2140 123.8 L2160 123.7 L2180 123.3 L2200 122.7 L2220 121.7 L2240 120.1 L2260 118.1 L2280 115.5 L2300 112.5 L2320 109.3 L2340 105.9 L2360 102.7 L2380 100.0 L2400 98.1" style="fill:none;stroke:{{ tc.w2 }};stroke-width:1;opacity:0.3;animation-duration:40s;animation-delay:-18s"></path></svg>
+<sc-for list="{{ rip }}" as="r" hint-placeholder-count="0">
+<span aria-hidden="true" class="sa-ripple" style="left:{{ r.x }}px;top:{{ r.y }}px;color:{{ r.c }}"><i></i><i></i><i></i></span>
+</sc-for>
+</div>
+<div role="group" aria-label="Piano: toque as teclas" style="position:absolute;top:0;left:0;right:0;transform:translateY(-50%);z-index:5;width:100%;height:clamp(76px,8vw,116px);box-sizing:border-box;display:flex;gap:2px;padding:6px 0 0;background:#1C1516;border-radius:0;box-shadow:0 14px 34px rgba(0,0,0,.4)">
+<sc-for list="{{ pianoW }}" as="k" hint-placeholder-count="15">
+<button type="button" class="sa-key" onClick="{{ k.play }}" aria-label="{{ k.label }}" style="flex:1 1 0;min-width:0;height:100%;padding:0;border:0;border-radius:0 0 7px 7px;background:{{ k.bg }};cursor:pointer"></button>
+</sc-for>
+<sc-for list="{{ pianoB }}" as="k" hint-placeholder-count="10">
+<button type="button" class="sa-key sa-key-b" onClick="{{ k.play }}" aria-label="{{ k.label }}" style="position:absolute;top:6px;left:{{ k.left }}%;width:3.9%;height:58%;padding:0;border:0;border-radius:0 0 5px 5px;background:{{ k.bg }};cursor:pointer;z-index:2"></button>
+</sc-for>
+</div>
+<div style="position:relative;max-width:none;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(16px,3.5vw,56px)">
+<div style="max-width:820px;margin:0 0 clamp(40px,5vw,64px)">
+<p class="sa-kicker" style="color:#E3BDB8">Briefing musical</p><h2 class="sa-reveal" style="margin:0 0 18px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,5vw,68px);line-height:1.02;color:#FFFFFF">Seu projeto começa por uma música</h2>
+<p style="margin:0 0 14px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">No briefing eu peço uma música que tenha a ver com você. Eu escuto prestando atenção em andamento, ritmo, dinâmica, timbre, instrumentação, densidade, modo e estrutura, e penso nas emoções, memórias, imagens e sensações que ela desperta em você.</p>
+<p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">Depois cruzo tudo com as escalas EAPA® e EAMME® e com o briefing. Cada informação vira luz, material, forma, proporção, percurso ou organização do espaço. Veja dois quartos que nasceram de uma música.</p>
+</div>
+<div role="tablist" aria-label="Escolha um projeto" style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px">
+<sc-for list="{{ trTabs }}" as="t" hint-placeholder-count="2">
+<button type="button" role="tab" onClick="{{ t.pick }}" aria-selected="{{ t.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;padding:11px 22px;min-height:46px;border-radius:999px;border:1.5px solid #E3BDB8;cursor:pointer;background:{{ t.bg }};color:{{ t.ink }}">{{ t.name }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<div class="sa-reveal" style="flex:1 1 280px;min-width:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px);display:flex;flex-direction:column">
+<p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#C8964A;color:#2A2022;letter-spacing:0">1</span>A música</p>
+<p style="margin:0 0 18px;font-size:16px;line-height:1.55;color:#F3DEDA">{{ tc.intro }}</p>
+<a class="sa-lift" href="{{ tc.link }}" target="_blank" rel="noopener noreferrer" aria-label="Assistir {{ tc.song }}, {{ tc.artist }}" style="margin-top:auto;display:block;position:relative;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:#000000;color:#FFFFFF;text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.35)">
+<svg aria-hidden="true" viewBox="0 0 320 180" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><rect width="320" height="180" fill="#1C1516"></rect><path d="M0 96 C40 40 80 150 120 92 S200 30 240 96 S300 150 320 90" fill="none" stroke="#C8964A" stroke-width="1.6" opacity=".7"></path><path d="M0 104 C50 60 90 140 140 100 S210 50 260 104 S310 140 320 100" fill="none" stroke="#E3BDB8" stroke-width="1.2" opacity=".55"></path><path d="M0 88 C30 120 70 60 110 90 S190 130 230 86 S290 50 320 84" fill="none" stroke="#9DB5A6" stroke-width="1" opacity=".5"></path></svg>
+<span aria-hidden="true" style="position:absolute;left:50%;top:50%;width:62px;height:44px;margin:-22px 0 0 -31px;border-radius:12px;background:#FF0033;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:22px;height:22px;margin-left:2px;fill:#FFFFFF"><path d="M7 4.5v15l13-7.5z"></path></svg></span>
+<span style="position:absolute;left:12px;right:12px;bottom:10px;display:block;line-height:1.25;text-shadow:0 1px 6px rgba(0,0,0,.6)"><span style="display:block;font-family:'Gloock',serif;font-size:19px">{{ tc.song }}</span><span style="display:block;font-size:13px;color:#F3DEDA">{{ tc.artist }}</span></span>
+</a>
+<p style="margin:10px 0 0;font-size:13px;color:#E3BDB8">No site, o vídeo toca aqui mesmo. Nesta prévia, abre no YouTube.</p>
+</div>
+<figure class="sa-reveal" style="flex:2 1 520px;min-width:0;margin:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px)">
+<p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#C8964A;color:#2A2022;letter-spacing:0">2</span>O mapa da música</p>
+<img src="{{ tc.mapa }}" alt="{{ tc.mapaAlt }}" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px">
+<figcaption style="padding:12px 2px 0;font-size:15px;color:#F3DEDA">{{ tc.mapaCap }}</figcaption>
+</figure>
+<div class="sa-reveal" style="flex:2 1 520px;min-width:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px)">
+<p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#C8964A;color:#2A2022;letter-spacing:0">3</span>O projeto</p>
+<div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:10px">
+<img src="{{ tc.i1 }}" alt="{{ tc.a1 }}" loading="lazy" style="grid-row:1 / 3;display:block;width:100%;height:100%;object-fit:cover;border-radius:12px">
+<img src="{{ tc.i2 }}" alt="{{ tc.a2 }}" loading="lazy" style="display:block;width:100%;height:100%;aspect-ratio:1 / 1;object-fit:cover;border-radius:12px">
+<img src="{{ tc.i3 }}" alt="{{ tc.a3 }}" loading="lazy" style="display:block;width:100%;height:100%;aspect-ratio:1 / 1;object-fit:cover;border-radius:12px">
+</div>
+<p style="margin:12px 2px 0;font-size:15px;color:#F3DEDA">{{ tc.projCap }}</p>
+</div>
+<figure class="sa-reveal" style="flex:1 1 280px;min-width:0;margin:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px);background:#C8964A;border-color:#C8964A;color:#2A2022;display:flex;flex-direction:column">
+<p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#2A2022"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#2A2022;color:#C8964A;letter-spacing:0">4</span>{{ tc.s4 }}</p>
+<blockquote style="margin:0 0 16px;font-family:'Gloock',serif;font-size:clamp(21px,2.1vw,27px);line-height:1.25">“{{ tc.quote }}”</blockquote>
+<figcaption style="margin-top:auto;font-size:14px;font-weight:600">{{ tc.by }}</figcaption>
+</figure>
+</div>
+<div style="margin-top:clamp(40px,5vw,60px);padding-top:28px;border-top:1px solid rgba(243,222,218,.2)">
+<p style="margin:0 0 16px;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8">Como a música vira espaço</p>
+<dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px 28px">
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Ritmo</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">repetição, intervalos e percurso</dd></div>
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Melodia</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">linhas, curvas e direção</dd></div>
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Harmonia</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">equilíbrio e relação entre as cores</dd></div>
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Timbre</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">textura, brilho, transparência e densidade</dd></div>
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Dinâmica</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">contrastes de escala, de luz, de cheio e vazio</dd></div>
+<div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Forma musical</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">a sequência dos ambientes e as transições</dd></div>
+</dl>
+<div class="sa-seq" style="margin-top:34px;padding:clamp(16px,2.4vw,24px);background:#1C1516;border:1px solid rgba(243,222,218,.16);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,.35)">
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin:0 0 16px">
+<div><p style="margin:0;font-family:'Gloock',serif;font-size:clamp(22px,2.4vw,28px);color:#FFFFFF">Faça a sua música</p><p style="margin:4px 0 0;font-size:14px;color:#E3BDB8">Acenda os quadrinhos e aperte o play. Toda combinação soa bem.</p></div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+<button type="button" onClick="{{ seqToggle }}" aria-pressed="{{ seqPlaying }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border:0;background:#C8964A;color:#2A2022"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:currentColor"><path d="{{ seqIcon }}"></path></svg>{{ seqLabel }}</button>
+<button type="button" onClick="{{ muteToggle }}" aria-pressed="{{ muteOn }}" aria-label="Silenciar o som" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(243,222,218,.4);background:transparent;color:#F3DEDA"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="{{ muteIcon }}"></path></svg>{{ muteLabel }}</button>
+<label for="sa-bpm" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#F3DEDA">Ritmo <input id="sa-bpm" type="range" min="70" max="140" step="2" value="{{ seqBpm }}" onInput="{{ seqTempo }}" onChange="{{ seqTempo }}" style="width:110px;accent-color:#C8964A"> <span style="min-width:58px;font-variant-numeric:tabular-nums">{{ seqBpm }} bpm</span></label>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px">
+<sc-for list="{{ seqPresets }}" as="p" hint-placeholder-count="3">
+<button type="button" onClick="{{ p.pick }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;cursor:pointer;font-size:14px;padding:8px 16px;min-height:40px;border:1.5px solid rgba(243,222,218,.35);background:transparent;color:#F3DEDA">{{ p.name }}</button>
+</sc-for>
+</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px">
+<div style="display:flex;min-width:620px">
+<div style="flex:0 0 74px;display:flex;flex-direction:column">
+<sc-for list="{{ seqRows }}" as="r" hint-placeholder-count="8">
+<div style="height:34px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#F3DEDA"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{ r.col }}"></span>{{ r.name }}</div>
+</sc-for>
+</div>
+<div style="position:relative;flex:1 1 auto;min-width:0">
+<sc-if value="{{ seqPlaying }}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" class="sa-playhead" style="position:absolute;top:0;bottom:0;left:0;width:6.25%;border-radius:8px;background:rgba(243,222,218,.14);box-shadow:0 0 0 1px rgba(243,222,218,.25);pointer-events:none;animation-duration:{{ seqLoop }}s"></div>
+</sc-if>
+<sc-for list="{{ seqRows }}" as="r" hint-placeholder-count="8">
+<div role="group" aria-label="{{ r.name }}" style="display:grid;grid-template-columns:repeat(16,minmax(0,1fr));height:34px">
+<sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="16">
+<button type="button" class="sa-cell" onClick="{{ c.flip }}" aria-pressed="{{ c.on }}" aria-label="{{ c.label }}" style="margin:3px {{ c.gap }} 3px 2px;padding:0;border:0;border-radius:6px;cursor:pointer;background:{{ c.bg }};box-shadow:{{ c.glow }}"></button>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<p style="margin:12px 0 0;font-size:13px;color:#E3BDB8">Os sons são gerados ao vivo pelo navegador. No iPhone, desligue o modo silencioso para ouvir.</p>
+</div>
+<a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:34px;background:#F3DEDA;color:#2A2022;text-decoration:none;padding:14px 26px;border-radius:999px">Quero um projeto com a minha música</a>
+</div>
+</div>
+</section>
+
+<!-- DO 3D À OBRA -->
+<section class="sa-papel">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(16px,3.5vw,56px)">
+<p class="sa-kicker">Do 3D à obra pronta</p><h2 class="sa-reveal" style="margin:0 0 12px;max-width:860px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.05">O que você vê no 3D é o que você recebe</h2>
+<p style="margin:0 0 34px;max-width:660px;color:#6B5658">Antes da obra, você vê o espaço em 3D. Compare o projeto que eu apresentei com a foto do espaço pronto.</p>
+<h3 style="margin:0 0 16px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(24px,2.4vw,30px);line-height:1.15">Vila do Bem Viver, Praia da Costa</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
+<figure class="sa-reveal" style="margin:0">
+<div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/6d065defa19fb6e5884919564b870829" alt="Antes: salão vazio com piso de concreto, escada metálica com mezanino e pendentes de cobre" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:rgba(59,46,47,.86);color:#FFFFFF;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">1. Antes</span></div>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">O ponto de partida: salão bruto, escada metálica e piso de obra.</figcaption>
+</figure>
+<figure class="sa-reveal" style="margin:0">
+<div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/629ae48558b5969599580cb89faf528b" alt="Projeto em 3D: recepção com balcão curvo em madeira, poltronas laranja, prateleiras hexagonais e sanca com fita de luz no teto" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:#C8964A;color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">2. Projeto em 3D</span></div>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">O projeto apresentado em 3D, com materiais, cores e luz definidos.</figcaption>
+</figure>
+<figure class="sa-reveal" style="margin:0">
+<div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/cbba91e2ca0596dcc8b193f6f44286de" alt="Depois: a loja pronta com o mesmo balcão curvo em madeira, poltronas laranja, prateleiras hexagonais, sanca iluminada e escada revestida" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">3. Depois</span></div>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">A obra pronta: balcão, poltronas, prateleiras e luz como no projeto.</figcaption>
+</figure>
+</div>
+<h3 style="margin:52px 0 6px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(24px,2.4vw,30px);line-height:1.15">Sala multiuso: estar, TV e jantar integrados</h3>
+<p style="margin:0 0 20px;max-width:640px;color:#6B5658">Mesmo ângulo, lado a lado: à esquerda o 3D, à direita a foto real.</p>
+<div style="display:flex;flex-direction:column;gap:26px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+<figure class="sa-reveal" style="margin:0;position:relative"><img src="/_blob/41ea6110cca5465a3774b5b77d588111" alt="Projeto em 3D do estar: poltrona tipo ovo, painel giratório de TV, sofá azul e estante iluminada" loading="lazy" style="display:block;width:100%;aspect-ratio:3 / 2;object-fit:cover;box-shadow:0 10px 24px rgba(83,66,67,.16)"><span style="position:absolute;top:12px;left:12px;background:#C8964A;color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">Projeto em 3D</span></figure>
+<figure class="sa-reveal" style="margin:0;position:relative"><img src="/_blob/9257d809eaf913ce5aa6513a1d9a5886" alt="Foto real do estar pronto: a mesma poltrona tipo ovo, o painel giratório de TV, o sofá e a estante iluminada" loading="lazy" style="display:block;width:100%;aspect-ratio:3 / 2;object-fit:cover;box-shadow:0 10px 24px rgba(83,66,67,.16)"><span style="position:absolute;top:12px;left:12px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">Obra pronta</span></figure>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+<figure class="sa-reveal" style="margin:0;position:relative"><img src="/_blob/b65af9906fc404cca8fc0403929bf474" alt="Projeto em 3D do jantar: mesa clara com cadeiras verdes, pendente de luz em espiral e parede de pastilhas" loading="lazy" style="display:block;width:100%;aspect-ratio:3 / 2;object-fit:cover;box-shadow:0 10px 24px rgba(83,66,67,.16)"><span style="position:absolute;top:12px;left:12px;background:#C8964A;color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">Projeto em 3D</span></figure>
+<figure class="sa-reveal" style="margin:0;position:relative"><img src="/_blob/0ce75b9408b4fe5cb322bb6269d3816e" alt="Foto real do jantar pronto: a mesma mesa clara com cadeiras verdes, o pendente em espiral e a parede de pastilhas" loading="lazy" style="display:block;width:100%;aspect-ratio:3 / 2;object-fit:cover;box-shadow:0 10px 24px rgba(83,66,67,.16)"><span style="position:absolute;top:12px;left:12px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">Obra pronta</span></figure>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ANTES E DEPOIS -->
+<section id="antes-depois" class="sa-rose">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
+<p class="sa-kicker">Antes e depois</p><h2 class="sa-reveal" style="margin:0 0 12px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Arraste e veja o antes e o depois</h2>
+<p style="margin:0 0 26px;max-width:600px;color:#6B5658">Fotos reais de espaços em que eu trabalhei. Escolha um ambiente e arraste a linha.</p>
+<div role="tablist" aria-label="Ambientes" class="sa-chips" style="margin-bottom:24px">
+<sc-for list="{{ adTabs }}" as="t" hint-placeholder-count="5">
+<button type="button" role="tab" onClick="{{ t.pick }}" aria-selected="{{ t.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:11px 20px;min-height:46px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ t.bg }};color:{{ t.ink }}">{{ t.name }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:36px;align-items:center">
+<div style="flex:3 1 520px;min-width:0;display:flex;justify-content:center">
+<div style="position:relative;width:100%;max-width:{{ ad.maxw }};aspect-ratio:{{ ad.ratio }};overflow:hidden;background:#534243;box-shadow:0 22px 46px rgba(83,66,67,.28);user-select:none">
+<img src="{{ ad.depois }}" alt="{{ ad.altD }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+<img src="{{ ad.antes }}" alt="{{ ad.altA }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;clip-path:inset(0 {{ ad.right }}% 0 0)">
+<div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:{{ ad.pos }}%;width:3px;margin-left:-1.5px;background:#FFFFFF;z-index:3;pointer-events:none"></div>
+<div aria-hidden="true" style="position:absolute;top:50%;left:{{ ad.pos }}%;width:0;height:0;z-index:3;pointer-events:none">
+<div class="{{ ad.hint }}" style="width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#534243;border:3px solid #FFFFFF;display:flex;align-items:center;justify-content:center;color:#FFFFFF;box-shadow:0 6px 16px rgba(0,0,0,.25)">
+<svg class="sa-ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg>
+</div>
+</div>
+<span style="position:absolute;top:14px;left:14px;background:rgba(59,46,47,.85);color:#FFFFFF;font-size:14px;font-weight:500;padding:5px 12px;border-radius:999px;z-index:2;pointer-events:none">Antes</span>
+<span style="position:absolute;top:14px;right:14px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:14px;font-weight:500;padding:5px 12px;border-radius:999px;z-index:2;pointer-events:none">Depois</span>
+<label for="sa-ad-range" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Comparar antes e depois</label>
+<input id="sa-ad-range" class="sa-range" type="range" min="0" max="100" step="1" value="{{ ad.pos }}" onChange="{{ slide }}" onInput="{{ slide }}">
+</div>
+</div>
+<div style="flex:2 1 300px;min-width:0">
+<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#8A4F55">{{ ad.count }}</p>
+<h3 style="margin:0 0 12px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.1">{{ ad.title }}</h3>
+<p style="margin:0 0 22px;color:#3B2E2F">{{ ad.text }}</p>
+<a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#534243;color:#FFFFFF;text-decoration:none;font-weight:500;padding:13px 24px;border-radius:999px">Quero um antes e depois assim</a>
+</div>
+</div>
+</div>
+</section>
+
 <!-- PROJETOS -->
 <section id="projetos" class="sa-papel">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Portfólio</p><h2 class="sa-reveal" style="margin:0 0 12px;max-width:820px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Projetos que já saíram do papel</h2>
-<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, clínicas e casas na Grande Vitória. Toque em uma foto para ampliar.</p>
+<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, clínicas e casas na Grande Vitória. Toque em um projeto para ver mais fotos.</p>
 <div role="group" aria-label="Filtrar projetos" class="sa-chips" style="margin-bottom:28px">
 <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
 <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:10px 20px;min-height:44px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ f.bg }};color:{{ f.ink }}">{{ f.name }}</button>
@@ -443,8 +609,11 @@ a:hover{color:#8A4F55}
 <div class="sa-masonry">
 <sc-for list="{{ projVisible }}" as="p" hint-placeholder-count="9">
 <figure class="sa-reveal" style="margin:0 0 20px;break-inside:avoid">
-<button type="button" class="sa-tile sa-zoom" onClick="{{ p.open }}" aria-label="Ampliar foto: {{ p.name }}" style="display:block;width:100%;padding:0;border:0;background:#FFFFFF;box-shadow:0 8px 20px rgba(83,66,67,.14)">
+<button type="button" class="sa-tile sa-zoom" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="display:block;position:relative;width:100%;padding:0;border:0;background:#FFFFFF;box-shadow:0 8px 20px rgba(83,66,67,.14)">
 <img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy" style="display:block;width:100%;height:auto">
+<sc-if value="{{ p.hasMore }}" hint-placeholder-val="{{ true }}">
+<span aria-hidden="true" style="position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(59,46,47,.86);color:#FFFFFF;font-family:var(--sa-sans);font-size:13px;font-weight:600;letter-spacing:.02em;padding:6px 11px;border-radius:999px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="M7 3h12a2 2 0 0 1 2 2v12"></path></svg>{{ p.more }}</span>
+</sc-if>
 </button>
 <figcaption style="padding:10px 2px 0">
 <span style="display:block;font-family:'Gloock',serif;font-size:20px;line-height:1.2">{{ p.name }}</span>
@@ -460,8 +629,15 @@ a:hover{color:#8A4F55}
 <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
 <div role="dialog" aria-modal="true" aria-label="{{ lb.name }}" style="position:fixed;inset:0;z-index:50;background:rgba(40,28,29,.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)">
 <figure style="margin:0;max-width:1100px;width:100%;display:flex;flex-direction:column;align-items:center;gap:12px">
-<img src="{{ lb.img }}" alt="{{ lb.alt }}" style="max-width:100%;max-height:76vh;object-fit:contain;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)">
-<figcaption style="color:#FFFFFF;text-align:center"><span style="font-family:'Gloock',serif;font-size:22px">{{ lb.name }}</span> <span style="color:#F3DEDA;font-size:16px">{{ lb.kind }}</span></figcaption>
+<img src="{{ lb.img }}" alt="{{ lb.alt }}" style="max-width:100%;max-height:68vh;object-fit:contain;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+<figcaption style="color:#FFFFFF;text-align:center"><span style="font-family:'Gloock',serif;font-size:22px">{{ lb.name }}</span> <span style="color:#F3DEDA;font-size:16px">{{ lb.kind }}</span><span style="display:block;margin-top:4px;color:#E3BDB8;font-size:14px" aria-live="polite">{{ lb.count }}</span></figcaption>
+<sc-if value="{{ lbMany }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:8px;max-width:100%;overflow-x:auto;padding:2px">
+<sc-for list="{{ lbThumbs }}" as="t" hint-placeholder-count="6">
+<button type="button" onClick="{{ t.pick }}" aria-label="{{ t.label }}" aria-current="{{ t.cur }}" style="flex:0 0 auto;width:64px;height:48px;padding:0;border:2px solid {{ t.ring }};border-radius:6px;background:#3B2E2F;cursor:pointer;overflow:hidden;opacity:{{ t.op }}"><img src="{{ t.img }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></button>
+</sc-for>
+</div>
+</sc-if>
 <div style="display:flex;gap:10px">
 <button type="button" onClick="{{ lbPrev }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:11px 20px;min-height:46px;border-radius:999px;border:1.5px solid #F3DEDA;background:transparent;color:#FFFFFF;cursor:pointer">Anterior</button>
 <button type="button" onClick="{{ closeLb }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;padding:11px 22px;min-height:46px;border-radius:999px;border:0;background:#F3DEDA;color:#3B2E2F;cursor:pointer">Fechar</button>
@@ -471,9 +647,19 @@ a:hover{color:#8A4F55}
 </div>
 </sc-if>
 
+<sc-if value="{{ vidOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Vídeo do Studio Maelle" style="position:fixed;inset:0;z-index:60;background:rgba(40,28,29,.94);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px)">
+<figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:420px">
+<video src="/_blob/d1098bdb47c003fac3f3923fb2f0acc1" poster="/_blob/8c578b325f9b109126fca5438cbdf060" controls="" playsinline="" preload="metadata" style="display:block;width:100%;max-height:78vh;aspect-ratio:9 / 16;object-fit:contain;background:#000000;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)"></video>
+<figcaption style="color:#FFFFFF;text-align:center"><span style="font-family:'Gloock',serif;font-size:22px">Studio Maelle</span> <span style="color:#F3DEDA;font-size:16px">Make e cabelo · consultoria de projeto</span></figcaption>
+<button type="button" onClick="{{ closeVid }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:600;padding:11px 26px;min-height:46px;border-radius:999px;border:0;background:#F3DEDA;color:#3B2E2F;cursor:pointer">Fechar</button>
+</figure>
+</div>
+</sc-if>
+
 <!-- DEPOIMENTOS -->
 <section id="depoimentos" class="sa-ameixa" style="color:#FFFFFF;position:relative;overflow:hidden">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Depoimentos</p>
 <h2 class="sa-reveal" style="margin:0 0 clamp(28px,4vw,48px);max-width:820px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">Quem viveu o processo conta</h2>
 <div style="display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start;margin-bottom:44px">
@@ -495,6 +681,9 @@ a:hover{color:#8A4F55}
 <blockquote style="margin:12px 0 14px;font-size:17px;line-height:1.6">“{{ d.text }}”</blockquote>
 <figcaption style="font-size:15px;line-height:1.4"><strong style="display:block">{{ d.n }}</strong><span style="color:#6B5658">{{ d.p }}</span></figcaption>
 <button type="button" onClick="{{ d.toggle }}" aria-expanded="{{ d.open }}" style="font-family:var(--sa-sans);font-size:14px;font-weight:700;letter-spacing:.02em;padding:8px 0;min-height:40px;background:transparent;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;margin-top:4px;color:#3B2E2F;text-decoration-color:#8A4F55">{{ d.label }}</button>
+<sc-if value="{{ d.hasVideo }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ d.openVid }}" aria-label="Assistir ao vídeo do Studio Maelle" style="display:flex;align-items:center;gap:14px;width:100%;margin-top:10px;padding:8px;border:1.5px solid #E3BDB8;border-radius:12px;background:#FFFFFF;cursor:pointer;text-align:left;font-family:var(--sa-sans);color:#3B2E2F"><span style="position:relative;flex:0 0 54px;width:54px;height:72px;border-radius:8px;overflow:hidden;background:#3B2E2F"><img src="/_blob/8c578b325f9b109126fca5438cbdf060" alt="" style="display:block;width:100%;height:100%;object-fit:cover"><span aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(59,46,47,.35)"><svg viewBox="0 0 24 24" style="width:20px;height:20px;margin-left:2px;fill:#FFFFFF"><path d="M7 4.5v15l13-7.5z"></path></svg></span></span><span style="line-height:1.35"><span style="display:block;font-size:15px;font-weight:700">Ver o Studio Maelle em vídeo</span><span style="display:block;font-size:14px;color:#6B5658">Um tour de 47 segundos pelo espaço pronto</span></span></button>
+</sc-if>
 </figure>
 </sc-for>
 </div>
@@ -508,7 +697,7 @@ a:hover{color:#8A4F55}
 
 <!-- PARA QUEM -->
 <section class="sa-rose">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Para quem é</p><h2 class="sa-reveal" style="margin:0 0 14px;max-width:880px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Um bom projeto é feito a quatro mãos</h2>
 <p style="margin:0 0 40px;max-width:640px;color:#3B2E2F">Os melhores resultados que tive foram com clientes que acolheram o processo e colocaram o projeto em prática. Veja se a gente combina.</p>
 <div style="display:flex;flex-wrap:wrap;gap:22px">
@@ -532,47 +721,10 @@ a:hover{color:#8A4F55}
 </div>
 </section>
 
-<!-- TRILHA -->
-<section class="sa-salvia">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center">
-<div style="flex:1 1 420px;min-width:0">
-<p class="sa-kicker">Briefing musical</p><h2 class="sa-reveal" style="margin:0 0 14px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.05">Qual é a trilha sonora do seu espaço?</h2>
-<p style="margin:0 0 22px;color:#3B2E2F">No briefing eu peço uma música que tenha a ver com você. Escolha um clima e veja um exemplo de como isso vira cor, forma, textura e luz.</p>
-<div role="group" aria-label="Escolha um clima" class="sa-chips">
-<sc-for list="{{ moodBtns }}" as="m" hint-placeholder-count="4">
-<button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:10px 22px;min-height:46px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ m.bg }};color:{{ m.ink }}">{{ m.name }}</button>
-</sc-for>
-</div>
-<p style="margin:18px 0 0;font-size:14px;color:#3B2E2F">Exemplo ilustrativo. No seu projeto, a trilha vem do que você me conta.</p>
-<figure style="margin:28px 0 0;padding:20px 22px;background:#FAF4F0;border-radius:16px;max-width:520px">
-<blockquote style="margin:0 0 8px;font-family:'Gloock',serif;font-size:21px;line-height:1.3">“Quando vi o projeto pela primeira vez, me senti dono daquele espaço, como se realmente fosse feito pra mim.”</blockquote>
-<figcaption style="font-size:14px;color:#6B5658">Arthur Segatto Lubiana, sobre o quarto que nasceu da música que ele escolheu</figcaption>
-</figure>
-</div>
-<div style="flex:1 1 460px;min-width:0;background:#FFFFFF;padding:26px;box-shadow:0 18px 40px rgba(83,66,67,.16);transform:rotate(-1deg)">
-<p style="margin:0 0 4px;font-size:14px;font-weight:600;color:#8A4F55">Prancheta de referências</p>
-<p style="margin:0 0 16px;font-family:'Gloock',serif;font-size:26px;line-height:1.15">{{ cur.trilha }}</p>
-<div style="display:flex;gap:12px;margin-bottom:18px">
-<sc-for list="{{ cur.cores }}" as="c" hint-placeholder-count="4">
-<div class="sa-lift" style="flex:1 1 0;background:#FFFFFF;padding:6px 6px 8px;box-shadow:0 6px 14px rgba(59,46,47,.15);transform:rotate({{ c.rot }}deg)">
-<div style="height:82px;background:{{ c.bg }}"></div>
-<p style="margin:6px 0 0;font-size:11px;color:#6B5658">{{ c.hex }}</p>
-</div>
-</sc-for>
-</div>
-<dl style="margin:0;display:grid;grid-template-columns:90px 1fr;gap:6px 14px;font-size:16px">
-<dt style="font-weight:600">Formas</dt><dd style="margin:0">{{ cur.formas }}</dd>
-<dt style="font-weight:600">Texturas</dt><dd style="margin:0">{{ cur.texturas }}</dd>
-<dt style="font-weight:600">Luz</dt><dd style="margin:0">{{ cur.luz }}</dd>
-</dl>
-</div>
-</div>
-</section>
-
 <!-- SOBRE -->
 <section id="sobre" class="sa-rose" style="overflow:hidden">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px) 0;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-end">
-<div style="flex:1 1 380px;min-width:0;max-width:500px;margin:0 auto;position:relative;height:clamp(460px,48vw,620px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px) 0;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:stretch">
+<div style="flex:1 1 380px;min-width:0;max-width:500px;margin:0 auto;position:relative;min-height:clamp(460px,50vw,680px)">
 <figure style="position:absolute;inset:0;margin:0;border-radius:250px 250px 0 0;overflow:hidden;background:#534243;box-shadow:0 24px 50px rgba(59,46,47,.25)">
 <img src="/_blob/6c624862dc99203b6c7a6381962a0312" alt="Simone Afonso sorrindo, com a mão perto do queixo, sentada à mesa" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
 </figure>
@@ -582,13 +734,18 @@ a:hover{color:#8A4F55}
 </div>
 </div>
 <div style="flex:1 1 520px;min-width:0;padding-bottom:clamp(64px,9vw,124px)">
-<p class="sa-kicker">Sobre a Simone</p><h2 class="sa-reveal" style="margin:0 0 20px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">Sensibilidade, compromisso e coerência</h2>
-<p style="margin:0 0 16px">Sou a Simone. Minha primeira formação foi em Análise de Sistemas, e eu detestava programar. Desde 1994 estou à frente da ASTI Engenharia e Arquitetura com meu sócio engenheiro civil, e foi na rotina de obra que encontrei a arquitetura.</p>
+<div style="display:flex;gap:20px 28px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin:0 0 20px">
+<div style="flex:1 1 300px;min-width:0"><p class="sa-kicker">Sobre a Simone</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">Sensibilidade, compromisso e coerência</h2></div>
+<figure style="flex:0 0 112px;margin:0">
+<img src="/_blob/ecaf1caec660eadf4a2282e4437a3eb1" alt="Selo de certificação e validação profissional NEUROARQ de Simone Afonso, categoria Premium, válido até outubro de 2029" style="display:block;width:112px;height:auto">
+<figcaption style="font-size:12px;line-height:1.35;color:#3B2E2F;padding-top:6px">Selo de validação profissional NEUROARQ®</figcaption>
+</figure>
+</div>
+<p style="margin:0 0 16px">Sou a Simone. Desde 1994 estou à frente da ASTI Engenharia e Arquitetura com meu sócio engenheiro civil, e foi na rotina de obra que encontrei a arquitetura.</p>
 <p style="margin:0 0 16px">Depois de formada, me especializei em interiores e em Neuroarquitetura. Não parei mais de estudar e acompanho feiras como a Casa Cor, a Expo Revestir e o Salone del Mobile, em Milão.</p>
 <p style="margin:0 0 30px">Por isso cuido do projeto e da obra: o que eu desenho precisa acontecer de verdade.</p>
-<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
-<ol style="flex:1 1 320px;min-width:0;list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #8A4F55">
-<sc-for list="{{ creds }}" as="c" hint-placeholder-count="8">
+<ol style="list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #8A4F55">
+<sc-for list="{{ creds }}" as="c" hint-placeholder-count="9">
 <li style="position:relative;padding:0 0 12px 6px;font-size:16px">
 <span aria-hidden="true" style="position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:#8A4F55;border:2px solid #F3DEDA"></span>
 <span style="display:block;font-weight:600;color:#8A4F55">{{ c.year }}</span>
@@ -596,18 +753,13 @@ a:hover{color:#8A4F55}
 </li>
 </sc-for>
 </ol>
-<figure style="flex:0 0 140px;margin:0">
-<img src="/_blob/51a49737b796e9aeed3575366f1c82bd" alt="Selo de certificação e validação profissional NEUROARQ de Simone Afonso, categoria Premium, válido até outubro de 2029" style="display:block;width:140px;height:auto">
-<figcaption style="font-size:14px;color:#3B2E2F;padding-top:6px">Selo de validação profissional NEUROARQ®</figcaption>
-</figure>
-</div>
 </div>
 </div>
 </section>
 
 <!-- BLOG -->
 <section id="blog" class="sa-papel">
-<div style="max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(20px,5vw,72px)">
+<div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Blog</p><h2 class="sa-reveal" style="margin:0 0 12px;max-width:860px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Caderno da Simone: um texto novo toda semana</h2>
 <p style="margin:0 0 30px;max-width:680px;color:#3B2E2F">Neuroarquitetura sem complicação, projetos comerciais, Home Relooking e Home Staging, a música dos projetos e o que eu trago das feiras, escritos por mim.</p>
 <sc-if value="{{ noReal }}" hint-placeholder-val="{{ true }}">
@@ -656,7 +808,7 @@ a:hover{color:#8A4F55}
 
 <!-- PERGUNTAS -->
 <section id="perguntas" class="sa-linho">
-<div style="max-width:980px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,5vw,72px)">
+<div style="max-width:980px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Dúvidas</p><h2 class="sa-reveal" style="margin:0 0 30px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">Perguntas frequentes</h2>
 <div style="border-top:1.5px solid #534243">
 <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="7">
@@ -679,17 +831,17 @@ a:hover{color:#8A4F55}
 <!-- CONTATO -->
 <section id="contato" class="sa-ameixa" style="color:#FFFFFF;position:relative;overflow:hidden">
 <svg class="sa-mk sa-hide-m" viewBox="0 0 444 484" aria-hidden="true" style="position:absolute;right:-90px;bottom:-120px;width:520px;color:#5E4D4E;pointer-events:none"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
-<div style="position:relative;max-width:1296px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:56px">
+<div style="position:relative;max-width:none;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(16px,3.5vw,56px);display:flex;flex-wrap:wrap;gap:56px">
 <div style="flex:1 1 420px;min-width:0">
 <p class="sa-kicker">Contato</p><h2 class="sa-reveal" style="margin:0 0 18px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.8vw,66px);line-height:1.02">Sentiu que encontrou a sua arquiteta? Vamos conversar.</h2>
 <p style="margin:0 0 28px;max-width:500px;color:#F3DEDA;font-weight:300">Me conte o que você quer mudar na sua casa, loja ou empresa. Eu vou até você, ou começamos por uma conversa online, para entender a sua necessidade.</p>
 <a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#F3DEDA;color:#3B2E2F;text-decoration:none;font-weight:600;padding:15px 28px;border-radius:999px;margin-bottom:36px">Chamar no WhatsApp</a>
 <div class="sa-cardpair" style="position:relative;width:460px;max-width:100%;height:270px;margin:0 0 30px">
-<div class="sa-lift sa-ameixa" style="position:absolute;left:0;top:0;width:290px;transform:rotate(-6deg);aspect-ratio:1.72;box-shadow:0 22px 40px rgba(20,12,13,.5),inset 0 0 0 1px rgba(243,222,218,.18);display:flex;flex-direction:column;justify-content:space-between;padding:0 0 18px 20px;box-sizing:border-box;overflow:hidden" aria-label="Mockup do cartão de visita de Simone Afonso, frente" role="img">
+<div class="sa-lift" style="background:#534243;position:absolute;left:0;top:0;width:290px;transform:rotate(-6deg);aspect-ratio:1.72;box-shadow:0 22px 40px rgba(20,12,13,.5),inset 0 0 0 1px rgba(243,222,218,.18);display:flex;flex-direction:column;justify-content:space-between;padding:0 0 18px 20px;box-sizing:border-box;overflow:hidden" aria-label="Mockup do cartão de visita de Simone Afonso, frente" role="img">
 <svg viewBox="0 0 7200 210" preserveAspectRatio="xMinYMid slice" aria-hidden="true" style="height:12px;display:block;margin:10px 0 0 -20px;width:calc(100% + 20px)"><path d="M-180 88L0 8M-90 48V100M-180 140L-90 100L0 140V200M-180 200L-90 158L0 200M0 88L180 8M90 48V100M0 140L90 100L180 140V200M0 200L90 158L180 200M180 88L360 8M270 48V100M180 140L270 100L360 140V200M180 200L270 158L360 200M360 88L540 8M450 48V100M360 140L450 100L540 140V200M360 200L450 158L540 200M540 88L720 8M630 48V100M540 140L630 100L720 140V200M540 200L630 158L720 200M720 88L900 8M810 48V100M720 140L810 100L900 140V200M720 200L810 158L900 200M900 88L1080 8M990 48V100M900 140L990 100L1080 140V200M900 200L990 158L1080 200M1080 88L1260 8M1170 48V100M1080 140L1170 100L1260 140V200M1080 200L1170 158L1260 200M1260 88L1440 8M1350 48V100M1260 140L1350 100L1440 140V200M1260 200L1350 158L1440 200M1440 88L1620 8M1530 48V100M1440 140L1530 100L1620 140V200M1440 200L1530 158L1620 200M1620 88L1800 8M1710 48V100M1620 140L1710 100L1800 140V200M1620 200L1710 158L1800 200M1800 88L1980 8M1890 48V100M1800 140L1890 100L1980 140V200M1800 200L1890 158L1980 200M1980 88L2160 8M2070 48V100M1980 140L2070 100L2160 140V200M1980 200L2070 158L2160 200M2160 88L2340 8M2250 48V100M2160 140L2250 100L2340 140V200M2160 200L2250 158L2340 200M2340 88L2520 8M2430 48V100M2340 140L2430 100L2520 140V200M2340 200L2430 158L2520 200M2520 88L2700 8M2610 48V100M2520 140L2610 100L2700 140V200M2520 200L2610 158L2700 200M2700 88L2880 8M2790 48V100M2700 140L2790 100L2880 140V200M2700 200L2790 158L2880 200M2880 88L3060 8M2970 48V100M2880 140L2970 100L3060 140V200M2880 200L2970 158L3060 200M3060 88L3240 8M3150 48V100M3060 140L3150 100L3240 140V200M3060 200L3150 158L3240 200M3240 88L3420 8M3330 48V100M3240 140L3330 100L3420 140V200M3240 200L3330 158L3420 200M3420 88L3600 8M3510 48V100M3420 140L3510 100L3600 140V200M3420 200L3510 158L3600 200M3600 88L3780 8M3690 48V100M3600 140L3690 100L3780 140V200M3600 200L3690 158L3780 200M3780 88L3960 8M3870 48V100M3780 140L3870 100L3960 140V200M3780 200L3870 158L3960 200M3960 88L4140 8M4050 48V100M3960 140L4050 100L4140 140V200M3960 200L4050 158L4140 200M4140 88L4320 8M4230 48V100M4140 140L4230 100L4320 140V200M4140 200L4230 158L4320 200M4320 88L4500 8M4410 48V100M4320 140L4410 100L4500 140V200M4320 200L4410 158L4500 200M4500 88L4680 8M4590 48V100M4500 140L4590 100L4680 140V200M4500 200L4590 158L4680 200M4680 88L4860 8M4770 48V100M4680 140L4770 100L4860 140V200M4680 200L4770 158L4860 200M4860 88L5040 8M4950 48V100M4860 140L4950 100L5040 140V200M4860 200L4950 158L5040 200M5040 88L5220 8M5130 48V100M5040 140L5130 100L5220 140V200M5040 200L5130 158L5220 200M5220 88L5400 8M5310 48V100M5220 140L5310 100L5400 140V200M5220 200L5310 158L5400 200M5400 88L5580 8M5490 48V100M5400 140L5490 100L5580 140V200M5400 200L5490 158L5580 200M5580 88L5760 8M5670 48V100M5580 140L5670 100L5760 140V200M5580 200L5670 158L5760 200M5760 88L5940 8M5850 48V100M5760 140L5850 100L5940 140V200M5760 200L5850 158L5940 200M5940 88L6120 8M6030 48V100M5940 140L6030 100L6120 140V200M5940 200L6030 158L6120 200M6120 88L6300 8M6210 48V100M6120 140L6210 100L6300 140V200M6120 200L6210 158L6300 200M6300 88L6480 8M6390 48V100M6300 140L6390 100L6480 140V200M6300 200L6390 158L6480 200M6480 88L6660 8M6570 48V100M6480 140L6570 100L6660 140V200M6480 200L6570 158L6660 200M6660 88L6840 8M6750 48V100M6660 140L6750 100L6840 140V200M6660 200L6750 158L6840 200M6840 88L7020 8M6930 48V100M6840 140L6930 100L7020 140V200M6840 200L6930 158L7020 200M7020 88L7200 8M7110 48V100M7020 140L7110 100L7200 140V200M7020 200L7110 158L7200 200M7200 88L7380 8M7290 48V100M7200 140L7290 100L7380 140V200M7200 200L7290 158L7380 200" style="fill:none;stroke:#F3DEDA;stroke-width:14;stroke-linecap:round;stroke-linejoin:round"></path></svg>
 <img src="/_blob/8549e41ff079b3b7ba922120046d8968" alt="" style="width:46%;height:auto;display:block">
 </div>
-<div class="sa-lift sa-ameixa" style="position:absolute;left:150px;top:80px;width:300px;transform:rotate(4deg);aspect-ratio:1.72;box-shadow:0 26px 46px rgba(20,12,13,.55),inset 0 0 0 1px rgba(243,222,218,.18);padding:18px 18px 14px;box-sizing:border-box;color:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between" aria-label="Mockup do cartão de visita, verso com nome, CAU, Instagram e WhatsApp" role="img">
+<div class="sa-lift" style="background:#534243;position:absolute;left:150px;top:80px;width:300px;transform:rotate(4deg);aspect-ratio:1.72;box-shadow:0 26px 46px rgba(20,12,13,.55),inset 0 0 0 1px rgba(243,222,218,.18);padding:18px 18px 14px;box-sizing:border-box;color:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between" aria-label="Mockup do cartão de visita, verso com nome, CAU, Instagram e WhatsApp" role="img">
 <svg class="sa-mk" viewBox="0 0 444 484" aria-hidden="true" style="position:absolute;left:-40px;top:20px;width:150px;color:#615051"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
 <div style="text-align:right;position:relative">
 <p style="margin:0;font-size:21px;font-weight:300;line-height:1.1">Simone Afonso</p>
@@ -755,7 +907,7 @@ a:hover{color:#8A4F55}
 
 <!-- RODAPÉ -->
 <footer style="background:#2C2122;color:#F3DEDA">
-<div style="max-width:1296px;margin:0 auto;padding:44px clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:space-between;align-items:flex-start;font-size:15px">
+<div style="max-width:none;margin:0 auto;padding:44px clamp(16px,3.5vw,56px);display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:space-between;align-items:flex-start;font-size:15px">
 <img src="/_blob/8549e41ff079b3b7ba922120046d8968" alt="Logo Simone Afonso Arquitetura e Interiores" style="height:70px;width:auto;display:block">
 <div style="flex:1 1 260px;min-width:0">
 <p style="margin:0 0 4px;color:#FFFFFF;font-weight:500">Simone Afonso Arquitetura e Interiores</p>
@@ -777,9 +929,8 @@ a:hover{color:#8A4F55}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, sent: false, sub: false, dep: '', real: null };
+    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, real: null };
   }
-
   componentDidMount() {
     try {
       fetch('/blog/posts.json', { credentials: 'omit' }).then((r) => (r.ok ? r.json() : [])).then((a) => {
@@ -787,6 +938,7 @@ class Component extends DCLogic {
       }).catch(() => {});
     } catch (e) {}
   }
+  componentWillUnmount() { if (this._stopSeq) this._stopSeq(); if (this._ac && this._ac.close) { try { this._ac.close(); } catch (x) {} } }
 
   renderVals() {
     const s = this.state;
@@ -814,7 +966,7 @@ class Component extends DCLogic {
     ];
 
     const svcs = [
-      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas, restaurantes, clínicas e empresas', img: '/_blob/751e2d2705d8d090bc98f64dfc5d32e8', alt: 'Estante alta e iluminada da loja Vila do Bem, com produtos organizados por categoria', caption: 'loja Vila do Bem, na Praia da Costa',
+      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas, restaurantes, clínicas e empresas', img: '/_blob/751e2d2705d8d090bc98f64dfc5d32e8', alt: 'Estante alta e iluminada da loja Vila do Bem, com produtos organizados por categoria', video: true, caption: 'tour pelo Studio Maelle, do depoimento da Cassia',
         lead: 'Projeto o espaço pensando na experiência de quem entra, compra, atende e trabalha ali. Para empresas e indústrias, conto com a especialização em Ambientes de Trabalho, com certificação alemã.',
         who: 'Empresas que querem um espaço coerente com a marca e bom para clientes e equipe.',
         proof: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa.', proofBy: 'Cassia Bastianelle, sócia do Estúdio Maelle',
@@ -840,37 +992,37 @@ class Component extends DCLogic {
     ];
     const tabs = svcs.map((v, i) => ({ title: v.title, sel: i === s.tab, ...chip(i === s.tab), pick: () => this.setState({ tab: i }) }));
     const sv = svcs[s.tab];
-    const svc = { ...sv, hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
+    const svc = { ...sv, hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
     const catSub = ['lojas e empresas', 'casa completa', 'por horas', 'sem reforma', 'para vender'];
     const catName = ['Comercial', 'Interiores', 'Consultoria', 'Relooking', 'Staging'];
     const catImg = ['/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
     const cats = catName.map((n, i) => ({ name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
 
     const ads = [
-      { name: 'Quarto temático', title: 'Quarto de adolescente com tema de hipismo', ratio: '4 / 3', maxw: '100%',
-        antes: '/_blob/6a5444c6eff9319e829e4b113dfe3df2', depois: '/_blob/cecba3083e683cb18d22803fa5d7beaa',
-        altA: 'Antes: escrivaninha branca com fios soltos e medalhas penduradas na parede',
-        altD: 'Depois: quarto com bancada de estudo, cama com colcha azul, painel iluminado para as medalhas e adesivo de cavalo saltando',
-        text: 'A escrivaninha com fios soltos virou uma bancada de estudo comprida. As medalhas de hipismo ganharam um painel iluminado, e o tema aparece na parede e nas almofadas.' },
+      { name: 'Quarto temático', title: 'Quarto de adolescente com tema de hipismo', ratio: '1 / 1', maxw: '640px',
+        antes: '/_blob/e187fd74b33063d672129ef163895314', depois: '/_blob/f15f7b019b235fd0c52fd7ef3b3eafdc',
+        altA: 'Antes: quarto visto da porta, com escrivaninha branca na parede da esquerda, cadeira gamer e cama de solteiro com grade ao fundo',
+        altD: 'Depois: o mesmo quarto visto da porta, com bancada de estudo comprida, painel iluminado de medalhas, cama com colcha azul e adesivo de cavalo saltando',
+        text: 'Do mesmo ponto da porta: a escrivaninha solta virou uma bancada de estudo comprida, as medalhas de hipismo ganharam um painel iluminado e o tema aparece na parede e nas almofadas.' },
       { name: 'Cozinha compacta', title: 'Cozinha compacta', ratio: '4 / 3', maxw: '100%',
-        antes: '/_blob/368ed813c9324c0da7ac4660dcab5076', depois: '/_blob/33f4feb7c2c9db4e3e30a3b9c2a5b2cb',
-        altA: 'Antes: cozinha pequena com fogão de piso, armário branco e azulejo branco',
-        altD: 'Depois: cozinha com cooktop e forno embutido, marcenaria em madeira e revestimento geométrico azul e bege',
-        text: 'Na mesma área, o fogão de piso deu lugar a cooktop e forno embutidos. A marcenaria em madeira e o revestimento geométrico deram personalidade ao espaço.' },
+        antes: '/_blob/27af359e979461292123b1ee04b9b9b9', depois: '/_blob/77daa7746d383ebf9ce03d073fc21116',
+        altA: 'Antes: parede da cozinha com fogão de piso, pia de granito preto, armários brancos e azulejo branco',
+        altD: 'Depois: a mesma parede com cooktop e forno embutidos, pia de granito preto, marcenaria em madeira e revestimento geométrico azul e bege',
+        text: 'Na mesma parede e na mesma área, o fogão de piso deu lugar a cooktop e forno embutidos. A marcenaria em madeira e o revestimento geométrico deram personalidade ao espaço.' },
       { name: 'Banheiro', title: 'Banheiro social', ratio: '3 / 4', maxw: '520px',
         antes: '/_blob/d24bfac980f14d8293324031094a6267', depois: '/_blob/520dd457bb0db10dd2d81020750116c9',
         altA: 'Antes: banheiro todo branco com bancada de granito e box de vidro fumê',
         altD: 'Depois: banheiro com revestimento estampado, espelho redondo iluminado, bancada clara e iluminação em linha no teto',
         text: 'O banheiro todo branco ganhou revestimento estampado, espelho redondo com luz e uma linha de iluminação no teto.' },
-      { name: 'Cozinha', title: 'Cozinha com mesa', ratio: '3 / 4', maxw: '520px',
-        antes: '/_blob/a456a8ca596f7ad2bc0ef441832e76eb', depois: '/_blob/7ed70dd2abb91f069f69a818a554120e',
-        altA: 'Antes: cozinha com armários brancos, cristaleira e cadeiras de plástico',
-        altD: 'Depois: cozinha com portas verdes de madeira, mesa com cadeiras escuras e sanca iluminada no teto',
-        text: 'A cozinha ganhou portas verdes, mesa para as refeições do dia a dia e uma sanca iluminada que deixa o ambiente mais acolhedor.' },
-      { name: 'Sala de jantar', title: 'Sala de jantar', ratio: '3 / 4', maxw: '520px',
-        antes: '/_blob/2c0278b1b977f0a5394d5ea41133231b', depois: '/_blob/304a9c36eacce5c833f0a5c03118139e',
-        altA: 'Antes: mesa redonda de vidro com cadeiras de metal diante de uma cortina',
-        altD: 'Depois: mesa redonda de madeira com cadeiras estofadas, lustre de anéis e espelho decorativo na parede',
+      { name: 'Cozinha', title: 'Cozinha ampla', ratio: '3 / 4', maxw: '520px',
+        antes: '/_blob/0584561f485b80f4345b9877425d0d0b', depois: '/_blob/31a3ad6d1557aa6a9119546a97debfeb',
+        altA: 'Antes: cozinha em corredor com armários brancos, bancada de granito e a área de serviço ao fundo',
+        altD: 'Depois: a mesma cozinha com ilha clara, marcenaria em tons de areia, sanca iluminada e bancada contínua até o fundo',
+        text: 'Olhando na mesma direção: a cozinha em corredor ganhou uma ilha, marcenaria planejada de ponta a ponta e uma sanca iluminada que deixa o ambiente mais acolhedor.' },
+      { name: 'Sala de jantar', title: 'Sala de jantar', ratio: '1 / 1', maxw: '640px',
+        antes: '/_blob/f2f5f3bf3a6146178de69ee764415d44', depois: '/_blob/be2f71cbd514a52616ae1c42513bcc04',
+        altA: 'Antes: mesa redonda de vidro com cadeiras de fibra e metal diante de uma cortina',
+        altD: 'Depois: mesa redonda clara com cadeiras de madeira estofadas, lustre de anéis e painel de espelhos na parede',
         text: 'A mesa de vidro e as cadeiras de metal deram lugar a madeira, cadeiras estofadas e um lustre que vira o ponto de atenção da sala.' }
     ];
     const a = ads[s.ad];
@@ -890,6 +1042,142 @@ class Component extends DCLogic {
       { t: 'quer um ambiente pronto de catálogo, sem a sua história nele' }
     ];
 
+    const TR = [
+      { name: 'O quarto do Arthur', w1: '#C8964A', w2: '#E3BDB8', w3: '#9DB5A6', glow: 'rgba(200,150,74,.20)', rc: '#C8964A', intro: 'O Arthur escolheu a música que mais o descrevia e o fazia se sentir vivo.', song: 'No Time For Caution', artist: 'Hans Zimmer', link: 'https://www.youtube.com/watch?v=3JM1T_MqkOk',
+        mapa: '/_blob/af82c706ab2aac2c61a59a87c3818864', mapaAlt: 'Mapa mental da música No Time For Caution, de Hans Zimmer, feito pela Simone: no centro a palavra energia, ligada a força, continuidade, persistência, amplitude, elevação, foco, onda, frequência, liberdade e crescimento, com a leitura de que a música começa em mistério e luta, cresce em ascensão e termina num momento de êxtase e paz',
+        mapaCap: 'Energia, continuidade, persistência e elevação: o mapa que a Simone fez escutando a música.',
+        i1: '/_blob/a41d1c1999169754280f0f99df8178ff', a1: 'Projeto 3D do quarto: estante branca em forma de onda contínua sobre a cabeceira da cama, com livros e um pendente de luz',
+        i2: '/_blob/548de7b688070a720d3392875a410609', a2: 'Projeto 3D do quarto: armário com portas ripadas, cortina clara, ventilador de teto e a estante em onda ao lado da cama',
+        i3: '/_blob/ced5084cf0c590d8560f045799a16449', a3: 'Projeto 3D do quarto: bancada de estudo com cadeira ergonômica, quadro de cortiça e mapa-múndi geométrico em madeira na parede',
+        projCap: 'A estante em onda sobre a cama, o armário ripado e a bancada de estudo com o mapa-múndi.',
+        s4: 'O que ele sentiu', quote: 'Quando vi o projeto pela primeira vez, me senti dono daquele espaço, como se realmente fosse feito pra mim. Me senti representado.', by: 'Arthur Segatto Lubiana, projeto do quarto' },
+      { name: 'O quarto da Ana Clara', w1: '#A9BEEA', w2: '#E8D48A', w3: '#E3BDB8', glow: 'rgba(169,190,234,.20)', rc: '#A9BEEA', intro: 'A Ana Clara escolheu uma música sobre se transformar e ganhar asas.', song: 'Defying Gravity', artist: 'Elenco de Glee', link: 'https://www.youtube.com/watch?v=t7YD6bWkuXE',
+        mapa: '/_blob/622f202b6dbb3614464ce1dcfcb06b6b', mapaAlt: 'Mapa mental da música Defying Gravity, na versão de Glee, feito pela Simone: transformação, ligada a elevação, delicadeza e força; despertar, ligado a renascer, descobrir e novo olhar; e libertar-se, ligado a brilho, vento e luz',
+        mapaCap: 'Transformação, despertar e libertar-se: o mapa que a Simone fez escutando a música.',
+        i1: '/_blob/e0903edb8caf5998382603c24f01751c', a1: 'Projeto 3D do quarto: cama com cabeceira capitonê azul-clara, quadros de rostos com flores, bancada de estudo preta sob a janela e quadros de asas coloridas na parede',
+        i2: '/_blob/177b29e7300995e4b694119a7729a092', a2: 'Projeto 3D do quarto: prateleiras brancas suspensas por montantes dourados iluminados, com violão, livros e TV',
+        i3: '/_blob/646a6adbd114708cfc12c9c4c12cca4e', a3: 'Projeto 3D do quarto visto da porta: cama ao centro, armário espelhado, bancada de estudo e a coluna de quadros de asas',
+        projCap: 'Os quadros de asas, a cabeceira macia, a bancada de estudo e as prateleiras iluminadas.',
+        s4: 'A leitura da Simone', quote: 'Desperta magia, força, sensação de desconstruir para reconstruir, um novo olhar mantendo o tempo presente como um presente.', by: 'Trecho do mapa da música, escrito pela Simone' }
+    ];
+    const tc = TR[s.tr || 0];
+    const trTabs = TR.map((x, i) => ({ name: x.name, sel: i === (s.tr || 0) ? 'true' : 'false', bg: i === (s.tr || 0) ? '#F3DEDA' : 'transparent', ink: i === (s.tr || 0) ? '#2A2022' : '#F3DEDA', pick: () => this.setState({ tr: i }) }));
+    const rip = (s.rip || []).map((r) => ({ ...r, c: r.c || tc.rc }));
+    const addRip = (x, y, c) => {
+      this._rid = (this._rid || 0) + 1; const id = this._rid;
+      this.setState({ rip: (this.state.rip || []).concat([{ id, x: Math.round(x), y: Math.round(y), c }]) });
+      setTimeout(() => this.setState({ rip: (this.state.rip || []).filter((r) => r.id !== id) }), 2400);
+    };
+    // Sequenciador: sons gerados ao vivo pelo navegador (Web Audio), sem arquivos de áudio.
+    const SEQ_ROWS = [
+      ['Lá', 'n', 440.0, '#7CC28A'], ['Sol', 'n', 392.0, '#F0A05A'], ['Mi', 'n', 329.63, '#CDE7F5'], ['Ré', 'n', 293.66, '#F2D066'], ['Dó', 'n', 261.63, '#E46F6F'],
+      ['Chimbal', 'hat', 0, '#E3BDB8'], ['Caixa', 'snare', 0, '#9DB5A6'], ['Bumbo', 'kick', 0, '#C8964A']
+    ];
+    const P = (str) => str.split('').map((ch) => ch === 'x');
+    const PRESETS = [
+      { name: 'Energia, como o Arthur', bpm: 118, rows: ['........x.....x.', '......x...x.....', '...x........x...', '.x..............', 'x...............', 'x.x.x.x.x.x.x.x.', '....x.......x...', 'x...x...x.x.x...'] },
+      { name: 'Delicadeza, como a Ana Clara', bpm: 84, rows: ['....x...........', '..x...x.........', 'x.......x.......', '..........x...x.', '............x...', '..x...x...x...x.', '................', 'x.......x.......'] },
+      { name: 'Limpar tudo', bpm: 0, rows: [] }
+    ];
+    const seq = s.seq || (this._seq0 || (this._seq0 = PRESETS[0].rows.map(P)));
+    const bpm = s.bpm || 118;
+    const getAC = () => {
+      if (navigator.audioSession) { try { navigator.audioSession.type = 'playback'; } catch (x) {} }
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      const ac = this._ac || (this._ac = new AC());
+      if (ac.state === 'suspended') ac.resume();
+      if (!this._out) { const comp = ac.createDynamicsCompressor(); const g = ac.createGain(); g.gain.value = s.muted ? 0 : 0.5; g.connect(comp); comp.connect(ac.destination); this._out = g; }
+      return ac;
+    };
+    const noise = (ac) => {
+      if (this._nb) return this._nb;
+      const len = ac.sampleRate * 0.5, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+      return (this._nb = buf);
+    };
+    const voice = (ac, kind, f, t) => {
+      const out = this._out;
+      if (kind === 'kick') {
+        const o = ac.createOscillator(), g = ac.createGain();
+        o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.14);
+        g.gain.setValueAtTime(1, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.42);
+        o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.45);
+      } else if (kind === 'snare' || kind === 'hat') {
+        const src = ac.createBufferSource(); src.buffer = noise(ac);
+        const fl = ac.createBiquadFilter(); fl.type = 'highpass'; fl.frequency.value = kind === 'hat' ? 7000 : 1400;
+        const g = ac.createGain(); const len = kind === 'hat' ? 0.05 : 0.18; const vol = kind === 'hat' ? 0.28 : 0.6;
+        g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + len);
+        src.connect(fl); fl.connect(g); g.connect(out); src.start(t); src.stop(t + len + 0.02);
+        if (kind === 'snare') { const o = ac.createOscillator(), og = ac.createGain(); o.type = 'triangle'; o.frequency.value = 185; og.gain.setValueAtTime(0.35, t); og.gain.exponentialRampToValueAtTime(0.001, t + 0.1); o.connect(og); og.connect(out); o.start(t); o.stop(t + 0.12); }
+      } else {
+        const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.setValueAtTime(f * 7, t); lp.frequency.exponentialRampToValueAtTime(f * 2.2, t + 0.8); lp.connect(out);
+        [1, 0.55, 0.3, 0.16, 0.08].forEach((amp, i) => {
+          const n = i + 1, o = ac.createOscillator(), g = ac.createGain();
+          o.frequency.value = f * n * (1 + 0.00035 * n * n); const peak = 0.22 * amp, dec = 1.5 / Math.sqrt(n);
+          g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dec);
+          o.connect(g); g.connect(lp); o.start(t); o.stop(t + dec + 0.05);
+        });
+      }
+    };
+    const NOTES = [
+      ['Dó', 261.63, '#E46F6F', 0], ['Dó sustenido', 277.18, '#A47FD6', 1], ['Ré', 293.66, '#F2D066', 0], ['Ré sustenido', 311.13, '#8FA3B8', 1],
+      ['Mi', 329.63, '#CDE7F5', 0], ['Fá', 349.23, '#C2504C', 0], ['Fá sustenido', 369.99, '#6F8FE0', 1], ['Sol', 392.0, '#F0A05A', 0],
+      ['Sol sustenido', 415.3, '#B57EC2', 1], ['Lá', 440.0, '#7CC28A', 0], ['Lá sustenido', 466.16, '#9AA7B5', 1], ['Si', 493.88, '#6FA8DC', 0], ['Dó', 523.25, '#E46F6F', 0],
+      ['Dó sustenido', 554.37, '#A47FD6', 1], ['Ré', 587.33, '#F2D066', 0], ['Ré sustenido', 622.25, '#8FA3B8', 1], ['Mi', 659.26, '#CDE7F5', 0], ['Fá', 698.46, '#C2504C', 0],
+      ['Fá sustenido', 739.99, '#6F8FE0', 1], ['Sol', 783.99, '#F0A05A', 0], ['Sol sustenido', 830.61, '#B57EC2', 1], ['Lá', 880.0, '#7CC28A', 0], ['Lá sustenido', 932.33, '#9AA7B5', 1],
+      ['Si', 987.77, '#6FA8DC', 0], ['Dó', 1046.5, '#E46F6F', 0]
+    ];
+    const keyOf = (nt, i) => ({ i, label: 'Tocar a nota ' + nt[0],
+      bg: s.lit === i ? nt[2] : (nt[3] ? '#1C1516' : '#FAF4F0'),
+      play: (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const ac = getAC(); if (ac) voice(ac, 'n', nt[1], ac.currentTime + 0.005);
+        const sec = e && e.currentTarget && e.currentTarget.closest ? e.currentTarget.closest('section') : null;
+        if (sec) { const b = sec.getBoundingClientRect(); const k = e.currentTarget.getBoundingClientRect(); addRip(k.left + k.width / 2 - b.left, k.top + k.height - b.top, nt[2]); }
+        this.setState({ lit: i }); clearTimeout(this._litT); this._litT = setTimeout(() => this.setState({ lit: -1 }), 380);
+      } });
+    let wi = 0;
+    const pianoW = [], pianoB = [];
+    NOTES.forEach((nt, i) => { if (nt[3]) pianoB.push({ ...keyOf(nt, i), left: (wi * (100 / 15) - 1.95).toFixed(2) }); else { pianoW.push(keyOf(nt, i)); wi++; } });
+    const stopSeq = () => { clearInterval(this._tick); this._tick = null; };
+    const startSeq = () => {
+      const ac = getAC(); if (!ac) return;
+      stopSeq(); this._stepN = 0; this._next = ac.currentTime + 0.06;
+      this._tick = setInterval(() => {
+        const st = this.state, pat = st.seq || this._seq0, b = st.bpm || 118, dt = 60 / b / 4;
+        while (this._next < ac.currentTime + 0.12) {
+          SEQ_ROWS.forEach((r, ri) => { if (pat[ri] && pat[ri][this._stepN]) voice(ac, r[1], r[2], this._next); });
+          this._next += dt; this._stepN = (this._stepN + 1) % 16;
+        }
+      }, 25);
+    };
+    this._stopSeq = stopSeq;
+    const setPat = (p) => this.setState({ seq: p });
+    const seqRows = SEQ_ROWS.map((r, ri) => ({ name: r[0], col: r[3], cells: Array.from({ length: 16 }, (_, ci) => {
+      const on = !!(seq[ri] && seq[ri][ci]);
+      return { on: on ? 'true' : 'false', label: r[0] + ', passo ' + (ci + 1) + (on ? ', ligado' : ', desligado'), gap: ci % 4 === 3 ? '6px' : '2px',
+        bg: on ? r[3] : (ci % 4 === 0 ? 'rgba(243,222,218,.13)' : 'rgba(243,222,218,.07)'), glow: on ? '0 0 14px ' + r[3] : 'none',
+        flip: (e) => {
+          const p = seq.map((row) => row.slice()); p[ri][ci] = !on; setPat(p);
+          if (!on && !this._tick) { const ac = getAC(); if (ac) voice(ac, r[1], r[2], ac.currentTime + 0.01); }
+        } };
+    }) }));
+    const seqPresets = PRESETS.map((p) => ({ name: p.name, pick: () => this.setState(p.rows.length ? { seq: p.rows.map(P), bpm: p.bpm } : { seq: SEQ_ROWS.map(() => P('................')) }) }));
+    const seqPlaying = s.playing ? 'true' : 'false';
+    const muteToggle = () => { const m = !s.muted; if (this._out) this._out.gain.value = m ? 0 : 0.5; this.setState({ muted: m }); };
+    const seqToggle = () => { if (s.playing) { stopSeq(); this.setState({ playing: false }); } else { startSeq(); this.setState({ playing: true }); } };
+    const seqTempo = (e) => {
+      const v = Number(e.target.value); if (v === bpm) return;
+      this.setState({ bpm: v });
+      if (s.playing) { this.setState({ playing: false }); startSeq(); setTimeout(() => this.setState({ playing: true }), 0); }
+    };
+    const trRipple = (e) => {
+      const el = e.currentTarget; if (!el || !el.getBoundingClientRect) return;
+      const b = el.getBoundingClientRect();
+      let x = e.clientX - b.left, y = e.clientY - b.top;
+      if (!e.clientX && !e.clientY && e.target && e.target.getBoundingClientRect) { const t = e.target.getBoundingClientRect(); x = t.left + t.width / 2 - b.left; y = t.top + t.height / 2 - b.top; }
+      addRip(x, y, '');
+    };
     const moods = [
       { name: 'Acolher', trilha: 'Voz suave e violão', cores: ['#D9A68F', '#B7766B', '#EBD9C3', '#6F4B45'], formas: 'curvas e cantos arredondados', texturas: 'lã, linho e madeira clara', luz: 'quente e indireta' },
       { name: 'Respirar', trilha: 'Piano e pausas longas', cores: ['#CFDCD2', '#9DB5A6', '#EFE9DD', '#4F6A5E'], formas: 'linhas retas e espaço livre', texturas: 'cerâmica, algodão e plantas', luz: 'natural e difusa' },
@@ -936,20 +1224,56 @@ class Component extends DCLogic {
     const pfNames = ['Todos', 'Comercial', 'Residencial', 'Infantil', '3D'];
     const projFilters = pfNames.map((n) => ({ name: n, sel: n === s.pf, ...chip(n === s.pf), pick: () => this.setState({ pf: n }) }));
     const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0);
-    const projVisible = vis.map((p) => ({ ...p, open: () => this.setState({ lb: p.i }) }));
-    const lbP = s.lb >= 0 ? projects[s.lb] : projects[0];
-    const lb = { img: lbP.img, alt: lbP.alt, name: lbP.name, kind: lbP.kind };
+    // Mais fotos de cada projeto (pastas do Drive). Cartões do mesmo projeto compartilham a galeria.
+    const R = 'Foto real', T = 'Projeto em 3D';
+    const GAL = {
+      vdb: [['/_blob/530c61041dcf5b1550d82dceaacc30b7'], ['/_blob/42d19a5119ea3f4f92fc2052d8210956'], ['/_blob/7c57fcfe6209b92a8b5e1bc81b663c2a'], ['/_blob/09d757bc4eb3ce19f29d8c31366a3be6']],
+      jantar: [['/_blob/c654e610a854fbb12566558de0046be0']],
+      bmq: [['/_blob/f72bfbe60d106750e8354cd293757ac4'], ['/_blob/367538613b5fbb1bc2bc39ef2b0d2662'], ['/_blob/e096b4c5226b4174e11e86695944e956'], ['/_blob/1f6ee87bf86cd47905f7e8304e7d9dca']],
+      bicho: [['/_blob/0937e516b5be435e75c3856ee0af4f61'], ['/_blob/093367d30b468582ea7403752ec13e6c'], ['/_blob/b61137b39476780eb54e82c95139ce26'], ['/_blob/57719ec9b2351148d80470aa1142ce7e'], ['/_blob/40eca15e0762a62dcf8c634d1e165573']],
+      multi: [['/_blob/742e64dfee5ef96615792ce60d802ec8', R], ['/_blob/1c1f4473962d6ba35919e6045ee2c698', R], ['/_blob/4f368aa8b12b27cd38b2dbbd8e090c87', R], ['/_blob/90289750f1ed5545a84517abe411982a', T], ['/_blob/d46bd7d2c17c64d19dec20fc581563c8', T], ['/_blob/27db22f9229afb4ea848856ca59f77c1', T], ['/_blob/43ab46d25fd13cbbe57c9cee78f613aa', T], ['/_blob/18bc59517d79ce70ded8342fb283c9c5', T]],
+      vet: [['/_blob/cf6e0e54cf8774671450519a2287d514'], ['/_blob/f5398902b0e90a51ab3a9e55f0044600'], ['/_blob/2a9c9357388f5f9705add3ac234205cd']],
+      teen: [['/_blob/5099dc6364bb99eb61072d62ac18a6e4'], ['/_blob/a39294906b041190cf18747dbe067ebc'], ['/_blob/77598a3e208c8dccc737ba7f9130341b'], ['/_blob/50c8e3d3e4eeedd9e1016e054915ab45']],
+      stand: [['/_blob/57e551c68a162b6fd73edf235d52947d'], ['/_blob/2a1f7bf95e676bafe25572162227b84f'], ['/_blob/a52bab5035036b43a82cdaa5337ec62c']],
+      cozinha: [['/_blob/adae66e8fdb94fe629e3f7a7ce498cbe'], ['/_blob/cccdc62c616043b6b01c7c30d8947e4c'], ['/_blob/9519312df1c5be53592515157cc33344'], ['/_blob/c29208dbd6300366184810ed820c974f']],
+      kit: [['/_blob/1ee6fd1ccb8e4d82cb33bb7fc5d555e8'], ['/_blob/170bb57a83bf6a450f4d4e9c463a53b9']]
+    };
+    const galOf = ['vdb', 'jantar', 'bmq', 'bicho', '', 'multi', 'vet', '', 'bmq', 'teen', 'stand', '', 'cozinha', 'bmq', '', 'jantar', 'kit', 'multi'];
+    const photosOf = (i) => {
+      const p = projects[i], k = galOf[i] || '';
+      const list = [{ img: p.img, alt: p.alt, cap: '' }];
+      if (!k) return list;
+      projects.forEach((q, j) => { if (j !== i && galOf[j] === k) list.push({ img: q.img, alt: q.alt, cap: '' }); });
+      GAL[k].forEach((g) => list.push({ img: g[0], alt: '', cap: g[1] || '' }));
+      return list.map((f, n) => ({ ...f, alt: f.alt || (p.name + ', foto ' + (n + 1) + ' de ' + list.length) }));
+    };
+    const projVisible = vis.map((p) => {
+      const n = photosOf(p.i).length;
+      return { ...p, hasMore: n > 1, more: '+' + (n - 1) + ' fotos', aria: n > 1 ? 'Ver ' + n + ' fotos do projeto ' + p.name : 'Ampliar foto: ' + p.name,
+        open: () => this.setState({ lb: p.i, li: 0 }) };
+    });
+    const lbI = s.lb >= 0 ? s.lb : 0;
+    const lbP = projects[lbI];
+    const lbPh = photosOf(lbI);
+    const li = Math.min(s.li || 0, lbPh.length - 1);
+    const lbCur = lbPh[li];
+    const lbMany = lbPh.length > 1;
+    const lb = { img: lbCur.img, alt: lbCur.alt, name: lbP.name, kind: lbCur.cap ? lbP.kind + ' · ' + lbCur.cap : lbP.kind,
+      count: lbMany ? 'Foto ' + (li + 1) + ' de ' + lbPh.length : '' };
+    const lbThumbs = lbPh.map((f, n) => ({ img: f.img, label: 'Ver foto ' + (n + 1) + ' de ' + lbPh.length, cur: n === li ? 'true' : 'false',
+      ring: n === li ? '#F3DEDA' : 'transparent', op: n === li ? '1' : '.6', pick: () => this.setState({ li: n }) }));
     const step = (d) => () => {
+      if (lbMany) { this.setState({ li: (li + d + lbPh.length) % lbPh.length }); return; }
       const idx = vis.findIndex((p) => p.i === s.lb);
       const n = vis[(idx + d + vis.length) % vis.length];
-      this.setState({ lb: n ? n.i : -1 });
+      this.setState({ lb: n ? n.i : -1, li: 0 });
     };
 
     const D = [
       { id: 'andrea', tag: 'Escuta e memória afetiva', chip: '#F3DEDA', n: 'Andrea Mongin', p: 'Reforma completa de apartamento',
         short: 'O trabalho da Simone se destaca pela escuta atenta e sensível das percepções dos clientes sobre os ambientes, considerando também as memórias afetivas que esses espaços evocam. Nosso apartamento ficou a “nossa cara”.',
         full: 'A experiência que tivemos com o trabalho da Simone, quando reformamos nosso apartamento, foi bastante significativa! A Simone consegue aliar competência, dedicação, criatividade e sensibilidade. Seu trabalho se diferencia e se destaca, sobretudo, pela escuta atenta e sensível das percepções dos clientes sobre os ambientes que habitam ou desejam habitar, considerando também as memórias afetivas que esses espaços evocam e os vínculos emocionais que os tornam verdadeiramente significativos. Nosso apartamento ficou a “nossa cara” e é um prazer morar e receber pessoas queridas em nosso “novo” espaço. Gratidão, Simone!' },
-      { id: 'cassia', tag: 'Projeto comercial', chip: '#E4E8DA', n: 'Cassia Bastianelle', p: 'Sócia do Estúdio Maelle, consultoria para o estúdio',
+      { id: 'cassia', video: true, tag: 'Projeto comercial', chip: '#E4E8DA', n: 'Cassia Bastianelle', p: 'Sócia do Estúdio Maelle, consultoria para o estúdio',
         short: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa. É justamente isso que escutamos delas até hoje.',
         full: 'Nós tínhamos a sala e sabíamos o que precisávamos colocar lá dentro, mas não tínhamos ideia de como fazer aquele espaço nos atender completamente, de forma que tudo fluísse e fosse confortável para as nossas clientes. A consultoria com a Simone foi essencial para mapear cada cantinho do Stúdio, tornar os ambientes funcionais e, ainda por cima, trazer aconchego e acolhimento. Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa. E digo com propriedade que a Simone alcançou esse resultado, porque é justamente isso que escutamos das clientes ao entrarem no Stúdio até hoje.' },
       { id: 'arthur', tag: 'Briefing musical', chip: '#E3BDB8', n: 'Arthur Segatto Lubiana', p: 'Projeto do quarto',
@@ -959,7 +1283,8 @@ class Component extends DCLogic {
     const depos = D.map((d) => {
       const open = s.dep === d.id;
       return { tag: d.tag, chip: d.chip, n: d.n, p: d.p, text: open ? d.full : d.short, open: open ? 'true' : 'false',
-        label: open ? 'Mostrar menos' : 'Ler depoimento completo', toggle: () => this.setState({ dep: open ? '' : d.id }) };
+        label: open ? 'Mostrar menos' : 'Ler depoimento completo', toggle: () => this.setState({ dep: open ? '' : d.id }),
+        hasVideo: !!d.video, openVid: () => this.setState({ vid: true }) };
     });
     const featOpen = s.dep === 'celia';
     const feat = {
@@ -982,7 +1307,8 @@ class Component extends DCLogic {
     ];
     const real = Array.isArray(s.real) && s.real.length ? s.real : null;
     const mk = (d) => { const [y, m, dd] = d.split('-'); return dd + '/' + m + '/' + y; };
-    const source = real ? real.map((r) => ({ cat: r.category, title: r.title, img: r.image || '', alt: r.alt, href: r.url, meta: mk(r.date) + ' · Ler texto' }))
+    const source = real
+      ? real.map((r) => ({ cat: r.category, title: r.title, img: r.image || '', alt: r.alt, href: r.url, meta: mk(r.date) + ' · Ler texto' }))
       : posts.map((p) => ({ ...p, href: '#blog', meta: 'Pauta sugerida' }));
     const blogVisible = source.filter((p) => s.bf === 'Todos' || p.cat === s.bf);
     const hasReal = !!real, noReal = !real;
@@ -990,7 +1316,8 @@ class Component extends DCLogic {
     const faqData = [
       { q: 'Você faz projetos comerciais e corporativos?', a: 'Sim, e são os que eu mais gosto de fazer. Atendo lojas, restaurantes, clínicas, escritórios e indústrias. Tenho especialização em Ambientes de Trabalho com certificação alemã.' },
       { q: 'Você atende fora da Grande Vitória?', a: 'Atendo todo o Espírito Santo, com foco na Grande Vitória, na sua casa ou empresa e também online. Já fiz projetos em São Paulo e Minas Gerais.' },
-      { q: 'Quanto custa um projeto?', a: 'O valor depende do tipo e do tamanho do trabalho e é definido depois da visita técnica. [INSERIR FORMA DE COBRANÇA E FAIXA DE VALORES]' },
+      { q: 'Quanto custa um projeto?', a: 'O valor varia de projeto para projeto, porque depende da complexidade do trabalho. Ele é definido depois da visita técnica, quando eu entendo o espaço e o que você precisa.' },
+      { q: 'Quais são as formas de pagamento?', a: 'Aceito cartão de crédito, depósito bancário e Pix.' },
       { q: 'Por que não basta pedir as medidas e usar um aplicativo ou inteligência artificial?', a: 'Ferramentas ajudam a imaginar, mas não visitam o espaço, não ouvem a sua rotina e não respondem pela obra. O projeto é o que garante que as escolhas funcionem juntas e que a execução aconteça como foi pensada.' },
       { q: 'Home Relooking ou reforma: qual eu preciso?', a: 'O Home Relooking resolve com mudanças pontuais, como arrumação dos móveis, iluminação, pintura e tecidos. Se o espaço precisa mudar a planta ou trocar acabamentos, o caminho é o projeto completo. Eu indico o melhor na visita.' },
       { q: 'Você acompanha a obra?', a: 'Sim. Eu coordeno os profissionais que executam os meus projetos e tenho parceiros de confiança em todas as áreas da obra.' },
@@ -1000,7 +1327,7 @@ class Component extends DCLogic {
 
     return {
       wa, ring, marq, pilares, elogios, cats, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
-      projFilters, projVisible, lb, lbOpen: s.lb >= 0, closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
+      projFilters, projVisible, lb, lbMany, lbThumbs, tc, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
       sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
       send: (e) => { e.preventDefault(); this.setState({ sent: true }); },
