@@ -262,11 +262,8 @@ section[id]{scroll-margin-top:72px}
 <span class="sa-in sa-d2" style="display:inline-flex;width:.86em;height:.86em;border-radius:50%;background:#534243;align-items:center;justify-content:center;flex:0 0 auto">
 <svg class="sa-mk sa-spin" viewBox="0 0 444 484" aria-hidden="true" style="width:46%;height:46%;color:#F3DEDA"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
 </span>
-<span class="sa-in sa-d2">Pertencimento</span>
-<span class="sa-in sa-d2" style="display:inline-flex;width:.86em;height:.86em;border-radius:50%;background:#534243;align-items:center;justify-content:center;flex:0 0 auto">
-<svg class="sa-mk sa-spin" viewBox="0 0 444 484" aria-hidden="true" style="width:46%;height:46%;color:#F3DEDA"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
-</span>
 <span class="sa-in sa-d3">Bem-estar</span>
+<span class="sa-in sa-d3" style="flex-basis:100%;text-align:center">Pertencimento</span>
 </span>
 <span class="sa-in sa-d4" style="display:block;margin:18px 0 0;font-family:var(--sa-sans);font-weight:500;font-size:clamp(13px,1.3vw,17px);letter-spacing:.32em;text-transform:uppercase;line-height:1.7;color:#534243;max-width:440px">Arquitetura de interiores e Neuroarquitetura em Vitória (ES)</span>
 </h1>
@@ -313,7 +310,7 @@ section[id]{scroll-margin-top:72px}
 
 <div style="position:relative;z-index:3;max-width:none;margin:-120px auto 0;padding:0 clamp(12px,3vw,40px) clamp(28px,4vw,48px)">
 <div class="sa-cats" style="background:rgba(250,244,240,.97);box-shadow:0 18px 40px rgba(59,46,47,.16)">
-<ul style="list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:6px">
+<ul style="list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(6,minmax(190px,1fr));gap:6px">
 <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
 <li>
 <a class="sa-cat" href="#servicos" onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:14px;padding:12px;text-decoration:none;color:#3B2E2F;min-height:44px">
@@ -1095,6 +1092,10 @@ class Component extends DCLogic {
         who: 'Lojas, escritórios, empresas e indústrias que desejam expressar sua marca no espaço e cuidar da experiência de clientes e equipes.',
         proof: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa.', proofBy: 'Cassia Bastianelle, sócia do Estúdio Maelle',
         items: ['Layout e circulação pensados para as pessoas e a rotina do negócio', 'Identidade e propósito da marca traduzidos no ambiente', 'Iluminação, materiais, cores e conforto sensorial', 'Organização dos espaços para apoiar o trabalho e o bem-estar da equipe', 'Coordenação e acompanhamento da obra'] },
+      { title: 'Projetos industriais', short: 'um projeto industrial', kicker: 'Indústrias e ambientes de trabalho', img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada ao fundo', caption: 'projeto 3D do escritório da Switch',
+        lead: 'Ambientes de trabalho para indústrias e empresas, pensados para a saúde, a segurança e o bem-estar de quem passa o dia ali. Aplico os conhecimentos da minha especialização em Ambientes de Trabalho, com certificação alemã, junto com a Neuroarquitetura.',
+        who: 'Indústrias e empresas que querem ambientes de trabalho mais funcionais, saudáveis e com a cara da empresa.',
+        items: ['Layout e fluxos pensados para a rotina e a segurança da operação', 'Ergonomia, iluminação e conforto térmico e acústico', 'Áreas de convivência e descanso para as equipes', 'Identidade da empresa traduzida no ambiente'] },
       { title: 'Home Relooking', short: 'Home Relooking', kicker: 'Renovar sem quebra', img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Parede de quarto infantil com placas de madeira com frases e passarinhos de cerâmica', caption: 'detalhe de um quarto de criança',
         lead: 'Renovação por mudanças pontuais, que valoriza o que já existe e considera a rotina e a história de quem mora ali. Custa menos que uma reforma completa.',
         who: 'Quem quer uma casa mais confortável e com a sua cara, sem mudar tudo.',
@@ -1107,9 +1108,9 @@ class Component extends DCLogic {
     const tabs = svcs.map((v, i) => ({ title: v.title, sel: i === s.tab, ...chip(i === s.tab), pick: () => this.setState({ tab: i }) }));
     const sv = svcs[s.tab];
     const svc = { ...sv, hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
-    const catSub = ['horas de orientação', 'arquitetura e interiores', 'lojas e empresas', 'renovar sem quebra', 'destacar para vender'];
-    const catName = ['Consultoria', 'Residencial', 'Comercial', 'Home Relooking', 'Home Staging'];
-    const catImg = ['/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
+    const catSub = ['horas de orientação', 'arquitetura e interiores', 'lojas e empresas', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender'];
+    const catName = ['Consultoria', 'Residencial', 'Comercial', 'Industrial', 'Home Relooking', 'Home Staging'];
+    const catImg = ['/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
     const cats = catName.map((n, i) => ({ name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
 
     const ads = [
