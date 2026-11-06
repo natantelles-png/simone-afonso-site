@@ -98,8 +98,10 @@ section[id]{scroll-margin-top:72px}
 .sa-zoom{overflow:hidden}
 .sa-zoom img{transition:transform .6s ease}
 .sa-zoom:hover img{transform:scale(1.05)}
-.sa-cat{transition:background .2s ease}
-.sa-cat:hover{background:#F3DEDA}
+.sa-cat{position:relative;transition:color .2s ease}
+.sa-cat::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:#8A4F55;transition:width .35s ease}
+.sa-cat:hover,.sa-cat:focus-visible{color:#8A4F55}
+.sa-cat:hover::before,.sa-cat:focus-visible::before{width:64%}
 .sa-cat:hover .sa-cat-arrow{transform:translateX(5px)}
 .sa-cat-arrow{transition:transform .2s ease}
 .sa-tile{cursor:zoom-in}
@@ -158,6 +160,28 @@ section[id]{scroll-margin-top:72px}
 .sa-in,.sa-rise,.sa-grow{opacity:1;transform:none}
 .sa-draw{stroke-dashoffset:0}
 }
+.sa-btn-b{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.sa-btn-b:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(59,46,47,.25);background:#534243 !important}
+.sa-music-b{color:#3B2E2F;text-decoration:none;display:inline-flex;align-items:center;gap:12px;font-size:17px;font-weight:500;border-bottom:1.5px solid rgba(138,79,85,.4);padding-bottom:4px;transition:border-color .2s ease,color .2s ease}
+.sa-music-b:hover{color:#8A4F55;border-color:#C8964A}
+@keyframes saB{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.sa-b1,.sa-b2,.sa-b3,.sa-b4,.sa-b5{opacity:0;animation:saB .9s cubic-bezier(.2,.7,.2,1) forwards}
+.sa-b1{animation-delay:.1s}.sa-b2{animation-delay:.25s}.sa-b3{animation-delay:.4s}.sa-b4{animation-delay:.55s}.sa-b5{animation-delay:.7s}
+@keyframes saRise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.sa-rise-b{opacity:0;animation:saRise 1.1s .2s cubic-bezier(.2,.7,.2,1) forwards}
+.sa-head-b{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:clamp(560px,50vw,740px)}
+.sa-head-photo{order:1}
+.sa-head-copy{order:2}
+@media (max-width:860px){
+.sa-head-b{grid-template-columns:minmax(0,1fr)}
+.sa-head-photo{min-height:min(118vw,520px)}
+}
+@media (prefers-reduced-motion: reduce){.sa-b1,.sa-b2,.sa-b3,.sa-b4,.sa-b5,.sa-rise-b,.sa-grow-b{opacity:1 !important;transform:none !important;animation:none !important}}
+@keyframes saGrow{from{opacity:0;transform:scaleY(.3)}to{opacity:1;transform:none}}
+.sa-grow-b{transform-origin:bottom;opacity:0;animation:saGrow 1s .1s cubic-bezier(.2,.7,.2,1) forwards}
+.sa-seq-tg{font:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left;color:inherit;display:flex;align-items:center;gap:14px}
+.sa-seq-tg svg.sa-car{width:14px;height:14px;fill:none;stroke:#E3BDB8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.sa-seq-tg[aria-expanded="true"] svg.sa-car{transform:rotate(180deg)}
 </style>
 </helmet>
 
@@ -217,8 +241,11 @@ section[id]{scroll-margin-top:72px}
 <!-- HERO -->
 <section id="topo" class="sa-rose" style="position:relative;overflow:hidden">
 
-<header style="position:relative;z-index:6">
-<div style="max-width:none;margin:0 auto;padding:18px clamp(16px,3.5vw,48px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px">
+<header style="position:relative;z-index:6;border-bottom:1px solid rgba(83,66,67,.12)">
+<div style="max-width:none;margin:0 auto;padding:16px clamp(16px,3.5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+<a href="#topo" aria-label="Simone Afonso Arquitetura e Interiores, início" style="display:block;line-height:0">
+<img src="/_blob/9b6e17901bbd981ee054c7f2091e6b11" alt="Logo Simone Afonso Arquitetura e Interiores" style="height:52px;width:auto;display:block">
+</a>
 <nav aria-label="Principal" class="sa-hide-m" style="display:flex;gap:22px;font-size:16px;font-weight:500;align-items:center">
 <div class="sa-dd" data-mn="">
 <button type="button" class="sa-dd-btn sa-link" onClick="{{ tHServ }}" aria-expanded="{{ hServExp }}" aria-haspopup="true">Serviços <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
@@ -243,85 +270,49 @@ section[id]{scroll-margin-top:72px}
 <a class="sa-link" href="#sobre" onClick="{{ closeMn }}">Sobre</a>
 <a class="sa-link" href="#blog" onClick="{{ closeMn }}">Blog</a>
 </nav>
-<a href="#topo" aria-label="Simone Afonso Arquitetura e Interiores, início" style="display:block;line-height:0;justify-self:center">
-<img src="/_blob/9b6e17901bbd981ee054c7f2091e6b11" alt="Logo Simone Afonso Arquitetura e Interiores" style="height:56px;width:auto;display:block">
-</a>
-<div style="display:flex;gap:12px;align-items:center;justify-content:flex-end">
-<a class="sa-hide-m" href="https://instagram.com/simoneafonso.arq" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Simone Afonso" style="width:46px;height:46px;border-radius:50%;border:1.5px solid #534243;display:flex;align-items:center;justify-content:center;color:#534243">
-<svg class="sa-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".6"></circle></svg>
-</a>
 <a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="background:#3B2E2F;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px;white-space:nowrap">Chamar no WhatsApp</a>
-</div>
 </div>
 </header>
 
-<div style="position:relative;max-width:none;margin:0 auto;padding:clamp(10px,2vw,24px) clamp(16px,3.5vw,48px) 0">
-<h1 style="margin:0;position:relative;z-index:1">
-<span style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 .22em;font-family:'Gloock',serif;font-weight:400;font-size:clamp(26px,4.2vw,62px);line-height:1.1;letter-spacing:-0.01em;color:#3B2E2F;text-transform:uppercase">
-<span class="sa-in sa-d1">Essência</span>
-<span class="sa-in sa-d2" style="display:inline-flex;width:.86em;height:.86em;border-radius:50%;background:#534243;align-items:center;justify-content:center;flex:0 0 auto">
-<svg class="sa-mk sa-spin" viewBox="0 0 444 484" aria-hidden="true" style="width:46%;height:46%;color:#F3DEDA"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
-</span>
-<span class="sa-in sa-d3">Bem-estar</span>
-<span class="sa-in sa-d3" style="flex-basis:100%;text-align:center">Pertencimento</span>
-</span>
-<span class="sa-in sa-d4" style="display:block;margin:18px 0 0;font-family:var(--sa-sans);font-weight:500;font-size:clamp(13px,1.3vw,17px);letter-spacing:.32em;text-transform:uppercase;line-height:1.7;color:#534243;max-width:440px">Arquitetura de interiores e Neuroarquitetura em Vitória (ES)</span>
-</h1>
+<div class="sa-head-b">
 
-<div class="sa-hero-grid" style="margin-top:-6px">
-
-<div class="sa-hero-left" style="display:flex;flex-direction:column;gap:30px;padding-bottom:150px">
-<div class="sa-in sa-d4" style="display:flex;gap:14px;align-items:center">
-<span style="flex:0 0 64px;width:64px;height:64px;border-radius:50%;background:#8A4F55;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-family:'Gloock',serif;font-size:20px">MBA</span>
-<p style="margin:0;font-size:15px;line-height:1.4"><strong style="display:block;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.1">Neuroarquitetura</strong>Master, MBA e selo de validação NEUROARQ®</p>
-</div>
-<div class="sa-in sa-d5" style="position:relative;width:150px;height:150px">
-<div style="position:absolute;left:0;top:0;width:144px;height:144px;border-radius:50%;background:#FAF4F0;box-shadow:0 10px 24px rgba(59,46,47,.16)">
-<div class="sa-spin" aria-hidden="true" style="position:absolute;inset:0">
-<sc-for list="{{ ring }}" as="c" hint-placeholder-count="38">
-<span style="position:absolute;left:50%;top:6px;height:66px;width:12px;margin-left:-6px;text-align:center;font-size:10.5px;font-weight:600;color:#534243;transform-origin:50% 66px;transform:rotate({{ c.r }}deg)">{{ c.ch }}</span>
-</sc-for>
-</div>
-<span style="position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:#534243;display:flex;align-items:center;justify-content:center">
-<svg class="sa-mk" viewBox="0 0 444 484" aria-hidden="true" style="width:26px;height:28px;color:#F3DEDA"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
-</span>
-<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Essência, pertencimento e bem-estar</span>
-</div>
-</div>
+<div class="sa-head-photo" style="position:relative;overflow:hidden;padding:clamp(12px,2vw,28px) clamp(16px,3vw,40px) 0">
+<div class="sa-grow-b sa-pat-ameixa" aria-hidden="true" style="position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);bottom:0;height:78%;border-radius:56px 56px 0 0"></div>
+<div style="position:absolute;inset:0;display:flex;justify-content:center;align-items:flex-end"><img class="sa-rise-b" src="/_blob/50f522c81d55920289521c1bfa69f256" alt="Simone Afonso, arquiteta, em pé de blazer listrado, sorrindo, com um braço cruzado e a mão perto do queixo" style="position:relative;display:block;height:96%;width:auto;max-width:94%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 20px 30px rgba(40,25,27,.25))"></div>
 </div>
 
-<div class="sa-hero-center" style="position:relative;height:clamp(520px,58vw,720px);display:flex;justify-content:center">
-<div class="sa-grow sa-pat-ameixa" style="position:absolute;left:4%;right:4%;bottom:0;height:68%;border-radius:56px 56px 0 0"></div>
-<img class="sa-rise" src="/_blob/50f522c81d55920289521c1bfa69f256" alt="Simone Afonso, arquiteta, em pé de blazer listrado, sorrindo, com um braço cruzado e a mão perto do queixo" style="position:relative;height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom;display:block;filter:drop-shadow(0 20px 30px rgba(40,25,27,.25))">
+<div class="sa-head-copy" style="display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,1.5vw,22px);padding:clamp(32px,3.8vw,60px) clamp(24px,5vw,88px) clamp(32px,3.8vw,60px) clamp(24px,3vw,48px);color:#3B2E2F">
+<p class="sa-b1" style="margin:0;font-size:clamp(12px,1.05vw,14px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;line-height:1.7;color:#8A4F55;max-width:520px">Arquitetura de interiores e Neuroarquitetura em Vitória (ES)</p>
+<h1 class="sa-b2" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(54px,6.9vw,104px);line-height:.96;letter-spacing:-.01em;color:#3B2E2F">Simone<br>Afonso</h1>
+<p class="sa-b3" style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(20px,2vw,30px);line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:#534243">
+<span>Essência</span>
+<span aria-hidden="true" style="display:inline-flex;width:1.1em;height:1.1em;border-radius:50%;background:#534243;align-items:center;justify-content:center;flex:0 0 auto"><svg viewBox="0 0 444 484" style="width:46%;height:46%;fill:none;stroke:#F3DEDA;stroke-width:38;stroke-linejoin:round;stroke-linecap:round"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg></span>
+<span>Bem-estar</span>
+<span style="flex-basis:100%">Pertencimento</span>
+</p>
+<p class="sa-b4" style="margin:6px 0 0;max-width:560px;padding-left:20px;border-left:2px solid #C8964A;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#3B2E2F"><strong style="display:block;margin-bottom:6px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(21px,1.8vw,27px);line-height:1.2;color:#3B2E2F">Eu não tenho um estilo de projeto.</strong>Tenho uma maneira de ouvir, compreender e transformar o que você precisa e quer sentir no espaço. Cada projeto nasce dessa troca, e é você quem precisa se reconhecer ali.</p>
+<div class="sa-b5" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px 30px;margin-top:6px">
+<a class="sa-btn-b" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:12px;background:#3B2E2F;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px">Chamar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+<a class="sa-music-b" href="#trilha"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:34px;height:14px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg>Seu projeto inspirado em uma música</a>
 </div>
-
-<div class="sa-hero-side" style="display:flex;flex-direction:column;gap:22px;padding-bottom:150px;align-items:flex-start">
-<div style="position:relative;display:flex;align-items:flex-end;gap:10px">
-<svg class="sa-mk sa-in sa-d4" viewBox="0 0 444 484" aria-hidden="true" style="width:52px;height:56px;color:#534243"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg>
-<svg class="sa-hand sa-hide-m" viewBox="0 0 110 80" aria-hidden="true" style="width:100px;color:#3B2E2F;margin-left:40px"><path class="sa-draw" d="M100 10 C80 4 58 14 62 34 C66 52 88 40 78 26 C66 10 34 30 20 66 M20 66 L14 50 M20 66 L34 58"></path></svg>
-</div>
-<a class="sa-btn sa-btn-o sa-in sa-d5" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:12px;border:1.5px solid #3B2E2F;color:#3B2E2F;text-decoration:none;font-weight:600;font-size:16px;padding:14px 26px;border-radius:999px">Chamar no WhatsApp <svg class="sa-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
-<p class="sa-in sa-d6" style="margin:0;max-width:380px;font-size:16px;line-height:1.55">Eu não tenho um estilo de projeto. Tenho uma maneira de ouvir, compreender e transformar o que você precisa e quer sentir no espaço. Cada projeto nasce dessa troca, e é você quem precisa se reconhecer ali.</p>
-<a class="sa-hero-music sa-in sa-d6" href="#trilha"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:34px;height:14px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg>Seu projeto inspirado em uma música</a>
+<p class="sa-b5" style="margin:clamp(4px,.8vw,12px) 0 0;padding-top:14px;border-top:1px solid rgba(83,66,67,.22);max-width:560px;font-size:14px;line-height:1.45;color:#6B5658"><strong style="display:block;font-family:'Gloock',serif;font-weight:400;font-size:20px;line-height:1.15;color:#3B2E2F">Neuroarquitetura</strong>Master, MBA e selo de validação NEUROARQ®</p>
 </div>
 
 </div>
-</div>
 
-<div style="position:relative;z-index:3;max-width:none;margin:-120px auto 0;padding:0 clamp(12px,3vw,40px) clamp(28px,4vw,48px)">
-<div class="sa-cats" style="background:rgba(250,244,240,.97);box-shadow:0 18px 40px rgba(59,46,47,.16)">
-<ul style="list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(6,minmax(190px,1fr));gap:6px">
+<div style="position:relative;z-index:3;padding:clamp(20px,2.5vw,32px) clamp(16px,3.5vw,48px) clamp(32px,4vw,52px)">
+<nav aria-label="Serviços" class="sa-cats" style="border-top:1px solid rgba(83,66,67,.3)">
+<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:0 24px">
 <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
 <li>
-<a class="sa-cat" href="#servicos" onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:14px;padding:12px;text-decoration:none;color:#3B2E2F;min-height:44px">
-<img src="{{ c.img }}" alt="" style="flex:0 0 62px;width:62px;height:62px;border-radius:50%;object-fit:cover">
-<span style="flex:1 1 auto;min-width:0;line-height:1.2"><span style="display:block;font-size:13px;color:#6B5658">{{ c.sub }}</span><span style="display:block;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.02em">{{ c.name }}</span></span>
-<svg class="sa-ico sa-cat-arrow" viewBox="0 0 24 24" aria-hidden="true" style="flex:0 0 18px;width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+<a class="sa-cat" href="#servicos" onClick="{{ c.pick }}" style="display:block;padding:22px 0 4px;text-decoration:none;color:#3B2E2F;min-height:44px">
+<span style="display:block;font-family:'Gloock',serif;font-weight:400;font-size:clamp(20px,1.7vw,25px);line-height:1.15">{{ c.name }}</span>
+<span style="display:block;margin-top:6px;font-size:14px;line-height:1.35;color:#6B5658">{{ c.sub }}</span>
 </a>
 </li>
 </sc-for>
 </ul>
-</div>
+</nav>
 </div>
 </section>
 
@@ -582,16 +573,19 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Dinâmica</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">contrastes de escala, de luz, de cheio e vazio</dd></div>
 <div class="sa-note"><dt style="font-family:'Gloock',serif;font-size:21px">Forma musical</dt><dd style="margin:4px 0 0;font-size:15px;color:#F3DEDA">a sequência dos ambientes e as transições</dd></div>
 </dl>
-<div class="sa-seq" style="margin-top:34px;padding:clamp(16px,2.4vw,24px);background:#1C1516;border:1px solid rgba(243,222,218,.16);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,.35)">
-<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin:0 0 16px">
-<div><p style="margin:0;font-family:'Gloock',serif;font-size:clamp(22px,2.4vw,28px);color:#FFFFFF">Faça a sua música</p><p style="margin:4px 0 0;font-size:14px;color:#E3BDB8">Acenda os quadrinhos e aperte o play. Toda combinação soa bem.</p></div>
+<div class="sa-seq" style="margin-top:30px;padding:clamp(14px,1.8vw,18px) clamp(16px,2.2vw,22px);background:transparent;border:1px solid rgba(243,222,218,.14);border-radius:16px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+<button type="button" class="sa-seq-tg" onClick="{{ seqOpenToggle }}" aria-expanded="{{ seqOpenExp }}"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:30px;height:12px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round;flex:0 0 auto"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg><span><span style="display:block;font-family:'Gloock',serif;font-size:19px;line-height:1.2;color:#F3DEDA">Faça a sua música</span><span style="display:block;margin-top:2px;font-size:13px;color:#E3BDB8">Acenda os quadrinhos e aperte o play. Toda combinação soa bem.</span></span><svg class="sa-car" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
+<sc-if value="{{ seqOpen }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
-<button type="button" onClick="{{ seqToggle }}" aria-pressed="{{ seqPlaying }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border:0;background:#C8964A;color:#2A2022"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:currentColor"><path d="{{ seqIcon }}"></path></svg>{{ seqLabel }}</button>
+<button type="button" onClick="{{ seqToggle }}" aria-pressed="{{ seqPlaying }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border:1.5px solid #C8964A;background:transparent;color:#F3DEDA"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:currentColor"><path d="{{ seqIcon }}"></path></svg>{{ seqLabel }}</button>
 <button type="button" onClick="{{ muteToggle }}" aria-pressed="{{ muteOn }}" aria-label="Silenciar o som" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(243,222,218,.4);background:transparent;color:#F3DEDA"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="{{ muteIcon }}"></path></svg>{{ muteLabel }}</button>
 <label for="sa-bpm" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#F3DEDA">Ritmo <input id="sa-bpm" type="range" min="70" max="140" step="2" value="{{ seqBpm }}" onInput="{{ seqTempo }}" onChange="{{ seqTempo }}" style="width:110px;accent-color:#C8964A"> <span style="min-width:58px;font-variant-numeric:tabular-nums">{{ seqBpm }} bpm</span></label>
 </div>
+</sc-if>
 </div>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px">
+<sc-if value="{{ seqOpen }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 16px">
 <sc-for list="{{ seqPresets }}" as="p" hint-placeholder-count="3">
 <button type="button" onClick="{{ p.pick }}" style="font-family:var(--sa-sans);font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;border-radius:999px;cursor:pointer;font-size:14px;padding:8px 16px;min-height:40px;border:1.5px solid rgba(243,222,218,.35);background:transparent;color:#F3DEDA">{{ p.name }}</button>
 </sc-for>
@@ -618,6 +612,7 @@ section[id]{scroll-margin-top:72px}
 </div>
 </div>
 <p style="margin:12px 0 0;font-size:13px;color:#E3BDB8">Os sons são gerados ao vivo pelo navegador. No iPhone, desligue o modo silencioso para ouvir.</p>
+</sc-if>
 </div>
 <a class="sa-btn" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:34px;background:#F3DEDA;color:#2A2022;text-decoration:none;padding:14px 26px;border-radius:999px">Quero um projeto com a minha música</a>
 </div>
@@ -1029,7 +1024,7 @@ section[id]{scroll-margin-top:72px}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, mn: '', stuck: false, real: null };
+    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, seqOpen: false, mn: '', stuck: false, real: null };
   }
   componentDidMount() {
     try {
@@ -1111,7 +1106,7 @@ class Component extends DCLogic {
     const catSub = ['horas de orientação', 'arquitetura e interiores', 'lojas e empresas', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender'];
     const catName = ['Consultoria', 'Residencial', 'Comercial', 'Industrial', 'Home Relooking', 'Home Staging'];
     const catImg = ['/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
-    const cats = catName.map((n, i) => ({ name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
+    const cats = catName.map((n, i) => ({ n: '0' + (i + 1), name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
 
     const ads = [
       { name: 'Quarto temático', title: 'Quarto temático para adolescente', ratio: '1 / 1', maxw: '640px',
@@ -1284,6 +1279,7 @@ class Component extends DCLogic {
     const seqPresets = PRESETS.map((p) => ({ name: p.name, pick: () => this.setState(p.rows.length ? { seq: p.rows.map(P), bpm: p.bpm } : { seq: SEQ_ROWS.map(() => P('................')) }) }));
     const seqPlaying = s.playing ? 'true' : 'false';
     const muteToggle = () => { const m = !s.muted; if (this._out) this._out.gain.value = m ? 0 : 0.5; this.setState({ muted: m }); };
+    const seqOpenToggle = () => { if (s.seqOpen) { if (s.playing) stopSeq(); this.setState({ seqOpen: false, playing: false }); } else this.setState({ seqOpen: true }); };
     const seqToggle = () => { if (s.playing) { stopSeq(); this.setState({ playing: false }); } else { startSeq(); this.setState({ playing: true }); } };
     const seqTempo = (e) => {
       const v = Number(e.target.value); if (v === bpm) return;
@@ -1481,7 +1477,7 @@ class Component extends DCLogic {
     return {
       ...menuVals,
       wa, ring, marq, pilares, elogios, cats, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
-      projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
+      projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqOpen: !!s.seqOpen, seqOpenExp: s.seqOpen ? 'true' : 'false', seqOpenToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
       sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
       send: (e) => { e.preventDefault(); this.setState({ sent: true }); },
