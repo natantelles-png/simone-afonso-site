@@ -74,6 +74,7 @@ if MODE=='site':
 <meta property="og:locale" content="pt_BR"><meta property="og:type" content="website"><meta property="og:site_name" content="{cfg['name']}">
 <meta property="og:title" content="{ttl}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{SITE_URL}/"><meta property="og:image" content="{SITE_URL}/og.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{ttl}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{SITE_URL}/og.jpg">
+<meta name="google-site-verification" content="xz23YuT3OJUxVdCrujTG8N9wpKl9K7aI6WqUbQskfLo" />
 <meta name="theme-color" content="#534243">
 <link rel="alternate" type="application/rss+xml" title="{cfg['name']}" href="{SITE_URL}/blog/feed.xml">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':'))}</script>"""
