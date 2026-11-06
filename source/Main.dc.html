@@ -1339,9 +1339,19 @@ class Component extends DCLogic {
       { name: 'Quarto de menina', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Placas de madeira com frases e passarinhos de cerâmica na parede' },
       { name: 'Sala de TV', kind: 'Residencial', dup: true, tags: ['Residencial'], img: '/_blob/5774a269719d52b2f7220f6de29b5bf7', alt: 'Painel de TV com revestimento em zigue-zague e rack de madeira com luz embutida' },
       { name: 'Kitnete', kind: 'Residencial · cozinha integrada', tags: ['Residencial'], img: '/_blob/f4348f9a1223fe5813c56034f71c1902', alt: 'Cozinha integrada com portas verdes e mesa redonda' },
-      { name: 'Sala multiuso', kind: 'Estar e TV', dup: true, tags: ['Residencial'], img: '/_blob/579d150e09e2dfa0b0963998da372229', alt: 'Sala com poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada' }
+      { name: 'Sala multiuso', kind: 'Estar e TV', dup: true, tags: ['Residencial'], img: '/_blob/579d150e09e2dfa0b0963998da372229', alt: 'Sala com poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada' },
+      { name: 'Escritório de advocacia', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/b2139f1bb1e7f8ccbbfb701ab4b9aa21', alt: 'Imagem 3D de sala de reunião de escritório de advocacia, com mesa escura, cadeiras pretas, lambri de madeira e quadros na parede' },
+      { name: 'Escritório Enseada', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/e3228b11fcb3d37e4756e294058a20ad', alt: 'Imagem 3D de escritório claro com estações de trabalho, monitores, painel ripado e quadros grandes na parede' },
+      { name: 'EMC', kind: 'Comercial · fachada e interiores em 3D', tags: ['Comercial', '3D'], img: '/_blob/e07a744746f8a08477e93f79a9f5c437', alt: 'Imagem 3D da fachada da EMC, com faixa azul, portões basculantes e revestimento de madeira' },
+      { name: 'Ferramentaria da Chemtrade', kind: 'Industrial · projeto 3D', tags: ['Industrial', '3D'], img: '/_blob/d29f92432587f06dbda5de52949c90fc', alt: 'Imagem 3D da ferramentaria industrial da Chemtrade, com estantes de ferramentas identificadas, bancada e sinalização do setor' },
+      { name: 'Arte Marcenaria', kind: 'Comercial · fachada em 3D', tags: ['Comercial', '3D'], img: '/_blob/176e085f330afbb6a57e9e8f46f28916', alt: 'Imagem 3D da fachada da Arte Marcenaria, com vitrines de vidro, floreiras, letreiro e iluminação embutida' },
+      { name: 'Consultório de psicologia', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/8831b214952c380feacecf466b72b26c', alt: 'Imagem 3D de consultório de psicologia com sofá cinza, poltronas, tapete redondo verde e quadro de folhas douradas' },
+      { name: 'Escola de dança', kind: 'Comercial · escritório e camarim em 3D', tags: ['Comercial', '3D'], img: '/_blob/ae6c5fdb9aa22759bbc85ae7e4125e1c', alt: 'Imagem 3D do escritório de uma escola de dança, com parede verde, bancada branca e copa' },
+      { name: 'Estúdio de design de sobrancelha', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/6f8c36e55fc911c7747fe38465fc63d6', alt: 'Imagem 3D da recepção de um estúdio de sobrancelha, com balcão rosado, papel de parede floral e logo iluminado' },
+      { name: 'Cílios de Luxo', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/3d156d71411640cd7e4140f0989b3cba', alt: 'Imagem 3D de estúdio de cílios com bancadas de atendimento, banquetas, espelhos redondos e painel ripado' },
+      { name: 'Escritório da Switch', kind: 'Comercial · projeto 3D', tags: ['Comercial', 'Industrial', '3D'], img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada' }
     ];
-    const pfNames = ['Todos', 'Comercial', 'Residencial', 'Infantil', '3D'];
+    const pfNames = ['Todos', 'Comercial', 'Residencial', 'Industrial', 'Infantil', '3D'];
     const projFilters = pfNames.map((n) => ({ name: n, sel: n === s.pf, ...chip(n === s.pf), pick: () => this.setState({ pf: n }) }));
     const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => !p.dup && (s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0));
     // Mais fotos de cada projeto (pastas do Drive). Cartões do mesmo projeto compartilham a galeria.
@@ -1356,9 +1366,19 @@ class Component extends DCLogic {
       teen: [['/_blob/5099dc6364bb99eb61072d62ac18a6e4'], ['/_blob/a39294906b041190cf18747dbe067ebc'], ['/_blob/77598a3e208c8dccc737ba7f9130341b'], ['/_blob/50c8e3d3e4eeedd9e1016e054915ab45']],
       stand: [['/_blob/57e551c68a162b6fd73edf235d52947d'], ['/_blob/2a1f7bf95e676bafe25572162227b84f'], ['/_blob/a52bab5035036b43a82cdaa5337ec62c']],
       cozinha: [['/_blob/adae66e8fdb94fe629e3f7a7ce498cbe'], ['/_blob/cccdc62c616043b6b01c7c30d8947e4c'], ['/_blob/9519312df1c5be53592515157cc33344'], ['/_blob/c29208dbd6300366184810ed820c974f']],
-      kit: [['/_blob/1ee6fd1ccb8e4d82cb33bb7fc5d555e8'], ['/_blob/170bb57a83bf6a450f4d4e9c463a53b9']]
+      kit: [['/_blob/1ee6fd1ccb8e4d82cb33bb7fc5d555e8'], ['/_blob/170bb57a83bf6a450f4d4e9c463a53b9']],
+      p3_adv: [['/_blob/d1475065d5976f080f9bfab82b4fe1c2', T], ['/_blob/43df0cfa9f3141988b08071c6dd12e34', T]],
+      p3_ens: [['/_blob/ad561f8cd7414b07e5f25f696c496a21', T], ['/_blob/0d16722daaaae0f786e5549fabe887b9', T]],
+      p3_emc: [['/_blob/b8cace35a70b76ed98eb633ffd19a846', T], ['/_blob/7f79363e99bb2eb713a384b2c607308a', T]],
+      p3_chem: [['/_blob/cecfec3b74e443b37c59aefde70cba90', T], ['/_blob/b1cf157902d4dc8d22c4ad4611ad5dd2', T]],
+      p3_marc: [['/_blob/ef92ee768a6a6071f740cfbb52c3240f', T], ['/_blob/60343b7bf9d3f5400ca10d883675cccb', T]],
+      p3_psi: [['/_blob/23fdf65a03d049907c848f8315380c24', T], ['/_blob/4c1505cf8b8cf8604c1162c9f7ada514', T]],
+      p3_danca: [['/_blob/d52e066952d6e0a1fb5251f95624886f', T], ['/_blob/8caf7152da5325229e8aacc7b27c7ba7', T]],
+      p3_sobr: [['/_blob/b9eb98ca1b4064fbb5ef2beeba9a2143', T]],
+      p3_cilios: [['/_blob/7e1abb31c6dbdf5d5e3a8113b8e9916d', T], ['/_blob/5695df7d1b45a5f3a8d09a22521ae952', T]],
+      p3_switch: [['/_blob/4f678479c2a2cd9d9a021daa74bbe6a4', T], ['/_blob/3a5bc04c4e119766a27f2a5380c4feaf', T]]
     };
-    const galOf = ['vdb', 'jantar', 'bmq', 'bicho', '', 'multi', 'vet', '', 'bmq', 'teen', 'stand', '', 'cozinha', 'bmq', '', 'jantar', 'kit', 'multi'];
+    const galOf = ['vdb', 'jantar', 'bmq', 'bicho', '', 'multi', 'vet', '', 'bmq', 'teen', 'stand', '', 'cozinha', 'bmq', '', 'jantar', 'kit', 'multi', 'p3_adv', 'p3_ens', 'p3_emc', 'p3_chem', 'p3_marc', 'p3_psi', 'p3_danca', 'p3_sobr', 'p3_cilios', 'p3_switch'];
     const photosOf = (i) => {
       const p = projects[i], k = galOf[i] || '';
       const list = [{ img: p.img, alt: p.alt, cap: '' }];
@@ -1369,7 +1389,7 @@ class Component extends DCLogic {
     };
     const projVisible = vis.map((p) => {
       const n = photosOf(p.i).length;
-      return { ...p, hasMore: n > 1, more: '+' + (n - 1) + ' fotos', aria: n > 1 ? 'Ver ' + n + ' fotos do projeto ' + p.name : 'Ampliar foto: ' + p.name,
+      return { ...p, hasMore: n > 1, more: '+' + (n - 1) + (n - 1 === 1 ? ' foto' : ' fotos'), aria: n > 1 ? 'Ver ' + n + ' fotos do projeto ' + p.name : 'Ampliar foto: ' + p.name,
         open: () => this.setState({ lb: p.i, li: 0 }) };
     });
     const lbI = s.lb >= 0 ? s.lb : 0;
@@ -1393,7 +1413,7 @@ class Component extends DCLogic {
       { id: 'andrea', tag: 'Escuta e memória afetiva', chip: '#F3DEDA', n: 'Andrea Mongin', p: 'Reforma completa de apartamento',
         short: 'O trabalho da Simone se destaca pela escuta atenta e sensível das percepções dos clientes sobre os ambientes, considerando também as memórias afetivas que esses espaços evocam. Nosso apartamento ficou a “nossa cara”.',
         full: 'A experiência que tivemos com o trabalho da Simone, quando reformamos nosso apartamento, foi bastante significativa! A Simone consegue aliar competência, dedicação, criatividade e sensibilidade. Seu trabalho se diferencia e se destaca, sobretudo, pela escuta atenta e sensível das percepções dos clientes sobre os ambientes que habitam ou desejam habitar, considerando também as memórias afetivas que esses espaços evocam e os vínculos emocionais que os tornam verdadeiramente significativos. Nosso apartamento ficou a “nossa cara” e é um prazer morar e receber pessoas queridas em nosso “novo” espaço. Gratidão, Simone!' },
-      { id: 'cassia', video: true, tag: 'Projeto comercial', chip: '#E4E8DA', n: 'Cassia Bastianelle', p: 'Sócia do Estúdio Maelle, consultoria para o estúdio',
+      { id: 'cassia', video: true, tag: 'Consultoria', chip: '#E4E8DA', n: 'Cassia Bastianelle', p: 'Sócia do Estúdio Maelle, consultoria para o estúdio',
         short: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa. É justamente isso que escutamos delas até hoje.',
         full: 'Nós tínhamos a sala e sabíamos o que precisávamos colocar lá dentro, mas não tínhamos ideia de como fazer aquele espaço nos atender completamente, de forma que tudo fluísse e fosse confortável para as nossas clientes. A consultoria com a Simone foi essencial para mapear cada cantinho do Stúdio, tornar os ambientes funcionais e, ainda por cima, trazer aconchego e acolhimento. Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa. E digo com propriedade que a Simone alcançou esse resultado, porque é justamente isso que escutamos das clientes ao entrarem no Stúdio até hoje.' },
       { id: 'arthur', tag: 'Briefing musical', chip: '#E3BDB8', n: 'Arthur Segatto Lubiana', p: 'Projeto do quarto',
@@ -1449,7 +1469,7 @@ class Component extends DCLogic {
     const mnOpen = (id) => (s.mn === id ? 'is-open' : '');
     const mnExp = (id) => (s.mn === id ? 'true' : 'false');
     const servItems = svcs.map((v, i) => ({ name: v.title, go: () => this.setState({ tab: i, mn: '' }) }));
-    const portItems = ['Todos', 'Comercial', 'Residencial', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
+    const portItems = ['Todos', 'Comercial', 'Residencial', 'Industrial', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
     const menuVals = {
       servItems, portItems, closeMn: () => this.setState({ mn: '' }),
       stuckCls: s.stuck ? 'is-on' : '',
