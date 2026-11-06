@@ -1087,7 +1087,7 @@ class Component extends DCLogic {
         who: 'Lojas, escritórios, empresas e indústrias que desejam expressar sua marca no espaço e cuidar da experiência de clientes e equipes.',
         proof: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa.', proofBy: 'Cassia Bastianelle, sócia do Estúdio Maelle',
         items: ['Layout e circulação pensados para as pessoas e a rotina do negócio', 'Identidade e propósito da marca traduzidos no ambiente', 'Iluminação, materiais, cores e conforto sensorial', 'Organização dos espaços para apoiar o trabalho e o bem-estar da equipe', 'Coordenação e acompanhamento da obra'] },
-      { title: 'Projetos industriais', short: 'um projeto industrial', kicker: 'Indústrias e ambientes de trabalho', img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada ao fundo', caption: 'projeto 3D do escritório da Switch',
+      { title: 'Projetos corporativos', short: 'um projeto corporativo', kicker: 'Indústrias e ambientes de trabalho', img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada ao fundo', caption: 'projeto 3D do escritório da Switch',
         lead: 'Ambientes de trabalho para indústrias e empresas, pensados para a saúde, a segurança e o bem-estar de quem passa o dia ali. Aplico os conhecimentos da minha especialização em Ambientes de Trabalho, com certificação alemã, junto com a Neuroarquitetura.',
         who: 'Indústrias e empresas que querem ambientes de trabalho mais funcionais, saudáveis e com a cara da empresa.',
         items: ['Layout e fluxos pensados para a rotina e a segurança da operação', 'Ergonomia, iluminação e conforto térmico e acústico', 'Áreas de convivência e descanso para as equipes', 'Identidade da empresa traduzida no ambiente'] },
@@ -1104,7 +1104,7 @@ class Component extends DCLogic {
     const sv = svcs[s.tab];
     const svc = { ...sv, hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
     const catSub = ['horas de orientação', 'arquitetura e interiores', 'lojas e empresas', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender'];
-    const catName = ['Consultoria', 'Residencial', 'Comercial', 'Industrial', 'Home Relooking', 'Home Staging'];
+    const catName = ['Consultoria', 'Residencial', 'Comercial', 'Corporativo', 'Home Relooking', 'Home Staging'];
     const catImg = ['/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
     const cats = catName.map((n, i) => ({ n: '0' + (i + 1), name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
 
@@ -1339,15 +1339,15 @@ class Component extends DCLogic {
       { name: 'Escritório de advocacia', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/b2139f1bb1e7f8ccbbfb701ab4b9aa21', alt: 'Imagem 3D de sala de reunião de escritório de advocacia, com mesa escura, cadeiras pretas, lambri de madeira e quadros na parede' },
       { name: 'Escritório Enseada', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/e3228b11fcb3d37e4756e294058a20ad', alt: 'Imagem 3D de escritório claro com estações de trabalho, monitores, painel ripado e quadros grandes na parede' },
       { name: 'EMC', kind: 'Comercial · fachada e interiores em 3D', tags: ['Comercial', '3D'], img: '/_blob/e07a744746f8a08477e93f79a9f5c437', alt: 'Imagem 3D da fachada da EMC, com faixa azul, portões basculantes e revestimento de madeira' },
-      { name: 'Ferramentaria da Chemtrade', kind: 'Industrial · projeto 3D', tags: ['Industrial', '3D'], img: '/_blob/d29f92432587f06dbda5de52949c90fc', alt: 'Imagem 3D da ferramentaria industrial da Chemtrade, com estantes de ferramentas identificadas, bancada e sinalização do setor' },
+      { name: 'Ferramentaria da Chemtrade', kind: 'Industrial · projeto 3D', tags: ['Corporativo', '3D'], img: '/_blob/d29f92432587f06dbda5de52949c90fc', alt: 'Imagem 3D da ferramentaria industrial da Chemtrade, com estantes de ferramentas identificadas, bancada e sinalização do setor' },
       { name: 'Arte Marcenaria', kind: 'Comercial · fachada em 3D', tags: ['Comercial', '3D'], img: '/_blob/176e085f330afbb6a57e9e8f46f28916', alt: 'Imagem 3D da fachada da Arte Marcenaria, com vitrines de vidro, floreiras, letreiro e iluminação embutida' },
       { name: 'Consultório de psicologia', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/8831b214952c380feacecf466b72b26c', alt: 'Imagem 3D de consultório de psicologia com sofá cinza, poltronas, tapete redondo verde e quadro de folhas douradas' },
       { name: 'Escola de dança', kind: 'Comercial · escritório e camarim em 3D', tags: ['Comercial', '3D'], img: '/_blob/ae6c5fdb9aa22759bbc85ae7e4125e1c', alt: 'Imagem 3D do escritório de uma escola de dança, com parede verde, bancada branca e copa' },
       { name: 'Estúdio de design de sobrancelha', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/6f8c36e55fc911c7747fe38465fc63d6', alt: 'Imagem 3D da recepção de um estúdio de sobrancelha, com balcão rosado, papel de parede floral e logo iluminado' },
       { name: 'Cílios de Luxo', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/3d156d71411640cd7e4140f0989b3cba', alt: 'Imagem 3D de estúdio de cílios com bancadas de atendimento, banquetas, espelhos redondos e painel ripado' },
-      { name: 'Escritório da Switch', kind: 'Comercial · projeto 3D', tags: ['Comercial', 'Industrial', '3D'], img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada' }
+      { name: 'Escritório da Switch', kind: 'Comercial · projeto 3D', tags: ['Comercial', 'Corporativo', '3D'], img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada' }
     ];
-    const pfNames = ['Todos', 'Comercial', 'Residencial', 'Industrial', 'Infantil', '3D'];
+    const pfNames = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'];
     const projFilters = pfNames.map((n) => ({ name: n, sel: n === s.pf, ...chip(n === s.pf), pick: () => this.setState({ pf: n }) }));
     const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => !p.dup && (s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0));
     // Mais fotos de cada projeto (pastas do Drive). Cartões do mesmo projeto compartilham a galeria.
@@ -1465,7 +1465,7 @@ class Component extends DCLogic {
     const mnOpen = (id) => (s.mn === id ? 'is-open' : '');
     const mnExp = (id) => (s.mn === id ? 'true' : 'false');
     const servItems = svcs.map((v, i) => ({ name: v.title, go: () => this.setState({ tab: i, mn: '' }) }));
-    const portItems = ['Todos', 'Comercial', 'Residencial', 'Industrial', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
+    const portItems = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
     const menuVals = {
       servItems, portItems, closeMn: () => this.setState({ mn: '' }),
       stuckCls: s.stuck ? 'is-on' : '',
