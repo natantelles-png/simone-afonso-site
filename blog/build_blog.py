@@ -446,7 +446,7 @@ def main():
     if not os.path.exists(os.path.join(home, 'index.html')):
         sys.exit('Falta _home/. Rode antes: python3 build/build.py')
     shutil.copytree(home, OUT, dirs_exist_ok=True)
-    for f in ('CNAME', '404.html', 'favicon.png', 'og.jpg'):
+    for f in ('CNAME', '404.html', 'favicon.png', 'og.jpg', 'googlef561e982160a5e18.html'):
         if os.path.exists(os.path.join(ROOT, f)):
             shutil.copy(os.path.join(ROOT, f), os.path.join(OUT, f))
     shutil.copytree(os.path.join(ROOT, 'blog', 'static'), os.path.join(OUT, 'blog', 'assets'))
