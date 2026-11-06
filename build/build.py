@@ -55,7 +55,7 @@ h=base64.b64encode(hashlib.sha256(inline.encode('utf-8')).digest()).decode()
 cfg=json.load(open(S+'blog/config.json',encoding='utf-8'))
 if MODE=='site':
     csp=("default-src 'none'; script-src 'sha256-"+h+"'; style-src 'unsafe-inline' https://fonts.googleapis.com; "
-         "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
+         "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
 else:
     csp=("default-src 'none'; script-src 'sha256-"+h+"'; style-src 'unsafe-inline' https://fonts.googleapis.com; "
          "font-src data: https://fonts.gstatic.com; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests")
