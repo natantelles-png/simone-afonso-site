@@ -71,6 +71,28 @@ a:hover{color:#8A4F55}
 .sa-link:hover{color:#8A4F55}
 .sa-link::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:#8A4F55;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
 .sa-link:hover::after{transform:scaleX(1)}
+section[id]{scroll-margin-top:72px}
+.sa-dd{position:relative}
+.sa-dd-btn{font:inherit;color:#3B2E2F;background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.sa-dd-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.sa-dd-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.sa-dd-btn:focus-visible,.sa-dd-menu a:focus-visible,.sa-burger:focus-visible{outline:2px solid #C8964A;outline-offset:3px}
+.sa-dd-menu{display:none;position:absolute;top:calc(100% + 16px);left:-16px;min-width:240px;margin:0;padding:8px;list-style:none;background:#FAF4F0;border:1px solid rgba(83,66,67,.16);border-radius:16px;box-shadow:0 18px 40px rgba(59,46,47,.18);z-index:30}
+.sa-dd-menu.is-open{display:block}
+.sa-dd-menu a{display:block;padding:10px 14px;border-radius:10px;color:#3B2E2F;text-decoration:none;font-size:15px;font-weight:500;line-height:1.3}
+.sa-dd-menu a:hover{background:#F3DEDA;color:#534243}
+.sa-dd-menu .sa-dd-all{font-weight:700;color:#8A4F55}
+.sa-sticky{position:fixed;left:0;right:0;top:0;z-index:60;background:rgba(250,244,240,.97);box-shadow:0 6px 24px rgba(59,46,47,.14);transform:translateY(-110%);visibility:hidden;transition:transform .3s ease,visibility 0s linear .3s}
+.sa-sticky.is-on{transform:none;visibility:visible;transition:transform .3s ease,visibility 0s}
+.sa-show-m{display:none}
+.sa-burger{width:44px;height:44px;border-radius:50%;border:1.5px solid #534243;background:transparent;color:#534243;cursor:pointer;align-items:center;justify-content:center}
+.sa-burger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.sa-mob{display:none;max-height:72vh;overflow-y:auto;padding:4px clamp(16px,3.5vw,48px) 18px;border-top:1px solid rgba(83,66,67,.14)}
+.sa-mob.is-open{display:block}
+.sa-mob a{display:block;padding:11px 4px;color:#3B2E2F;text-decoration:none;font-size:16px;font-weight:500}
+.sa-mob .sa-mob-h{margin:12px 0 2px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A4F55}
+.sa-mob .sa-mob-sub{padding-left:14px;font-weight:400}
+@media (min-width:761px){.sa-mob{display:none !important}}
 .sa-lift{transition:transform .3s ease,box-shadow .3s ease}
 .sa-lift:hover{transform:translateY(-6px) rotate(0deg);box-shadow:0 26px 50px rgba(40,25,27,.3)}
 .sa-zoom{overflow:hidden}
@@ -123,6 +145,7 @@ a:hover{color:#8A4F55}
 }
 @media (max-width:760px){
 .sa-hide-m{display:none !important}
+.sa-show-m{display:inline-flex !important}
 .sa-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
 .sa-chips::-webkit-scrollbar{display:none}
 .sa-chips > *{flex:0 0 auto}
@@ -140,18 +163,85 @@ a:hover{color:#8A4F55}
 
 <div style="display:flex;flex-direction:column;overflow-x:hidden;background:#FAF4F0;color:#3B2E2F;font-family:var(--sa-sans);font-size:17px;line-height:1.65">
 
+<!-- MENU FIXO (desce junto com a página) -->
+<div class="sa-sticky {{ stuckCls }}">
+<div style="max-width:none;margin:0 auto;padding:10px clamp(16px,3.5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+<a href="#topo" aria-label="Simone Afonso, voltar ao topo" style="display:block;line-height:0"><img src="/_blob/9b6e17901bbd981ee054c7f2091e6b11" alt="Simone Afonso Arquitetura e Interiores" style="height:40px;width:auto;display:block"></a>
+<nav aria-label="Menu fixo" class="sa-hide-m" style="display:flex;gap:22px;font-size:15px;font-weight:500;align-items:center">
+<div class="sa-dd" data-mn="">
+<button type="button" class="sa-dd-btn sa-link" onClick="{{ tSServ }}" aria-expanded="{{ sServExp }}" aria-haspopup="true">Serviços <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
+<ul class="sa-dd-menu {{ sServCls }}">
+<li><a class="sa-dd-all" href="#servicos" onClick="{{ closeMn }}">Ver todos os serviços</a></li>
+<sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
+<li><a href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+</sc-for>
+</ul>
+</div>
+<a class="sa-link" href="#processo" onClick="{{ closeMn }}">Método</a>
+<a class="sa-link" href="#trilha" onClick="{{ closeMn }}">Música</a>
+<div class="sa-dd" data-mn="">
+<button type="button" class="sa-dd-btn sa-link" onClick="{{ tSPort }}" aria-expanded="{{ sPortExp }}" aria-haspopup="true">Portfólio <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
+<ul class="sa-dd-menu {{ sPortCls }}">
+<li><a class="sa-dd-all" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a></li>
+<sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
+<li><a href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+</sc-for>
+</ul>
+</div>
+<a class="sa-link" href="#sobre" onClick="{{ closeMn }}">Sobre</a>
+<a class="sa-link" href="#blog" onClick="{{ closeMn }}">Blog</a>
+</nav>
+<div style="display:flex;gap:10px;align-items:center">
+<a class="sa-btn sa-hide-m" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="background:#3B2E2F;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14px;padding:10px 18px;border-radius:999px;white-space:nowrap">Chamar no WhatsApp</a>
+<button type="button" class="sa-show-m sa-burger" data-mn="" onClick="{{ tMob }}" aria-expanded="{{ mobExp }}" aria-label="Abrir menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</div>
+</div>
+<div class="sa-mob {{ mobCls }}" data-mn="">
+<p class="sa-mob-h">Serviços</p>
+<sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
+<a class="sa-mob-sub" href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a>
+</sc-for>
+<a href="#processo" onClick="{{ closeMn }}">Método</a>
+<a href="#trilha" onClick="{{ closeMn }}">Música</a>
+<p class="sa-mob-h">Portfólio</p>
+<a class="sa-mob-sub" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a>
+<sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
+<a class="sa-mob-sub" href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a>
+</sc-for>
+<a href="#sobre" onClick="{{ closeMn }}">Sobre</a>
+<a href="#blog" onClick="{{ closeMn }}">Blog</a>
+<a href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="margin-top:10px;text-align:center;background:#3B2E2F;color:#FFFFFF;border-radius:999px;padding:13px 20px">Chamar no WhatsApp</a>
+</div>
+</div>
+
 <!-- HERO -->
 <section id="topo" class="sa-rose" style="position:relative;overflow:hidden">
 
 <header style="position:relative;z-index:6">
 <div style="max-width:none;margin:0 auto;padding:18px clamp(16px,3.5vw,48px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px">
-<nav aria-label="Principal" class="sa-hide-m" style="display:flex;gap:22px;font-size:16px;font-weight:500">
-<a class="sa-link" href="#servicos">Serviços</a>
-<a class="sa-link" href="#processo">Método</a>
-<a class="sa-link" href="#trilha">Música</a>
-<a class="sa-link" href="#projetos">Projetos</a>
-<a class="sa-link" href="#sobre">Sobre</a>
-<a class="sa-link" href="#blog">Blog</a>
+<nav aria-label="Principal" class="sa-hide-m" style="display:flex;gap:22px;font-size:16px;font-weight:500;align-items:center">
+<div class="sa-dd" data-mn="">
+<button type="button" class="sa-dd-btn sa-link" onClick="{{ tHServ }}" aria-expanded="{{ hServExp }}" aria-haspopup="true">Serviços <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
+<ul class="sa-dd-menu {{ hServCls }}">
+<li><a class="sa-dd-all" href="#servicos" onClick="{{ closeMn }}">Ver todos os serviços</a></li>
+<sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
+<li><a href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+</sc-for>
+</ul>
+</div>
+<a class="sa-link" href="#processo" onClick="{{ closeMn }}">Método</a>
+<a class="sa-link" href="#trilha" onClick="{{ closeMn }}">Música</a>
+<div class="sa-dd" data-mn="">
+<button type="button" class="sa-dd-btn sa-link" onClick="{{ tHPort }}" aria-expanded="{{ hPortExp }}" aria-haspopup="true">Portfólio <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
+<ul class="sa-dd-menu {{ hPortCls }}">
+<li><a class="sa-dd-all" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a></li>
+<sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
+<li><a href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+</sc-for>
+</ul>
+</div>
+<a class="sa-link" href="#sobre" onClick="{{ closeMn }}">Sobre</a>
+<a class="sa-link" href="#blog" onClick="{{ closeMn }}">Blog</a>
 </nav>
 <a href="#topo" aria-label="Simone Afonso Arquitetura e Interiores, início" style="display:block;line-height:0;justify-self:center">
 <img src="/_blob/9b6e17901bbd981ee054c7f2091e6b11" alt="Logo Simone Afonso Arquitetura e Interiores" style="height:56px;width:auto;display:block">
@@ -184,9 +274,8 @@ a:hover{color:#8A4F55}
 <span style="flex:0 0 64px;width:64px;height:64px;border-radius:50%;background:#8A4F55;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-family:'Gloock',serif;font-size:20px">MBA</span>
 <p style="margin:0;font-size:15px;line-height:1.4"><strong style="display:block;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.1">Neuroarquitetura</strong>Master, MBA e selo de validação NEUROARQ®</p>
 </div>
-<div class="sa-in sa-d5" style="position:relative;width:250px;height:150px">
-<img src="/_blob/b0fb4a1f49cfae1c2ee5c96544df148d" alt="Detalhe de bancada com cuba de apoio e torneira dourada" style="position:absolute;left:0;top:0;width:140px;height:140px;border-radius:50%;object-fit:cover;box-shadow:0 10px 24px rgba(59,46,47,.2)">
-<div style="position:absolute;left:100px;top:0;width:144px;height:144px;border-radius:50%;background:#FAF4F0;box-shadow:0 10px 24px rgba(59,46,47,.16)">
+<div class="sa-in sa-d5" style="position:relative;width:150px;height:150px">
+<div style="position:absolute;left:0;top:0;width:144px;height:144px;border-radius:50%;background:#FAF4F0;box-shadow:0 10px 24px rgba(59,46,47,.16)">
 <div class="sa-spin" aria-hidden="true" style="position:absolute;inset:0">
 <sc-for list="{{ ring }}" as="c" hint-placeholder-count="38">
 <span style="position:absolute;left:50%;top:6px;height:66px;width:12px;margin-left:-6px;text-align:center;font-size:10.5px;font-weight:600;color:#534243;transform-origin:50% 66px;transform:rotate({{ c.r }}deg)">{{ c.ch }}</span>
@@ -198,7 +287,6 @@ a:hover{color:#8A4F55}
 <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Essência, pertencimento e bem-estar</span>
 </div>
 </div>
-<svg class="sa-hand sa-hide-m" viewBox="0 0 120 40" aria-hidden="true" style="width:110px;color:#3B2E2F"><path class="sa-draw" d="M4 28 C14 6 22 34 32 14 C40 0 44 36 56 18 C64 6 70 30 80 20 C88 12 96 26 116 16"></path></svg>
 </div>
 
 <div class="sa-hero-center" style="position:relative;height:clamp(520px,58vw,720px);display:flex;justify-content:center">
@@ -212,8 +300,8 @@ a:hover{color:#8A4F55}
 <svg class="sa-hand sa-hide-m" viewBox="0 0 110 80" aria-hidden="true" style="width:100px;color:#3B2E2F;margin-left:40px"><path class="sa-draw" d="M100 10 C80 4 58 14 62 34 C66 52 88 40 78 26 C66 10 34 30 20 66 M20 66 L14 50 M20 66 L34 58"></path></svg>
 </div>
 <a class="sa-btn sa-btn-o sa-in sa-d5" href="{{ wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:12px;border:1.5px solid #3B2E2F;color:#3B2E2F;text-decoration:none;font-weight:600;font-size:16px;padding:14px 26px;border-radius:999px">Chamar no WhatsApp <svg class="sa-ico" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
-<p class="sa-in sa-d6" style="margin:0;max-width:300px;font-size:16px;line-height:1.55">Eu não tenho um estilo de projeto. Tenho uma maneira de ouvir, compreender e transformar o que você precisa em espaço, na casa, na loja ou na empresa.</p>
-<a class="sa-hero-music sa-in sa-d6" href="#trilha"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:34px;height:14px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg>Seu projeto começa por uma música</a>
+<p class="sa-in sa-d6" style="margin:0;max-width:380px;font-size:16px;line-height:1.55">Eu não tenho um estilo de projeto. Tenho uma maneira de ouvir, compreender e transformar o que você precisa e quer sentir no espaço. Cada projeto nasce dessa troca, e é você quem precisa se reconhecer ali.</p>
+<a class="sa-hero-music sa-in sa-d6" href="#trilha"><svg viewBox="0 0 40 16" aria-hidden="true" style="width:34px;height:14px;fill:none;stroke:#C8964A;stroke-width:2;stroke-linecap:round"><path d="M1 8 C5 1 9 1 13 8 S21 15 25 8 S33 1 39 8"></path></svg>Seu projeto inspirado em uma música</a>
 </div>
 
 </div>
@@ -250,10 +338,11 @@ a:hover{color:#8A4F55}
 <div style="max-width:none;margin:0 auto;padding:clamp(72px,9vw,132px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Essência, pertencimento e bem-estar</p>
 <div style="display:flex;flex-wrap:wrap;gap:32px 72px;align-items:flex-end;margin-bottom:56px">
-<p class="sa-reveal" style="flex:1 1 620px;margin:0;font-family:'Gloock',serif;font-size:clamp(32px,4.2vw,60px);line-height:1.08">Minha arquitetura não quer deixar a minha marca nos espaços. Quer encontrar <span style="color:#8A4F55">a essência de quem vai viver neles.</span></p>
+<p class="sa-reveal" style="flex:1 1 620px;margin:0;font-family:'Gloock',serif;font-size:clamp(32px,4.2vw,60px);line-height:1.08">Meu jeito de projetar começa por ouvir e compreender você. É assim que transformo a sua essência em <span style="color:#8A4F55">espaços onde você se reconhece e se sente bem.</span></p>
 <div style="flex:1 1 340px;min-width:0">
-<p style="margin:0 0 14px">Eu projeto pensando além da estética e da funcionalidade. Como especialista em Neuroarquitetura, procuro entender como o espaço influencia as suas emoções, sensações e comportamentos.</p>
-<p style="margin:0;font-weight:500">O resultado é um ambiente que faz sentido para quem vai usá-lo, com mais bem-estar, conforto e qualidade de vida.</p>
+<p style="margin:0 0 14px">Quando projeto, vou além da estética e da funcionalidade. Como especialista em Neuroarquitetura, busco compreender você e como o espaço pode influenciar suas emoções, sensações e comportamentos.</p>
+<p style="margin:0 0 18px;font-weight:500">É a partir dessa escuta que crio ambientes que fazem sentido para a sua vida, onde você se reconhece e se sente bem.</p>
+<p style="margin:0;font-family:'Gloock',serif;font-size:clamp(19px,1.7vw,24px);line-height:1.25;color:#8A4F55">Minha arquitetura não quer deixar a minha marca nos espaços. Quer encontrar a essência de quem vai viver neles.</p>
 </div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
@@ -273,8 +362,8 @@ a:hover{color:#8A4F55}
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-start">
 <div style="flex:1 1 360px;min-width:0">
-<p class="sa-kicker">Elogios</p><h2 class="sa-reveal" style="margin:0 0 16px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">O que meus clientes mais elogiam</h2>
-<p style="margin:0;color:#F3DEDA;font-weight:300;max-width:420px">Três coisas aparecem sempre que um cliente fala do meu trabalho. São também as três coisas que eu mais cuido.</p>
+<p class="sa-kicker">Elogios</p><h2 class="sa-reveal" style="margin:0 0 16px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05">O que meus clientes costumam elogiar?</h2>
+<p style="margin:0;color:#F3DEDA;font-weight:300;max-width:420px">Três qualidades costumam aparecer quando os clientes falam do meu trabalho. Elas refletem a dedicação que procuro colocar em tudo o que faço.</p>
 </div>
 <ol style="flex:2 1 560px;min-width:0;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
 <sc-for list="{{ elogios }}" as="e" hint-placeholder-count="3">
@@ -294,7 +383,7 @@ a:hover{color:#8A4F55}
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;margin-bottom:28px">
 <div style="flex:1 1 560px;min-width:0"><p class="sa-kicker">Serviços</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Da loja ao quarto das crianças, o mesmo cuidado</h2></div>
-<p style="flex:1 1 320px;margin:0;color:#6B5658">Atendo projetos comerciais, residenciais e corporativos. O ponto de partida é sempre o mesmo: entender quem vai viver o espaço.</p>
+<p style="flex:1 1 320px;margin:0;color:#6B5658">Atendo projetos comerciais, residenciais e corporativos. O ponto de partida é sempre o mesmo: entender quem vai vivenciar o espaço.</p>
 </div>
 <div role="tablist" aria-label="Serviços" class="sa-chips" style="margin-bottom:22px">
 <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
@@ -340,8 +429,8 @@ a:hover{color:#8A4F55}
 <section id="processo" class="sa-salvia-d" style="color:#FFFFFF">
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(16px,3.5vw,56px)">
 <div style="display:flex;flex-wrap:wrap;gap:20px 60px;align-items:flex-end;margin-bottom:48px">
-<div style="flex:1 1 520px;min-width:0"><p class="sa-kicker">Método em 4 etapas</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Ouvir, compreender, interpretar e transformar</h2></div>
-<p style="flex:1 1 360px;margin:0;color:#F3DEDA;font-weight:300">Cada decisão do projeto tem fundamento: a sua história, os estudos de Neuroarquitetura e a experiência de obra. Desde que adotei esse método, o retrabalho no escritório praticamente zerou.</p>
+<div style="flex:1 1 520px;min-width:0"><p class="sa-kicker">Método em 4 etapas</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Ouvir, compreender, visualizar e transformar</h2></div>
+<p style="flex:1 1 360px;margin:0;color:#F3DEDA;font-weight:300">Cada escolha no projeto nasce da escuta da sua história, dos conhecimentos da Neuroarquitetura e da minha experiência com obras. Desde que passei a trabalhar dessa forma, percebo que os projetos ficam mais alinhados com o que cada cliente precisa e o retrabalho no escritório se tornou raro.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px">
 
@@ -356,7 +445,7 @@ a:hover{color:#8A4F55}
 <div style="padding:22px 22px 26px">
 <p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#8A4F55">Etapa 1: ouvir</p>
 <h3 style="margin:0 0 8px;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.15">Visita, briefing e a sua música</h3>
-<p style="margin:0;font-size:16px;color:#6B5658">Escuta ativa sobre o funcional e o emocional, com as escalas EAPA® e EAMME®. Você me indica uma música, e dela eu tiro cores, formas e texturas.</p>
+<p style="margin:0;font-size:16px;color:#6B5658">Escuta ativa sobre questões funcionais e emocionais. Aprofundo essa escuta com as ferramentas EAPA® e EAMME® e peço que me indique uma música com a qual se identifique ou queira inspirar o ambiente. A partir dela, interpreto cores, formas e texturas que ajudam a traduzir a sua essência no projeto.</p>
 </div>
 </article>
 
@@ -369,7 +458,7 @@ a:hover{color:#8A4F55}
 <div style="padding:22px 22px 26px">
 <p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#8A4F55">Etapa 2: compreender</p>
 <h3 style="margin:0 0 8px;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.15">Levantamento e novo layout</h3>
-<p style="margin:0;font-size:16px;color:#6B5658">Meço e fotografo o espaço e transformo tudo o que ouvi em diretrizes e na nova planta.</p>
+<p style="margin:0;font-size:16px;color:#6B5658">Meço e fotografo o espaço para conhecer de perto suas possibilidades. A partir desse levantamento e de tudo o que conversamos, desenvolvo um novo layout que faça sentido para você e para a sua rotina.</p>
 </div>
 </article>
 
@@ -383,9 +472,9 @@ a:hover{color:#8A4F55}
 </div>
 </div>
 <div style="padding:22px 22px 26px">
-<p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#8A4F55">Etapa 3: interpretar</p>
-<h3 style="margin:0 0 8px;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.15">Vistas em 3D antes de aprovar</h3>
-<p style="margin:0;font-size:16px;color:#6B5658">Você vê como o espaço vai ficar e aprova com clareza, sem surpresa na obra.</p>
+<p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#8A4F55">Etapa 3: visualizar</p>
+<h3 style="margin:0 0 8px;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.15">Vistas em 3D para seu entendimento</h3>
+<p style="margin:0;font-size:16px;color:#6B5658">Com as imagens em 3D, você visualiza os ambientes, entende as escolhas do projeto e me conta como se sente com o que vê. Assim, podemos seguir com mais clareza para a próxima etapa. Sem surpresa na obra.</p>
 </div>
 </article>
 
@@ -405,7 +494,7 @@ a:hover{color:#8A4F55}
 <div style="padding:22px 22px 26px">
 <p style="margin:0 0 6px;font-size:14px;font-weight:600;color:#8A4F55">Etapa 4: transformar</p>
 <h3 style="margin:0 0 8px;font-family:'Gloock',serif;font-weight:400;font-size:24px;line-height:1.15">Projeto executivo e obra que acontece</h3>
-<p style="margin:0;font-size:16px;color:#6B5658">Preparo a documentação técnica e coordeno os parceiros que executam, para o projeto sair do papel de verdade.</p>
+<p style="margin:0;font-size:16px;color:#6B5658">Detalho o projeto e preparo a documentação técnica para a execução. Acompanho a obra e coordeno os profissionais envolvidos, com atenção aos detalhes e cuidado para que o que construímos juntos ganhe vida no espaço.</p>
 </div>
 </article>
 
@@ -432,9 +521,10 @@ a:hover{color:#8A4F55}
 </div>
 <div style="position:relative;max-width:none;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(16px,3.5vw,56px)">
 <div style="max-width:820px;margin:0 0 clamp(40px,5vw,64px)">
-<p class="sa-kicker" style="color:#E3BDB8">Briefing musical</p><h2 class="sa-reveal" style="margin:0 0 18px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,5vw,68px);line-height:1.02;color:#FFFFFF">Seu projeto começa por uma música</h2>
-<p style="margin:0 0 14px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">No briefing eu peço uma música que tenha a ver com você. Eu escuto prestando atenção em andamento, ritmo, dinâmica, timbre, instrumentação, densidade, modo e estrutura, e penso nas emoções, memórias, imagens e sensações que ela desperta em você.</p>
-<p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">Depois cruzo tudo com as escalas EAPA® e EAMME® e com o briefing. Cada informação vira luz, material, forma, proporção, percurso ou organização do espaço. Veja dois quartos que nasceram de uma música.</p>
+<p class="sa-kicker" style="color:#E3BDB8">Briefing musical</p><h2 class="sa-reveal" style="margin:0 0 18px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,5vw,68px);line-height:1.02;color:#FFFFFF">Seu projeto inspirado em uma música</h2>
+<p style="margin:0 0 14px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">No briefing, peço que você me indique uma música com a qual se identifique ou que represente o que deseja sentir no ambiente. Busco entender o que ela desperta em você: emoções, memórias, imagens e sensações.</p>
+<p style="margin:0 0 14px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">Ao ouvir, observo também seus elementos musicais, como ritmo, andamento, timbres e variações de intensidade. A partir dessa escuta, construo relações com cores, formas, texturas e materiais.</p>
+<p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#F3DEDA">Reúno essas percepções ao que conversamos no briefing e às informações das ferramentas EAPA® e EAMME®. Esse conjunto orienta minhas escolhas de iluminação, proporção, circulação e organização do espaço, para que o projeto faça sentido para você. Veja dois quartos em que a música fez parte desse caminho.</p>
 </div>
 <div role="tablist" aria-label="Escolha um projeto" style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px">
 <sc-for list="{{ trTabs }}" as="t" hint-placeholder-count="2">
@@ -445,12 +535,21 @@ a:hover{color:#8A4F55}
 <div class="sa-reveal" style="flex:1 1 280px;min-width:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px);display:flex;flex-direction:column">
 <p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#C8964A;color:#2A2022;letter-spacing:0">1</span>A música</p>
 <p style="margin:0 0 18px;font-size:16px;line-height:1.55;color:#F3DEDA">{{ tc.intro }}</p>
-<a class="sa-lift" href="{{ tc.link }}" target="_blank" rel="noopener noreferrer" aria-label="Assistir {{ tc.song }}, {{ tc.artist }}" style="margin-top:auto;display:block;position:relative;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:#000000;color:#FFFFFF;text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.35)">
+<div style="margin-top:auto">
+<sc-if value="{{ ytOff }}" hint-placeholder-val="{{ true }}">
+<a class="sa-lift" href="{{ tc.link }}" onClick="{{ playYt }}" target="_blank" rel="noopener noreferrer" aria-label="Assistir {{ tc.song }}, {{ tc.artist }}" style="margin-top:auto;display:block;position:relative;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:#000000;color:#FFFFFF;text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.35)">
 <svg aria-hidden="true" viewBox="0 0 320 180" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><rect width="320" height="180" fill="#1C1516"></rect><path d="M0 96 C40 40 80 150 120 92 S200 30 240 96 S300 150 320 90" fill="none" stroke="#C8964A" stroke-width="1.6" opacity=".7"></path><path d="M0 104 C50 60 90 140 140 100 S210 50 260 104 S310 140 320 100" fill="none" stroke="#E3BDB8" stroke-width="1.2" opacity=".55"></path><path d="M0 88 C30 120 70 60 110 90 S190 130 230 86 S290 50 320 84" fill="none" stroke="#9DB5A6" stroke-width="1" opacity=".5"></path></svg>
 <span aria-hidden="true" style="position:absolute;left:50%;top:50%;width:62px;height:44px;margin:-22px 0 0 -31px;border-radius:12px;background:#FF0033;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:22px;height:22px;margin-left:2px;fill:#FFFFFF"><path d="M7 4.5v15l13-7.5z"></path></svg></span>
 <span style="position:absolute;left:12px;right:12px;bottom:10px;display:block;line-height:1.25;text-shadow:0 1px 6px rgba(0,0,0,.6)"><span style="display:block;font-family:'Gloock',serif;font-size:19px">{{ tc.song }}</span><span style="display:block;font-size:13px;color:#F3DEDA">{{ tc.artist }}</span></span>
 </a>
-<p style="margin:10px 0 0;font-size:13px;color:#E3BDB8">No site, o vídeo toca aqui mesmo. Nesta prévia, abre no YouTube.</p>
+</sc-if>
+<sc-if value="{{ ytOn }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:#000000;box-shadow:0 12px 28px rgba(0,0,0,.35)">
+<iframe src="{{ tc.embed }}" title="{{ tc.song }}, {{ tc.artist }}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>
+</div>
+</sc-if>
+</div>
+
 </div>
 <figure class="sa-reveal" style="flex:2 1 520px;min-width:0;margin:0;background:rgba(250,244,240,.06);border:1px solid rgba(243,222,218,.18);border-radius:20px;padding:clamp(18px,2.4vw,26px)">
 <p style="margin:0 0 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E3BDB8"><span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#C8964A;color:#2A2022;letter-spacing:0">2</span>O mapa da música</p>
@@ -533,15 +632,15 @@ a:hover{color:#8A4F55}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
 <figure class="sa-reveal" style="margin:0">
 <div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/6d065defa19fb6e5884919564b870829" alt="Antes: salão vazio com piso de concreto, escada metálica com mezanino e pendentes de cobre" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:rgba(59,46,47,.86);color:#FFFFFF;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">1. Antes</span></div>
-<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">O ponto de partida: salão bruto, escada metálica e piso de obra.</figcaption>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">O ponto de partida: salão bruto, cores escuras e desgaste dos materiais.</figcaption>
 </figure>
 <figure class="sa-reveal" style="margin:0">
 <div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/629ae48558b5969599580cb89faf528b" alt="Projeto em 3D: recepção com balcão curvo em madeira, poltronas laranja, prateleiras hexagonais e sanca com fita de luz no teto" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:#C8964A;color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">2. Projeto em 3D</span></div>
-<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">O projeto apresentado em 3D, com materiais, cores e luz definidos.</figcaption>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">Projeto apresentado em 3D, com cores, formas e texturas definidas.</figcaption>
 </figure>
 <figure class="sa-reveal" style="margin:0">
 <div style="position:relative;aspect-ratio:3 / 4;overflow:hidden;background:#EDE4DC;box-shadow:0 10px 24px rgba(83,66,67,.16)"><img src="/_blob/cbba91e2ca0596dcc8b193f6f44286de" alt="Depois: a loja pronta com o mesmo balcão curvo em madeira, poltronas laranja, prateleiras hexagonais, sanca iluminada e escada revestida" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover"><span style="position:absolute;top:12px;left:12px;background:rgba(250,244,240,.94);color:#3B2E2F;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px">3. Depois</span></div>
-<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">A obra pronta: balcão, poltronas, prateleiras e luz como no projeto.</figcaption>
+<figcaption style="padding:12px 2px 0;font-size:16px;color:#3B2E2F">Obra pronta: a materialização de cada detalhe que foi projetado.</figcaption>
 </figure>
 </div>
 <h3 style="margin:52px 0 6px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(24px,2.4vw,30px);line-height:1.15">Sala multiuso: estar, TV e jantar integrados</h3>
@@ -600,7 +699,7 @@ a:hover{color:#8A4F55}
 <section id="projetos" class="sa-papel">
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Portfólio</p><h2 class="sa-reveal" style="margin:0 0 12px;max-width:820px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Projetos que já saíram do papel</h2>
-<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, clínicas e casas na Grande Vitória. Toque em um projeto para ver mais fotos.</p>
+<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, empresas e casas na Grande Vitória. Toque em um projeto para ver mais fotos.</p>
 <div role="group" aria-label="Filtrar projetos" class="sa-chips" style="margin-bottom:28px">
 <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
 <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:10px 20px;min-height:44px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ f.bg }};color:{{ f.ink }}">{{ f.name }}</button>
@@ -698,8 +797,8 @@ a:hover{color:#8A4F55}
 <!-- PARA QUEM -->
 <section class="sa-rose">
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
-<p class="sa-kicker">Para quem é</p><h2 class="sa-reveal" style="margin:0 0 14px;max-width:880px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Um bom projeto é feito a quatro mãos</h2>
-<p style="margin:0 0 40px;max-width:640px;color:#3B2E2F">Os melhores resultados que tive foram com clientes que acolheram o processo e colocaram o projeto em prática. Veja se a gente combina.</p>
+<p class="sa-kicker">Para quem é</p><h2 class="sa-reveal" style="margin:0 0 14px;max-width:880px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Um bom projeto nasce da troca entre o seu jeito de viver e o meu de projetar</h2>
+<p style="margin:0 0 40px;max-width:640px;color:#3B2E2F">Os projetos que mais me marcaram nasceram de uma troca próxima com os clientes e ganharam vida quando colocamos em prática o que pensamos juntos. Se você se identifica com esse jeito de projetar, vamos conversar?</p>
 <div style="display:flex;flex-wrap:wrap;gap:22px">
 <div class="sa-reveal" style="flex:1 1 380px;min-width:0;background:#534243;color:#FFFFFF;padding:clamp(26px,4vw,44px)">
 <h3 style="margin:0 0 18px;font-family:'Gloock',serif;font-weight:400;font-size:30px">Vamos combinar bem se você</h3>
@@ -741,11 +840,11 @@ a:hover{color:#8A4F55}
 <figcaption style="font-size:12px;line-height:1.35;color:#3B2E2F;padding-top:6px">Selo de validação profissional NEUROARQ®</figcaption>
 </figure>
 </div>
-<p style="margin:0 0 16px">Sou a Simone. Desde 1994 estou à frente da ASTI Engenharia e Arquitetura com meu sócio engenheiro civil, e foi na rotina de obra que encontrei a arquitetura.</p>
-<p style="margin:0 0 16px">Depois de formada, me especializei em interiores e em Neuroarquitetura. Não parei mais de estudar e acompanho feiras como a Casa Cor, a Expo Revestir e o Salone del Mobile, em Milão.</p>
+<p style="margin:0 0 16px">Sou a Simone Afonso. Desde 1994 estou à frente da ASTI Engenharia e Arquitetura, e foi na rotina de engenharia e obras que encontrei a arquitetura.</p>
+<p style="margin:0 0 16px">Depois de formada, me especializei em Design de Interiores e Neuroarquitetura. Não parei mais de estudar e de me atualizar, acompanhando palestras de fornecedores e feiras como a Casa Cor, a Expo Revestir e o Salone del Mobile, em Milão.</p>
 <p style="margin:0 0 30px">Por isso cuido do projeto e da obra: o que eu desenho precisa acontecer de verdade.</p>
 <ol style="list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #8A4F55">
-<sc-for list="{{ creds }}" as="c" hint-placeholder-count="9">
+<sc-for list="{{ creds }}" as="c" hint-placeholder-count="10">
 <li style="position:relative;padding:0 0 12px 6px;font-size:16px">
 <span aria-hidden="true" style="position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:#8A4F55;border:2px solid #F3DEDA"></span>
 <span style="display:block;font-weight:600;color:#8A4F55">{{ c.year }}</span>
@@ -881,7 +980,7 @@ a:hover{color:#8A4F55}
 <label for="sa-tipo" style="font-weight:500;font-size:16px">O que você procura?</label>
 <select id="sa-tipo" style="font-family:var(--sa-sans);font-size:17px;padding:12px 14px;border:1.5px solid #8F7B7C;background:#FFFFFF;color:#3B2E2F">
 <option>Projeto comercial</option>
-<option>Projeto de interiores</option>
+<option>Projeto residencial</option>
 <option>Consultoria</option>
 <option>Home Relooking</option>
 <option>Home Staging</option>
@@ -929,7 +1028,7 @@ a:hover{color:#8A4F55}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, real: null };
+    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, mn: '', stuck: false, real: null };
   }
   componentDidMount() {
     try {
@@ -937,8 +1036,19 @@ class Component extends DCLogic {
         if (Array.isArray(a) && a.length) this.setState({ real: a });
       }).catch(() => {});
     } catch (e) {}
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const on = y > 560;
+      if (on !== this.state.stuck) this.setState({ stuck: on, mn: '' });
+    };
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.mn) this.setState({ mn: '' }); };
+    this._onDoc = (e) => { if (this.state.mn && !(e.target && e.target.closest && e.target.closest('[data-mn]'))) this.setState({ mn: '' }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    document.addEventListener('keydown', this._onKey);
+    document.addEventListener('click', this._onDoc);
+    this._onScroll();
   }
-  componentWillUnmount() { if (this._stopSeq) this._stopSeq(); if (this._ac && this._ac.close) { try { this._ac.close(); } catch (x) {} } }
+  componentWillUnmount() { if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); document.removeEventListener('keydown', this._onKey); document.removeEventListener('click', this._onDoc); } if (this._stopSeq) this._stopSeq(); if (this._ac && this._ac.close) { try { this._ac.close(); } catch (x) {} } }
 
   renderVals() {
     const s = this.state;
@@ -956,36 +1066,36 @@ class Component extends DCLogic {
     const pilares = [
       { t: 'Essência', p: 'Cada projeto nasce da história, da personalidade, das necessidades e dos desejos de quem vai viver naquele espaço.', bg: '#534243', ink: '#FFFFFF', mk: '#E3BDB8' },
       { t: 'Pertencimento', p: 'O ambiente precisa fazer sentido para você. Você precisa se reconhecer ali e sentir que aquele lugar é verdadeiramente seu.', bg: '#F3DEDA', ink: '#3B2E2F', mk: '#8A4F55' },
-      { t: 'Bem-estar', p: 'Uso a Neuroarquitetura para fundamentar cada decisão, para o espaço favorecer o que você quer sentir nele.', bg: '#E4E8DA', ink: '#3B2E2F', mk: '#4E5E45' }
+      { t: 'Bem-estar', p: 'A neuroarquitetura orienta e embasa minhas escolhas para criar um espaço que acolha e favoreça o que você deseja sentir e viver nele.', bg: '#E4E8DA', ink: '#3B2E2F', mk: '#4E5E45' }
     ];
 
     const elogios = [
-      { n: '01', t: 'Escuta', p: 'Os clientes sentem que eu ouvi de verdade o que eles queriam, antes de propor qualquer coisa.', rot: -1.5 },
-      { n: '02', t: 'Pontualidade e compromisso', p: 'Prazo combinado é prazo cumprido, do primeiro encontro à entrega.', rot: 1 },
-      { n: '03', t: 'Obra que acontece', p: 'Eu acompanho o processo da obra para que o projeto realmente saia do papel.', rot: -0.5 }
+      { n: '01', t: 'Escuta', p: 'Antes de propor, quero entender. Ouço com atenção o que cada cliente precisa, deseja e espera sentir no espaço.', rot: -1.5 },
+      { n: '02', t: 'Pontualidade e compromisso', p: 'Respeito o seu tempo e levo a sério os horários, os prazos e tudo o que combinamos.', rot: 1 },
+      { n: '03', t: 'Obra que acontece', p: 'Acompanho a obra de perto, com firmeza, conhecimento técnico e a dedicação de quem ama o que faz, para que o projeto saia do papel e ganhe vida.', rot: -0.5 }
     ];
 
     const svcs = [
-      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas, restaurantes, clínicas e empresas', img: '/_blob/751e2d2705d8d090bc98f64dfc5d32e8', alt: 'Estante alta e iluminada da loja Vila do Bem, com produtos organizados por categoria', video: true, caption: 'tour pelo Studio Maelle, do depoimento da Cassia',
-        lead: 'Projeto o espaço pensando na experiência de quem entra, compra, atende e trabalha ali. Para empresas e indústrias, conto com a especialização em Ambientes de Trabalho, com certificação alemã.',
-        who: 'Empresas que querem um espaço coerente com a marca e bom para clientes e equipe.',
+      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas e empresas', img: '/_blob/751e2d2705d8d090bc98f64dfc5d32e8', alt: 'Estante alta e iluminada da loja Vila do Bem, com produtos organizados por categoria', video: true, caption: 'tour pelo Studio Maelle, do depoimento da Cassia',
+        lead: 'Cada negócio tem uma identidade, um propósito e pessoas que dão sentido a ele. Meu trabalho é compreender essa relação e traduzi-la em espaços que acolham, facilitem a rotina e favoreçam a experiência de quem compra, é atendido ou trabalha ali. A Neuroarquitetura orienta esse olhar, considerando como o ambiente pode influenciar as emoções, o comportamento e o bem-estar. Em projetos para empresas e indústrias, também aplico os conhecimentos da minha especialização em Ambientes de Trabalho, com certificação alemã.',
+        who: 'Lojas, escritórios, empresas e indústrias que desejam expressar sua marca no espaço e cuidar da experiência de clientes e equipes.',
         proof: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa.', proofBy: 'Cassia Bastianelle, sócia do Estúdio Maelle',
-        items: ['Layout e percurso do cliente', 'A marca traduzida no espaço', 'Iluminação e conforto para a equipe', 'Coordenação da obra'] },
-      { title: 'Projeto de interiores', short: 'um projeto de interiores', kicker: 'Casas e apartamentos', img: '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', alt: 'Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis', caption: 'sala de jantar de um projeto residencial',
+        items: ['Layout e circulação pensados para as pessoas e a rotina do negócio', 'Identidade e propósito da marca traduzidos no ambiente', 'Iluminação, materiais, cores e conforto sensorial', 'Organização dos espaços para apoiar o trabalho e o bem-estar da equipe', 'Coordenação e acompanhamento da obra'] },
+      { title: 'Projetos residenciais', short: 'um projeto residencial', kicker: 'Arquitetura e interiores', img: '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', alt: 'Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis', caption: 'sala de jantar de um projeto residencial',
         lead: 'Projeto completo de interiores, do briefing à obra, com a sua história como ponto de partida e a coordenação dos profissionais que executam.',
         who: 'Quem vai reformar e quer decidir com segurança, vendo tudo antes de aprovar.',
         proof: 'Nosso apartamento ficou a “nossa cara” e é um prazer morar e receber pessoas queridas em nosso “novo” espaço.', proofBy: 'Andrea Mongin, reforma completa de apartamento',
         items: ['Briefing funcional e emocional', 'Planta com o novo layout', 'Vistas em 3D', 'Documentação técnica e coordenação da obra'] },
-      { title: 'Consultoria', short: 'uma consultoria', kicker: 'Por horas, na sua casa ou empresa', img: '/_blob/1223a803a7dcf9c5f48b5711c74679d6', alt: 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas', caption: 'a Simone em visita a um projeto comercial',
+      { title: 'Consultoria', short: 'uma consultoria', kicker: 'Horas de orientação, na sua casa ou empresa', img: '/_blob/1223a803a7dcf9c5f48b5711c74679d6', alt: 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas', caption: 'a Simone em visita a um projeto comercial',
         lead: 'Horas de consultoria no seu espaço para orientar decisões, com relatório e especificações, sem a necessidade de um projeto completo.',
         who: 'Quem já tem uma ideia e precisa de um olhar técnico para acertar.',
         proof: 'A consultoria com a Simone foi essencial para mapear cada cantinho do Stúdio, tornar os ambientes funcionais e ainda trazer aconchego e acolhimento.', proofBy: 'Cassia Bastianelle, Estúdio Maelle',
         items: ['Visita técnica', 'Orientação sobre layout, cores e materiais', 'Relatório com especificações'] },
-      { title: 'Home Relooking', short: 'Home Relooking', kicker: 'Renovar sem reforma completa', img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Parede de quarto infantil com placas de madeira com frases e passarinhos de cerâmica', caption: 'detalhe de um quarto de criança',
+      { title: 'Home Relooking', short: 'Home Relooking', kicker: 'Renovar sem quebra', img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Parede de quarto infantil com placas de madeira com frases e passarinhos de cerâmica', caption: 'detalhe de um quarto de criança',
         lead: 'Renovação por mudanças pontuais, que valoriza o que já existe e considera a rotina e a história de quem mora ali. Custa menos que uma reforma completa.',
         who: 'Quem quer uma casa mais confortável e com a sua cara, sem mudar tudo.',
         items: ['Nova arrumação dos móveis', 'Ajuste da iluminação', 'Pintura e troca de tecidos', 'Peças novas onde fazem diferença'] },
-      { title: 'Home Staging', short: 'Home Staging', kicker: 'Para vender ou alugar', img: '/_blob/fe931523e0b7d5f57a0b6aa5b598216a', alt: 'Quarto com cabeceira de madeira, roupa de cama clara e folha decorativa na parede', caption: 'quarto de uma kitnete',
+      { title: 'Home Staging', short: 'Home Staging', kicker: 'Destacar para vender', img: '/_blob/fe931523e0b7d5f57a0b6aa5b598216a', alt: 'Quarto com cabeceira de madeira, roupa de cama clara e folha decorativa na parede', caption: 'quarto de uma kitnete',
         lead: 'Consultoria com relatório para organizar e apresentar o imóvel, para que quem visita perceba as qualidades e se imagine vivendo ali.',
         who: 'Quem vai vender ou alugar e quer causar uma boa primeira impressão.',
         items: ['Arrumação dos móveis', 'Iluminação', 'Pintura e pequenos reparos', 'Objetos para as fotos e as visitas'] }
@@ -993,32 +1103,32 @@ class Component extends DCLogic {
     const tabs = svcs.map((v, i) => ({ title: v.title, sel: i === s.tab, ...chip(i === s.tab), pick: () => this.setState({ tab: i }) }));
     const sv = svcs[s.tab];
     const svc = { ...sv, hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
-    const catSub = ['lojas e empresas', 'casa completa', 'por horas', 'sem reforma', 'para vender'];
-    const catName = ['Comercial', 'Interiores', 'Consultoria', 'Relooking', 'Staging'];
+    const catSub = ['lojas e empresas', 'arquitetura e interiores', 'horas de orientação', 'renovar sem quebra', 'destacar para vender'];
+    const catName = ['Comercial', 'Residencial', 'Consultoria', 'Home Relooking', 'Home Staging'];
     const catImg = ['/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
     const cats = catName.map((n, i) => ({ name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
 
     const ads = [
-      { name: 'Quarto temático', title: 'Quarto de adolescente com tema de hipismo', ratio: '1 / 1', maxw: '640px',
+      { name: 'Quarto temático', title: 'Quarto temático para adolescente', ratio: '1 / 1', maxw: '640px',
         antes: '/_blob/e187fd74b33063d672129ef163895314', depois: '/_blob/f15f7b019b235fd0c52fd7ef3b3eafdc',
         altA: 'Antes: quarto visto da porta, com escrivaninha branca na parede da esquerda, cadeira gamer e cama de solteiro com grade ao fundo',
         altD: 'Depois: o mesmo quarto visto da porta, com bancada de estudo comprida, painel iluminado de medalhas, cama com colcha azul e adesivo de cavalo saltando',
-        text: 'Do mesmo ponto da porta: a escrivaninha solta virou uma bancada de estudo comprida, as medalhas de hipismo ganharam um painel iluminado e o tema aparece na parede e nas almofadas.' },
+        text: 'Visto do mesmo ponto, junto à porta, o quarto revela a transformação: a escrivaninha deu lugar a uma bancada de estudos mais ampla, e as medalhas de hipismo ganharam destaque em um painel iluminado. A paixão pelo esporte também aparece na parede e nas almofadas, trazendo a identidade de quem vive ali para o ambiente.' },
       { name: 'Cozinha compacta', title: 'Cozinha compacta', ratio: '4 / 3', maxw: '100%',
         antes: '/_blob/27af359e979461292123b1ee04b9b9b9', depois: '/_blob/77daa7746d383ebf9ce03d073fc21116',
         altA: 'Antes: parede da cozinha com fogão de piso, pia de granito preto, armários brancos e azulejo branco',
         altD: 'Depois: a mesma parede com cooktop e forno embutidos, pia de granito preto, marcenaria em madeira e revestimento geométrico azul e bege',
-        text: 'Na mesma parede e na mesma área, o fogão de piso deu lugar a cooktop e forno embutidos. A marcenaria em madeira e o revestimento geométrico deram personalidade ao espaço.' },
-      { name: 'Banheiro', title: 'Banheiro social', ratio: '3 / 4', maxw: '520px',
+        text: 'Com apenas 6,30 m² transformamos esse ambiente: o fogão deu lugar ao cooktop e ao forno embutido, ampliando a bancada. A marcenaria e o revestimento geométrico deram personalidade ao novo espaço.' },
+      { name: 'Banheiro social', title: 'Banheiro social', ratio: '3 / 4', maxw: '520px',
         antes: '/_blob/d24bfac980f14d8293324031094a6267', depois: '/_blob/520dd457bb0db10dd2d81020750116c9',
         altA: 'Antes: banheiro todo branco com bancada de granito e box de vidro fumê',
-        altD: 'Depois: banheiro com revestimento estampado, espelho redondo iluminado, bancada clara e iluminação em linha no teto',
-        text: 'O banheiro todo branco ganhou revestimento estampado, espelho redondo com luz e uma linha de iluminação no teto.' },
-      { name: 'Cozinha', title: 'Cozinha ampla', ratio: '3 / 4', maxw: '520px',
+        altD: 'Depois: banheiro com revestimento estampado, espelho orgânico iluminado, bancada clara e iluminação em linha no teto',
+        text: 'O banheiro todo branco ganhou vida e alegria com o novo revestimento, e o espelho orgânico iluminado completa o acolhimento no ambiente.' },
+      { name: 'Cozinha ampliada', title: 'Cozinha ampliada', ratio: '3 / 4', maxw: '520px',
         antes: '/_blob/0584561f485b80f4345b9877425d0d0b', depois: '/_blob/31a3ad6d1557aa6a9119546a97debfeb',
         altA: 'Antes: cozinha em corredor com armários brancos, bancada de granito e a área de serviço ao fundo',
         altD: 'Depois: a mesma cozinha com ilha clara, marcenaria em tons de areia, sanca iluminada e bancada contínua até o fundo',
-        text: 'Olhando na mesma direção: a cozinha em corredor ganhou uma ilha, marcenaria planejada de ponta a ponta e uma sanca iluminada que deixa o ambiente mais acolhedor.' },
+        text: 'Vista pelo mesmo ângulo, a cozinha revela a transformação: o espaço antes organizado em corredor ganhou uma ilha e marcenaria planejada em toda a sua extensão. A iluminação do perfil complementa o conjunto, trazendo uma atmosfera mais acolhedora.' },
       { name: 'Sala de jantar', title: 'Sala de jantar', ratio: '1 / 1', maxw: '640px',
         antes: '/_blob/f2f5f3bf3a6146178de69ee764415d44', depois: '/_blob/be2f71cbd514a52616ae1c42513bcc04',
         altA: 'Antes: mesa redonda de vidro com cadeiras de fibra e metal diante de uma cortina',
@@ -1033,19 +1143,19 @@ class Component extends DCLogic {
     const fitSim = [
       { t: 'quer ser ouvido de verdade antes de ver qualquer desenho' },
       { t: 'valoriza o processo e está disposto a vivê-lo comigo' },
-      { t: 'quer colocar o projeto em prática, e não só guardar na gaveta' },
+      { t: 'quer ver o projeto sair do papel e fazer parte do seu dia a dia' },
       { t: 'tem um espaço comercial, residencial ou corporativo para transformar' }
     ];
     const fitNao = [
       { t: 'está escolhendo apenas pelo menor preço entre vários orçamentos' },
-      { t: 'precisa só das medidas e não de um projeto' },
+      { t: 'precisa só das medidas e não quer um projeto personalizado' },
       { t: 'quer um ambiente pronto de catálogo, sem a sua história nele' }
     ];
 
     const TR = [
       { name: 'O quarto do Arthur', w1: '#C8964A', w2: '#E3BDB8', w3: '#9DB5A6', glow: 'rgba(200,150,74,.20)', rc: '#C8964A', intro: 'O Arthur escolheu a música que mais o descrevia e o fazia se sentir vivo.', song: 'No Time For Caution', artist: 'Hans Zimmer', link: 'https://www.youtube.com/watch?v=3JM1T_MqkOk',
         mapa: '/_blob/af82c706ab2aac2c61a59a87c3818864', mapaAlt: 'Mapa mental da música No Time For Caution, de Hans Zimmer, feito pela Simone: no centro a palavra energia, ligada a força, continuidade, persistência, amplitude, elevação, foco, onda, frequência, liberdade e crescimento, com a leitura de que a música começa em mistério e luta, cresce em ascensão e termina num momento de êxtase e paz',
-        mapaCap: 'Energia, continuidade, persistência e elevação: o mapa que a Simone fez escutando a música.',
+        mapaCap: 'Energia, continuidade, persistência e elevação: o mapa que eu fiz escutando a música.',
         i1: '/_blob/a41d1c1999169754280f0f99df8178ff', a1: 'Projeto 3D do quarto: estante branca em forma de onda contínua sobre a cabeceira da cama, com livros e um pendente de luz',
         i2: '/_blob/548de7b688070a720d3392875a410609', a2: 'Projeto 3D do quarto: armário com portas ripadas, cortina clara, ventilador de teto e a estante em onda ao lado da cama',
         i3: '/_blob/ced5084cf0c590d8560f045799a16449', a3: 'Projeto 3D do quarto: bancada de estudo com cadeira ergonômica, quadro de cortiça e mapa-múndi geométrico em madeira na parede',
@@ -1053,15 +1163,19 @@ class Component extends DCLogic {
         s4: 'O que ele sentiu', quote: 'Quando vi o projeto pela primeira vez, me senti dono daquele espaço, como se realmente fosse feito pra mim. Me senti representado.', by: 'Arthur Segatto Lubiana, projeto do quarto' },
       { name: 'O quarto da Ana Clara', w1: '#A9BEEA', w2: '#E8D48A', w3: '#E3BDB8', glow: 'rgba(169,190,234,.20)', rc: '#A9BEEA', intro: 'A Ana Clara escolheu uma música sobre se transformar e ganhar asas.', song: 'Defying Gravity', artist: 'Elenco de Glee', link: 'https://www.youtube.com/watch?v=t7YD6bWkuXE',
         mapa: '/_blob/622f202b6dbb3614464ce1dcfcb06b6b', mapaAlt: 'Mapa mental da música Defying Gravity, na versão de Glee, feito pela Simone: transformação, ligada a elevação, delicadeza e força; despertar, ligado a renascer, descobrir e novo olhar; e libertar-se, ligado a brilho, vento e luz',
-        mapaCap: 'Transformação, despertar e libertar-se: o mapa que a Simone fez escutando a música.',
+        mapaCap: 'Transformação, despertar e libertar-se: o mapa que eu fiz escutando a música.',
         i1: '/_blob/e0903edb8caf5998382603c24f01751c', a1: 'Projeto 3D do quarto: cama com cabeceira capitonê azul-clara, quadros de rostos com flores, bancada de estudo preta sob a janela e quadros de asas coloridas na parede',
         i2: '/_blob/177b29e7300995e4b694119a7729a092', a2: 'Projeto 3D do quarto: prateleiras brancas suspensas por montantes dourados iluminados, com violão, livros e TV',
         i3: '/_blob/646a6adbd114708cfc12c9c4c12cca4e', a3: 'Projeto 3D do quarto visto da porta: cama ao centro, armário espelhado, bancada de estudo e a coluna de quadros de asas',
         projCap: 'Os quadros de asas, a cabeceira macia, a bancada de estudo e as prateleiras iluminadas.',
         s4: 'A leitura da Simone', quote: 'Desperta magia, força, sensação de desconstruir para reconstruir, um novo olhar mantendo o tempo presente como um presente.', by: 'Trecho do mapa da música, escrito pela Simone' }
     ];
-    const tc = TR[s.tr || 0];
-    const trTabs = TR.map((x, i) => ({ name: x.name, sel: i === (s.tr || 0) ? 'true' : 'false', bg: i === (s.tr || 0) ? '#F3DEDA' : 'transparent', ink: i === (s.tr || 0) ? '#2A2022' : '#F3DEDA', pick: () => this.setState({ tr: i }) }));
+    const tc0 = TR[s.tr || 0];
+    const ytm = /[?&]v=([\w-]+)/.exec(tc0.link || '');
+    const tc = { ...tc0, embed: ytm ? 'https://www.youtube-nocookie.com/embed/' + ytm[1] + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' : '' };
+    const ytOn = !!s.yt && !!ytm, ytOff = !ytOn;
+    const playYt = (e) => { if (!ytm) return; if (e && e.preventDefault) e.preventDefault(); this.setState({ yt: true }); };
+    const trTabs = TR.map((x, i) => ({ name: x.name, sel: i === (s.tr || 0) ? 'true' : 'false', bg: i === (s.tr || 0) ? '#F3DEDA' : 'transparent', ink: i === (s.tr || 0) ? '#2A2022' : '#F3DEDA', pick: () => this.setState({ tr: i, yt: false }) }));
     const rip = (s.rip || []).map((r) => ({ ...r, c: r.c || tc.rc }));
     const addRip = (x, y, c) => {
       this._rid = (this._rid || 0) + 1; const id = this._rid;
@@ -1194,36 +1308,37 @@ class Component extends DCLogic {
       { year: '2012', text: 'Arquitetura e Urbanismo, UNIVIX (Vitória)' },
       { year: '2019', text: 'Imersão Internacional em Arquitetura e Design, IPOG e PoliDesign (Milão)' },
       { year: '2020', text: 'Pós-graduação em Design de Interiores, IPOG' },
+      { year: '2021', text: 'Membro e embaixadora da Academia Brasileira de Neurociência Aplicada a Arquitetura, Neuroarq® Academy' },
       { year: '2022', text: 'Master em Neuroarquitetura, IPOG' },
-      { year: '2022', text: 'Especialista em Ambientes de Trabalho, certificação alemã' },
-      { year: '2022', text: 'Salas Multissensoriais e método Snoezelen, ZenSenses (Portugal)' },
-      { year: '2023', text: 'Palestrante no NeuroarqDay' },
+      { year: '2022', text: 'Especialista em Ambientes de Trabalho com certificação alemã, Mensch&Büro Akademie e Qualidade Corporativa Smart Workplaces' },
+      { year: '2022', text: 'Curso de Jardim Sensorial e Salas Multissensoriais com método Terapia Snoezelen, ZenSenses (Portugal)' },
+      { year: '2023', text: 'Palestrante na 4ª Conferência Internacional de Neurociência e Arquitetura, NeuroarqDay (SP)' },
       { year: '2026', text: 'MBA em Neuroarquitetura e Design do Bem-estar Humano, NEUROARQ® Academy' }
     ];
 
     const projects = [
       { name: 'Loja Vila do Bem, Praia da Costa', kind: 'Comercial · noite de inauguração', tags: ['Comercial'], img: '/_blob/bbefd20c1aab93e2b82827005851e059', alt: 'Fachada da loja Vila do Bem à noite, com letreiro iluminado, portal curvo de madeira e convidados na calçada' },
       { name: 'Sala de jantar', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', alt: 'Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis' },
-      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Comercial · banheiro acessível', tags: ['Comercial'], img: '/_blob/6d44d7539ebad1040e472dfb2cdefb31', alt: 'Banheiro acessível com parede de azulejos estampados coloridos, barras de apoio e bancada de madeira' },
+      { name: 'Espaço Bem Me Quer, institucional', kind: 'Institucional', tags: ['Comercial'], img: '/_blob/6d44d7539ebad1040e472dfb2cdefb31', alt: 'Banheiro acessível com parede de azulejos estampados coloridos, barras de apoio e bancada de madeira' },
       { name: 'Bicho Guloso Prime', kind: 'Comercial · restaurante', tags: ['Comercial'], img: '/_blob/52279fc09952a84c7317262bc50a3868', alt: 'Salão comprido com teto de madeira, mesas escuras e estofados coloridos' },
       { name: 'Quarto de bebê', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8baff990668af6c844055f2155ed99c7', alt: 'Quarto de bebê com nuvem verde iluminada, cortina branca e prateleira com bichos de pelúcia' },
       { name: 'Sala multiuso', kind: 'Estar, TV e jantar integrados', tags: ['Residencial'], img: '/_blob/dff9d905883527232e1267d4a6fa515e', alt: 'Mesa de jantar clara com cadeiras verdes, parede de pastilhas e porta espelhada' },
       { name: 'Clínica veterinária Toca dos Animais', kind: 'Comercial · renderização 3D', tags: ['Comercial', '3D'], img: '/_blob/246c5f1719c5ce2ff6398011052f76de', alt: 'Imagem 3D da fachada de vidro da clínica veterinária com recepção azul' },
       { name: 'Banheiro da suíte', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/b0fb4a1f49cfae1c2ee5c96544df148d', alt: 'Bancada branca com cuba de apoio, torneira dourada e marcenaria em madeira' },
-      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Comercial · a Simone na entrega do espaço', tags: ['Comercial'], img: '/_blob/cc43166d60bf5c0e30a949c4e8dbbc1d', alt: 'Simone Afonso ao lado de uma parede amarela com frase sobre o Bem Me Quer e silhueta de meditação com chacras coloridos' },
+      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Institucional · a Simone na entrega do espaço', dup: true, tags: ['Comercial'], img: '/_blob/cc43166d60bf5c0e30a949c4e8dbbc1d', alt: 'Simone Afonso ao lado de uma parede amarela com frase sobre o Bem Me Quer e silhueta de meditação com chacras coloridos' },
       { name: 'Quarto de adolescente', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/82fad9013dc3427d3b0a6ee57f646553', alt: 'Quarto com cama azul, painel iluminado de medalhas e adesivo de cavalo na parede' },
       { name: 'Stand Vila do Bem em feira', kind: 'Comercial · renderização 3D', tags: ['Comercial', '3D'], img: '/_blob/5578f91be29d035d93552ff1a278b645', alt: 'Imagem 3D de stand de feira com estrutura de madeira, plantas penduradas, gôndolas e logo da Vila do Bem' },
       { name: 'Sala com varanda', kind: 'Residencial · detalhe', tags: ['Residencial'], img: '/_blob/196d9a124d810babc22294161c1f7e48', alt: 'Painel com relevo geométrico branco, fita de luz e elefantes decorativos prateados' },
       { name: 'Cozinha ampla', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/502873f8613924c8d1def68201c4fce2', alt: 'Cozinha com ilha clara e sanca iluminada' },
-      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Comercial · 2016', tags: ['Comercial'], img: '/_blob/9434ca6f7a75982c384e53bcb16eed7f', alt: 'Parede azul clara com árvore pintada e folhas coloridas' },
-      { name: 'Quarto de criança', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Placas de madeira com frases e passarinhos de cerâmica na parede' },
-      { name: 'Sala de TV', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/5774a269719d52b2f7220f6de29b5bf7', alt: 'Painel de TV com revestimento em zigue-zague e rack de madeira com luz embutida' },
+      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Institucional · 2016', dup: true, tags: ['Comercial'], img: '/_blob/9434ca6f7a75982c384e53bcb16eed7f', alt: 'Parede azul clara com árvore pintada e folhas coloridas' },
+      { name: 'Quarto de menina', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Placas de madeira com frases e passarinhos de cerâmica na parede' },
+      { name: 'Sala de TV', kind: 'Residencial', dup: true, tags: ['Residencial'], img: '/_blob/5774a269719d52b2f7220f6de29b5bf7', alt: 'Painel de TV com revestimento em zigue-zague e rack de madeira com luz embutida' },
       { name: 'Kitnete', kind: 'Residencial · cozinha integrada', tags: ['Residencial'], img: '/_blob/f4348f9a1223fe5813c56034f71c1902', alt: 'Cozinha integrada com portas verdes e mesa redonda' },
-      { name: 'Sala multiuso', kind: 'Estar e TV', tags: ['Residencial'], img: '/_blob/579d150e09e2dfa0b0963998da372229', alt: 'Sala com poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada' }
+      { name: 'Sala multiuso', kind: 'Estar e TV', dup: true, tags: ['Residencial'], img: '/_blob/579d150e09e2dfa0b0963998da372229', alt: 'Sala com poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada' }
     ];
     const pfNames = ['Todos', 'Comercial', 'Residencial', 'Infantil', '3D'];
     const projFilters = pfNames.map((n) => ({ name: n, sel: n === s.pf, ...chip(n === s.pf), pick: () => this.setState({ pf: n }) }));
-    const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0);
+    const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => !p.dup && (s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0));
     // Mais fotos de cada projeto (pastas do Drive). Cartões do mesmo projeto compartilham a galeria.
     const R = 'Foto real', T = 'Projeto em 3D';
     const GAL = {
@@ -1314,7 +1429,7 @@ class Component extends DCLogic {
     const hasReal = !!real, noReal = !real;
 
     const faqData = [
-      { q: 'Você faz projetos comerciais e corporativos?', a: 'Sim, e são os que eu mais gosto de fazer. Atendo lojas, restaurantes, clínicas, escritórios e indústrias. Tenho especialização em Ambientes de Trabalho com certificação alemã.' },
+      { q: 'Você faz projetos comerciais e corporativos?', a: 'Sim, e são os que eu mais gosto de fazer. Atendo lojas, restaurantes, escritórios, empresas e indústrias. Tenho especialização em Ambientes de Trabalho com certificação alemã.' },
       { q: 'Você atende fora da Grande Vitória?', a: 'Atendo todo o Espírito Santo, com foco na Grande Vitória, na sua casa ou empresa e também online. Já fiz projetos em São Paulo e Minas Gerais.' },
       { q: 'Quanto custa um projeto?', a: 'O valor varia de projeto para projeto, porque depende da complexidade do trabalho. Ele é definido depois da visita técnica, quando eu entendo o espaço e o que você precisa.' },
       { q: 'Quais são as formas de pagamento?', a: 'Aceito cartão de crédito, depósito bancário e Pix.' },
@@ -1325,9 +1440,23 @@ class Component extends DCLogic {
     ];
     const faqs = faqData.map((f, i) => ({ q: f.q, a: f.a, open: s.faq === i, rot: s.faq === i ? 45 : 0, toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) }));
 
+    const tg = (id) => () => this.setState({ mn: this.state.mn === id ? '' : id });
+    const mnOpen = (id) => (s.mn === id ? 'is-open' : '');
+    const mnExp = (id) => (s.mn === id ? 'true' : 'false');
+    const servItems = svcs.map((v, i) => ({ name: v.title, go: () => this.setState({ tab: i, mn: '' }) }));
+    const portItems = ['Todos', 'Comercial', 'Residencial', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
+    const menuVals = {
+      servItems, portItems, closeMn: () => this.setState({ mn: '' }),
+      stuckCls: s.stuck ? 'is-on' : '',
+      tHServ: tg('hserv'), tHPort: tg('hport'), tSServ: tg('sserv'), tSPort: tg('sport'), tMob: tg('mob'),
+      hServCls: mnOpen('hserv'), hPortCls: mnOpen('hport'), sServCls: mnOpen('sserv'), sPortCls: mnOpen('sport'), mobCls: mnOpen('mob'),
+      hServExp: mnExp('hserv'), hPortExp: mnExp('hport'), sServExp: mnExp('sserv'), sPortExp: mnExp('sport'), mobExp: mnExp('mob')
+    };
+
     return {
+      ...menuVals,
       wa, ring, marq, pilares, elogios, cats, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
-      projFilters, projVisible, lb, lbMany, lbThumbs, tc, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
+      projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
       sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
       send: (e) => { e.preventDefault(); this.setState({ sent: true }); },
