@@ -25,14 +25,12 @@ IMG = {
     'bicho': ('assets/out/p_bicho1.jpg', 'Salão comprido do restaurante Bicho Guloso Prime, com teto de madeira, mesas escuras e estofados coloridos'),
     'stand': ('assets/out5/p_stand.jpg', 'Imagem 3D de stand de feira da Vila do Bem, com estrutura de madeira, plantas penduradas e gôndolas'),
     'maelle': ('assets/out/s_estante.jpg', 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas no Studio Maelle'),
-    'bmq-patio': ('assets/servicos/bmq-patio.jpg', 'Pátio externo do Espaço Bem Me Quer, com canteiros de ervas em tijolinhos, piso de madeira e porta de vidro'),
-    'bmq-horta': ('assets/servicos/bmq-horta.jpg', 'Horta em canteiros de concreto vista pela porta de vidro do Espaço Bem Me Quer'),
-    'bmq-sala': ('assets/servicos/bmq-sala.jpg', 'Sala ampla do Espaço Bem Me Quer com piso de madeira, parede de pedra e porta de vidro para o jardim'),
-    'bmq-recepcao': ('assets/servicos/bmq-recepcao.jpg', 'Recepção do Espaço Bem Me Quer com parede amarela, silhueta de meditação e piso de madeira'),
-    'bmq-espera': ('assets/servicos/bmq-espera.jpg', 'Sala de espera do Espaço Bem Me Quer com poltronas, parede amarela com frase e pegadas coloridas'),
-    'bmq-meditacao': ('assets/servicos/bmq-meditacao.jpg', 'Sala de meditação com parede de pedra, arandelas e uma pequena fonte'),
-    'bmq-fisio': ('assets/servicos/bmq-fisio.jpg', 'Sala de fisioterapia do Espaço Bem Me Quer com barras paralelas e maca azul'),
     'switch': ('assets/v2/43938a1e41c2a37861cdbe8c7a205c7e.webp', 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada ao fundo'),
+    'bmq-exterior': ('assets/servicos/bmq-exterior.jpg', 'Fachada amarela do Espaço Bem Me Quer, da ACACCI, com jardim, rampa acessível com corrimão e o céu aberto'),
+    'bmq-recepcao2': ('assets/servicos/bmq-recepcao2.jpg', 'Recepção do Espaço Bem Me Quer com parede amarela, frase na parede, silhueta de meditação e piso de madeira'),
+    'bmq-parede-frase': ('assets/servicos/bmq-parede-frase.jpg', 'Parede de atendimento com folhas coloridas e frase de Cora Coralina'),
+    'bmq-parede-folhas': ('assets/servicos/bmq-parede-folhas.jpg', 'Parede azul-clara com folhas coloridas e a frase Há muros que só a paciência derruba'),
+    'bmq-parede-arvore': ('assets/servicos/bmq-parede-arvore.jpg', 'Parede azul-clara com árvore preta e folhas coloridas em sala de atendimento'),
     'rl-sala-antes': ('assets/out/ad_sala_antes.jpg', 'Antes: sala de jantar com mesa de vidro e cadeiras de fibra diante de cortinas verticais'),
     'rl-sala-depois': ('assets/out/ad_sala_depois.jpg', 'Depois: a mesma sala com mesa redonda clara, cadeiras estofadas, lustre de anéis e planta'),
     'rl-menina-antes': ('assets/out/ad_menina_antes.jpg', 'Antes: escrivaninha de quarto infantil com fios aparentes, medalhas e objetos acumulados'),
@@ -71,7 +69,7 @@ S = [
         ],
         'para': 'Quem vai reformar ou montar a casa ou o apartamento e quer decidir com segurança, vendo tudo antes de aprovar.',
         'inclui': ['Briefing funcional e emocional', 'Planta com o novo layout', 'Vistas em 3D para aprovar antes da obra', 'Projeto de iluminação, marcenaria e especificação de materiais', 'Documentação técnica para os profissionais que executam', 'Coordenação e acompanhamento da obra'],
-        'fotos': ['res-sala-varanda', 'res-jantar', 'res-sala-tv', 'res-painel-tv', 'res-cozinha', 'res-quarto'],
+        'fotos': ['res-sala-varanda', 'res-jantar', 'res-sala-tv', 'res-painel-tv', 'res-cozinha'],
         'depo': ('Nosso apartamento ficou a “nossa cara” e é um prazer morar e receber pessoas queridas em nosso “novo” espaço.', 'Andrea Mongin, reforma completa de apartamento'),
         'faq': [
             ('Quanto custa um projeto de interiores residencial?', 'O valor varia porque depende da complexidade e do tamanho do espaço. Ele é definido depois da visita técnica, quando eu entendo o espaço e o que você precisa. Aceito cartão de crédito, depósito bancário e Pix.'),
@@ -118,8 +116,9 @@ S = [
         ],
         'para': 'Associações, ONGs, clínicas e instituições que querem um espaço acolhedor, acessível e com a identidade do seu propósito.',
         'inclui': ['Acessibilidade e circulação para todas as pessoas', 'Cores e frases que acolhem, com a identidade da instituição', 'Áreas externas, jardins e horta como parte do cuidado', 'Salas de atendimento, espera e convivência', 'Orçamento enxuto e coordenação da obra'],
-        'fotos': ['bmq-patio', 'bmq-horta', 'bmq-sala', 'bmq-recepcao', 'bmq-espera', 'bmq-meditacao', 'bmq-fisio'],
+        'fotos': ['bmq-exterior', 'bmq-recepcao2', 'bmq-parede-frase', 'bmq-parede-folhas', 'bmq-parede-arvore'],
         'cases': 'Espaço Bem Me Quer, da ACACCI.',
+        'mais': '/projetos/espaco-bem-me-quer-acacci/',
         'depo': None,
         'faq': [
             ('O que é o Espaço Bem Me Quer?', 'É um espaço de acolhimento da ACACCI, projetado pela Simone Afonso, com recepção, salas de atendimento, fisioterapia, sala de meditação e um pátio com horta.'),
@@ -164,7 +163,7 @@ S = [
         ],
         'para': 'Quem quer uma casa mais confortável e com a sua cara, sem mudar tudo.',
         'inclui': ['Nova arrumação dos móveis', 'Ajuste da iluminação', 'Pintura e troca de tecidos', 'Peças novas onde fazem diferença'],
-        'fotos': ['rl-sala-antes', 'rl-sala-depois', 'rl-menina-antes', 'rl-menina-depois', 'rl-cozinha-antes', 'rl-cozinha-depois', 'rl-compacta-antes', 'rl-compacta-depois'],
+        'fotos': ['rl-sala-depois', 'rl-menina-depois', 'rl-cozinha-depois', 'rl-compacta-depois'],
         'depo': None,
         'faq': [
             ('Home Relooking ou reforma: qual eu preciso?', 'O Home Relooking resolve com mudanças pontuais, como arrumação dos móveis, iluminação, pintura e tecidos. Se o espaço precisa mudar a planta ou trocar acabamentos, o caminho é o projeto completo. Eu indico o melhor na visita.'),
@@ -250,6 +249,8 @@ def build(B):
         ld = ' fetchpriority="high"' if eager else ' loading="lazy"'
         return f'<figure class="foto {cls}"><img src="{src}" alt="{esc(IMG[k][1], True)}"{d}{ld} decoding="async"></figure>'
 
+    LB = '''<script>(function(){var imgs=[].slice.call(document.querySelectorAll('.pagina .foto img'));if(!imgs.length)return;var i=0,box=document.createElement('div');box.className='lb';box.hidden=true;box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label','Foto ampliada');box.innerHTML='<button class="lb-x" aria-label="Fechar">×</button><button class="lb-p" aria-label="Foto anterior">‹</button><img alt=""><button class="lb-n" aria-label="Próxima foto">›</button>';document.body.appendChild(box);var im=box.querySelector('img'),last;function show(n){i=(n+imgs.length)%imgs.length;im.src=imgs[i].currentSrc||imgs[i].src;im.alt=imgs[i].alt}function open(n){last=document.activeElement;show(n);box.hidden=false;document.body.style.overflow='hidden';box.querySelector('.lb-x').focus()}function close(){box.hidden=true;document.body.style.overflow='';if(last)last.focus()}imgs.forEach(function(g,n){g.tabIndex=0;g.setAttribute('role','button');g.style.cursor='zoom-in';g.addEventListener('click',function(){open(n)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(n)}})});box.addEventListener('click',function(e){if(e.target===box||e.target.classList.contains('lb-x'))close();else if(e.target.classList.contains('lb-p'))show(i-1);else if(e.target.classList.contains('lb-n'))show(i+1)});document.addEventListener('keydown',function(e){if(box.hidden)return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(i-1);else if(e.key==='ArrowRight')show(i+1)});var x0;box.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});box.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>50)show(i+(d<0?1:-1))})})();</script>
+'''
     person, biz, site = B.entities()
     today_iso = B.dt.datetime.now(B.dt.timezone(B.dt.timedelta(hours=-3))).strftime('%Y-%m-%d')
     pages = []  # (path, lastmod, image)
@@ -281,7 +282,7 @@ def build(B):
 {faqh}
 {tail}
 </div>
-''' + B.foot()
+''' + LB + B.foot()
         B.write(path.lstrip('/') + 'index.html', html_)
         pages.append((path, today_iso, SITE + og_img if og_img else None))
 
@@ -315,6 +316,7 @@ def build(B):
 <div class="duas">
 <div class="texto">
 {''.join(f'<p>{esc(p)}</p>' for p in s['intro'])}
+{('<p class="mais"><a href="' + s['mais'] + '">Conhecer mais esse projeto →</a></p>') if s.get('mais') else ''}
 <h2>Para quem é</h2><p>{esc(s['para'])}</p>
 <h2>O que está incluído</h2>
 <ul class="check">{''.join(f'<li>{esc(i)}</li>' for i in s['inclui'])}</ul>
@@ -337,6 +339,26 @@ def build(B):
         body2 = cta('Olá, Simone! Vim pelo site e gostaria de conversar sobre ' + s['nome'].lower() + '.') + rel_links(s['rel'])
         page(path, s['title'], s['desc'], s['h1'], 'Serviço', s['resposta'], body, [('Início', '/'), ('Serviços', '/servicos/'), (s['nome'], path)], faq, [svc],
              og_img=dims[fotos[0]][0] if fotos[0] in dims else None, tail=body2)
+
+    # ---------------------------------------------------------- pagina de projeto: Espaco Bem Me Quer
+    pp = '/projetos/espaco-bem-me-quer-acacci/'
+    pfotos = ['bmq-exterior', 'bmq-recepcao2', 'bmq-parede-frase', 'bmq-parede-folhas', 'bmq-parede-arvore']
+    pbody = f'''{fig(pfotos[0], True, 'capa-s')}
+<div class="texto">
+<p>O Espaço Bem Me Quer é um espaço de acolhimento da ACACCI, projetado pela arquiteta Simone Afonso. O projeto reúne recepção, salas de atendimento, fisioterapia, sala de meditação e um pátio com horta, pensados para quem cuida e para quem é cuidado.</p>
+<p>Cores, frases e áreas verdes entram como parte do cuidado, sem perder a acessibilidade e a praticidade do dia a dia, com orçamento enxuto e a identidade da instituição em evidência.</p>
+<p>Esta página será ampliada com o relato completo do projeto, contado pela própria Simone.</p>
+<p class="mais"><a href="/servicos/projetos-institucionais/">← Ver o serviço de projetos institucionais</a></p>
+</div>
+<div class="galeria">{''.join(fig(k) for k in pfotos[1:])}</div>
+'''
+    page(pp, 'Espaço Bem Me Quer, ACACCI: projeto institucional de acolhimento | Simone Afonso',
+         'Projeto de arquitetura do Espaço Bem Me Quer, da ACACCI: recepção, salas de atendimento, fisioterapia, meditação e pátio com horta, com acessibilidade e cores que acolhem.',
+         'Espaço Bem Me Quer, ACACCI', 'Projeto',
+         'O Espaço Bem Me Quer, da ACACCI, é um projeto institucional da arquiteta Simone Afonso, com recepção, salas de atendimento, fisioterapia, meditação e pátio com horta, pensado para acolher.',
+         pbody, [('Início', '/'), ('Serviços', '/servicos/'), ('Projetos institucionais', '/servicos/projetos-institucionais/'), ('Espaço Bem Me Quer', pp)], [],
+         [{'@type': 'CreativeWork', '@id': SITE + pp + '#projeto', 'name': 'Espaço Bem Me Quer, ACACCI', 'creator': {'@id': SITE + '/#simone'}, 'inLanguage': 'pt-BR'}],
+         og_img=dims[pfotos[0]][0], tail=cta('Olá, Simone! Vim pelo site e gostaria de conversar sobre um projeto institucional.'))
 
     # ---------------------------------------------------------- hub /servicos/
     def thumb(k):
