@@ -175,3 +175,9 @@ h4{font-size:18px;margin:1.5em 0 .4em}
 .filtros button{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border:1.5px solid var(--ameixa);border-radius:999px;color:var(--ameixa);font-weight:500;font-size:15.5px;background:transparent;font-family:inherit;cursor:pointer}
 .filtros button[aria-pressed=true]{background:var(--ameixa);color:#fff}
 .nota{font-size:14.5px;color:var(--ink-soft,#6B5658);margin:1.2em 0}
+
+.feito{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;margin-top:18px}
+.rodape .feito-por{display:inline-flex;align-items:center;gap:10px;color:rgba(243,236,224,.8);text-decoration:none;font-size:13px}
+.logo-intelles{font-family:"Unbounded",sans-serif;font-weight:700;font-size:20px;letter-spacing:-.045em;line-height:1;color:#F3ECE0}
+.logo-intelles i{font-style:normal;color:#E31E24}
+.feito-por:hover .logo-intelles{opacity:.85}
