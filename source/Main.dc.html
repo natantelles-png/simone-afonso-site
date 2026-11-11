@@ -195,9 +195,9 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-dd" data-mn="">
 <button type="button" class="sa-dd-btn sa-link" onClick="{{ tSServ }}" aria-expanded="{{ sServExp }}" aria-haspopup="true">Serviços <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
 <ul class="sa-dd-menu {{ sServCls }}">
-<li><a class="sa-dd-all" href="#servicos" onClick="{{ closeMn }}">Ver todos os serviços</a></li>
+<li><a class="sa-dd-all" href="/servicos/">Ver todos os serviços</a></li>
 <sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
-<li><a href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+<li><a href="{{ m.href }}">{{ m.name }}</a></li>
 </sc-for>
 </ul>
 </div>
@@ -223,7 +223,7 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-mob {{ mobCls }}" data-mn="">
 <p class="sa-mob-h">Serviços</p>
 <sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
-<a class="sa-mob-sub" href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a>
+<a class="sa-mob-sub" href="{{ m.href }}">{{ m.name }}</a>
 </sc-for>
 <a href="#processo" onClick="{{ closeMn }}">Método</a>
 <a href="#trilha" onClick="{{ closeMn }}">Música</a>
@@ -250,9 +250,9 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-dd" data-mn="">
 <button type="button" class="sa-dd-btn sa-link" onClick="{{ tHServ }}" aria-expanded="{{ hServExp }}" aria-haspopup="true">Serviços <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
 <ul class="sa-dd-menu {{ hServCls }}">
-<li><a class="sa-dd-all" href="#servicos" onClick="{{ closeMn }}">Ver todos os serviços</a></li>
+<li><a class="sa-dd-all" href="/servicos/">Ver todos os serviços</a></li>
 <sc-for list="{{ servItems }}" as="m" hint-placeholder-count="5">
-<li><a href="#servicos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+<li><a href="{{ m.href }}">{{ m.name }}</a></li>
 </sc-for>
 </ul>
 </div>
@@ -305,7 +305,7 @@ section[id]{scroll-margin-top:72px}
 <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:0 24px">
 <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
 <li>
-<a class="sa-cat" href="#servicos" onClick="{{ c.pick }}" style="display:block;padding:22px 0 4px;text-decoration:none;color:#3B2E2F;min-height:44px">
+<a class="sa-cat" href="{{ c.href }}" style="display:block;padding:22px 0 4px;text-decoration:none;color:#3B2E2F;min-height:44px">
 <span style="display:block;font-family:'Gloock',serif;font-weight:400;font-size:clamp(20px,1.7vw,25px);line-height:1.15">{{ c.name }}</span>
 <span style="display:block;margin-top:6px;font-size:14px;line-height:1.35;color:#6B5658">{{ c.sub }}</span>
 </a>
@@ -373,47 +373,25 @@ section[id]{scroll-margin-top:72px}
 <!-- SERVIÇOS -->
 <section id="servicos" class="sa-papel">
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
-<div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;margin-bottom:28px">
+<div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;margin-bottom:36px">
 <div style="flex:1 1 560px;min-width:0"><p class="sa-kicker">Serviços</p><h2 class="sa-reveal" style="margin:0;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Da loja ao quarto das crianças, o mesmo cuidado</h2></div>
-<p style="flex:1 1 320px;margin:0;color:#6B5658">Atendo projetos comerciais, residenciais e corporativos. O ponto de partida é sempre o mesmo: entender quem vai vivenciar o espaço.</p>
+<p style="flex:1 1 320px;margin:0;color:#6B5658">Projetos residenciais, comerciais, institucionais e corporativos, Home Relooking, Home Staging e consultoria. O ponto de partida é sempre o mesmo: entender quem vai vivenciar o espaço. Escolha um serviço para ver fotos, o que está incluído e as dúvidas mais comuns.</p>
 </div>
-<div role="tablist" aria-label="Serviços" class="sa-chips" style="margin-bottom:22px">
-<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
-<button type="button" role="tab" onClick="{{ t.pick }}" aria-selected="{{ t.sel }}" style="font-family:var(--sa-sans);font-size:17px;font-weight:500;padding:12px 22px;min-height:48px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ t.bg }};color:{{ t.ink }}">{{ t.title }}</button>
-</sc-for>
-</div>
-<div role="tabpanel" style="display:flex;flex-wrap:wrap;background:#F3DEDA">
-<div class="sa-chamfer sa-par" style="flex:1 1 440px;min-width:0;min-height:380px;position:relative;overflow:hidden">
-<sc-if value="{{ svc.noVideo }}" hint-placeholder-val="{{ true }}">
-<img src="{{ svc.img }}" alt="{{ svc.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-</sc-if>
-<sc-if value="{{ svc.hasVideo }}" hint-placeholder-val="{{ false }}">
-<img src="/_blob/8c578b325f9b109126fca5438cbdf060" alt="" aria-hidden="true" style="position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;display:block;filter:blur(22px) brightness(.55)">
-<video src="/_blob/d1098bdb47c003fac3f3923fb2f0acc1" poster="/_blob/8c578b325f9b109126fca5438cbdf060" controls="" playsinline="" preload="metadata" aria-label="Vídeo: tour pelo Studio Maelle" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);height:100%;max-width:100%;aspect-ratio:9 / 16;object-fit:contain;display:block;background:#000000"></video>
-</sc-if>
-</div>
-<div style="flex:1 1 420px;min-width:0;padding:clamp(26px,4vw,52px)">
-<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#8A4F55">{{ svc.kicker }}</p>
-<h3 style="margin:0 0 12px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.06">{{ svc.title }}</h3>
-<p style="margin:0 0 18px">{{ svc.lead }}</p>
-<p style="margin:0 0 4px;font-weight:600">Para quem é</p>
-<p style="margin:0 0 18px;color:#6B5658">{{ svc.who }}</p>
-<p style="margin:0 0 8px;font-weight:600">O que pode entrar</p>
-<ul style="margin:0 0 24px;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px">
-<sc-for list="{{ svc.items }}" as="it" hint-placeholder-count="4">
-<li style="display:flex;gap:10px;align-items:flex-start"><svg class="sa-mk" viewBox="0 0 444 484" aria-hidden="true" style="flex:0 0 14px;width:14px;height:16px;margin-top:6px;color:#8A4F55"><path d="M222 15 L18 103 L18 225 L222 322 L425 225 L425 100 L220 192"></path><path d="M222 322 L222 455"></path><path d="M18 372 L222 465 L425 372"></path></svg><span>{{ it.text }}</span></li>
+<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px">
+<sc-for list="{{ svcCards }}" as="c" hint-placeholder-count="8">
+<li class="sa-reveal">
+<a class="sa-svc-card" href="{{ c.href }}" style="display:flex;flex-direction:column;height:100%;text-decoration:none;color:#3B2E2F;background:#F3DEDA;overflow:hidden">
+<span style="display:block;position:relative;aspect-ratio:4 / 3;overflow:hidden;background:#EDE4DC"><img src="{{ c.img }}" alt="{{ c.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></span>
+<span style="display:flex;flex-direction:column;gap:8px;padding:20px 22px 22px;flex:1">
+<span style="font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8A4F55">{{ c.kicker }}</span>
+<span style="font-family:'Gloock',serif;font-weight:400;font-size:clamp(23px,2vw,28px);line-height:1.1">{{ c.title }}</span>
+<span style="font-size:16px;line-height:1.5;color:#534243;flex:1">{{ c.blurb }}</span>
+<span style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#3B2E2F;margin-top:6px">Ver detalhes <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></span>
+</span>
+</a>
+</li>
 </sc-for>
 </ul>
-<sc-if value="{{ svc.hasProof }}" hint-placeholder-val="{{ true }}">
-<figure style="margin:0 0 22px;padding:16px 20px;background:#FAF4F0;border-radius:16px">
-<blockquote style="margin:0 0 6px;font-family:'Gloock',serif;font-size:19px;line-height:1.3">“{{ svc.proof }}”</blockquote>
-<figcaption style="font-size:14px;color:#6B5658">{{ svc.proofBy }}</figcaption>
-</figure>
-</sc-if>
-<a class="sa-btn" href="{{ svc.wa }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#534243;color:#FFFFFF;text-decoration:none;font-weight:500;padding:13px 24px;border-radius:999px">Conversar sobre {{ svc.short }}</a>
-<p style="margin:16px 0 0;font-size:15px;color:#6B5658">{{ svc.media }}: {{ svc.caption }}</p>
-</div>
-</div>
 </div>
 </section>
 
@@ -823,7 +801,7 @@ section[id]{scroll-margin-top:72px}
 <figure style="position:absolute;inset:0;margin:0;border-radius:250px 250px 0 0;overflow:hidden;background:#534243;box-shadow:0 24px 50px rgba(59,46,47,.25)">
 <img src="/_blob/6c624862dc99203b6c7a6381962a0312" alt="Simone Afonso sorrindo, com a mão perto do queixo, sentada à mesa" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
 </figure>
-<div class="sa-lift sa-hide-m" style="position:absolute;right:-20px;top:30px;width:150px;background:#FFFFFF;padding:8px 8px 10px;transform:rotate(4deg);box-shadow:0 14px 30px rgba(59,46,47,.25)">
+<div class="sa-lift sa-hide-m" style="position:absolute;right:-20px;top:-64px;width:150px;background:#FFFFFF;padding:8px 8px 10px;transform:rotate(4deg);box-shadow:0 14px 30px rgba(59,46,47,.25)">
 <img src="/_blob/44ff8751e58f4855ad9b6233372f783f" alt="Simone Afonso palestrando no NeuroarqDay 2023" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover">
 <p style="margin:6px 0 0;font-size:12px;color:#6B5658">NeuroarqDay 2023</p>
 </div>
@@ -1037,7 +1015,7 @@ section[id]{scroll-margin-top:72px}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { ad: 0, pos: 50, touched: false, tab: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, seqOpen: false, mn: '', stuck: false, real: null };
+    this.state = { ad: 0, pos: 50, touched: false, tab: 0, sp: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, seqOpen: false, mn: '', stuck: false, real: null };
   }
   componentDidMount() {
     try {
@@ -1085,21 +1063,23 @@ class Component extends DCLogic {
     ];
 
     const svcs = [
-      { title: 'Consultoria', short: 'uma consultoria', kicker: 'Horas de orientação, na sua casa ou empresa', img: '/_blob/1223a803a7dcf9c5f48b5711c74679d6', alt: 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas', video: true, caption: 'tour pelo Studio Maelle, do depoimento da Cassia',
-        lead: 'Horas de consultoria no seu espaço para orientar decisões, com relatório e especificações, sem a necessidade de um projeto completo.',
-        who: 'Quem já tem uma ideia e precisa de um olhar técnico para acertar.',
-        proof: 'A consultoria com a Simone foi essencial para mapear cada cantinho do Stúdio, tornar os ambientes funcionais e ainda trazer aconchego e acolhimento.', proofBy: 'Cassia Bastianelle, Estúdio Maelle',
-        items: ['Visita técnica', 'Orientação sobre layout, cores e materiais', 'Relatório com especificações'] },
       { title: 'Projetos residenciais', short: 'um projeto residencial', kicker: 'Arquitetura e interiores', img: '/_blob/046bb79f31e132aef40e2709d7888ae9', alt: 'Sala de estar com duas poltronas claras, mesa de centro redonda de madeira, estante de madeira com treliças e parede branca com relevo geométrico', caption: 'sala de estar e jantar de um projeto residencial',
+        photos: [{ img: '/_blob/8aef62d307c3de204a753ab63f2efdd5', alt: 'Sala de estar integrada à varanda, com painel de madeira ondulada na parede, sofá cinza-claro, cortinas e luz natural ao fundo', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/046bb79f31e132aef40e2709d7888ae9', alt: 'Sala de estar com duas poltronas claras, mesa de centro redonda de madeira, estante de madeira com treliças e parede branca com relevo geométrico', cap: 'sala de estar e jantar de um projeto residencial' }, { img: '/_blob/f5c22c67431e703c1b5dc27cb2ba7fa4', alt: 'Sala de estar com rack de madeira ripada, painel branco com relevo 3D, TV, sofá bege e cortina cinza', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/b8833fd2ac5b036167bbaf7f79e88827', alt: 'Painel de TV com iluminação embutida, parede com relevo geométrico, rack de madeira ripada e poltrona ao lado da varanda', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/02a4dec27db676eeb0202a8db133b24a', alt: 'Sala de estar e jantar integradas, com sofá claro, painel de TV com nicho iluminado e mesa de jantar com lustre dourado ao fundo', cap: 'sala e varanda de um projeto residencial' }],
         lead: 'Projeto completo de interiores, do briefing à obra, com a sua história como ponto de partida e a coordenação dos profissionais que executam.',
         who: 'Quem vai reformar e quer decidir com segurança, vendo tudo antes de aprovar.',
         proof: 'Nosso apartamento ficou a “nossa cara” e é um prazer morar e receber pessoas queridas em nosso “novo” espaço.', proofBy: 'Andrea Mongin, reforma completa de apartamento',
         items: ['Briefing funcional e emocional', 'Planta com o novo layout', 'Vistas em 3D', 'Documentação técnica e coordenação da obra'] },
-      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas e empresas', img: '/_blob/467ece5c0245ea918ef8fa3039bf765c', alt: 'Interior da loja Vila do Bem, com o letreiro no mezanino, jardim vertical, gôndolas de produtos a granel e o espaço kids ao fundo', caption: 'a loja Vila do Bem, na Praia do Canto',
+      { title: 'Projetos comerciais', short: 'um projeto comercial', kicker: 'Lojas e empresas', img: '/_blob/b1a751002a8d0b74298af8d0e194c196', alt: 'Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas de produtos a granel', caption: 'a loja Vila do Bem, na Praia do Canto',
+        photos: [{ img: '/_blob/b1a751002a8d0b74298af8d0e194c196', alt: 'Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas de produtos a granel', cap: 'loja Vila do Bem, Praia do Canto' }, { img: '/_blob/e3bd85a46317677475a4bdceb8456f5e', alt: 'Salão da loja Vila do Bem com pé-direito alto, jardim vertical e iluminação natural', cap: 'a loja vista do mezanino' }, { img: '/_blob/2a4a27b24f505281cd663218ac62d706', alt: 'Prateleiras de madeira da loja Vila do Bem sob vigas aparentes e luz natural', cap: 'prateleiras sob as vigas de madeira' }, { img: '/_blob/0f2c9a63dc373adbc8aee99f699ea6a9', alt: 'Corredor da loja Vila do Bem com forro de madeira e gôndolas dos dois lados', cap: 'corredor com forro de madeira' }, { img: '/_blob/dac552c01df8e60d71f1d694c565b8fe', alt: 'Área de convivência da Vila do Bem com banco de madeira, grama e parede com a marca', cap: 'área de convivência' }, { img: '/_blob/5e60686d421c4d0491600124677b679c', alt: 'Espaço Kids da Vila do Bem, com piso lúdico e cores suaves', cap: 'espaço Kids' }],
         lead: 'Cada negócio tem uma identidade, um propósito e pessoas que dão sentido a ele. Meu trabalho é compreender essa relação e traduzi-la em espaços que acolham, facilitem a rotina e favoreçam a experiência de quem compra, é atendido ou trabalha ali. A Neuroarquitetura orienta esse olhar, considerando como o ambiente pode influenciar as emoções, o comportamento e o bem-estar. Em projetos para empresas e indústrias, também aplico os conhecimentos da minha especialização em Ambientes de Trabalho, com certificação alemã.',
         who: 'Lojas, escritórios, empresas e indústrias que desejam expressar sua marca no espaço e cuidar da experiência de clientes e equipes.',
         proof: 'Não é apenas sobre onde fica cada móvel, mas sobre como transformar uma sala comercial em um ambiente em que as nossas clientes se sintam em casa.', proofBy: 'Cassia Bastianelle, sócia do Estúdio Maelle',
         items: ['Layout e circulação pensados para as pessoas e a rotina do negócio', 'Identidade e propósito da marca traduzidos no ambiente', 'Iluminação, materiais, cores e conforto sensorial', 'Organização dos espaços para apoiar o trabalho e o bem-estar da equipe', 'Coordenação e acompanhamento da obra'] },
+      { title: 'Projetos institucionais', short: 'um projeto institucional', kicker: 'Associações, clínicas e espaços de cuidado', img: '/_blob/3d6658836d992211476c57c1a59c66bf', alt: 'Pátio externo do Espaço Bem Me Quer, com canteiros de ervas em tijolinhos, piso de madeira e porta de vidro', caption: 'Espaço Bem Me Quer, da ACACCI',
+        photos: [{ img: '/_blob/3d6658836d992211476c57c1a59c66bf', alt: 'Pátio externo do Espaço Bem Me Quer, com canteiros de ervas em tijolinhos, piso de madeira e porta de vidro', cap: 'pátio com horta e jardim' }, { img: '/_blob/703dde3e81fa5b47aee8c0e3dae607d3', alt: 'Horta em canteiros de concreto vista pela porta de vidro do Espaço Bem Me Quer', cap: 'a horta, vista de dentro' }, { img: '/_blob/13c9cbbce6b0d93defcbfdc2bc309253', alt: 'Sala ampla do Espaço Bem Me Quer com piso de madeira, parede de pedra e porta de vidro para o jardim', cap: 'sala multiuso integrada ao jardim' }, { img: '/_blob/f51dbe2ab3e4071b4096c726e070d79f', alt: 'Recepção do Espaço Bem Me Quer com parede amarela, silhueta de meditação e piso de madeira', cap: 'recepção' }, { img: '/_blob/c835264a41131b7b3be5f93a573e357b', alt: 'Sala de espera com poltronas, parede amarela com frase e pegadas coloridas', cap: 'sala de espera' }, { img: '/_blob/0764d04159b4a53fa23bb00e39317fe1', alt: 'Sala de meditação com parede de pedra, arandelas e uma pequena fonte', cap: 'sala de meditação' }, { img: '/_blob/4b67bc8fd9a1d3e8add1a889878083b3', alt: 'Sala de fisioterapia com barras paralelas e maca azul', cap: 'sala de fisioterapia' }, { img: '/_blob/25bccced93de83cca0701e93f7663917', alt: 'Rampa de acesso com guarda-corpo em aço e jardim', cap: 'rampa de acesso e jardim' }],
+        lead: 'Espaços de acolhimento pensados para quem cuida e para quem é cuidado. Cores, luz, acessibilidade e áreas verdes trabalhadas com a Neuroarquitetura para que o ambiente ajude a acalmar e a receber bem.',
+        who: 'Associações, ONGs, clínicas e instituições que querem um espaço acolhedor, acessível e com a identidade do seu propósito.',
+        items: ['Acessibilidade e circulação para todas as pessoas', 'Cores e frases que acolhem, com a identidade da instituição', 'Áreas externas e jardins como parte do cuidado', 'Orçamento enxuto e coordenação da obra'] },
       { title: 'Projetos corporativos', short: 'um projeto corporativo', kicker: 'Indústrias e ambientes de trabalho', img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada ao fundo', caption: 'projeto 3D do escritório da Switch',
         lead: 'Ambientes de trabalho para indústrias e empresas, pensados para a saúde, a segurança e o bem-estar de quem passa o dia ali. Aplico os conhecimentos da minha especialização em Ambientes de Trabalho, com certificação alemã, junto com a Neuroarquitetura.',
         who: 'Indústrias e empresas que querem ambientes de trabalho mais funcionais, saudáveis e com a cara da empresa.',
@@ -1109,17 +1089,30 @@ class Component extends DCLogic {
         who: 'Quem quer uma casa mais confortável e com a sua cara, sem mudar tudo.',
         items: ['Nova arrumação dos móveis', 'Ajuste da iluminação', 'Pintura e troca de tecidos', 'Peças novas onde fazem diferença'] },
       { title: 'Home Staging', short: 'Home Staging', kicker: 'Destacar para vender', img: '/_blob/fe931523e0b7d5f57a0b6aa5b598216a', alt: 'Quarto com cabeceira de madeira, roupa de cama clara e folha decorativa na parede', caption: 'quarto de uma kitnete',
+        photos: [{ img: '/_blob/ff227d0eba6dd60e07619352e917de39', alt: 'Depois: fachada da casa de Parabiago com pintura laranja, paisagismo iluminado e muro com gradil, ao entardecer', cap: 'casa em Parabiago, depois' }, { img: '/_blob/ff45cee2eb4a05a61c8334a0fb1f9361', alt: 'Depois: fachada da casa de Parabiago com pintura laranja e portão marrom, vista de outro ângulo ao entardecer', cap: 'casa em Parabiago, depois' }, { img: '/_blob/7af2dd72cc7e34ba22cd53197711eb65', alt: 'Depois: fachada da casa de Parabiago em tom verde, com árvore e jardim iluminados, ao entardecer', cap: 'casa em Parabiago, depois' }, { img: '/_blob/bd8a512c9387b79dc415b96fac6b0c29', alt: 'Depois: fachada verde da casa de Parabiago com portão claro, jardim e iluminação de destaque', cap: 'casa em Parabiago, depois' }, ],
         lead: 'Consultoria com relatório para organizar e apresentar o imóvel, para que quem visita perceba as qualidades e se imagine vivendo ali.',
         who: 'Quem vai vender ou alugar e quer causar uma boa primeira impressão.',
-        items: ['Arrumação dos móveis', 'Iluminação', 'Pintura e pequenos reparos', 'Objetos para as fotos e as visitas'] }
+        items: ['Arrumação dos móveis', 'Iluminação', 'Pintura e pequenos reparos', 'Objetos para as fotos e as visitas'] },
+      { title: 'Consultoria', short: 'uma consultoria', kicker: 'Horas de orientação, na sua casa ou empresa', img: '/_blob/1223a803a7dcf9c5f48b5711c74679d6', alt: 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas', video: true, caption: 'tour pelo Studio Maelle, do depoimento da Cassia',
+        lead: 'Horas de consultoria no seu espaço para orientar decisões, com relatório e especificações, sem a necessidade de um projeto completo.',
+        who: 'Quem já tem uma ideia e precisa de um olhar técnico para acertar.',
+        proof: 'A consultoria com a Simone foi essencial para mapear cada cantinho do Stúdio, tornar os ambientes funcionais e ainda trazer aconchego e acolhimento.', proofBy: 'Cassia Bastianelle, Estúdio Maelle',
+        items: ['Visita técnica', 'Orientação sobre layout, cores e materiais', 'Relatório com especificações'] }
     ];
-    const tabs = svcs.map((v, i) => ({ title: v.title, sel: i === s.tab, ...chip(i === s.tab), pick: () => this.setState({ tab: i }) }));
+    const tabs = svcs.map((v, i) => ({ title: v.title, sel: i === s.tab, ...chip(i === s.tab), pick: () => this.setState({ tab: i, sp: 0 }) }));
     const sv = svcs[s.tab];
-    const svc = { ...sv, hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
-    const catSub = ['horas de orientação', 'arquitetura e interiores', 'lojas e empresas', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender'];
-    const catName = ['Consultoria', 'Residencial', 'Comercial', 'Corporativo', 'Home Relooking', 'Home Staging'];
-    const catImg = ['/_blob/196d9a124d810babc22294161c1f7e48', '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/bbefd20c1aab93e2b82827005851e059', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a'];
-    const cats = catName.map((n, i) => ({ n: '0' + (i + 1), name: n, sub: catSub[i], img: catImg[i], pick: () => this.setState({ tab: i }) }));
+    const sp = Math.min(s.sp || 0, sv.photos ? sv.photos.length - 1 : 0), curPh = sv.photos ? sv.photos[sp] : null;
+    const nPh = sv.photos ? sv.photos.length : 1;
+    const svc = { ...sv, ...(curPh ? { img: curPh.img, alt: curPh.alt, caption: curPh.cap } : {}), hasPhotos: !!sv.photos, prev: () => this.setState({ sp: (sp + nPh - 1) % nPh }), next: () => this.setState({ sp: (sp + 1) % nPh }), hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
+    const catSub = ['arquitetura e interiores', 'lojas e empresas', 'acolhimento e cuidado', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender', 'horas de orientação'];
+    const catName = ['Residencial', 'Comercial', 'Institucional', 'Corporativo', 'Home Relooking', 'Home Staging', 'Consultoria'];
+    const catImg = ['/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/b1a751002a8d0b74298af8d0e194c196', '/_blob/3d6658836d992211476c57c1a59c66bf', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a', '/_blob/196d9a124d810babc22294161c1f7e48'];
+    const slugs = ['projetos-residenciais', 'projetos-comerciais', 'projetos-institucionais', 'projetos-corporativos', 'home-relooking', 'home-staging', 'consultoria'];
+    const cats = catName.map((n, i) => ({ n: '0' + (i + 1), name: n, sub: catSub[i], img: catImg[i], href: '/servicos/' + slugs[i] + '/' }));
+    const cardImg = ['/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/b1a751002a8d0b74298af8d0e194c196', '/_blob/3d6658836d992211476c57c1a59c66bf', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/cecba3083e683cb18d22803fa5d7beaa', '/_blob/ff227d0eba6dd60e07619352e917de39', '/_blob/1223a803a7dcf9c5f48b5711c74679d6'];
+    const cardAlt = ['Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis', 'Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas', 'Pátio externo do Espaço Bem Me Quer, com canteiros de ervas, piso de madeira e porta de vidro', 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas e jardim vertical', 'Quarto infantil renovado, com cama azul, prateleiras e painel iluminado', 'Casa de Parabiago depois do Home Staging, ao entardecer', 'Simone Afonso ao lado de uma estante com produtos e uma parede de plantas'];
+    const svcCards = svcs.map((v, i) => ({ title: v.title, kicker: v.kicker.split(',')[0], blurb: v.lead.split('. ')[0].replace(/\.$/, '') + '.', img: cardImg[i], alt: cardAlt[i], href: '/servicos/' + slugs[i] + '/' }));
+    svcCards.push({ title: 'Neuroarquitetura', kicker: 'Guia', blurb: 'O que é, o que considera em um projeto e como aplicar em casas, lojas e escritórios.', img: '/_blob/8baff990668af6c844055f2155ed99c7', alt: 'Quarto de bebê com nuvem verde iluminada, cortina branca e prateleira com bichos de pelúcia', href: '/neuroarquitetura/' });
 
     const ads = [
       { name: 'Quarto temático', title: 'Quarto temático para adolescente', ratio: '1 / 1', maxw: '640px',
@@ -1331,20 +1324,20 @@ class Component extends DCLogic {
     ];
 
     const projects = [
-      { name: 'Loja Vila do Bem, Praia da Costa', kind: 'Comercial · noite de inauguração', tags: ['Comercial'], img: '/_blob/bbefd20c1aab93e2b82827005851e059', alt: 'Fachada da loja Vila do Bem à noite, com letreiro iluminado, portal curvo de madeira e convidados na calçada' },
+      { name: 'Loja Vila do Bem, Praia do Canto', kind: 'Comercial · Praia do Canto', tags: ['Comercial'], img: '/_blob/b1a751002a8d0b74298af8d0e194c196', alt: 'Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas' },
       { name: 'Sala de jantar', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', alt: 'Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis' },
-      { name: 'Espaço Bem Me Quer, institucional', kind: 'Institucional', tags: ['Comercial'], img: '/_blob/6d44d7539ebad1040e472dfb2cdefb31', alt: 'Banheiro acessível com parede de azulejos estampados coloridos, barras de apoio e bancada de madeira' },
+      { name: 'Espaço Bem Me Quer - ACACCI', kind: 'Institucional', tags: ['Comercial'], img: '/_blob/3d6658836d992211476c57c1a59c66bf', alt: 'Pátio externo do Espaço Bem Me Quer, com canteiros de ervas, piso de madeira e porta de vidro' },
       { name: 'Bicho Guloso Prime', kind: 'Comercial · restaurante', tags: ['Comercial'], img: '/_blob/52279fc09952a84c7317262bc50a3868', alt: 'Salão comprido com teto de madeira, mesas escuras e estofados coloridos' },
       { name: 'Quarto de bebê', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8baff990668af6c844055f2155ed99c7', alt: 'Quarto de bebê com nuvem verde iluminada, cortina branca e prateleira com bichos de pelúcia' },
       { name: 'Sala multiuso', kind: 'Estar, TV e jantar integrados', tags: ['Residencial'], img: '/_blob/dff9d905883527232e1267d4a6fa515e', alt: 'Mesa de jantar clara com cadeiras verdes, parede de pastilhas e porta espelhada' },
       { name: 'Clínica veterinária Toca dos Animais', kind: 'Comercial · renderização 3D', tags: ['Comercial', '3D'], img: '/_blob/246c5f1719c5ce2ff6398011052f76de', alt: 'Imagem 3D da fachada de vidro da clínica veterinária com recepção azul' },
       { name: 'Banheiro da suíte', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/b0fb4a1f49cfae1c2ee5c96544df148d', alt: 'Bancada branca com cuba de apoio, torneira dourada e marcenaria em madeira' },
-      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Institucional · a Simone na entrega do espaço', dup: true, tags: ['Comercial'], img: '/_blob/cc43166d60bf5c0e30a949c4e8dbbc1d', alt: 'Simone Afonso ao lado de uma parede amarela com frase sobre o Bem Me Quer e silhueta de meditação com chacras coloridos' },
+      { name: 'Espaço Bem Me Quer - ACACCI', kind: 'Institucional · a Simone na entrega do espaço', dup: true, tags: ['Comercial'], img: '/_blob/cc43166d60bf5c0e30a949c4e8dbbc1d', alt: 'Simone Afonso ao lado de uma parede amarela com frase sobre o Bem Me Quer e silhueta de meditação com chacras coloridos' },
       { name: 'Quarto de adolescente', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/82fad9013dc3427d3b0a6ee57f646553', alt: 'Quarto com cama azul, painel iluminado de medalhas e adesivo de cavalo na parede' },
       { name: 'Stand Vila do Bem em feira', kind: 'Comercial · renderização 3D', tags: ['Comercial', '3D'], img: '/_blob/5578f91be29d035d93552ff1a278b645', alt: 'Imagem 3D de stand de feira com estrutura de madeira, plantas penduradas, gôndolas e logo da Vila do Bem' },
       { name: 'Sala com varanda', kind: 'Residencial · detalhe', tags: ['Residencial'], img: '/_blob/196d9a124d810babc22294161c1f7e48', alt: 'Painel com relevo geométrico branco, fita de luz e elefantes decorativos prateados' },
       { name: 'Cozinha ampla', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/502873f8613924c8d1def68201c4fce2', alt: 'Cozinha com ilha clara e sanca iluminada' },
-      { name: 'Espaço Bem Me Quer, Acacci', kind: 'Institucional · 2016', dup: true, tags: ['Comercial'], img: '/_blob/9434ca6f7a75982c384e53bcb16eed7f', alt: 'Parede azul clara com árvore pintada e folhas coloridas' },
+      { name: 'Espaço Bem Me Quer - ACACCI', kind: 'Institucional · 2016', dup: true, tags: ['Comercial'], img: '/_blob/9434ca6f7a75982c384e53bcb16eed7f', alt: 'Parede azul clara com árvore pintada e folhas coloridas' },
       { name: 'Quarto de menina', kind: 'Residencial · infantil', tags: ['Residencial', 'Infantil'], img: '/_blob/8c67ed1d9eb5f458986765b5c8df2479', alt: 'Placas de madeira com frases e passarinhos de cerâmica na parede' },
       { name: 'Sala de TV', kind: 'Residencial', dup: true, tags: ['Residencial'], img: '/_blob/5774a269719d52b2f7220f6de29b5bf7', alt: 'Painel de TV com revestimento em zigue-zague e rack de madeira com luz embutida' },
       { name: 'Kitnete', kind: 'Residencial · cozinha integrada', tags: ['Residencial'], img: '/_blob/f4348f9a1223fe5813c56034f71c1902', alt: 'Cozinha integrada com portas verdes e mesa redonda' },
@@ -1366,9 +1359,9 @@ class Component extends DCLogic {
     // Mais fotos de cada projeto (pastas do Drive). Cartões do mesmo projeto compartilham a galeria.
     const R = 'Foto real', T = 'Projeto em 3D';
     const GAL = {
-      vdb: [['/_blob/530c61041dcf5b1550d82dceaacc30b7'], ['/_blob/42d19a5119ea3f4f92fc2052d8210956'], ['/_blob/7c57fcfe6209b92a8b5e1bc81b663c2a'], ['/_blob/09d757bc4eb3ce19f29d8c31366a3be6']],
+      vdb: [['/_blob/e3bd85a46317677475a4bdceb8456f5e', 'Salão visto do mezanino'], ['/_blob/2a4a27b24f505281cd663218ac62d706', 'Prateleiras sob vigas de madeira'], ['/_blob/0f2c9a63dc373adbc8aee99f699ea6a9', 'Corredor com forro de madeira'], ['/_blob/dac552c01df8e60d71f1d694c565b8fe', 'Área de convivência'], ['/_blob/5e60686d421c4d0491600124677b679c', 'Espaço Kids'], ['/_blob/e8cd5bf6646e8eb65fb771c8ae3a9d96', 'Sala de atendimento'], ['/_blob/f18b39d06788844d4a04d022153ba47e', 'Fachada']],
       jantar: [['/_blob/c654e610a854fbb12566558de0046be0']],
-      bmq: [['/_blob/f72bfbe60d106750e8354cd293757ac4'], ['/_blob/367538613b5fbb1bc2bc39ef2b0d2662'], ['/_blob/e096b4c5226b4174e11e86695944e956'], ['/_blob/1f6ee87bf86cd47905f7e8304e7d9dca']],
+      bmq: [['/_blob/703dde3e81fa5b47aee8c0e3dae607d3', 'A horta, vista de dentro'], ['/_blob/13c9cbbce6b0d93defcbfdc2bc309253', 'Sala multiuso integrada ao jardim'], ['/_blob/f51dbe2ab3e4071b4096c726e070d79f', 'Recepção'], ['/_blob/c835264a41131b7b3be5f93a573e357b', 'Sala de espera'], ['/_blob/0764d04159b4a53fa23bb00e39317fe1', 'Sala de meditação'], ['/_blob/4b67bc8fd9a1d3e8add1a889878083b3', 'Sala de fisioterapia'], ['/_blob/25bccced93de83cca0701e93f7663917', 'Rampa de acesso']],
       bicho: [['/_blob/0937e516b5be435e75c3856ee0af4f61'], ['/_blob/093367d30b468582ea7403752ec13e6c'], ['/_blob/b61137b39476780eb54e82c95139ce26'], ['/_blob/57719ec9b2351148d80470aa1142ce7e'], ['/_blob/40eca15e0762a62dcf8c634d1e165573']],
       multi: [['/_blob/742e64dfee5ef96615792ce60d802ec8', R], ['/_blob/1c1f4473962d6ba35919e6045ee2c698', R], ['/_blob/4f368aa8b12b27cd38b2dbbd8e090c87', R], ['/_blob/90289750f1ed5545a84517abe411982a', T], ['/_blob/d46bd7d2c17c64d19dec20fc581563c8', T], ['/_blob/27db22f9229afb4ea848856ca59f77c1', T], ['/_blob/43ab46d25fd13cbbe57c9cee78f613aa', T], ['/_blob/18bc59517d79ce70ded8342fb283c9c5', T]],
       vet: [['/_blob/cf6e0e54cf8774671450519a2287d514'], ['/_blob/f5398902b0e90a51ab3a9e55f0044600'], ['/_blob/2a9c9357388f5f9705add3ac234205cd']],
@@ -1477,7 +1470,7 @@ class Component extends DCLogic {
     const tg = (id) => () => this.setState({ mn: this.state.mn === id ? '' : id });
     const mnOpen = (id) => (s.mn === id ? 'is-open' : '');
     const mnExp = (id) => (s.mn === id ? 'true' : 'false');
-    const servItems = svcs.map((v, i) => ({ name: v.title, go: () => this.setState({ tab: i, mn: '' }) }));
+    const servItems = svcs.map((v, i) => ({ name: v.title, href: '/servicos/' + slugs[i] + '/' }));
     const portItems = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
     const menuVals = {
       servItems, portItems, closeMn: () => this.setState({ mn: '' }),
@@ -1489,7 +1482,7 @@ class Component extends DCLogic {
 
     return {
       ...menuVals,
-      wa, ring, marq, pilares, elogios, cats, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
+      wa, ring, marq, pilares, elogios, cats, svcCards, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
       projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqOpen: !!s.seqOpen, seqOpenExp: s.seqOpen ? 'true' : 'false', seqOpenToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
       sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
