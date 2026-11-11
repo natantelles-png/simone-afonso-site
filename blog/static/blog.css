@@ -125,3 +125,37 @@ h4{font-size:18px;margin:1.5em 0 .4em}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.topo,.cta,.rodape,.relacionados{display:none}}
+
+/* paginas de servico, guia e sobre */
+.pagina{padding-bottom:40px}
+.cab h1{margin-bottom:22px;max-width:900px}
+.foto{margin:0}
+.foto img{width:100%;border-radius:8px;object-fit:cover}
+.capa-s{margin:0 0 30px}
+.capa-s img{aspect-ratio:16/8;max-height:520px}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:40px;align-items:start;margin:10px 0 30px}
+.texto{max-width:720px}
+.texto h2{margin-top:1.8em}
+.lateral{position:sticky;top:90px;display:grid;gap:18px}
+.ficha{background:#fff;border:1px solid var(--rose2);border-radius:8px;padding:20px 22px}
+.ficha h2{margin:0 0 10px;font-size:22px}
+.ficha dl{margin:0 0 16px}
+.ficha dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--vinho);font-weight:700;margin-top:10px}
+.ficha dd{margin:2px 0 0;font-size:16px}
+.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:10px 0 34px}
+.galeria img{aspect-ratio:4/3}
+.check{list-style:none;padding:0;margin:0 0 10px}
+.check li{position:relative;padding:6px 0 6px 28px}
+.check li::before{content:"";position:absolute;left:4px;top:15px;width:11px;height:11px;border-radius:50%;background:var(--mel)}
+.passos{padding-left:22px}
+.passos li{margin:8px 0}
+.depo{margin:30px 0;padding:22px 26px;border-left:6px solid var(--mel);background:#fff;border-radius:0 8px 8px 0}
+.depo p{margin:0 0 8px;font-size:19px;line-height:1.55}
+.depo footer{font-size:14px;color:var(--soft)}
+.lista-links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px 18px}
+.lista-links a{display:inline-block;padding:8px 16px;border:1px solid var(--rose2);border-radius:999px;background:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.grade-s{margin-bottom:30px}
+.pagina .cta{margin:40px 0}
+@media(max-width:860px){.duas{grid-template-columns:1fr}.lateral{position:static}}
+.ficha .botao{background:var(--ameixa);color:#fff;width:100%}
+.ficha .botao:hover{background:var(--vinho);color:#fff}
