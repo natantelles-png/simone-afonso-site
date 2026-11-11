@@ -273,7 +273,7 @@ def head(title, desc, path, og_image=None, og_type='website', extra='', robots='
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo"><div class="wrap">
 <a href="/" aria-label="Simone Afonso, página inicial"><img src="/blog/assets/logo-ameixa.png" alt="Simone Afonso" width="92" height="53"></a>
-<nav class="menu" aria-label="Principal"><a href="/">Início</a><a href="/#projetos">Projetos</a><a href="/servicos/">Serviços</a><a href="/neuroarquitetura/">Neuroarquitetura</a><a class="fica" href="/blog/">Blog</a><a class="zap" href="{wa('Olá, Simone! Vim pelo blog e gostaria de conversar sobre um projeto.')}">Falar no WhatsApp</a></nav>
+<nav class="menu" aria-label="Principal"><a href="/">Início</a><a href="/portfolio/">Portfólio</a><a href="/servicos/">Serviços</a><a href="/neuroarquitetura/">Neuroarquitetura</a><a class="fica" href="/blog/">Blog</a><a class="zap" href="{wa('Olá, Simone! Vim pelo blog e gostaria de conversar sobre um projeto.')}">Falar no WhatsApp</a></nav>
 </div></header>
 <main id="conteudo">
 '''
@@ -288,7 +288,7 @@ def foot():
 <p>{esc(CFG['author_role'])}</p></div>
 <div><p><strong>Atendimento</strong></p><p>Online e a domicílio, na Grande Vitória e em todo o ES</p></div>
 <div><p><strong>Contato</strong></p><p><a href="{wa('Olá, Simone!')}">WhatsApp {esc(CFG['phone'])}</a></p><p><a href="{ig}" rel="noopener">@simoneafonso.arq</a></p></div>
-<div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/servicos/">Serviços</a></p><p><a href="/neuroarquitetura/">Neuroarquitetura</a></p><p><a href="/sobre/">Sobre</a></p><p><a href="/blog/">Blog</a></p></div>
+<div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/servicos/">Serviços</a></p><p><a href="/portfolio/">Portfólio</a></p><p><a href="/neuroarquitetura/">Neuroarquitetura</a></p><p><a href="/sobre/">Sobre</a></p><p><a href="/blog/">Blog</a></p></div>
 </div>
 <small>© {dt.date.today().year} Simone Afonso. Todos os direitos reservados.</small>
 </div></footer>
@@ -541,6 +541,7 @@ def main():
         llms.append(f'- [{s["nome"]}]({SITE}/servicos/{s["slug"]}/): {s["resposta"].split(". ")[0]}.')
     llms += ['', '## Páginas principais', f'- [Início]({SITE}/): serviços, projetos, depoimentos e contato.',
              f'- [Todos os serviços]({SITE}/servicos/): visão geral e como escolher.',
+             f'- [Portfólio de projetos]({SITE}/portfolio/): projetos residenciais, comerciais, institucionais e corporativos, cada um com página própria.',
              f'- [Neuroarquitetura: o que é e como aplicar]({SITE}/neuroarquitetura/): guia com perguntas e respostas.',
              f'- [Sobre a Simone Afonso]({SITE}/sobre/): formação, áreas de atuação e contato.',
              f'- [Blog]({SITE}/blog/): textos sobre neuroarquitetura, projetos e dicas.', '', '## Textos do blog']

@@ -1,0 +1,760 @@
+[
+ {
+  "key": "vdb",
+  "slug": "loja-vila-do-bem-praia-do-canto",
+  "nome": "Loja Vila do Bem, Praia do Canto",
+  "cat": "Comercial",
+  "tipo": "Loja",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "A loja Vila do Bem, na Praia do Canto, em Vitória, foi projetada pela arquiteta Simone Afonso como um espaço amplo e acolhedor, com jardim vertical, mezanino em madeira e prateleiras sob vigas aparentes.",
+   "O projeto reúne salão de vendas, área de convivência, Espaço Kids, sala de atendimento e fachada, com a madeira e as plantas como fio condutor da identidade da marca.",
+   "O mesmo cuidado com a marca aparece no stand da Vila do Bem desenvolvido para feiras."
+  ],
+  "loc": "Praia do Canto, Vitória (ES)",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "b1a751002a8d0b74298af8d0e194c196",
+    "Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas"
+   ],
+   [
+    "e3bd85a46317677475a4bdceb8456f5e",
+    "Loja Vila do Bem, Praia do Canto, Salão visto do mezanino"
+   ],
+   [
+    "2a4a27b24f505281cd663218ac62d706",
+    "Loja Vila do Bem, Praia do Canto, Prateleiras sob vigas de madeira"
+   ],
+   [
+    "0f2c9a63dc373adbc8aee99f699ea6a9",
+    "Loja Vila do Bem, Praia do Canto, Corredor com forro de madeira"
+   ],
+   [
+    "dac552c01df8e60d71f1d694c565b8fe",
+    "Loja Vila do Bem, Praia do Canto, Área de convivência"
+   ],
+   [
+    "5e60686d421c4d0491600124677b679c",
+    "Loja Vila do Bem, Praia do Canto, Espaço Kids"
+   ],
+   [
+    "e8cd5bf6646e8eb65fb771c8ae3a9d96",
+    "Loja Vila do Bem, Praia do Canto, Sala de atendimento"
+   ],
+   [
+    "f18b39d06788844d4a04d022153ba47e",
+    "Loja Vila do Bem, Praia do Canto, Fachada"
+   ]
+  ]
+ },
+ {
+  "key": "jantar",
+  "slug": "sala-de-jantar-e-sala-de-tv",
+  "nome": "Sala de jantar e sala de TV",
+  "cat": "Residencial",
+  "tipo": "Apartamento",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Projeto residencial com sala de jantar de mesa redonda clara, cadeiras estofadas e lustre de anéis, integrada a uma sala de TV com painel revestido em zigue-zague e rack de madeira com iluminação embutida.",
+   "As escolhas buscam conforto no dia a dia e uma iluminação que valoriza o ambiente."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "cdf2f82aa62c27f0b88eb904dffdb89d",
+    "Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis"
+   ],
+   [
+    "5774a269719d52b2f7220f6de29b5bf7",
+    "Painel de TV com revestimento em zigue-zague e rack de madeira com luz embutida"
+   ],
+   [
+    "c654e610a854fbb12566558de0046be0",
+    "Sala de jantar e sala de TV, foto 3"
+   ]
+  ]
+ },
+ {
+  "key": "bmq",
+  "slug": "espaco-bem-me-quer-acacci",
+  "nome": "Espaço Bem Me Quer, ACACCI",
+  "cat": "Institucional",
+  "tipo": "Espaço de acolhimento",
+  "serv": "projetos-institucionais",
+  "txt": [
+   "O Espaço Bem Me Quer é um espaço de acolhimento da ACACCI, projetado pela arquiteta Simone Afonso em 2016. O projeto reúne recepção, salas de atendimento, fisioterapia, sala de meditação e um pátio com horta, pensados para quem cuida e para quem é cuidado.",
+   "Cores, frases e áreas verdes entram como parte do cuidado, sem perder a acessibilidade e a praticidade do dia a dia, com orçamento enxuto e a identidade da instituição em evidência."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "3d6658836d992211476c57c1a59c66bf",
+    "Pátio externo do Espaço Bem Me Quer, com canteiros de ervas, piso de madeira e porta de vidro"
+   ],
+   [
+    "cc43166d60bf5c0e30a949c4e8dbbc1d",
+    "Simone Afonso ao lado de uma parede amarela com frase sobre o Bem Me Quer e silhueta de meditação com chacras coloridos"
+   ],
+   [
+    "9434ca6f7a75982c384e53bcb16eed7f",
+    "Parede azul clara com árvore pintada e folhas coloridas"
+   ],
+   [
+    "703dde3e81fa5b47aee8c0e3dae607d3",
+    "Espaço Bem Me Quer, ACACCI, A horta, vista de dentro"
+   ],
+   [
+    "13c9cbbce6b0d93defcbfdc2bc309253",
+    "Espaço Bem Me Quer, ACACCI, Sala multiuso integrada ao jardim"
+   ],
+   [
+    "f51dbe2ab3e4071b4096c726e070d79f",
+    "Espaço Bem Me Quer, ACACCI, Recepção"
+   ],
+   [
+    "c835264a41131b7b3be5f93a573e357b",
+    "Espaço Bem Me Quer, ACACCI, Sala de espera"
+   ],
+   [
+    "0764d04159b4a53fa23bb00e39317fe1",
+    "Espaço Bem Me Quer, ACACCI, Sala de meditação"
+   ],
+   [
+    "4b67bc8fd9a1d3e8add1a889878083b3",
+    "Espaço Bem Me Quer, ACACCI, Sala de fisioterapia"
+   ],
+   [
+    "25bccced93de83cca0701e93f7663917",
+    "Espaço Bem Me Quer, ACACCI, Rampa de acesso"
+   ]
+  ]
+ },
+ {
+  "key": "bicho",
+  "slug": "bicho-guloso-prime",
+  "nome": "Bicho Guloso Prime",
+  "cat": "Comercial",
+  "tipo": "Restaurante",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto de restaurante com salão comprido, teto de madeira, mesas escuras e estofados coloridos, que dão ritmo e alegria ao ambiente.",
+   "A escolha de materiais e cores busca um espaço confortável para quem come e prático para quem atende."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "52279fc09952a84c7317262bc50a3868",
+    "Salão comprido com teto de madeira, mesas escuras e estofados coloridos"
+   ],
+   [
+    "0937e516b5be435e75c3856ee0af4f61",
+    "Bicho Guloso Prime, foto 2"
+   ],
+   [
+    "093367d30b468582ea7403752ec13e6c",
+    "Bicho Guloso Prime, foto 3"
+   ],
+   [
+    "b61137b39476780eb54e82c95139ce26",
+    "Bicho Guloso Prime, foto 4"
+   ],
+   [
+    "57719ec9b2351148d80470aa1142ce7e",
+    "Bicho Guloso Prime, foto 5"
+   ],
+   [
+    "40eca15e0762a62dcf8c634d1e165573",
+    "Bicho Guloso Prime, foto 6"
+   ]
+  ]
+ },
+ {
+  "key": "solo4",
+  "slug": "quarto-de-bebe",
+  "nome": "Quarto de bebê",
+  "cat": "Residencial",
+  "tipo": "Quarto infantil",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Quarto de bebê com nuvem verde iluminada, cortina branca e prateleira com bichos de pelúcia, pensado para um ambiente calmo e acolhedor.",
+   "A luz suave e as cores leves seguem a Neuroarquitetura: ajudam a criar uma atmosfera tranquila para o descanso."
+  ],
+  "loc": "",
+  "infantil": true,
+  "t3d": false,
+  "imgs": [
+   [
+    "8baff990668af6c844055f2155ed99c7",
+    "Quarto de bebê com nuvem verde iluminada, cortina branca e prateleira com bichos de pelúcia"
+   ]
+  ]
+ },
+ {
+  "key": "multi",
+  "slug": "sala-multiuso",
+  "nome": "Sala multiuso: estar, TV e jantar integrados",
+  "cat": "Residencial",
+  "tipo": "Apartamento",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Sala que integra estar, TV e jantar em um só ambiente, com mesa de jantar clara, cadeiras verdes, parede de pastilhas e porta espelhada, além de poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada.",
+   "O projeto mostra fotos reais do espaço pronto e imagens em 3D da fase de projeto."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "dff9d905883527232e1267d4a6fa515e",
+    "Mesa de jantar clara com cadeiras verdes, parede de pastilhas e porta espelhada"
+   ],
+   [
+    "579d150e09e2dfa0b0963998da372229",
+    "Sala com poltrona de couro, sofá cinza, TV em painel giratório e estante iluminada"
+   ],
+   [
+    "742e64dfee5ef96615792ce60d802ec8",
+    "Sala multiuso: estar, TV e jantar integrados, Foto real"
+   ],
+   [
+    "1c1f4473962d6ba35919e6045ee2c698",
+    "Sala multiuso: estar, TV e jantar integrados, Foto real"
+   ],
+   [
+    "4f368aa8b12b27cd38b2dbbd8e090c87",
+    "Sala multiuso: estar, TV e jantar integrados, Foto real"
+   ],
+   [
+    "90289750f1ed5545a84517abe411982a",
+    "Sala multiuso: estar, TV e jantar integrados, Projeto em 3D"
+   ],
+   [
+    "d46bd7d2c17c64d19dec20fc581563c8",
+    "Sala multiuso: estar, TV e jantar integrados, Projeto em 3D"
+   ],
+   [
+    "27db22f9229afb4ea848856ca59f77c1",
+    "Sala multiuso: estar, TV e jantar integrados, Projeto em 3D"
+   ],
+   [
+    "43ab46d25fd13cbbe57c9cee78f613aa",
+    "Sala multiuso: estar, TV e jantar integrados, Projeto em 3D"
+   ],
+   [
+    "18bc59517d79ce70ded8342fb283c9c5",
+    "Sala multiuso: estar, TV e jantar integrados, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "vet",
+  "slug": "clinica-veterinaria-toca-dos-animais",
+  "nome": "Clínica veterinária Toca dos Animais",
+  "cat": "Comercial",
+  "tipo": "Clínica veterinária",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D da clínica veterinária Toca dos Animais, com fachada de vidro e recepção azul.",
+   "As imagens em 3D permitem aprovar o projeto antes da obra, vendo cores, materiais e layout."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "246c5f1719c5ce2ff6398011052f76de",
+    "Imagem 3D da fachada de vidro da clínica veterinária com recepção azul"
+   ],
+   [
+    "cf6e0e54cf8774671450519a2287d514",
+    "Clínica veterinária Toca dos Animais, foto 2"
+   ],
+   [
+    "f5398902b0e90a51ab3a9e55f0044600",
+    "Clínica veterinária Toca dos Animais, foto 3"
+   ],
+   [
+    "2a9c9357388f5f9705add3ac234205cd",
+    "Clínica veterinária Toca dos Animais, foto 4"
+   ]
+  ]
+ },
+ {
+  "key": "solo7",
+  "slug": "banheiro-da-suite",
+  "nome": "Banheiro da suíte",
+  "cat": "Residencial",
+  "tipo": "Banheiro",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Banheiro de suíte com bancada branca, cuba de apoio, torneira dourada e marcenaria em madeira, combinando praticidade e acabamento acolhedor."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "b0fb4a1f49cfae1c2ee5c96544df148d",
+    "Bancada branca com cuba de apoio, torneira dourada e marcenaria em madeira"
+   ]
+  ]
+ },
+ {
+  "key": "teen",
+  "slug": "quarto-de-adolescente",
+  "nome": "Quarto de adolescente",
+  "cat": "Residencial",
+  "tipo": "Quarto infantil e juvenil",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Quarto com cama azul, painel iluminado para as medalhas e adesivo de cavalo na parede, que reflete os interesses de quem mora ali.",
+   "O projeto organiza as conquistas e os objetos pessoais em um espaço bonito e funcional."
+  ],
+  "loc": "",
+  "infantil": true,
+  "t3d": false,
+  "imgs": [
+   [
+    "82fad9013dc3427d3b0a6ee57f646553",
+    "Quarto com cama azul, painel iluminado de medalhas e adesivo de cavalo na parede"
+   ],
+   [
+    "5099dc6364bb99eb61072d62ac18a6e4",
+    "Quarto de adolescente, foto 2"
+   ],
+   [
+    "a39294906b041190cf18747dbe067ebc",
+    "Quarto de adolescente, foto 3"
+   ],
+   [
+    "77598a3e208c8dccc737ba7f9130341b",
+    "Quarto de adolescente, foto 4"
+   ],
+   [
+    "50c8e3d3e4eeedd9e1016e054915ab45",
+    "Quarto de adolescente, foto 5"
+   ]
+  ]
+ },
+ {
+  "key": "stand",
+  "slug": "stand-vila-do-bem-em-feira",
+  "nome": "Stand Vila do Bem em feira",
+  "cat": "Comercial",
+  "tipo": "Stand",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D de stand de feira para a Vila do Bem, com estrutura de madeira, plantas penduradas, gôndolas e a marca em destaque.",
+   "O stand leva para as feiras a mesma identidade da loja."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "5578f91be29d035d93552ff1a278b645",
+    "Imagem 3D de stand de feira com estrutura de madeira, plantas penduradas, gôndolas e logo da Vila do Bem"
+   ],
+   [
+    "57e551c68a162b6fd73edf235d52947d",
+    "Stand Vila do Bem em feira, foto 2"
+   ],
+   [
+    "2a1f7bf95e676bafe25572162227b84f",
+    "Stand Vila do Bem em feira, foto 3"
+   ],
+   [
+    "a52bab5035036b43a82cdaa5337ec62c",
+    "Stand Vila do Bem em feira, foto 4"
+   ]
+  ]
+ },
+ {
+  "key": "solo11",
+  "slug": "sala-com-varanda",
+  "nome": "Sala com varanda",
+  "cat": "Residencial",
+  "tipo": "Apartamento",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Sala com painel de relevo geométrico branco, fita de luz e elefantes decorativos prateados, em um ambiente que se abre para a varanda."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "196d9a124d810babc22294161c1f7e48",
+    "Painel com relevo geométrico branco, fita de luz e elefantes decorativos prateados"
+   ]
+  ]
+ },
+ {
+  "key": "cozinha",
+  "slug": "cozinha-ampla",
+  "nome": "Cozinha ampla",
+  "cat": "Residencial",
+  "tipo": "Cozinha",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Cozinha ampla com ilha clara e sanca iluminada, pensada para circular e receber com conforto."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "502873f8613924c8d1def68201c4fce2",
+    "Cozinha com ilha clara e sanca iluminada"
+   ],
+   [
+    "adae66e8fdb94fe629e3f7a7ce498cbe",
+    "Cozinha ampla, foto 2"
+   ],
+   [
+    "cccdc62c616043b6b01c7c30d8947e4c",
+    "Cozinha ampla, foto 3"
+   ],
+   [
+    "9519312df1c5be53592515157cc33344",
+    "Cozinha ampla, foto 4"
+   ],
+   [
+    "c29208dbd6300366184810ed820c974f",
+    "Cozinha ampla, foto 5"
+   ]
+  ]
+ },
+ {
+  "key": "solo14",
+  "slug": "quarto-de-menina",
+  "nome": "Quarto de menina",
+  "cat": "Residencial",
+  "tipo": "Quarto infantil",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Quarto infantil com placas de madeira com frases e passarinhos de cerâmica na parede, em um ambiente delicado e afetivo."
+  ],
+  "loc": "",
+  "infantil": true,
+  "t3d": false,
+  "imgs": [
+   [
+    "8c67ed1d9eb5f458986765b5c8df2479",
+    "Placas de madeira com frases e passarinhos de cerâmica na parede"
+   ]
+  ]
+ },
+ {
+  "key": "kit",
+  "slug": "kitnete",
+  "nome": "Kitnete com cozinha integrada",
+  "cat": "Residencial",
+  "tipo": "Kitnete",
+  "serv": "projetos-residenciais",
+  "txt": [
+   "Kitnete com cozinha integrada, portas verdes e mesa redonda, aproveitando bem o espaço pequeno."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": false,
+  "imgs": [
+   [
+    "f4348f9a1223fe5813c56034f71c1902",
+    "Cozinha integrada com portas verdes e mesa redonda"
+   ],
+   [
+    "1ee6fd1ccb8e4d82cb33bb7fc5d555e8",
+    "Kitnete com cozinha integrada, foto 2"
+   ],
+   [
+    "170bb57a83bf6a450f4d4e9c463a53b9",
+    "Kitnete com cozinha integrada, foto 3"
+   ]
+  ]
+ },
+ {
+  "key": "p3_adv",
+  "slug": "escritorio-de-advocacia",
+  "nome": "Escritório de advocacia",
+  "cat": "Comercial",
+  "tipo": "Escritório",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D de escritório de advocacia, com sala de reunião de mesa escura, cadeiras pretas, lambri de madeira e quadros na parede."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "b2139f1bb1e7f8ccbbfb701ab4b9aa21",
+    "Imagem 3D de sala de reunião de escritório de advocacia, com mesa escura, cadeiras pretas, lambri de madeira e quadros na parede"
+   ],
+   [
+    "d1475065d5976f080f9bfab82b4fe1c2",
+    "Escritório de advocacia, Projeto em 3D"
+   ],
+   [
+    "43df0cfa9f3141988b08071c6dd12e34",
+    "Escritório de advocacia, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_ens",
+  "slug": "escritorio-enseada",
+  "nome": "Escritório Enseada",
+  "cat": "Comercial",
+  "tipo": "Escritório",
+  "serv": "projetos-corporativos",
+  "txt": [
+   "Projeto em 3D de escritório claro, com estações de trabalho, monitores, painel ripado e quadros grandes na parede."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "e3228b11fcb3d37e4756e294058a20ad",
+    "Imagem 3D de escritório claro com estações de trabalho, monitores, painel ripado e quadros grandes na parede"
+   ],
+   [
+    "ad561f8cd7414b07e5f25f696c496a21",
+    "Escritório Enseada, Projeto em 3D"
+   ],
+   [
+    "0d16722daaaae0f786e5549fabe887b9",
+    "Escritório Enseada, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_emc",
+  "slug": "emc",
+  "nome": "EMC, fachada e interiores",
+  "cat": "Comercial",
+  "tipo": "Fachada e interiores",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D da fachada e dos interiores da EMC, com faixa azul, portões basculantes e revestimento de madeira."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "e07a744746f8a08477e93f79a9f5c437",
+    "Imagem 3D da fachada da EMC, com faixa azul, portões basculantes e revestimento de madeira"
+   ],
+   [
+    "b8cace35a70b76ed98eb633ffd19a846",
+    "EMC, fachada e interiores, Projeto em 3D"
+   ],
+   [
+    "7f79363e99bb2eb713a384b2c607308a",
+    "EMC, fachada e interiores, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_chem",
+  "slug": "ferramentaria-chemtrade",
+  "nome": "Ferramentaria da Chemtrade",
+  "cat": "Corporativo",
+  "tipo": "Industrial",
+  "serv": "projetos-corporativos",
+  "txt": [
+   "Projeto em 3D da ferramentaria industrial da Chemtrade, com estantes de ferramentas identificadas, bancada e sinalização do setor, para organizar o trabalho e facilitar o dia a dia da equipe."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "d29f92432587f06dbda5de52949c90fc",
+    "Imagem 3D da ferramentaria industrial da Chemtrade, com estantes de ferramentas identificadas, bancada e sinalização do setor"
+   ],
+   [
+    "cecfec3b74e443b37c59aefde70cba90",
+    "Ferramentaria da Chemtrade, Projeto em 3D"
+   ],
+   [
+    "b1cf157902d4dc8d22c4ad4611ad5dd2",
+    "Ferramentaria da Chemtrade, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_marc",
+  "slug": "arte-marcenaria",
+  "nome": "Arte Marcenaria",
+  "cat": "Comercial",
+  "tipo": "Fachada",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D da fachada da Arte Marcenaria, com vitrines de vidro, floreiras, letreiro e iluminação embutida."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "176e085f330afbb6a57e9e8f46f28916",
+    "Imagem 3D da fachada da Arte Marcenaria, com vitrines de vidro, floreiras, letreiro e iluminação embutida"
+   ],
+   [
+    "ef92ee768a6a6071f740cfbb52c3240f",
+    "Arte Marcenaria, Projeto em 3D"
+   ],
+   [
+    "60343b7bf9d3f5400ca10d883675cccb",
+    "Arte Marcenaria, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_psi",
+  "slug": "consultorio-de-psicologia",
+  "nome": "Consultório de psicologia",
+  "cat": "Comercial",
+  "tipo": "Consultório",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D de consultório de psicologia, com sofá cinza, poltronas, tapete redondo verde e quadro de folhas douradas, em um ambiente pensado para acolher."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "8831b214952c380feacecf466b72b26c",
+    "Imagem 3D de consultório de psicologia com sofá cinza, poltronas, tapete redondo verde e quadro de folhas douradas"
+   ],
+   [
+    "23fdf65a03d049907c848f8315380c24",
+    "Consultório de psicologia, Projeto em 3D"
+   ],
+   [
+    "4c1505cf8b8cf8604c1162c9f7ada514",
+    "Consultório de psicologia, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_danca",
+  "slug": "escola-de-danca",
+  "nome": "Escola de dança",
+  "cat": "Comercial",
+  "tipo": "Escola",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D do escritório e do camarim de uma escola de dança, com parede verde, bancada branca e copa."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "ae6c5fdb9aa22759bbc85ae7e4125e1c",
+    "Imagem 3D do escritório de uma escola de dança, com parede verde, bancada branca e copa"
+   ],
+   [
+    "d52e066952d6e0a1fb5251f95624886f",
+    "Escola de dança, Projeto em 3D"
+   ],
+   [
+    "8caf7152da5325229e8aacc7b27c7ba7",
+    "Escola de dança, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_sobr",
+  "slug": "estudio-de-design-de-sobrancelha",
+  "nome": "Estúdio de design de sobrancelha",
+  "cat": "Comercial",
+  "tipo": "Estúdio de beleza",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D da recepção de um estúdio de sobrancelha, com balcão rosado, papel de parede floral e logo iluminado."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "6f8c36e55fc911c7747fe38465fc63d6",
+    "Imagem 3D da recepção de um estúdio de sobrancelha, com balcão rosado, papel de parede floral e logo iluminado"
+   ],
+   [
+    "b9eb98ca1b4064fbb5ef2beeba9a2143",
+    "Estúdio de design de sobrancelha, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_cilios",
+  "slug": "cilios-de-luxo",
+  "nome": "Cílios de Luxo",
+  "cat": "Comercial",
+  "tipo": "Estúdio de beleza",
+  "serv": "projetos-comerciais",
+  "txt": [
+   "Projeto em 3D de estúdio de cílios, com bancadas de atendimento, banquetas, espelhos redondos e painel ripado."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "3d156d71411640cd7e4140f0989b3cba",
+    "Imagem 3D de estúdio de cílios com bancadas de atendimento, banquetas, espelhos redondos e painel ripado"
+   ],
+   [
+    "7e1abb31c6dbdf5d5e3a8113b8e9916d",
+    "Cílios de Luxo, Projeto em 3D"
+   ],
+   [
+    "5695df7d1b45a5f3a8d09a22521ae952",
+    "Cílios de Luxo, Projeto em 3D"
+   ]
+  ]
+ },
+ {
+  "key": "p3_switch",
+  "slug": "escritorio-da-switch",
+  "nome": "Escritório da Switch",
+  "cat": "Corporativo",
+  "tipo": "Escritório",
+  "serv": "projetos-corporativos",
+  "txt": [
+   "Projeto em 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada."
+  ],
+  "loc": "",
+  "infantil": false,
+  "t3d": true,
+  "imgs": [
+   [
+    "43938a1e41c2a37861cdbe8c7a205c7e",
+    "Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada"
+   ],
+   [
+    "4f678479c2a2cd9d9a021daa74bbe6a4",
+    "Escritório da Switch, Projeto em 3D"
+   ],
+   [
+    "3a5bc04c4e119766a27f2a5380c4feaf",
+    "Escritório da Switch, Projeto em 3D"
+   ]
+  ]
+ }
+]

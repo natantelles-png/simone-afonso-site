@@ -118,7 +118,7 @@ S = [
         'inclui': ['Acessibilidade e circulação para todas as pessoas', 'Cores e frases que acolhem, com a identidade da instituição', 'Áreas externas, jardins e horta como parte do cuidado', 'Salas de atendimento, espera e convivência', 'Orçamento enxuto e coordenação da obra'],
         'fotos': ['bmq-exterior', 'bmq-recepcao2', 'bmq-parede-frase', 'bmq-parede-folhas', 'bmq-parede-arvore'],
         'cases': 'Espaço Bem Me Quer, da ACACCI.',
-        'mais': '/projetos/espaco-bem-me-quer-acacci/',
+        'mais': '/portfolio/espaco-bem-me-quer-acacci/',
         'depo': None,
         'faq': [
             ('O que é o Espaço Bem Me Quer?', 'É um espaço de acolhimento da ACACCI, projetado pela Simone Afonso, com recepção, salas de atendimento, fisioterapia, sala de meditação e um pátio com horta.'),
@@ -340,25 +340,8 @@ def build(B):
         page(path, s['title'], s['desc'], s['h1'], 'Serviço', s['resposta'], body, [('Início', '/'), ('Serviços', '/servicos/'), (s['nome'], path)], faq, [svc],
              og_img=dims[fotos[0]][0] if fotos[0] in dims else None, tail=body2)
 
-    # ---------------------------------------------------------- pagina de projeto: Espaco Bem Me Quer
-    pp = '/projetos/espaco-bem-me-quer-acacci/'
-    pfotos = ['bmq-exterior', 'bmq-recepcao2', 'bmq-parede-frase', 'bmq-parede-folhas', 'bmq-parede-arvore']
-    pbody = f'''{fig(pfotos[0], True, 'capa-s')}
-<div class="texto">
-<p>O Espaço Bem Me Quer é um espaço de acolhimento da ACACCI, projetado pela arquiteta Simone Afonso. O projeto reúne recepção, salas de atendimento, fisioterapia, sala de meditação e um pátio com horta, pensados para quem cuida e para quem é cuidado.</p>
-<p>Cores, frases e áreas verdes entram como parte do cuidado, sem perder a acessibilidade e a praticidade do dia a dia, com orçamento enxuto e a identidade da instituição em evidência.</p>
-<p>Esta página será ampliada com o relato completo do projeto, contado pela própria Simone.</p>
-<p class="mais"><a href="/servicos/projetos-institucionais/">← Ver o serviço de projetos institucionais</a></p>
-</div>
-<div class="galeria">{''.join(fig(k) for k in pfotos[1:])}</div>
-'''
-    page(pp, 'Espaço Bem Me Quer, ACACCI: projeto institucional de acolhimento | Simone Afonso',
-         'Projeto de arquitetura do Espaço Bem Me Quer, da ACACCI: recepção, salas de atendimento, fisioterapia, meditação e pátio com horta, com acessibilidade e cores que acolhem.',
-         'Espaço Bem Me Quer, ACACCI', 'Projeto',
-         'O Espaço Bem Me Quer, da ACACCI, é um projeto institucional da arquiteta Simone Afonso, com recepção, salas de atendimento, fisioterapia, meditação e pátio com horta, pensado para acolher.',
-         pbody, [('Início', '/'), ('Serviços', '/servicos/'), ('Projetos institucionais', '/servicos/projetos-institucionais/'), ('Espaço Bem Me Quer', pp)], [],
-         [{'@type': 'CreativeWork', '@id': SITE + pp + '#projeto', 'name': 'Espaço Bem Me Quer, ACACCI', 'creator': {'@id': SITE + '/#simone'}, 'inLanguage': 'pt-BR'}],
-         og_img=dims[pfotos[0]][0], tail=cta('Olá, Simone! Vim pelo site e gostaria de conversar sobre um projeto institucional.'))
+    import portfolio as _pf
+    _pf.build(B, page, cta, None)
 
     # ---------------------------------------------------------- hub /servicos/
     def thumb(k):
