@@ -67,6 +67,14 @@ if MODE=='site':
       {'@type':['ProfessionalService','LocalBusiness'],'@id':SITE_URL+'/#negocio','name':cfg['name'],'url':SITE_URL+'/','logo':SITE_URL+'/blog/assets/logo-ameixa.png','image':SITE_URL+'/og.jpg','telephone':cfg['phone'],'description':cfg['description'],'founder':{'@id':SITE_URL+'/#simone'},'sameAs':[cfg['instagram']],'areaServed':[{'@type':'AdministrativeArea','name':'Espírito Santo'},{'@type':'City','name':'Vitória'}],'address':{'@type':'PostalAddress','addressLocality':cfg['locality'],'addressRegion':cfg['region'],'addressCountry':'BR'},'knowsAbout':cfg['knows_about'],'priceRange':'$$'},
       {'@type':'WebSite','@id':SITE_URL+'/#site','url':SITE_URL+'/','name':cfg['name'],'inLanguage':'pt-BR','publisher':{'@id':SITE_URL+'/#negocio'}},
       {'@type':'WebPage','@id':SITE_URL+'/#pagina','url':SITE_URL+'/','name':'Simone Afonso | Arquitetura de interiores e neuroarquitetura em Vitória (ES)','isPartOf':{'@id':SITE_URL+'/#site'},'about':{'@id':SITE_URL+'/#negocio'},'inLanguage':'pt-BR'}]}
+    # FAQPage da home (lido do proprio codigo-fonte) e catalogo de servicos
+    _faq=[(q,a_) for q,a_ in re.findall(r"\{ q: '((?:[^'\\]|\\.)*)', a: '((?:[^'\\]|\\.)*)' \}",src)]
+    if _faq:
+        ld['@graph'].append({'@type':'FAQPage','@id':SITE_URL+'/#faq','mainEntity':[{'@type':'Question','name':q.replace("\\'","'"),'acceptedAnswer':{'@type':'Answer','text':a_.replace("\\'","'")}} for q,a_ in _faq]})
+    _svs=[('Projetos residenciais','projetos-residenciais'),('Projetos comerciais','projetos-comerciais'),('Projetos institucionais','projetos-institucionais'),('Projetos corporativos','projetos-corporativos'),('Home Relooking','home-relooking'),('Home Staging','home-staging'),('Consultoria','consultoria')]
+    ld['@graph'][1]['hasOfferCatalog']={'@type':'OfferCatalog','name':'Serviços','itemListElement':[{'@type':'Offer','itemOffered':{'@type':'Service','name':n,'url':SITE_URL+'/servicos/'+s+'/'}} for n,s in _svs]}
+    ld['@graph'][1]['areaServed']=[{'@type':'AdministrativeArea','name':'Espírito Santo'}]+[{'@type':'City','name':c} for c in ('Vitória','Vila Velha','Serra','Cariacica','Guarapari')]
+    ld['@graph'][1]['identifier']='CAU A91391-0 ES'
     ttl='Simone Afonso | Arquitetura de interiores e neuroarquitetura em Vitória (ES)'
     seo=f"""<link rel="canonical" href="{SITE_URL}/">
 <link rel="icon" href="/favicon.png" type="image/png">
