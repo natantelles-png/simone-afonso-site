@@ -169,3 +169,9 @@ h4{font-size:18px;margin:1.5em 0 .4em}
 .lb button:hover,.lb button:focus-visible{background:rgba(255,255,255,.3)}
 .lb-x{top:16px;right:16px}.lb-p{left:16px;top:50%;transform:translateY(-50%)}.lb-n{right:16px;top:50%;transform:translateY(-50%)}
 @media(max-width:560px){.lb{padding:12px}.lb-p,.lb-n{top:auto;bottom:16px;transform:none}}
+
+.grade-p .capa-card{display:block}
+.grade-p li[hidden]{display:none}
+.filtros button{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border:1.5px solid var(--ameixa);border-radius:999px;color:var(--ameixa);font-weight:500;font-size:15.5px;background:transparent;font-family:inherit;cursor:pointer}
+.filtros button[aria-pressed=true]{background:var(--ameixa);color:#fff}
+.nota{font-size:14.5px;color:var(--ink-soft,#6B5658);margin:1.2em 0}
