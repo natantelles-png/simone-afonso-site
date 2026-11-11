@@ -273,7 +273,7 @@ def head(title, desc, path, og_image=None, og_type='website', extra='', robots='
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo"><div class="wrap">
 <a href="/" aria-label="Simone Afonso, página inicial"><img src="/blog/assets/logo-ameixa.png" alt="Simone Afonso" width="92" height="53"></a>
-<nav class="menu" aria-label="Principal"><a href="/">Início</a><a href="/#projetos">Projetos</a><a class="fica" href="/blog/">Blog</a><a class="zap" href="{wa('Olá, Simone! Vim pelo blog e gostaria de conversar sobre um projeto.')}">Falar no WhatsApp</a></nav>
+<nav class="menu" aria-label="Principal"><a href="/">Início</a><a href="/#projetos">Projetos</a><a href="/servicos/">Serviços</a><a href="/neuroarquitetura/">Neuroarquitetura</a><a class="fica" href="/blog/">Blog</a><a class="zap" href="{wa('Olá, Simone! Vim pelo blog e gostaria de conversar sobre um projeto.')}">Falar no WhatsApp</a></nav>
 </div></header>
 <main id="conteudo">
 '''
@@ -288,7 +288,7 @@ def foot():
 <p>{esc(CFG['author_role'])}</p></div>
 <div><p><strong>Atendimento</strong></p><p>Online e a domicílio, na Grande Vitória e em todo o ES</p></div>
 <div><p><strong>Contato</strong></p><p><a href="{wa('Olá, Simone!')}">WhatsApp {esc(CFG['phone'])}</a></p><p><a href="{ig}" rel="noopener">@simoneafonso.arq</a></p></div>
-<div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/blog/">Blog</a></p><p><a href="/blog/feed.xml">Feed RSS</a></p></div>
+<div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/servicos/">Serviços</a></p><p><a href="/neuroarquitetura/">Neuroarquitetura</a></p><p><a href="/sobre/">Sobre</a></p><p><a href="/blog/">Blog</a></p></div>
 </div>
 <small>© {dt.date.today().year} Simone Afonso. Todos os direitos reservados.</small>
 </div></footer>
@@ -494,16 +494,21 @@ def main():
 
     paginate(posts, '/blog/', 'Blog de Simone Afonso: neuroarquitetura e arquitetura de interiores',
              'Textos da arquiteta Simone Afonso sobre neuroarquitetura, projetos comerciais, Home Relooking e Home Staging, com orientações práticas para casas e empresas no Espírito Santo.',
-             'Caderno da Simone', 'Neuroarquitetura sem complicação, projetos comerciais, Home Relooking, Home Staging e os bastidores dos projetos. Um texto novo toda semana.', None)
+             'Caderno da Simone', 'Neuroarquitetura sem complicação, projetos comerciais, Home Relooking, Home Staging e os bastidores dos projetos. Textos escritos pela Simone para quem vai reformar, montar ou renovar um espaço.', None)
     for c in cats:
         lst = [p for p in posts if p['category'] == c]
         paginate(lst, f'/blog/{slugify(c)}/', f'{c}: textos da Simone Afonso',
                  f'Textos sobre {c.lower()} escritos pela arquiteta Simone Afonso, com orientações práticas para casas e empresas.',
-                 c, f'Todos os textos do blog sobre {c.lower()}.', c)
+                 c, f'Todos os textos do blog sobre {c.lower()}, escritos pela arquiteta Simone Afonso. Para entender o tema com calma, veja também o guia completo em /neuroarquitetura/ e os serviços em /servicos/.', c)
+
+    import servicos
+    svc_pages, svc_list = servicos.build(sys.modules[__name__])
 
     # feeds e arquivos para buscadores e IAs
-    today = dt.date.today().isoformat()
+    today = dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))).strftime('%Y-%m-%d')
     urls = [(SITE + '/', today, None), (SITE + '/blog/', iso(posts[0]['modified'])[:10] if posts else today, None)]
+    for sp, slm, sim in svc_pages:
+        urls.append((SITE + sp, slm, sim))
     for c in cats:
         lst = [p for p in posts if p['category'] == c]
         urls.append((f'{SITE}/blog/{slugify(c)}/', iso(max(x['modified'] for x in lst))[:10], None))
@@ -530,13 +535,29 @@ def main():
     write('robots.txt', robots)
 
     llms = [f'# {CFG["name"]}', '', f'> {CFG["description"]}', '',
-            f'{CFG["author"]} é {CFG["author_role"].lower()} em {CFG["locality"]} ({CFG["region"]}). Atende online e a domicílio, na Grande Vitória e em todo o Espírito Santo.', '',
-            '## Páginas principais', f'- [Início]({SITE}/): serviços, projetos, depoimentos e contato.', f'- [Blog]({SITE}/blog/): um texto novo toda semana.', '',
-            '## Textos do blog']
+            f'{CFG["author"]} é {CFG["author_role"].lower()} em {CFG["locality"]} ({CFG["region"]}), CAU A91391-0 ES. Atende online e a domicílio, na Grande Vitória (Vitória, Vila Velha, Serra, Cariacica, Guarapari) e em todo o Espírito Santo. O valor de cada projeto é definido após a visita técnica.', '',
+            '## Serviços']
+    for s in svc_list:
+        llms.append(f'- [{s["nome"]}]({SITE}/servicos/{s["slug"]}/): {s["resposta"].split(". ")[0]}.')
+    llms += ['', '## Páginas principais', f'- [Início]({SITE}/): serviços, projetos, depoimentos e contato.',
+             f'- [Todos os serviços]({SITE}/servicos/): visão geral e como escolher.',
+             f'- [Neuroarquitetura: o que é e como aplicar]({SITE}/neuroarquitetura/): guia com perguntas e respostas.',
+             f'- [Sobre a Simone Afonso]({SITE}/sobre/): formação, áreas de atuação e contato.',
+             f'- [Blog]({SITE}/blog/): textos sobre neuroarquitetura, projetos e dicas.', '', '## Textos do blog']
     for p in posts:
         llms.append(f'- [{p["title"]}]({SITE}{p["path"]}): {trunc(p["excerpt"] or p["answer"], 160)}')
-    llms += ['', '## Contato', f'- WhatsApp: {CFG["phone"]}', f'- Instagram: {CFG["instagram"]}']
+    llms += ['', '## Contato', f'- WhatsApp: {CFG["phone"]}', f'- Instagram: {CFG["instagram"]}', '', '## Texto completo', f'- [llms-full.txt]({SITE}/llms-full.txt): conteúdo das páginas de serviço em texto simples.']
     write('llms.txt', '\n'.join(llms) + '\n')
+    full = [f'# {CFG["name"]}', '', CFG['bio'], '']
+    for s in svc_list:
+        full += [f'## {s["nome"]}', f'URL: {SITE}/servicos/{s["slug"]}/', '', s['resposta'], ''] + s['intro'] + ['', 'Para quem é: ' + s['para'], 'Inclui:'] + [f'- {i}' for i in s['inclui']] + ['', 'Perguntas frequentes:']
+        for q, a_ in s['faq']:
+            full += [f'P: {q}', f'R: {a_}']
+        full.append('')
+    write('llms-full.txt', '\n'.join(full) + '\n')
+    # IndexNow: chave publica para avisar Bing e outros buscadores (usados por ChatGPT e outras IAs)
+    write('b7c1e4a92d3f4e6f8a0b5c7d9e1f2a34.txt', 'b7c1e4a92d3f4e6f8a0b5c7d9e1f2a34')
+    write('indexnow-urls.json', json.dumps({'host': SITE.split('//')[1], 'key': 'b7c1e4a92d3f4e6f8a0b5c7d9e1f2a34', 'keyLocation': SITE + '/b7c1e4a92d3f4e6f8a0b5c7d9e1f2a34.txt', 'urlList': [u for u, _, _ in urls]}))
 
     write('blog/posts.json', json.dumps([{
         'title': p['title'], 'category': p['category'], 'url': p['path'], 'image': p['cover'], 'alt': p['cover_alt'],
