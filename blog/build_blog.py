@@ -292,7 +292,7 @@ def foot():
 <div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/servicos/">Serviços</a></p><p><a href="/portfolio/">Portfólio</a></p><p><a href="/neuroarquitetura/">Neuroarquitetura</a></p><p><a href="/sobre/">Sobre</a></p><p><a href="/blog/">Blog</a></p></div>
 </div>
 <div class="feito"><small>© {dt.date.today().year} Simone Afonso. Todos os direitos reservados.</small>
-<a class="feito-por" href="https://intelles.com.br" target="_blank" rel="noopener" aria-label="Site feito por Intelles, intelles.com.br"><span>Site feito por</span><span class="logo-intelles">intelles<i>.</i></span></a></div>
+<a class="feito-por" href="https://intelles.com.br" target="_blank" rel="noopener" aria-label="Criado por Intelles, intelles.com.br"><span>Criado por</span><span class="logo-intelles">intelles<i>.</i></span></a></div>
 </div></footer>
 </body>
 </html>
