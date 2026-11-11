@@ -266,6 +266,7 @@ def head(title, desc, path, og_image=None, og_type='website', extra='', robots='
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&text=intelles.&display=swap">
 <link rel="stylesheet" href="/blog/assets/blog.css?v={CSS_V}">
 {extra}
 </head>
@@ -290,7 +291,8 @@ def foot():
 <div><p><strong>Contato</strong></p><p><a href="{wa('Olá, Simone!')}">WhatsApp {esc(CFG['phone'])}</a></p><p><a href="{ig}" rel="noopener">@simoneafonso.arq</a></p></div>
 <div><p><strong>Site</strong></p><p><a href="/">Início</a></p><p><a href="/servicos/">Serviços</a></p><p><a href="/portfolio/">Portfólio</a></p><p><a href="/neuroarquitetura/">Neuroarquitetura</a></p><p><a href="/sobre/">Sobre</a></p><p><a href="/blog/">Blog</a></p></div>
 </div>
-<small>© {dt.date.today().year} Simone Afonso. Todos os direitos reservados.</small>
+<div class="feito"><small>© {dt.date.today().year} Simone Afonso. Todos os direitos reservados.</small>
+<a class="feito-por" href="https://intelles.com.br" target="_blank" rel="noopener" aria-label="Site feito por Intelles, intelles.com.br"><span>Site feito por</span><span class="logo-intelles">intelles<i>.</i></span></a></div>
 </div></footer>
 </body>
 </html>
