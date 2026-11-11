@@ -206,9 +206,9 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-dd" data-mn="">
 <button type="button" class="sa-dd-btn sa-link" onClick="{{ tSPort }}" aria-expanded="{{ sPortExp }}" aria-haspopup="true">Portfólio <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
 <ul class="sa-dd-menu {{ sPortCls }}">
-<li><a class="sa-dd-all" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a></li>
+<li><a class="sa-dd-all" href="/portfolio/">Ver todo o portfólio</a></li>
 <sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
-<li><a href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+<li><a href="{{ m.href }}">{{ m.name }}</a></li>
 </sc-for>
 </ul>
 </div>
@@ -228,9 +228,9 @@ section[id]{scroll-margin-top:72px}
 <a href="#processo" onClick="{{ closeMn }}">Método</a>
 <a href="#trilha" onClick="{{ closeMn }}">Música</a>
 <p class="sa-mob-h">Portfólio</p>
-<a class="sa-mob-sub" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a>
+<a class="sa-mob-sub" href="/portfolio/">Ver todo o portfólio</a>
 <sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
-<a class="sa-mob-sub" href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a>
+<a class="sa-mob-sub" href="{{ m.href }}">{{ m.name }}</a>
 </sc-for>
 <a href="#sobre" onClick="{{ closeMn }}">Sobre</a>
 <a href="#blog" onClick="{{ closeMn }}">Blog</a>
@@ -261,9 +261,9 @@ section[id]{scroll-margin-top:72px}
 <div class="sa-dd" data-mn="">
 <button type="button" class="sa-dd-btn sa-link" onClick="{{ tHPort }}" aria-expanded="{{ hPortExp }}" aria-haspopup="true">Portfólio <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 L6 8 L10 4.2"></path></svg></button>
 <ul class="sa-dd-menu {{ hPortCls }}">
-<li><a class="sa-dd-all" href="#projetos" onClick="{{ closeMn }}">Ver todo o portfólio</a></li>
+<li><a class="sa-dd-all" href="/portfolio/">Ver todo o portfólio</a></li>
 <sc-for list="{{ portItems }}" as="m" hint-placeholder-count="4">
-<li><a href="#projetos" onClick="{{ m.go }}">{{ m.name }}</a></li>
+<li><a href="{{ m.href }}">{{ m.name }}</a></li>
 </sc-for>
 </ul>
 </div>
@@ -673,7 +673,7 @@ section[id]{scroll-margin-top:72px}
 <section id="projetos" class="sa-papel">
 <div style="max-width:none;margin:0 auto;padding:clamp(64px,9vw,124px) clamp(16px,3.5vw,56px)">
 <p class="sa-kicker">Portfólio</p><h2 class="sa-reveal" style="margin:0 0 12px;max-width:820px;font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4.4vw,62px);line-height:1.03">Projetos que já saíram do papel</h2>
-<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, empresas e casas na Grande Vitória. Toque em um projeto para ver mais fotos.</p>
+<p style="margin:0 0 26px;max-width:640px;color:#6B5658">Lojas, restaurantes, empresas e casas na Grande Vitória. Toque em um projeto para ver mais fotos, ou abra a página de cada um. <a href="/portfolio/" style="color:#534243;font-weight:600">Ver o portfólio completo →</a></p>
 <div role="group" aria-label="Filtrar projetos" class="sa-chips" style="margin-bottom:28px">
 <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
 <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.sel }}" style="font-family:var(--sa-sans);font-size:16px;font-weight:500;padding:10px 20px;min-height:44px;border-radius:999px;border:1.5px solid #534243;cursor:pointer;background:{{ f.bg }};color:{{ f.ink }}">{{ f.name }}</button>
@@ -689,7 +689,7 @@ section[id]{scroll-margin-top:72px}
 </sc-if>
 </button>
 <figcaption style="padding:10px 2px 0">
-<span style="display:block;font-family:'Gloock',serif;font-size:20px;line-height:1.2">{{ p.name }}</span>
+<a href="{{ p.href }}" style="display:block;font-family:'Gloock',serif;font-size:20px;line-height:1.2;color:inherit;text-decoration:none">{{ p.name }}</a>
 <span style="display:block;font-size:15px;color:#6B5658">{{ p.kind }}</span>
 </figcaption>
 </figure>
@@ -1353,6 +1353,7 @@ class Component extends DCLogic {
       { name: 'Cílios de Luxo', kind: 'Comercial · projeto 3D', tags: ['Comercial', '3D'], img: '/_blob/3d156d71411640cd7e4140f0989b3cba', alt: 'Imagem 3D de estúdio de cílios com bancadas de atendimento, banquetas, espelhos redondos e painel ripado' },
       { name: 'Escritório da Switch', kind: 'Comercial · projeto 3D', tags: ['Comercial', 'Corporativo', '3D'], img: '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', alt: 'Imagem 3D do escritório da Switch, com bancadas de trabalho, parede roxa com ondas, jardim vertical e sala envidraçada' }
     ];
+    const projSlug = ["loja-vila-do-bem-praia-do-canto", "sala-de-jantar-e-sala-de-tv", "espaco-bem-me-quer-acacci", "bicho-guloso-prime", "quarto-de-bebe", "sala-multiuso", "clinica-veterinaria-toca-dos-animais", "banheiro-da-suite", "espaco-bem-me-quer-acacci", "quarto-de-adolescente", "stand-vila-do-bem-em-feira", "sala-com-varanda", "cozinha-ampla", "espaco-bem-me-quer-acacci", "quarto-de-menina", "sala-de-jantar-e-sala-de-tv", "kitnete", "sala-multiuso", "escritorio-de-advocacia", "escritorio-enseada", "emc", "ferramentaria-chemtrade", "arte-marcenaria", "consultorio-de-psicologia", "escola-de-danca", "estudio-de-design-de-sobrancelha", "cilios-de-luxo", "escritorio-da-switch"];
     const pfNames = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'];
     const projFilters = pfNames.map((n) => ({ name: n, sel: n === s.pf, ...chip(n === s.pf), pick: () => this.setState({ pf: n }) }));
     const vis = projects.map((p, i) => ({ ...p, i })).filter((p) => !p.dup && (s.pf === 'Todos' || p.tags.indexOf(s.pf) >= 0));
@@ -1391,7 +1392,7 @@ class Component extends DCLogic {
     };
     const projVisible = vis.map((p) => {
       const n = photosOf(p.i).length;
-      return { ...p, hasMore: n > 1, more: '+' + (n - 1) + (n - 1 === 1 ? ' foto' : ' fotos'), aria: n > 1 ? 'Ver ' + n + ' fotos do projeto ' + p.name : 'Ampliar foto: ' + p.name,
+      return { ...p, href: '/portfolio/' + projSlug[p.i] + '/', hasMore: n > 1, more: '+' + (n - 1) + (n - 1 === 1 ? ' foto' : ' fotos'), aria: n > 1 ? 'Ver ' + n + ' fotos do projeto ' + p.name : 'Ampliar foto: ' + p.name,
         open: () => this.setState({ lb: p.i, li: 0 }) };
     });
     const lbI = s.lb >= 0 ? s.lb : 0;
@@ -1471,7 +1472,7 @@ class Component extends DCLogic {
     const mnOpen = (id) => (s.mn === id ? 'is-open' : '');
     const mnExp = (id) => (s.mn === id ? 'true' : 'false');
     const servItems = svcs.map((v, i) => ({ name: v.title, href: '/servicos/' + slugs[i] + '/' }));
-    const portItems = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }) }));
+    const portItems = ['Todos', 'Comercial', 'Residencial', 'Corporativo', 'Infantil', '3D'].map((n) => ({ name: n === 'Todos' ? 'Todos os projetos' : n, go: () => this.setState({ pf: n, mn: '' }), href: '/portfolio/' + (n === 'Todos' ? '' : '#' + n) }));
     const menuVals = {
       servItems, portItems, closeMn: () => this.setState({ mn: '' }),
       stuckCls: s.stuck ? 'is-on' : '',
