@@ -272,7 +272,7 @@ def build(B):
         if faq:
             faqh = '<section class="faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas frequentes</h2><dl>' + ''.join(
                 f'<dt>{esc(q)}</dt><dd><p>{esc(a)}</p></dd>' for q, a in faq) + '</dl></section>'
-        res = f'<aside class="resposta" aria-label="Resposta rápida"><span class="rotulo">Resposta rápida</span><p>{esc(resposta)}</p></aside>' if resposta else ''
+        res = f'<aside class="resposta" aria-label="Resumo"><span class="rotulo">Resumo</span><p>{esc(resposta)}</p></aside>' if resposta else ''
         html_ = h + f'''<div class="wrap pagina">
 {trilha}
 <header class="cab"><span class="kicker">{esc(kicker)}</span><h1>{esc(h1)}</h1></header>

@@ -349,7 +349,7 @@ def post_page(p, posts):
     cover = ''
     if p['cover']:
         cover = f'<figure class="capa"><img src="{p["cover"]}" alt="{esc(p["cover_alt"], True)}" {p["dims"]} fetchpriority="high" decoding="async"></figure>'
-    resposta = f'<aside class="resposta" aria-label="Resposta rápida"><span class="rotulo">Resposta rápida</span><p>{esc(p["answer"])}</p></aside>' if p['answer'] else ''
+    resposta = f'<aside class="resposta" aria-label="Resumo"><span class="rotulo">Resumo</span><p>{esc(p["answer"])}</p></aside>' if p['answer'] else ''
     faq = ''
     if p['faq']:
         faq = '<section class="faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas frequentes</h2><dl>' + ''.join(
