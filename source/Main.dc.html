@@ -814,14 +814,26 @@ section[id]{scroll-margin-top:72px}
 <figcaption style="font-size:12px;line-height:1.35;color:#3B2E2F;padding-top:6px">Selo de validação profissional NEUROARQ®</figcaption>
 </figure>
 </div>
-<p style="margin:0 0 16px">Sou a Simone Afonso. Desde 1994 estou à frente da ASTI Engenharia e Arquitetura, e foi na rotina de engenharia e obras que encontrei a arquitetura.</p>
+<p style="margin:0 0 16px">Sou a Simone Afonso. Há mais de 30 anos, desde 1994, estou à frente da ASTI Engenharia e Arquitetura, onde sigo como sócia-gerente. Foi na rotina de engenharia e obras que encontrei a arquitetura.</p>
 <p style="margin:0 0 16px">Depois de formada, me especializei em Design de Interiores e Neuroarquitetura. Não parei mais de estudar e de me atualizar, acompanhando palestras de fornecedores e feiras como a Casa Cor, a Expo Revestir e o Salone del Mobile, em Milão.</p>
 <p style="margin:0 0 30px">Por isso cuido do projeto e da obra: o que eu desenho precisa acontecer de verdade.</p>
+<div style="margin:0 0 34px">
+<p class="sa-kicker" style="margin:0 0 12px">Hoje</p>
+<ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
+<sc-for list="{{ credsNow }}" as="c" hint-placeholder-count="2">
+<li style="background:#FFFFFF;border-radius:14px;padding:16px 18px;box-shadow:0 8px 20px rgba(83,66,67,.12);border-left:4px solid #8A4F55">
+<span style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 6px"><span style="font-family:'Gloock',serif;font-size:22px;line-height:1;color:#8A4F55">{{ c.year }} · hoje</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#534243;background:#F3DEDA;border-radius:999px;padding:4px 10px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#8A4F55"></span>Em andamento</span></span>
+<span style="display:block;font-size:16px">{{ c.text }}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+<p class="sa-kicker" style="margin:0 0 14px">Formação e trajetória</p>
 <ol style="list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid #8A4F55">
-<sc-for list="{{ creds }}" as="c" hint-placeholder-count="10">
+<sc-for list="{{ credsDone }}" as="c" hint-placeholder-count="8">
 <li style="position:relative;padding:0 0 12px 6px;font-size:16px">
-<span aria-hidden="true" style="position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:#8A4F55;border:2px solid #F3DEDA"></span>
-<span style="display:block;font-weight:600;color:#8A4F55">{{ c.year }}</span>
+<span aria-hidden="true" style="position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:#F3DEDA;border:2px solid #8A4F55"></span>
+<span style="display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px"><span style="font-weight:600;color:#8A4F55">{{ c.year }}</span><span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B5658">{{ c.tag }}</span></span>
 <span style="display:block">{{ c.text }}</span>
 </li>
 </sc-for>
@@ -1315,18 +1327,20 @@ class Component extends DCLogic {
     const moodBtns = moods.map((x, i) => ({ name: x.name, sel: i === s.mood, ...chip(i === s.mood), pick: () => this.setState({ mood: i }) }));
 
     const creds = [
-      { year: '1994', text: 'Sócia-gerente da ASTI Engenharia e Arquitetura' },
+      { year: '1994', now: true, text: 'Sócia-gerente da ASTI Engenharia e Arquitetura' },
       { year: '2012', text: 'Arquitetura e Urbanismo, UNIVIX (Vitória)' },
       { year: '2019', text: 'Imersão Internacional em Arquitetura e Design, IPOG e PoliDesign (Milão)' },
       { year: '2020', text: 'Pós-graduação em Design de Interiores, IPOG' },
-      { year: '2021', text: 'Membro e embaixadora da Academia Brasileira de Neurociência Aplicada a Arquitetura, Neuroarq® Academy' },
+      { year: '2021', now: true, text: 'Membro e embaixadora da Academia Brasileira de Neurociência Aplicada a Arquitetura, Neuroarq® Academy' },
       { year: '2022', text: 'Master em Neuroarquitetura, IPOG' },
       { year: '2022', text: 'Especialista em Ambientes de Trabalho com certificação alemã, Mensch&Büro Akademie e Qualidade Corporativa Smart Workplaces' },
       { year: '2022', text: 'Curso de Jardim Sensorial e Salas Multissensoriais com método Terapia Snoezelen, ZenSenses (Portugal)' },
-      { year: '2023', text: 'Palestrante na 4ª Conferência Internacional de Neurociência e Arquitetura, NeuroarqDay (SP)' },
+      { year: '2023', tag: 'Palestra', text: 'Palestrante na 4ª Conferência Internacional de Neurociência e Arquitetura, NeuroarqDay (SP)' },
       { year: '2026', text: 'MBA em Neuroarquitetura e Design do Bem-estar Humano, NEUROARQ® Academy' }
     ];
 
+    const credsNow = creds.filter((c) => c.now);
+    const credsDone = creds.filter((c) => !c.now).map((c) => ({ ...c, tag: c.tag || 'Concluído' }));
     const projects = [
       { name: 'Loja Vila do Bem, Praia do Canto', kind: 'Comercial · Praia do Canto', tags: ['Comercial'], img: '/_blob/b1a751002a8d0b74298af8d0e194c196', alt: 'Interior amplo da loja Vila do Bem, com jardim vertical, mezanino em madeira e gôndolas' },
       { name: 'Sala de jantar', kind: 'Residencial', tags: ['Residencial'], img: '/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', alt: 'Sala de jantar com mesa redonda clara, cadeiras estofadas e lustre de anéis' },
@@ -1487,7 +1501,7 @@ class Component extends DCLogic {
 
     return {
       ...menuVals,
-      wa, ring, marq, pilares, elogios, cats, svcCards, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds,
+      wa, ring, marq, pilares, elogios, cats, svcCards, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds, credsNow, credsDone,
       projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqOpen: !!s.seqOpen, seqOpenExp: s.seqOpen ? 'true' : 'false', seqOpenToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
       sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
