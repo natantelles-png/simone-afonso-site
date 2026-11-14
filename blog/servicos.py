@@ -431,7 +431,7 @@ def build(B):
                  ('2023', 'Palestra', 'Palestrante na 4ª Conferência Internacional de Neurociência e Arquitetura, NeuroarqDay (SP)'),
                  ('2026', 'Concluído', 'MBA em Neuroarquitetura e Design do Bem-estar Humano, NEUROARQ® Academy')]
     cred_html = ('<h2>Hoje</h2><ul class="hoje">' + ''.join(
-        f'<li><span class="hoje-cab"><strong>{a} · hoje</strong><span class="selo-atual">Em andamento</span></span><span>{esc(t)}</span></li>' for a, t in CRED_NOW) + '</ul>'
+        f'<li><span class="hoje-cab"><strong>{a} · hoje</strong></span><span>{esc(t)}</span></li>' for a, t in CRED_NOW) + '</ul>'
         '<h2>Formação e trajetória</h2><ol class="trajeto">' + ''.join(
         f'<li><span class="ano">{a}<em>{g}</em></span><span>{esc(t)}</span></li>' for a, g, t in CRED_DONE) + '</ol>')
     sobre_body = f'''<div class="duas">
