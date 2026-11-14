@@ -822,7 +822,7 @@ section[id]{scroll-margin-top:72px}
 <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px">
 <sc-for list="{{ credsNow }}" as="c" hint-placeholder-count="2">
 <li style="background:#FFFFFF;border-radius:14px;padding:16px 18px;box-shadow:0 8px 20px rgba(83,66,67,.12);border-left:4px solid #8A4F55">
-<span style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 6px"><span style="font-family:'Gloock',serif;font-size:22px;line-height:1;color:#8A4F55">{{ c.year }} · hoje</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#534243;background:#F3DEDA;border-radius:999px;padding:4px 10px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#8A4F55"></span>Em andamento</span></span>
+<span style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 6px"><span style="font-family:'Gloock',serif;font-size:22px;line-height:1;color:#8A4F55">{{ c.year }} · hoje</span></span>
 <span style="display:block;font-size:16px">{{ c.text }}</span>
 </li>
 </sc-for>
@@ -1079,7 +1079,7 @@ class Component extends DCLogic {
     ];
 
     const svcs = [
-      { title: 'Projetos residenciais', short: 'um projeto residencial', kicker: 'Arquitetura e interiores', img: '/_blob/046bb79f31e132aef40e2709d7888ae9', alt: 'Sala de estar com duas poltronas claras, mesa de centro redonda de madeira, estante de madeira com treliças e parede branca com relevo geométrico', caption: 'sala de estar e jantar de um projeto residencial',
+      { title: 'Projetos residenciais', short: 'um projeto residencial', kicker: 'Casas e apartamentos', img: '/_blob/046bb79f31e132aef40e2709d7888ae9', alt: 'Sala de estar com duas poltronas claras, mesa de centro redonda de madeira, estante de madeira com treliças e parede branca com relevo geométrico', caption: 'sala de estar e jantar de um projeto residencial',
         photos: [{ img: '/_blob/8aef62d307c3de204a753ab63f2efdd5', alt: 'Sala de estar integrada à varanda, com painel de madeira ondulada na parede, sofá cinza-claro, cortinas e luz natural ao fundo', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/046bb79f31e132aef40e2709d7888ae9', alt: 'Sala de estar com duas poltronas claras, mesa de centro redonda de madeira, estante de madeira com treliças e parede branca com relevo geométrico', cap: 'sala de estar e jantar de um projeto residencial' }, { img: '/_blob/f5c22c67431e703c1b5dc27cb2ba7fa4', alt: 'Sala de estar com rack de madeira ripada, painel branco com relevo 3D, TV, sofá bege e cortina cinza', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/b8833fd2ac5b036167bbaf7f79e88827', alt: 'Painel de TV com iluminação embutida, parede com relevo geométrico, rack de madeira ripada e poltrona ao lado da varanda', cap: 'sala e varanda de um projeto residencial' }, { img: '/_blob/02a4dec27db676eeb0202a8db133b24a', alt: 'Sala de estar e jantar integradas, com sofá claro, painel de TV com nicho iluminado e mesa de jantar com lustre dourado ao fundo', cap: 'sala e varanda de um projeto residencial' }],
         lead: 'Projeto completo de interiores, do briefing à obra, com a sua história como ponto de partida e a coordenação dos profissionais que executam.',
         who: 'Quem vai reformar e quer decidir com segurança, vendo tudo antes de aprovar.',
@@ -1120,7 +1120,7 @@ class Component extends DCLogic {
     const sp = Math.min(s.sp || 0, sv.photos ? sv.photos.length - 1 : 0), curPh = sv.photos ? sv.photos[sp] : null;
     const nPh = sv.photos ? sv.photos.length : 1;
     const svc = { ...sv, ...(curPh ? { img: curPh.img, alt: curPh.alt, caption: curPh.cap } : {}), hasPhotos: !!sv.photos, prev: () => this.setState({ sp: (sp + nPh - 1) % nPh }), next: () => this.setState({ sp: (sp + 1) % nPh }), hasVideo: !!sv.video, noVideo: !sv.video, media: sv.video ? 'No vídeo' : 'Na foto', hasProof: !!sv.proof, items: sv.items.map((t) => ({ text: t })), wa: WA + encodeURIComponent('Olá, Simone! Vi o seu site e quero saber mais sobre ' + sv.title + '.') };
-    const catSub = ['arquitetura e interiores', 'lojas e empresas', 'acolhimento e cuidado', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender', 'horas de orientação'];
+    const catSub = ['casas e apartamentos', 'lojas e empresas', 'associações e ONGs', 'ambientes de trabalho', 'renovar sem quebra', 'destacar para vender', 'horas de orientação'];
     const catName = ['Residencial', 'Comercial', 'Institucional', 'Corporativo', 'Home Relooking', 'Home Staging', 'Consultoria'];
     const catImg = ['/_blob/cdf2f82aa62c27f0b88eb904dffdb89d', '/_blob/b1a751002a8d0b74298af8d0e194c196', '/_blob/3d6658836d992211476c57c1a59c66bf', '/_blob/43938a1e41c2a37861cdbe8c7a205c7e', '/_blob/8c67ed1d9eb5f458986765b5c8df2479', '/_blob/fe931523e0b7d5f57a0b6aa5b598216a', '/_blob/196d9a124d810babc22294161c1f7e48'];
     const slugs = ['projetos-residenciais', 'projetos-comerciais', 'projetos-institucionais', 'projetos-corporativos', 'home-relooking', 'home-staging', 'consultoria'];
