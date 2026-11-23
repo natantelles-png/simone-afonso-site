@@ -273,7 +273,7 @@ def head(title, desc, path, og_image=None, og_type='website', extra='', robots='
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo"><div class="wrap">
-<a href="/" aria-label="Simone Afonso, página inicial"><img src="/blog/assets/logo-ameixa.png" alt="Simone Afonso" width="92" height="53"></a>
+<a href="/" aria-label="Simone Afonso, página inicial"><img src="/blog/assets/logo-ameixa.png" alt="Simone Afonso" width="104" height="62"></a>
 <nav class="menu" aria-label="Principal"><a href="/">Início</a><a href="/portfolio/">Portfólio</a><a href="/servicos/">Serviços</a><a href="/neuroarquitetura/">Neuroarquitetura</a><a class="fica" href="/blog/">Blog</a><a class="zap" href="{wa('Olá, Simone! Vim pelo blog e gostaria de conversar sobre um projeto.')}">Falar no WhatsApp</a></nav>
 </div></header>
 <main id="conteudo">
@@ -285,7 +285,7 @@ def foot():
     return f'''</main>
 <footer class="rodape"><div class="wrap">
 <div class="cols">
-<div><img src="/blog/assets/logo-branco.png" alt="Simone Afonso" width="110" height="63" loading="lazy">
+<div><img src="/blog/assets/logo-branco.png" alt="Simone Afonso" width="120" height="72" loading="lazy">
 <p>{esc(CFG['author_role'])}</p></div>
 <div><p><strong>Atendimento</strong></p><p>Online e a domicílio, na Grande Vitória e em todo o ES</p></div>
 <div><p><strong>Contato</strong></p><p><a href="{wa('Olá, Simone!')}">WhatsApp {esc(CFG['phone'])}</a></p><p><a href="{ig}" rel="noopener">@simoneafonso.arq</a></p></div>
