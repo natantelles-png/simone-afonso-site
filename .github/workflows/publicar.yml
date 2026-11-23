@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "*/15 * * * *"   # a cada 15 min: publica textos novos e agendados
+    - cron: "7,22,37,52 * * * *"   # a cada 15 min, fora dos minutos cheios (:00, :15, :30, :45), que o GitHub atrasa ou pula
   workflow_dispatch:
 
 permissions:
