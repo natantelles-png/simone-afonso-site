@@ -11,7 +11,7 @@ Person e ProfessionalService), resposta rapida, sumario, FAQ visivel e caixa da 
 Tambem gera indice do blog, categorias, paginacao, sitemap.xml, feed.xml, robots.txt,
 llms.txt e posts.json (usado pela home).
 """
-import argparse, datetime as dt, hashlib, html, json, os, re, shutil, sys, unicodedata, urllib.request, urllib.parse
+import mimetypes, argparse, datetime as dt, hashlib, html, json, os, re, shutil, sys, unicodedata, urllib.request, urllib.parse
 from html.parser import HTMLParser
 from email.utils import format_datetime
 
@@ -522,13 +522,20 @@ def main():
     sm.append('</urlset>')
     write('sitemap.xml', '\n'.join(sm))
 
-    feed = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel>',
+    feed = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/"><channel>',
             f'<title>{esc(CFG["name"])}</title><link>{SITE}/blog/</link><description>{esc(CFG["description"])}</description><language>pt-BR</language>',
             f'<atom:link href="{SITE}/blog/feed.xml" rel="self" type="application/rss+xml"/>']
+    def feed_img(p):
+        if not p['cover']:
+            return ''
+        u, f = esc(SITE + p['cover']), os.path.join(OUT, p['cover'].lstrip('/'))
+        t = mimetypes.guess_type(f)[0] or 'image/jpeg'
+        n = os.path.getsize(f) if os.path.exists(f) else 0
+        return f'<enclosure url="{u}" length="{n}" type="{t}"/><media:content url="{u}" medium="image" type="{t}"/>'
     for p in posts[:30]:
         feed.append(f'<item><title>{esc(p["title"])}</title><link>{SITE}{p["path"]}</link><guid isPermaLink="true">{SITE}{p["path"]}</guid>'
                     f'<pubDate>{format_datetime(p["published"])}</pubDate><category>{esc(p["category"])}</category>'
-                    f'<description>{esc(p["excerpt"] or p["answer"])}</description></item>')
+                    f'<description>{esc(p["excerpt"] or p["answer"])}</description>{feed_img(p)}</item>')
     feed.append('</channel></rss>')
     write('blog/feed.xml', '\n'.join(feed))
 
