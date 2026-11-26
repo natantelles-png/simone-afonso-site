@@ -877,13 +877,19 @@ section[id]{scroll-margin-top:72px}
 </div>
 <div style="flex:1 1 380px;min-width:0">
 <sc-if value="{{ subDone }}" hint-placeholder-val="{{ false }}">
-<p role="status" style="margin:0;font-family:'Gloock',serif;font-size:24px;color:#F3DEDA">Pronto! O próximo texto chega no seu e-mail.</p>
+<p role="status" style="margin:0;font-family:'Gloock',serif;font-size:24px;color:#F3DEDA">Confira seu e-mail para confirmar a inscrição.</p>
 </sc-if>
 <sc-if value="{{ subOpen }}" hint-placeholder-val="{{ true }}">
-<form onSubmit="{{ subscribe }}" style="display:flex;flex-wrap:wrap;gap:12px">
+<form id="sib-form" method="POST" action="https://a62e2eca.sibforms.com/serve/MUIFAMFDGCTH25iT4v7HD3zy4PGEf8LVzSRN_BK2P0T-uOKJz1rbIrJ2Fyi68vngkDV-FFmwE9iMt5lMIOYSf31zmFzWd472_vvRxgU0M0NNGCZQ4wcg32WPOckHfy1U-yUEI7yt03dhpZ792K64PCqzBLrNbebjoz8zAq0tB8jOK_MSZokMqkjW8meMkVqj2JmAPnNnQYZ_duDXnA==" data-type="subscription" onSubmit="{{ subscribe }}" style="display:flex;flex-wrap:wrap;gap:12px">
 <label for="sa-sub" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Seu e-mail</label>
-<input id="sa-sub" type="email" required="" maxlength="120" autocomplete="email" placeholder="Seu melhor e-mail" style="flex:1 1 220px;min-width:0;font-family:var(--sa-sans);font-size:17px;padding:13px 16px;border:1.5px solid #F3DEDA;background:#FAF4F0;color:#3B2E2F">
-<button class="sa-btn" type="submit" style="font-family:var(--sa-sans);font-size:17px;font-weight:600;padding:13px 24px;min-height:50px;border-radius:999px;border:0;cursor:pointer;background:#F3DEDA;color:#3B2E2F">Quero receber</button>
+<input id="sa-sub" name="EMAIL" type="email" required="" maxlength="120" autocomplete="email" placeholder="Seu melhor e-mail" style="flex:1 1 220px;min-width:0;font-family:var(--sa-sans);font-size:17px;padding:13px 16px;border:1.5px solid #F3DEDA;background:#FAF4F0;color:#3B2E2F">
+<button class="sa-btn" type="submit" style="font-family:var(--sa-sans);font-size:17px;font-weight:600;padding:13px 24px;min-height:50px;border-radius:999px;border:0;cursor:pointer;background:#F3DEDA;color:#3B2E2F">{{ subLabel }}</button>
+<input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<input type="hidden" name="locale" value="pt">
+<p style="flex:1 1 100%;margin:0;font-size:14px;color:#F3DEDA;font-weight:300">Ao se inscrever você concorda em receber os textos do Blog.</p>
+<sc-if value="{{ subErr }}" hint-placeholder-val="{{ false }}">
+<p role="alert" style="flex:1 1 100%;margin:0;font-size:15px;font-weight:600;color:#FFFFFF;background:rgba(0,0,0,.22);padding:10px 14px">{{ subErr }}</p>
+</sc-if>
 </form>
 </sc-if>
 </div>
@@ -1031,7 +1037,7 @@ section[id]{scroll-margin-top:72px}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { ad: 0, pos: 50, touched: false, tab: 0, sp: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, seqOpen: false, mn: '', stuck: false, real: null };
+    this.state = { ad: 0, pos: 50, touched: false, tab: 0, sp: 0, mood: 0, pf: 'Todos', bf: 'Todos', faq: 0, lb: -1, li: 0, sent: false, sub: false, subBusy: false, subErr: '', dep: '', vid: false, tr: 0, lit: -1, playing: false, bpm: 118, muted: false, yt: false, seqOpen: false, mn: '', stuck: false, real: null };
   }
   componentDidMount() {
     try {
@@ -1504,9 +1510,20 @@ class Component extends DCLogic {
       wa, ring, marq, pilares, elogios, cats, svcCards, tabs, svc, ad, adTabs, slide, fitSim, fitNao, moodBtns, cur, creds, credsNow, credsDone,
       projFilters, projVisible, lb, lbMany, lbThumbs, tc, ytOn, ytOff, playYt, trTabs, rip, trRipple, pianoW, pianoB, seqRows, seqPresets, seqPlaying, seqToggle, seqOpen: !!s.seqOpen, seqOpenExp: s.seqOpen ? 'true' : 'false', seqOpenToggle, seqTempo, seqBpm: bpm, seqLoop: (240 / bpm).toFixed(3), muteToggle, muteOn: !!s.muted, muteLabel: s.muted ? 'Som desligado' : 'Som ligado', muteIcon: s.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9.5l5 5M22 9.5l-5 5' : 'M4 9v6h4l5 4V5L8 9zM16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11', seqLabel: s.playing ? 'Parar' : 'Tocar', seqIcon: s.playing ? 'M6 5h4v14H6zM14 5h4v14h-4z' : 'M7 4.5v15l13-7.5z', lbOpen: s.lb >= 0, vidOpen: !!s.vid, closeVid: () => this.setState({ vid: false }), closeLb: () => this.setState({ lb: -1 }), lbPrev: step(-1), lbNext: step(1),
       depos, feat, blogFilters, blogVisible, hasReal, noReal, faqs,
-      sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub,
+      sent: s.sent, formOpen: !s.sent, subDone: s.sub, subOpen: !s.sub, subBusy: s.subBusy, subErr: s.subErr, subLabel: s.subBusy ? 'Enviando…' : 'Quero receber',
       send: (e) => { e.preventDefault(); this.setState({ sent: true }); },
-      subscribe: (e) => { e.preventDefault(); this.setState({ sub: true }); }
+      subscribe: (e) => {
+        e.preventDefault();
+        const f = document.getElementById('sib-form');
+        if (!f) return;
+        if (this.state.subBusy) return;
+        this.setState({ subBusy: true, subErr: '' });
+        const ac = new AbortController(); setTimeout(() => ac.abort(), 15000);
+        fetch(f.action + (f.action.includes('?') ? '&' : '?') + 'isAjax=1', { method: 'POST', body: new FormData(f), credentials: 'omit', signal: ac.signal })
+          .then((r) => r.json().catch(() => ({})).then((j) => { if (!r.ok || !j.success) throw 0; }))
+          .then(() => this.setState({ sub: true, subBusy: false }))
+          .catch(() => this.setState({ subBusy: false, subErr: 'Não foi possível concluir a inscrição. Confira o e-mail e tente de novo.' }));
+      }
     };
   }
 }
